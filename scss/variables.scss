@@ -1,0 +1,31 @@
+:root {
+    --col-blue: #1FFF93;
+    --col-blue-rgb: 31, 255, 147;
+    --col-teal: #1FC9FF;
+    
+    --col-black: #373747;
+    
+    --col-bg: #FFFFFF;
+    --col-fg: var(--col-black);
+
+    --gray-2: #edf2f6;
+
+    --max-contrast: #000000;
+
+    /* Shadows */
+    --shadow-blue-light: 0px 10px 20px rgba(var(--col-blue-rgb), 0.6);
+    --shadow-blue-dark: 0px 10px 20px rgba(var(--col-blue-rgb), 0.2);
+
+    --shadow-blue: var(--shadow-blue-light);
+}
+
+body.dark {
+    --col-bg: var(--col-black);
+    --col-fg: #cdcdcd;
+
+    --gray-2: #434358;
+
+    --max-contrast: #ffffff;
+
+    --shadow-blue: var(--shadow-blue-dark)
+}

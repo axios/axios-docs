@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Errorverarbeitung | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/de" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <h3 class="group-name">Navitation</h3>
+        <a href="/de">Home</a>
+        <nav>
+            
+                <a href="/docs" class="selected">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    Loslegen mit Axios
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/intro">
+                    Einführung
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/example">
+                    Beispiel
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/post_example">
+                    POST-Anfragen
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios-API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/api_intro">
+                    Axios-API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/instance">
+                    Die Axios-Instanz
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/req_config">
+                    Anfragenkonfigurationsschema
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/res_schema">
+                    Antwortenschema
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/config_defaults">
+                    Konfigurationsstandardwerte
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/interceptors">
+                    Abfänger
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/handling_errors">
+                    Errorverarbeitung
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/cancellation">
+                    Anfragen abbrechen
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/urlencoded">
+                    URL-Ähnlich Kodierte Anfragenkörper
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Andere
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/notes">
+                    Weitere Notizen
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                Errorverarbeitung
+            </h1>
+            <p class="description">
+                
+            </p>
+            <pre data-lang="js"><code>axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Die Anfrage wurde erfolgreich gesendet aber der Server</span>
+      <span class="token comment">// antwortete mit einem code außerhalb des Bereiches 2xx</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Die Anfrage wurde gesendet aber keine Antwort empfangen</span>
+      <span class="token comment">// `error.request` ist im Browser eine Instanz von XMLHTTPRequest</span>
+      <span class="token comment">// und in Node.js einen Instanz von http.ClientRequest.</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Etwas ging beim senden der Anfrage schief</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">,</span> error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Mit der Konfigurationsoption <code>validateStatus</code> können sie die Statuscodes, die einen Error auslösen, festlegen</p>
+<pre data-lang="js"><code>axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">validateStatus</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">status</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> status <span class="token operator">&lt;</span> <span class="token number">500</span><span class="token punctuation">;</span> <span class="token comment">// Nur Statuscodes über 500 lösen einen Error aus</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Mit <code>toJSON</code> erhalten sie ein Objekt mit mehr information über den Fehler.</p>
+<pre data-lang="js"><code>axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <div class="links">
+                
+                    <a href="/docs/de/interceptors" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            Abfänger
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/de/cancellation" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            Anfragen Abbrechen
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>
