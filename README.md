@@ -1,6 +1,6 @@
 # Axios Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8437c03b-f04a-4329-b619-3a82c0595f83/deploy-status)](https://app.netlify.com/sites/axios-docs/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8437c03b-f04a-4329-b619-3a82c0595f83/deploy-status)](https://app.netlify.com/sites/axios-docs/deploys) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 
 
 The documentation page was built using [`inert static site generator`](https://github.com/codemaster138/inert). It works like this: inside the `docs` folder, there is a folder named `_src` (because GitHub automatically hides all files and folders starting with `_` from viewers on GitHub Pages). Inside this folder, there are some configuration, templates, styles, and, most importantly, in the `posts` folder, multiple markdown files containing the documentation.
