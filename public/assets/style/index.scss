@@ -12,13 +12,14 @@ body {
 
 header {
   position: fixed;
-  top: 3rem;
+  padding-top: 2rem;
   left: calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: white;
+  z-index: 1;
 
   a.button {
     margin-right: 0 !important;
