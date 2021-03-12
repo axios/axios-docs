@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v2.1.5
 
       - name: Install the CLI
-        run: npm i -g inert-cli
+        run: sudo npm i -g inert-cli
 
       - name: Run a build
         run: inert build
