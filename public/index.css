@@ -1,7 +1,4 @@
 :root {
-  --col-blue: #1FFF93;
-  --col-blue-rgb: 31, 255, 147;
-  --col-teal: #1FC9FF;
   --col-black: #373747;
   --col-bg: #FFFFFF;
   --col-fg: var(--col-black);
@@ -140,6 +137,47 @@ aside {
   transition: transform 300ms;
   overflow-y: scroll;
   height: calc(100vh - 5.6rem);
+}
+aside details.dropdown-language {
+  width: calc(100% - 2rem);
+  background: var(--gray-2);
+  margin: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-sizing: margin-box;
+}
+aside details.dropdown-language summary {
+  list-style: none;
+  color: #671ddf;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+aside details.dropdown-language summary div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  color: #671ddf;
+}
+aside details.dropdown-language summary div img {
+  margin-right: 1rem;
+}
+aside details.dropdown-language summary ::-webkit-details-marker {
+  display: none;
+}
+aside details.dropdown-language div.options {
+  width: 100%;
+  padding-left: 2.3rem;
+  box-sizing: border-box;
+}
+aside details.dropdown-language div.options a {
+  padding: 0;
+  font-size: 10px;
+  color: #671ddf;
+  margin-top: 10px;
 }
 aside h3 {
   margin-left: 1rem;
