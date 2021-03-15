@@ -38,6 +38,26 @@
                 <img src="/assets/logo.svg" alt="Logo" />
             </a>
         </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    Deutsch
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/urlencoded">English</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
         <h3 class="group-name">Navitation</h3>
         <a href="/de">Home</a>
         <nav>
@@ -206,7 +226,7 @@ axios<span class="token punctuation">.</span><span class="token function">post</
 <h4 id="form-data">Form data</h4>
 <p>In Node.js funktioniert auch das Module <a href="https://github.com/form-data/form-data"><code>form-data</code></a>:</p>
 <pre data-lang="js"><code><span class="token keyword">const</span> FormData <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'form-data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
+
 <span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_field'</span><span class="token punctuation">,</span> <span class="token string">'my value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_buffer'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

@@ -132,6 +132,54 @@ aside {
     overflow-y: scroll;
     height: calc(100vh - 5.6rem);
 
+    details.dropdown-language {
+        width: calc(100% - 2rem);
+        background: var(--gray-2);
+        margin: 1rem;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-sizing: margin-box;
+
+        summary {
+            list-style: none;
+            color: #671ddf;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-flow: row wrap;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-flow: row wrap;
+                color: #671ddf;
+
+                img {
+                    margin-right: 1rem;
+                }
+            }
+
+            ::-webkit-details-marker {
+                display: none; // Hide the little triangle
+            }
+        }
+
+        div.options {
+            width: 100%;
+            padding-left: 2.3rem;
+            box-sizing: border-box;
+
+            a {
+                padding: 0;
+                font-size: 10px;
+                color: #671ddf;
+                margin-top: 10px;
+            }
+        }
+    }
+
     h3 {
         margin-left: 1rem;
         font-size: 1.5rem;
