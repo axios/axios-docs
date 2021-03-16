@@ -18,7 +18,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: #ffffffd0;
+  backdrop-filter: blur(2px);
   z-index: 1;
 
   a.button {
