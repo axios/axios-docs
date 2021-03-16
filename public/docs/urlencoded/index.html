@@ -226,7 +226,7 @@ axios<span class="token punctuation">.</span><span class="token function">post</
 <h4 id="form-data">Form data</h4>
 <p>In node.js, you can use the <a href="https://github.com/form-data/form-data"><code>form-data</code></a> library as follows:</p>
 <pre data-lang="js"><code><span class="token keyword">const</span> FormData <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'form-data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
+
 <span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_field'</span><span class="token punctuation">,</span> <span class="token string">'my value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_buffer'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
