@@ -17,7 +17,7 @@ const config = {
     description: `Promise based HTTP client for the browser and node.js`,
     navLinks: [
         {
-            href: '/docs',
+            href: '/docs/intro',
             text: 'Docs'
         },
         {
