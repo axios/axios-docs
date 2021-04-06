@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Cancellation | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    English
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                
+                    
+                        <a href="/docs/de/cancellation">Deutsch</a>
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    Getting Started
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/intro">
+                    Introduction
+                </a>
+            
+        
+            
+            
+                <a href="/docs/example">
+                    Example
+                </a>
+            
+        
+            
+            
+                <a href="/docs/post_example">
+                    POST Requests
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/api_intro">
+                    Axios API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/instance">
+                    The Axios Instance
+                </a>
+            
+        
+            
+            
+                <a href="/docs/req_config">
+                    Request Config
+                </a>
+            
+        
+            
+            
+                <a href="/docs/res_schema">
+                    Response Schema
+                </a>
+            
+        
+            
+            
+                <a href="/docs/config_defaults">
+                    Config Defaults
+                </a>
+            
+        
+            
+            
+                <a href="/docs/interceptors">
+                    Interceptors
+                </a>
+            
+        
+            
+            
+                <a href="/docs/handling_errors">
+                    Handling Errors
+                </a>
+            
+        
+            
+            
+                <a href="/docs/cancellation">
+                    Cancellation
+                </a>
+            
+        
+            
+            
+                <a href="/docs/urlencoded">
+                    URL-Encoding Bodies
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Other
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/notes">
+                    Notes
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                Cancellation
+            </h1>
+            <p class="description">
+                
+            </p>
+            <p>You can cancel a request using a <em>cancel token</em>.</p>
+<blockquote>
+<p>The axios cancel token API is based on the withdrawn <a href="https://github.com/tc39/proposal-cancelable-promises">cancelable promises proposal</a>.</p>
+</blockquote>
+<p>You can create a cancel token using the <code>CancelToken.source</code> factory as shown below:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> CancelToken <span class="token operator">=</span> axios<span class="token punctuation">.</span>CancelToken<span class="token punctuation">;</span>
+<span class="token keyword">const</span> source <span class="token operator">=</span> CancelToken<span class="token punctuation">.</span><span class="token function">source</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token operator">:</span> source<span class="token punctuation">.</span>token
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">thrown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>axios<span class="token punctuation">.</span><span class="token function">isCancel</span><span class="token punctuation">(</span>thrown<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request canceled'</span><span class="token punctuation">,</span> thrown<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// handle error</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'new name'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token operator">:</span> source<span class="token punctuation">.</span>token
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// cancel the request (the message parameter is optional)</span>
+source<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token string">'Operation canceled by the user.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>You can also create a cancel token by passing an executor function to the <code>CancelToken</code> constructor:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> CancelToken <span class="token operator">=</span> axios<span class="token punctuation">.</span>CancelToken<span class="token punctuation">;</span>
+<span class="token keyword">let</span> cancel<span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">CancelToken</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">executor</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// An executor function receives a cancel function as a parameter</span>
+    cancel <span class="token operator">=</span> c<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// cancel the request</span>
+<span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><blockquote>
+<p>Note: you can cancel several requests with the same cancel token.</p>
+</blockquote>
+
+            <div class="links">
+                
+                    <a href="/docs/handling_errors" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            Handling Errors
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/urlencoded" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            URL-Encoding Bodies
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
   "name": "axios-docs",
   "version": "0.3.7",
   "scripts": {
-    "build": "inert build"
+    "build": "mkdir -p public && mkdir -p public/docs && inert build"
   },
   "description": "The official axios documentation website",
   "repository": "https://github.com/axios/axios-docs.git",

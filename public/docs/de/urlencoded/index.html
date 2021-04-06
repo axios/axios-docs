@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        URL-Ähnlich Kodierte Anfragenkörper | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/de" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    Deutsch
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/urlencoded">English</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/de">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    Loslegen mit Axios
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/intro">
+                    Einführung
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/example">
+                    Beispiel
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/post_example">
+                    POST-Anfragen
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios-API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/api_intro">
+                    Axios-API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/instance">
+                    Die Axios-Instanz
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/req_config">
+                    Anfragenkonfigurationsschema
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/res_schema">
+                    Antwortenschema
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/config_defaults">
+                    Konfigurationsstandardwerte
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/interceptors">
+                    Abfänger
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/handling_errors">
+                    Errorverarbeitung
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/cancellation">
+                    Anfragen abbrechen
+                </a>
+            
+        
+            
+            
+                <a href="/docs/de/urlencoded">
+                    URL-Ähnlich Kodierte Anfragenkörper
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Andere
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/de/notes">
+                    Weitere Notizen
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                URL-Ähnlich Kodierte Anfragenkörper
+            </h1>
+            <p class="description">
+                
+            </p>
+            <p>Normalerweise serialisiert Axios JavaScript-Objekte zu <code>JSON</code>. Um Daten stattdessen im format <code>application/x-www-form-urlencoded</code> zu senden, können sie die folgenden Methoden verwenden:</p>
+<h3 id="browser">Browser</h3>
+<p>In einem browser können sie die <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"><code>URLSearchParams</code></a>-API wie folgt verwenden:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'param1'</span><span class="token punctuation">,</span> <span class="token string">'value1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'param2'</span><span class="token punctuation">,</span> <span class="token string">'value2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/foo'</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><blockquote>
+<p><code>URLSearchParams</code> wird nciht von allen Browser unterstützt (siehe <a href="http://www.caniuse.com/#feat=urlsearchparams">caniuse.com</a>), aber es gibt einen <a href="https://github.com/WebReflection/url-search-params">Polyfill</a>.</p>
+</blockquote>
+<p>Als alternative können sie Daten mit dem Modul <a href="https://github.com/ljharb/qs"><code>qs</code></a> verarbeiten:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> qs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'qs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/foo'</span><span class="token punctuation">,</span> qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'bar'</span><span class="token operator">:</span> <span class="token number">123</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Oder auch so: <em>(ES6)</em></p>
+<pre data-lang="js"><code><span class="token keyword">import</span> qs <span class="token keyword">from</span> <span class="token string">'qs'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">'bar'</span><span class="token operator">:</span> <span class="token number">123</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
+  method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">'content-type'</span><span class="token operator">:</span> <span class="token string">'application/x-www-form-urlencoded'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  url<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">axios</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h3 id="nodejs">Node.js</h3>
+<h4 id="query-string">Query string</h4>
+<p>In Node.js können sie das Modul <a href="https://nodejs.org/api/querystring.html"><code>querystring</code></a> zur hand nehmen:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> querystring <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'querystring'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'http://something.com/'</span><span class="token punctuation">,</span> querystring<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>oder <a href="https://nodejs.org/api/url.html#url_class_urlsearchparams"><code>URLSearchParams</code></a> aus dem Modul <a href="https://nodejs.org/api/url.html"><code>url</code></a> wie folgt verwenden:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">url<span class="token punctuation">.</span>URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'http://something.com/'</span><span class="token punctuation">,</span> params<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Das Modul <a href="https://github.com/ljharb/qs"><code>qs</code></a> funktioniert auch.</p>
+<h6 id="note">NOTE</h6>
+<p>Falls sie genestete Objekte senden müssen ist das Modul <code>qs</code> die besser wahl, da das Modul <code>querystring</code> bekanntlich Probleme mit solchen Fällen hat (<a href="https://github.com/nodejs/node-v0.x-archive/issues/1665">https://github.com/nodejs/node-v0.x-archive/issues/1665</a>).</p>
+<h4 id="form-data">Form data</h4>
+<p>In Node.js funktioniert auch das Module <a href="https://github.com/form-data/form-data"><code>form-data</code></a>:</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> FormData <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'form-data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_field'</span><span class="token punctuation">,</span> <span class="token string">'my value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_buffer'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+form<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'my_file'</span><span class="token punctuation">,</span> fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span><span class="token string">'/foo/bar.jpg'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'https://example.com'</span><span class="token punctuation">,</span> form<span class="token punctuation">,</span> <span class="token punctuation">{</span> headers<span class="token operator">:</span> form<span class="token punctuation">.</span><span class="token function">getHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Alternativ können sie auch einen Abfänger verwenden.</p>
+<pre data-lang="js"><code>axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token parameter">config</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>config<span class="token punctuation">.</span>data <span class="token keyword">instanceof</span> <span class="token class-name">FormData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>headers<span class="token punctuation">,</span> config<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">getHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <div class="links">
+                
+                    <a href="/docs/de/cancellation" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            Anfragen Abbrechen
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/de/notes" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            Weitere Notizen
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>
