@@ -9,7 +9,8 @@ const config = {
         templates: {
             home: './templates/home.ejs',
             post: './templates/post.ejs',
-            'home-de': './templates/home-de.ejs'
+            'home-de': './templates/home-de.ejs',
+            'home-zh': './templates/home-zh.ejs'
         }
     },
     blogName: `Axios Docs`,
@@ -162,7 +163,74 @@ const config = {
                     href: '/docs/de/notes',
                     text: 'Weitere Notizen'
                 }]
-            }
+            },
+            'zh': {
+                name: '中文',
+                primaryName: '中文',
+                path: '/zh',
+                sidebar: [{
+                    type: 'heading',
+                    text: '起步'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/intro',
+                    text: '介绍'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/example',
+                    text: '用例'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/post_example',
+                    text: 'POST请求'
+                }, {
+                    type: 'heading',
+                    text: 'Axios API'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/api_intro',
+                    text: 'Axios API'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/instance',
+                    text: 'Axios 实例'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/req_config',
+                    text: '请求配置'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/res_schema',
+                    text: '响应结构'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/config_defaults',
+                    text: '默认配置'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/interceptors',
+                    text: '拦截器'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/handling_errors',
+                    text: '错误处理'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/cancellation',
+                    text: '取消请求'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/urlencoded',
+                    text: '请求体编码'
+                }, {
+                    type: 'heading',
+                    text: '其他'
+                }, {
+                    type: 'link',
+                    href: '/docs/zh/notes',
+                    text: '注意事项'
+                }]
+            },
         },
         primary: 'en'
     }

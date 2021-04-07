@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        基本用例 | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/zh" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    中文
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/example">English</a>
+                    
+                
+                    
+                        <a href="/docs/de/example">Deutsch</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/zh">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    起步
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/intro">
+                    介绍
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/example">
+                    用例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/post_example">
+                    POST请求
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/api_intro">
+                    Axios API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/instance">
+                    Axios 实例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/req_config">
+                    请求配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/res_schema">
+                    响应结构
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/config_defaults">
+                    默认配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/interceptors">
+                    拦截器
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/handling_errors">
+                    错误处理
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/cancellation">
+                    取消请求
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/urlencoded">
+                    请求体编码
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    其他
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/notes">
+                    注意事项
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                基本用例
+            </h1>
+            <p class="description">
+                使用axios的基本用例
+            </p>
+            <h2 id="注意-commonjs-用法">注意: CommonJS 用法</h2>
+<p>为了在CommonJS中使用 <code>require（）</code> 导入时获得TypeScript类型推断（智能感知/自动完成），请使用以下方法：</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'axios'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>default<span class="token punctuation">;</span>
+
+<span class="token comment">// axios.&lt;method> 能够提供自动完成和参数类型推断功能</span></code></pre><h1 id="用例">用例</h1>
+<p>发起一个 <code>GET</code> 请求</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'axios'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 向给定ID的用户发起请求</span>
+axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user?ID=12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 处理成功情况</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 处理错误情况</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 总是会执行</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 上述请求也可以按以下方式完成（可选）</span>
+axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    params<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token constant">ID</span><span class="token operator">:</span> <span class="token number">12345</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 总是会执行</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+
+<span class="token comment">// 支持async/await用法</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user?ID=12345'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><blockquote>
+<p><strong>注意:</strong> 由于<code>async/await</code> 是ECMAScript 2017中的一部分，而且在IE和一些旧的浏览器中不支持，所以使用时务必要小心。</p>
+</blockquote>
+
+            <div class="links">
+                
+                    <a href="/docs/zh/intro" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            介绍
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/zh/post_example" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            POST 请求
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>

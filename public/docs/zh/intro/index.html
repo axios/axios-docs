@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        起步 | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/zh" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    中文
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/intro">English</a>
+                    
+                
+                    
+                        <a href="/docs/de/intro">Deutsch</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/zh">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    起步
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/intro">
+                    介绍
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/example">
+                    用例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/post_example">
+                    POST请求
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/api_intro">
+                    Axios API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/instance">
+                    Axios 实例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/req_config">
+                    请求配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/res_schema">
+                    响应结构
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/config_defaults">
+                    默认配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/interceptors">
+                    拦截器
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/handling_errors">
+                    错误处理
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/cancellation">
+                    取消请求
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/urlencoded">
+                    请求体编码
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    其他
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/notes">
+                    注意事项
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                起步
+            </h1>
+            <p class="description">
+                基于promise可以用于浏览器和node.js的网络请求库
+            </p>
+            <h1 id="axios-是什么">Axios 是什么?</h1>
+<p>Axios 是一个基于 <em><a href="https://javascript.info/promise-basics">promise</a></em> 网络请求库，作用于<a href="https://nodejs.org"><code>node.js</code></a> 和浏览器中。 它是 <em><a href="https://www.lullabot.com/articles/what-is-an-isomorphic-application">isomorphic</a></em> 的(即同一套代码可以运行在浏览器和node.js中)。在服务端它使用原生 node.js <code>http</code> 模块, 而在客户端 (浏览端) 则使用 XMLHttpRequests。</p>
+<h1 id="特性">特性</h1>
+<ul>
+<li>从浏览器创建 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequests</a> </li>
+<li>从 node.js 创建 <a href="http://nodejs.org/api/http.html">http</a> 请求</li>
+<li>支持 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> API</li>
+<li>拦截请求和响应</li>
+<li>转换请求和响应数据</li>
+<li>取消请求</li>
+<li>自动转换JSON数据</li>
+<li>客户端支持防御<a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a></li>
+</ul>
+<h1 id="安装">安装</h1>
+<p>使用 npm:</p>
+<pre data-lang="bash"><code>$ <span class="token function">npm</span> <span class="token function">install</span> axios</code></pre><p>使用 bower:</p>
+<pre data-lang="bash"><code>$ bower <span class="token function">install</span> axios</code></pre><p>使用 yarn:</p>
+<pre data-lang="bash"><code>$ <span class="token function">yarn</span> <span class="token function">add</span> axios</code></pre><p>使用 jsDelivr CDN:</p>
+<pre data-lang="html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre><p>使用 unpkg CDN:</p>
+<pre data-lang="html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/axios/dist/axios.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+            <div class="links">
+                
+                    <span></span>
+                
+                
+                    <a href="/docs/zh/example" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            基本用例
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>

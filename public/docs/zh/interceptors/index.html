@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        拦截器 | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/zh" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    中文
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/interceptors">English</a>
+                    
+                
+                    
+                        <a href="/docs/de/interceptors">Deutsch</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/zh">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    起步
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/intro">
+                    介绍
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/example">
+                    用例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/post_example">
+                    POST请求
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/api_intro">
+                    Axios API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/instance">
+                    Axios 实例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/req_config">
+                    请求配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/res_schema">
+                    响应结构
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/config_defaults">
+                    默认配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/interceptors">
+                    拦截器
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/handling_errors">
+                    错误处理
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/cancellation">
+                    取消请求
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/urlencoded">
+                    请求体编码
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    其他
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/notes">
+                    注意事项
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                拦截器
+            </h1>
+            <p class="description">
+                
+            </p>
+            <p>在请求或响应被 then 或 catch 处理前拦截它们。</p>
+<pre data-lang="js"><code><span class="token comment">// 添加请求拦截器</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在发送请求之前做些什么</span>
+    <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 对请求错误做些什么</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 添加响应拦截器</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 2xx 范围内的状态码都会触发该函数。</span>
+    <span class="token comment">// 对响应数据做点什么</span>
+    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 超出 2xx 范围的状态码都会触发该函数。</span>
+    <span class="token comment">// 对响应错误做点什么</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>如果你稍后需要移除拦截器，可以这样：</p>
+<pre data-lang="js"><code><span class="token keyword">const</span> myInterceptor <span class="token operator">=</span> axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/*...*/</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">eject</span><span class="token punctuation">(</span>myInterceptor<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>可以给自定义的 axios 实例添加拦截器。 </p>
+<pre data-lang="js"><code><span class="token keyword">const</span> instance <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+instance<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/*...*/</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <div class="links">
+                
+                    <a href="/docs/zh/config_defaults" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            默认配置
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/zh/handling_errors" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            错误处理
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>
