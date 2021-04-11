@@ -37,7 +37,7 @@ axios.get('/user/12345', {
 })
 ```
 
-使用 `toJSON` 可以获取更多关于HTTP的错误信息。
+使用 `toJSON` 可以获取更多关于HTTP错误的信息。
 
 ```js
 axios.get('/user/12345')
