@@ -19,7 +19,7 @@ params.append('param2', 'value2');
 axios.post('/foo', params);
 ```
 
-> 请注意，所有的浏览器(参见 [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams))都不支持 `URLSearchParams` ，但是可以使用[polyfill](https://github.com/WebReflection/url-search-params) (确保 polyfill 全局环境)
+> 请注意，不是所有的浏览器(参见 [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams))都支持 `URLSearchParams` ，但是可以使用[polyfill](https://github.com/WebReflection/url-search-params) (确保 polyfill 全局环境)
 
 或者, 您可以使用[`qs`](https://github.com/ljharb/qs) 库编码数据:
 
