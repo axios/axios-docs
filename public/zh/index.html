@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios</title>
+    <link rel="stylesheet" href="/assets/style/index.css" />
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    />
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      />
+    </noscript>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <img src="/assets/logo.svg" alt="" />
+      <a href="/docs/zh/intro" class="button primary">起步</a>
+    </header>
+    <main>
+      <section id="hero">
+        <div class="content">
+          <h1>Axios 是一个基于 promise 的网络请求库，可以用于浏览器和 node.js</h1>
+          <p>
+            Axios 使用简单,包尺寸小且提供了易于扩展的接口。
+          </p>
+          <div class="buttons">
+            <a href="/docs/zh/intro" class="button primary">起步</a>
+            <a href="https://github.com/axios/axios" class="button">Github 查看</a>
+          </div>
+        </div>
+        <div class="code-preview">
+          <pre><span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span>;</span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>);</span><br/>  <span>});</span></pre>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <table>
+        <tr>
+          <th>语言</th>
+          <th>开源</th>
+          <th>贡献</th>
+        </tr>
+        <tr>
+          <td><a href="/">English</a></td>
+          <td><a href="https://github.com/axios/axios">Source on GitHub</a></td>
+          <td><a href="https://github.com/axios/axios">Fork on GitHub</a></td>
+        </tr>
+        <tr>
+          <td><a href="/de">Deutsch</a></td>
+          <td><a href="https://github.com/axios/axios/issues">Issues</a></td>
+          <td><a href="https://github.com/axios/axios-docs">Fork the Website</a></td>
+        </tr>
+        <tr>
+          <td><a href="/zh">中文</a></td>
+          <td><a href="https://github.com/axios/axios/pulls">Pull Requests</a></td>
+          <td><a href="https://github.com/axios/axios/issues/new/choose">Create an issue</a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a></td>
+          <td></td>
+        </tr>
+      </table>
+      <div class="row">
+        <span class="copyright-notice">This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant. Used by permission.</span>
+        <a href="https://github.com/axios/axios-docs">GitHub查看</a>
+      </div>
+      <div class="row">
+        <span class="copyright-notice">The Axios Project: Copyright © 2014-present Matt Zabriskie.</span>
+        <span>Licensed under the <b><a href="https://opensource.org/licenses/MIT">MIT License</a></b></span>
+      </div>
+    </footer>
+  </body>
+</html>

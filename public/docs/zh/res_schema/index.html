@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        响应结构 | Axios Docs
+    </title>
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    
+</head>
+
+<body>
+    <header>
+        <div></div>
+        <div class="left">
+            <button id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    id="hamburgerIcon">
+                    <path d="M3 8V6H21V8H3Z" fill="currentColor" />
+                    <path d="M3 13H21V11H3V13Z" fill="currentColor" />
+                    <path d="M3 18H21V16H3V18Z" fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside>
+        <div>
+            <a href="/zh" id="logo">
+                <img src="/assets/logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <details class="dropdown-language">
+            <summary>
+                <div>
+                    <img src="/assets/icons/globe.svg" alt=""/>
+                    中文
+                </div>
+                <img id="chevron" src="/assets/icons/chevron-down.svg" alt=""/>
+            </summary>
+            <div class="options">
+                
+                    
+                        <a href="/docs/res_schema">English</a>
+                    
+                
+                    
+                        <a href="/docs/de/res_schema">Deutsch</a>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </details>
+        <h3 class="group-name">Navigation</h3>
+        <a href="/zh">Home</a>
+        <nav>
+            
+                <a href="/docs/intro" class="">
+                    Docs
+                </a>
+                
+                <a href="https://github.com/axios/axios" class="">
+                    Source
+                </a>
+                
+        </nav>
+        
+            
+                <h3 class="group-name">
+                    起步
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/intro">
+                    介绍
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/example">
+                    用例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/post_example">
+                    POST请求
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    Axios API
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/api_intro">
+                    Axios API
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/instance">
+                    Axios 实例
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/req_config">
+                    请求配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/res_schema">
+                    响应结构
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/config_defaults">
+                    默认配置
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/interceptors">
+                    拦截器
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/handling_errors">
+                    错误处理
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/cancellation">
+                    取消请求
+                </a>
+            
+        
+            
+            
+                <a href="/docs/zh/urlencoded">
+                    请求体编码
+                </a>
+            
+        
+            
+                <h3 class="group-name">
+                    其他
+                </h3>
+            
+            
+        
+            
+            
+                <a href="/docs/zh/notes">
+                    注意事项
+                </a>
+            
+        
+    </aside>
+    <main>
+        <div class="body">
+            <h1 class="title">
+                响应结构
+            </h1>
+            <p class="description">
+                
+            </p>
+            <p>一个请求的响应包含以下信息。</p>
+<pre data-lang="js"><code><span class="token punctuation">{</span>
+  <span class="token comment">// `data` 由服务器提供的响应</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `status` 来自服务器响应的 HTTP 状态码</span>
+  status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `statusText` 来自服务器响应的 HTTP 状态信息</span>
+  statusText<span class="token operator">:</span> <span class="token string">'OK'</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `headers` 是服务器响应头</span>
+  <span class="token comment">// 所有的 header 名称都是小写，而且可以使用方括号语法访问</span>
+  <span class="token comment">// 例如: `response.headers['content-type']`</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `config` 是 `axios` 请求的配置信息</span>
+  config<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `request` 是生成此响应的请求</span>
+  <span class="token comment">// 在node.js中它是最后一个ClientRequest实例 (in redirects)，</span>
+  <span class="token comment">// 在浏览器中则是 XMLHttpRequest 实例</span>
+  request<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>当使用 <code>then</code> 时，您将接收如下响应:</p>
+<pre data-lang="js"><code>axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>当使用 <code>catch</code>，或者传递一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then">rejection callback</a>作为 <code>then</code> 的第二个参数时，响应可以通过 <code>error</code> 对象被使用，正如在<a href="/docs/zh/handling_errors">错误处理</a>部分解释的那样。</p>
+
+            <div class="links">
+                
+                    <a href="/docs/zh/req_config" class="next-link">
+                        <span>« Previous</span>
+                        <span class="l">
+                            请求配置
+                        </span>
+                    </a>
+                
+                
+                    <a href="/docs/zh/config_defaults" class="next-link">
+                        <span>Next »</span>
+                        <span class="l">
+                            默认配置
+                        </span>
+                    </a>
+                
+            </div>
+        </div>
+        <div class="col-right"></div>
+    </main>
+
+    <script>
+        document.querySelector('#hamburger').addEventListener('click', (e) => {
+            document.body.classList.toggle('show-aside');
+        });
+    </script>
+</body>
+
+</html>
