@@ -7,7 +7,7 @@ next_title: 'POST-Anfragen'
 next_link: '/docs/de/post_example'
 ---
 
-## notiz: Verwendung mit CommonJS
+## Verwendung mit CommonJS
 Um TypeScript-Typings (für Intellisense / Autocomplete) trotz der nutzung von CommonJS-Imports mit `require()` zu erhalten, verwenden Sie bitte die folgende Methode:
 
 ```js
