@@ -6,11 +6,13 @@ next_title: 'Die Axios-Instanz'
 next_link: '/docs/de/instance'
 ---
 
-Anfragen können alternative dadurch getätigt werden, die relevante configuration der funktion `axios` zu übergeben:
+Anfragen können alternativ mit der methode `axios` ausgeführt werden:
 
 ##### axios(config)
 
 ```js
+import axios from 'axios';
+
 // Eine POST-Anfrage absenden
 axios({
   method: 'post',
@@ -41,9 +43,9 @@ axios({
 axios('/user/12345');
 ```
 
-### Request method aliases
+### Weitere Methoden
 
-Für komfort wurden Parallelbezeichnungen für jede HTTP-Methode hinzugefügt.
+Für komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzugefügt.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
