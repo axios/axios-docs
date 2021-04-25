@@ -32,64 +32,98 @@
   <body>
     <header>
       <img src="/assets/logo.svg" alt="" />
-      <a href="/docs/intro" class="button primary">Get Started</a>
+      <a href="<%= locale.prefix %>docs/intro" class="button primary"
+        ><%= locale.t['Get Started'] || 'Get Started' %></a
+      >
     </header>
     <main>
       <section id="hero">
         <div class="content">
-          <h1>Promise based HTTP client for the browser and node.js</h1>
-          <p>
-            Axios is a simple promise based HTTP client for the browser and node.js.
-            Axios provides a simple to use library in a small package with a very extensible
-            interface.
-          </p>
+          <h1><%= locale.p.headline %></h1>
+          <p><%= locale.p.subhead %></p>
           <div class="buttons">
-            <a href="/docs/intro" class="button primary">Get Started</a>
-            <a href="https://github.com/axios/axios" class="button"
-              >View on GitHub</a
-            >
+            <a href="/docs/intro" class="button primary">
+              <%= locale.t['Get Started'] || 'Get Started' %>
+            </a>
+            <a href="https://github.com/axios/axios" class="button">
+              <%= locale.t['View on GitHub'] || 'View on GitHub' %>
+            </a>
           </div>
         </div>
         <div class="code-preview">
-          <pre><span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span>;</span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>);</span><br/>  <span>});</span></pre>
+          <pre><span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span><%= ';' %></span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>)<%= ';' %></span><br/>  <span>})<%= ';' %></span></pre>
         </div>
       </section>
     </main>
     <footer>
       <table>
         <tr>
-          <th>Languages</th>
-          <th>Open Source</th>
-          <th>Contribute</th>
+          <th><%= locale.t['Languages'] || 'Languages' %></th>
+          <th><%= locale.t['Open Source'] || 'Open Source' %></th>
+          <th><%= locale.t['Contribute'] || 'Contribute' %></th>
         </tr>
         <tr>
-          <td><a href="/">English</a></td>
-          <td><a href="https://github.com/axios/axios">Source on GitHub</a></td>
-          <td><a href="https://github.com/axios/axios">Fork on GitHub</a></td>
+          <td><%- config.custom.langs[0] ? `<a href="${config.custom.langs[0].prefix}">${config.custom.langs[0].name}</a>` : undefined %></td>
+          <td><a href="https://github.com/axios/axios"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a></td>
+          <td><a href="https://github.com/axios/axios"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a></td>
         </tr>
         <tr>
-          <td><a href="/de">Deutsch</a></td>
-          <td><a href="https://github.com/axios/axios/issues">Issues</a></td>
-          <td><a href="https://github.com/axios/axios-docs">Fork the Website</a></td>
+          <td><%- config.custom.langs[1] ? `<a href="${config.custom.langs[1].prefix}">${config.custom.langs[1].name}</a>` : undefined%></td>
+          <td><a href="https://github.com/axios/axios/issues"><%= locale.t['Issues'] || 'Issues' %></a></td>
+          <td>
+            <a href="https://github.com/axios/axios-docs"><%= locale.t['Fork the Website'] || 'Fork the Website' %></a>
+          </td>
         </tr>
         <tr>
-          <td><a href="/zh">中文</a></td>
-          <td><a href="https://github.com/axios/axios/pulls">Pull Requests</a></td>
-          <td><a href="https://github.com/axios/axios/issues/new/choose">Create an issue</a></td>
+          <td><%- config.custom.langs[2] ? `<a href="${config.custom.langs[2].prefix}">${config.custom.langs[2].name}</a>` : undefined%></td>
+          <td>
+            <a href="https://github.com/axios/axios/pulls"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
+          </td>
+          <td>
+            <a href="https://github.com/axios/axios/issues/new/choose"
+              ><%= locale.t['Create an Issue'] || 'Create an Issue' %></a
+            >
+          </td>
         </tr>
         <tr>
+          <td><%- config.custom.langs[3] ? `<a href="${config.custom.langs[3].prefix}">${config.custom.langs[3].name}</a>` : undefined%></td>
+          <td>
+            <a
+              href="https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md"
+              ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
+            >
+          </td>
           <td></td>
-          <td><a href="https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a></td>
-          <td></td>
         </tr>
+        <% config.custom.langs.slice(4).forEach(lang => { %>
+          <tr>
+            <td>
+              <a href="<%= lang.prefix %>"><%= lang.name %></a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% }) %>
       </table>
       <div class="row">
-        <span class="copyright-notice">This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant. Used by permission.</span>
-        <a href="https://github.com/axios/axios-docs">View this site on GitHub</a>
+        <span class="copyright-notice"
+          >This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant.
+          Used by permission.</span
+        >
+        <a href="https://github.com/axios/axios-docs"
+          >View this site on GitHub</a
+        >
       </div>
       <div class="row">
-        <span class="copyright-notice">The Axios Project: Copyright © 2014-present Matt Zabriskie.</span>
-        <span>Licensed under the <b><a href="https://opensource.org/licenses/MIT">MIT License</a></b></span>
+        <span class="copyright-notice"
+          >The Axios Project: Copyright © 2014-present Matt Zabriskie.</span
+        >
+        <span
+          >Licensed under the
+          <b
+            ><a href="https://opensource.org/licenses/MIT">MIT License</a></b
+          ></span
+        >
       </div>
     </footer>
   </body>
