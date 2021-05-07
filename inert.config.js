@@ -17,6 +17,7 @@ const {
 const enConfig = require('./en.lang.js');
 const deConfig = require('./de.lang.js');
 const zhConfig = require('./zh.lang.js');
+const ptBRConfig = require('./ptBR.lang.js');
 
 /**
  * This is the inert configuration file. It contains all the information inert needs to build this template.
@@ -36,6 +37,10 @@ module.exports = {
       {
         name: 'English',
         prefix: '/'
+      },
+      {
+        name: 'Brazilian Portuguese',
+        prefix: '/ptBR/'
       },
       {
         name: 'Deutsch',
@@ -99,12 +104,14 @@ module.exports = {
        * Output for internationalized files
        */
       deOutput: ":output:/de",
+      ptBROutput: ":output:/ptBR",
       zhOutput: ":output:/zh",
       /**
        * Output for posts
        */
       postOutput: ":output:/docs",
       dePosts: ":deOutput:/docs",
+      ptBRPosts: ":ptBROutput:/docs",
       zhPosts: ":zhOutput:/docs"
     },
 
@@ -253,6 +260,34 @@ module.exports = {
              * method and writes it to a file with the same name in the specified directory.
              */
             write("dePosts", ".html"),
+          ],
+        },
+      },
+      {
+        folder: "posts/ptBR",
+        build: {
+          traverseLevel: "recursive",
+          filePipeline: [
+            /**
+             * Compiles the content of markdown files into HTML. Does not save the result. If the argument
+             * `true` is passed, it will throw an error when it encounters a non-markdown file. Will always
+             * throw on markdown error.
+             */
+            markdown(),
+            /**
+             * This function takes an ejs file as an argument and builds it with the global `data` set to
+             * the value of the previous method's result. If this is the first method, the raw content
+             * of the given file is used. Will always throw on EJS error.
+             *
+             * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
+             * you can if you want to.
+             */
+            htmlBuild("post", deConfig),
+            /**
+             * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
+             * method and writes it to a file with the same name in the specified directory.
+             */
+            write("ptBRPosts", ".html"),
           ],
         },
       },
