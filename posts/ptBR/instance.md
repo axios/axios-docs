@@ -9,13 +9,12 @@ next_link: '/docs/ptBR/req_config'
 ### Criando uma instância
 
 Você pode criar uma nova instância do axios com uma configuração customizada.
-<!--You can create a new instance of axios with a custom config.-->
 
 ##### axios.create([config])
 
 ```js
 const instance = axios.create({
-  baseURL: 'https://algum-dominio.com/api/',
+  baseURL: 'https://some-domain.com/api/',
   timeout: 1000,
   headers: {'X-Custom-Header': 'foobar'}
 });
@@ -24,7 +23,6 @@ const instance = axios.create({
 ### Métodos de instância
 
 Os métodos de instâncias disponiveis estão listadas abaixo. A configuração especificada será mesclada com a configuração da instância.
-<!--The available instance methods are listed below. The specified config will be merged with the instance config.-->
 
 ##### axios#request(config)
 ##### axios#get(url[, config])

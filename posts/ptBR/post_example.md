@@ -1,30 +1,28 @@
 ---
 title: 'Requisições POST'
-description: 'Como performar uma requisição post com Axios'
+description: 'Como executar uma requisição post com Axios'
 prev_title: 'Exemplos minimalistas'
 prev_link: '/docs/ptBR/example'
 next_title: 'Axios API'
 next_link: '/docs/ptBR/api_intro'
 ---
 
-Perfomando uma requisição `POST`
-<!--Performing a `POST` request-->
+Executando uma requisição `POST`
 
 ```js
 axios.post('/user', {
-    firstName: 'Doctor',
-    lastName: 'Who'
+    firstName: 'Santos',
+    lastName: 'Dumont'
   })
   .then(function (response) {
     console.log(response);
   })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 ```
 
-Perfomando multiplas requisições simultaneamente
-<!--Performing multiple concurrent requests-->
+Executando multiplas requisições simultaneamente
 
 ```js
 function getUserAccount() {

@@ -1,25 +1,24 @@
 /**
- * Configuration for the english (original) translation
- */
+ * Configuration for the brazilian portuguese translation
+*/
 
 module.exports = {
   display: "Português Brasileiro",
   prefix: "/ptBR/",
   p: {
-    headline: "Promise based HTTP client for the browser and node.js",
-    subhead: `Axios is a simple promise based HTTP client for the browser and node.js.
-              Axios provides a simple to use library in a small package with a very
-              extensible interface.`,
+    headline: "Cliente HTTP baseado em promessas para o navegador e node.js",
+    subhead: `Axios é um cliente HTTP simples baseado em promessas para o navegador e para o node.js. 
+    Axios fornece uma biblioteca simples de usar em um pacote pequeno com uma grande interface.`,
   },
   t: {
     "Get Started": "Começando",
     "View on GitHub": "Veja no GitHub",
     "Languages": "Idiomas",
-    "Open Source": "Open-Source",
+    "Open Source": "Código aberto",
     "Contribute": "Contribua",
-    "Source on GitHub": "Source on GitHub",
-    "Fork on GitHub": "Fork on GitHub",
-    "Fork the Website": "Fork the Website",
+    "Source on GitHub": "Fonte no GitHub",
+    "Fork on GitHub": "Faça uma copia no GitHub",
+    "Fork the Website": "Faça uma copia do Website",
     "Create an Issue": "Crie uma Issue"
   },
   sidebar: [
@@ -35,7 +34,7 @@ module.exports = {
     {
       type: "link",
       href: "/ptBR/docs/example",
-      text: "Exemplo",
+      text: "Exemplos",
     },
     {
       type: "link",
@@ -59,12 +58,12 @@ module.exports = {
     {
       type: "link",
       href: "/ptBR/docs/req_config",
-      text: "Configuração de Requisição",
+      text: "Configurações de Requisição",
     },
     {
       type: "link",
       href: "/ptBR/docs/res_schema",
-      text: "Esquema de Resposta",
+      text: "Esquema de Respostas",
     },
     {
       type: "link",

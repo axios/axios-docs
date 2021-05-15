@@ -132,11 +132,16 @@ module.exports = {
        * Build for other languages
        */
       halt('templates/index.ejs'), // This makes sure that the output from the previous methods isn't passed into singleHTMLBuild
+
       singleHTMLBuild(deConfig),
       writeFile(":deOutput:/index.html"),
       halt('templates/index.ejs'),
+
       singleHTMLBuild(zhConfig),
-      writeFile(":zhOutput:/index.html")
+      writeFile(":zhOutput:/index.html"),
+
+      singleHTMLBuild(ptBRConfig),
+      writeFile(":ptBROutput:/index.html"),
     ],
 
     /**
@@ -282,7 +287,7 @@ module.exports = {
              * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
              * you can if you want to.
              */
-            htmlBuild("post", deConfig),
+            htmlBuild("post", ptBRConfig),
             /**
              * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
              * method and writes it to a file with the same name in the specified directory.
