@@ -1,9 +1,9 @@
 ---
 title: '拦截器'
 prev_title: '默认配置'
-prev_link: '/docs/zh/config_defaults'
+prev_link: '/zh/docs/config_defaults'
 next_title: '错误处理'
-next_link: '/docs/zh/handling_errors'
+next_link: '/zh/docs/handling_errors'
 ---
 
 在请求或响应被 then 或 catch 处理前拦截它们。

@@ -2,9 +2,9 @@
 title: 'Axios API'
 description: 'Axios API参考'
 prev_title: 'POST 请求'
-prev_link: '/docs/zh/post_example'
+prev_link: '/zh/docs/post_example'
 next_title: 'Axios 实例'
-next_link: '/docs/zh/instance'
+next_link: '/zh/docs/instance'
 ---
 
 可以向 `axios` 传递相关配置来创建请求

@@ -2,9 +2,9 @@
 title: '基本用例'
 description: '使用axios的基本用例'
 prev_title: '介绍'
-prev_link: '/docs/zh/intro'
+prev_link: '/zh/docs/intro'
 next_title: 'POST 请求'
-next_link: '/docs/zh/post_example'
+next_link: '/zh/docs/post_example'
 ---
 
 ## 注意: CommonJS 用法

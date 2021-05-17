@@ -1,9 +1,9 @@
 ---
 title: 'Manipulando Erros'
 prev_title: 'Interceptadores'
-prev_link: '/docs/ptBR/interceptors'
+prev_link: '/ptBR/docs/interceptors'
 next_title: 'Cancelamento'
-next_link: '/docs/ptBR/cancellation'
+next_link: '/ptBR/docs/cancellation'
 ---
 
 ```js

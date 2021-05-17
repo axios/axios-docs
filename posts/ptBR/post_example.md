@@ -2,9 +2,9 @@
 title: 'Requisições POST'
 description: 'Como executar uma requisição post com Axios'
 prev_title: 'Exemplos minimalistas'
-prev_link: '/docs/ptBR/example'
+prev_link: '/ptBR/docs/example'
 next_title: 'Axios API'
-next_link: '/docs/ptBR/api_intro'
+next_link: '/ptBR/docs/api_intro'
 ---
 
 Executando uma requisição `POST`

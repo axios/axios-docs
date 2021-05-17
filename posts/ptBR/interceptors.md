@@ -1,9 +1,9 @@
 ---
 title: 'Interceptadores'
 prev_title: 'Configurações padrões'
-prev_link: '/docs/ptBR/config_defaults'
+prev_link: '/ptBR/docs/config_defaults'
 next_title: 'Manipulando Erros'
-next_link: '/docs/ptBR/handling_errors'
+next_link: '/ptBR/docs/handling_errors'
 ---
 
 Você pode interceptar requisições ou respostas antes de serem manipuladas pelo `then` ou `catch`.

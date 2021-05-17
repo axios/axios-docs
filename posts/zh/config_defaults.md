@@ -1,9 +1,9 @@
 ---
 title: '默认配置'
 prev_title: '响应结构'
-prev_link: '/docs/zh/res_schema'
+prev_link: '/zh/docs/res_schema'
 next_title: '拦截器'
-next_link: '/docs/zh/interceptors'
+next_link: '/zh/docs/interceptors'
 ---
 
 ## 默认配置

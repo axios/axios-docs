@@ -1,9 +1,9 @@
 ---
-title: 'Configurações de requisição'
-prev_title: 'Instância Axios'
-prev_link: '/docs/ptBR/instance'
-next_title: 'Esquema de Resposta'
-next_link: '/docs/ptBR/res_schema'
+title: "Configurações de requisição"
+prev_title: "Instância Axios"
+prev_link: "/ptBR/docs/instance"
+next_title: "Esquema de Resposta"
+next_link: "/ptBR/docs/res_schema"
 ---
 
 Estas são as configurações opcionais disponíveis para fazer uma requisição. Apenas a `url` é obrigatória. Requisições serão setadas como padrão para `GET` se nenhum `method` for especificado.
@@ -20,7 +20,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // Pode util definir uma `baseURL` para uma instância do axios para que possa passar URLs relativas
   // para o método da instância.
   baseURL: 'https://some-domain.com/api/',
-  
+
   // `transformRequest` permite mudar os dados da requisição antes da mesma ser enviada para o servidor
   // Isto é aplicado apenas para requisições com os métodos 'PUT', 'POST', 'PATCH' e 'DELETE'
   // A última função no array deve retornar uma string ou o Buffer da instância, ArrayBuffer,
@@ -54,14 +54,14 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
 
   // `data` são os dados a serem enviados no corpo da requisição
   // Apenas aplicado em requisições com os métodos 'PUT', 'POTS', 'DELETE' e 'PATCH'
-  // Quando nenhum `transformRequest` é definido, deve ser um dos tipos a seguir: 
+  // Quando nenhum `transformRequest` é definido, deve ser um dos tipos a seguir:
   // - string, objetos simples, ArrayBuffer, ArrayBufferView, URLSearchParams
   // - Navegador apenas: FormData, File, Blob
   // - Apenas no Node: Stream, Buffer
   data: {
     firstName: 'Fred'
   },
-  
+
   // Sintaxe alternativa para enviar dados no corpo
   // método post
   // apenas o valor é enviado, e não as chaves
@@ -75,7 +75,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // devem ou não ser feitas utilizando as credenciais
   withCredentials: false, // padrão
 
-  // `adapter` permite o tratamento personalizado de solicitações, o que torna o teste mais fácil. 
+  // `adapter` permite o tratamento personalizado de solicitações, o que torna o teste mais fácil.
   // Retorna uma promessa e fornece uma resposta valida (veja lib/adapters/README.md).
   adapter: function (config) {
     /* ... */
@@ -85,7 +85,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // Isso vai definir um novo cabeçalho de `Authorization`, sobrescrevendo uma já existente
   // `Authorization` cabeçalhos personalizados que você definiu usando `headers`.
   // Por favor, note que apenas autenticação HTTP Basic é configuravel por meio deste parâmetro
-  // Para tokens Bearer e outros, use o cabeçalho personalizado de `Authorization` 
+  // Para tokens Bearer e outros, use o cabeçalho personalizado de `Authorization`
   auth: {
     username: 'janedoe',
     password: 's00pers3cret'
@@ -124,8 +124,8 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `maxBodyLength` (Opção apenas para o Node) define o tamanho máximo permitido do conteúdo http em bytes
   maxBodyLength: 2000,
 
-  // `validateStatus` define se deve resolver ou rejeitar a promessa de um determinado 
-  // código de status de resposta HTTP. Se `validateStatus` retornar `true` (ou for definido como `null` 
+  // `validateStatus` define se deve resolver ou rejeitar a promessa de um determinado
+  // código de status de resposta HTTP. Se `validateStatus` retornar `true` (ou for definido como `null`
   // ou `undefined`), a promessa será resolvida; caso contrário, a promessa será
   // rejeitada.
   validateStatus: function (status) {
@@ -135,13 +135,13 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `maxRedirects` define um número máximo de redirecionamento para seguir em node.js
   // Se definido como 0, nenhum redirecionamento será permitido
   maxRedirects: 5, // padrão
-  
+
   // `socketPath` define um UNIX Socket para ser usado em node.js.
   // e.g. '/var/run/docker.sock' para enviar requisições para o docker daemon.
   // Apenas `socketPath` ou `proxy` podem ser especificado.
   // Caso ambos sejam especificados, o `socketPath` será utilizado.
   socketPath: null, // padrão
-  
+
   // `httpAgent` e `httpsAgent` define um agente personalizado para ser usando quando performando uma requisições http
   // ou https, no node.js. Isso permite opções a serem adicionadas como
   // `keepAlive` que não está habilidado por padrão.
@@ -151,7 +151,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `proxy` define o nome do host, a porta e o protocolo do proxy do servidor.
   // Você pode defirnir também seu próprio proxy usando `http_proxy` e
   // `https_proxy` das variáveis de ambiente. Se você estiver usando variáveis de ambiente
-  // para a configuração do seu proxy, você também pode definir uma variável de ambiente `no_proxy` 
+  // para a configuração do seu proxy, você também pode definir uma variável de ambiente `no_proxy`
   // como uma lista separada por vírgulas de domínios que não devem utilizar proxy.
   // Use `false` para desabilidar proxies, ignorando as variáveis de ambiente.
   // `auth` indica que o HTTP Basic auth deve ser usado para conectar no proxy e
@@ -160,7 +160,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `Proxy-Authorization` existente que você definiu usando `headres`.
   // Se o proxy do servidor utilizar HTTPS, então você deve definir o protocolo para `https`.
 
-  
+
   proxy: {
     protocol: 'https',
     host: '127.0.0.1',

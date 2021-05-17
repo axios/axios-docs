@@ -1,9 +1,9 @@
 ---
 title: 'Anfragen und Antworten abfangen'
 prev_title: 'Konfigurationsstandardwerte'
-prev_link: '/docs/de/config_defaults'
+prev_link: '/de/docs/config_defaults'
 next_title: 'Errorverarbeitung'
-next_link: '/docs/de/handling_errors'
+next_link: '/de/docs/handling_errors'
 ---
 
 Sie können Anfragen oder Antworten vor ihrer verarbeitung wie folgt abfangen:

@@ -1,9 +1,9 @@
 ---
 title: 'Anfragenkonfigurationsschema'
 prev_title: 'Die Axios-Instanz'
-prev_link: '/docs/de/instance'
+prev_link: '/de/docs/instance'
 next_title: 'Antwortenschema'
-next_link: '/docs/de/res_schema'
+next_link: '/de/docs/res_schema'
 ---
 
 Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das feld `url` wird benötigt. Für Anfragen wird standardmäßig die `GET`-Methode verwendet sofern die HTTP-Methode nicht explizit mit der Option `method` spezifiziert wird.
@@ -150,7 +150,7 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
     }
   },
 
-  // Siehe https://axios-http.com/docs/de/cancellation
+  // Siehe https://axios-http.com/de/docs/cancellation
   cancelToken: new CancelToken(function (cancel) {
   }),
 

@@ -1,9 +1,9 @@
 ---
 title: 'Instância Axios'
 prev_title: 'Axios API'
-prev_link: '/docs/ptBR/api_intro'
+prev_link: '/ptBR/docs/api_intro'
 next_title: 'Configurações de Requisição'
-next_link: '/docs/ptBR/req_config'
+next_link: '/ptBR/docs/req_config'
 ---
 
 ### Criando uma instância

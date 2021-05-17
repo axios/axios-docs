@@ -2,7 +2,7 @@
 title: 'Einleitung'
 description: 'Der Promise-basierte HTTP-Client für den Browser und Node.js'
 next_title: 'Minimalbeispiel'
-next_link: '/docs/de/example'
+next_link: '/de/docs/example'
 ---
 
 # Was ist Axios?

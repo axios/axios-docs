@@ -1,9 +1,9 @@
 ---
 title: '响应结构'
 prev_title: '请求配置'
-prev_link: '/docs/zh/req_config'
+prev_link: '/zh/docs/req_config'
 next_title: '默认配置'
-next_link: '/docs/zh/config_defaults'
+next_link: '/zh/docs/config_defaults'
 ---
 
 一个请求的响应包含以下信息。
@@ -47,4 +47,4 @@ axios.get('/user/12345')
   });
 ```
 
-当使用 `catch`，或者传递一个[rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)作为 `then` 的第二个参数时，响应可以通过 `error` 对象被使用，正如在[错误处理](/docs/zh/handling_errors)部分解释的那样。
+当使用 `catch`，或者传递一个[rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)作为 `then` 的第二个参数时，响应可以通过 `error` 对象被使用，正如在[错误处理](/zh/docs/handling_errors)部分解释的那样。

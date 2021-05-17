@@ -2,9 +2,9 @@
 title: 'Exemplos minimalistas'
 description: 'Um pequeno exemplo de como usar o axios'
 prev_title: 'Introdução'
-prev_link: '/docs/ptBR/intro'
+prev_link: '/ptBR/docs/intro'
 next_title: 'Requisições POST'
-next_link: '/docs/ptBR/post_example'
+next_link: '/ptBR/docs/post_example'
 ---
 
 ## nota: Uso de CommonJS

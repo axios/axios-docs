@@ -1,9 +1,9 @@
 ---
 title: 'Cancelamento'
 prev_title: 'Manipulando erros'
-prev_link: '/docs/ptBR/handling_errors'
+prev_link: '/ptBR/docs/handling_errors'
 next_title: 'Corpo de codificação de URL'
-next_link: '/docs/ptBR/urlencoded'
+next_link: '/ptBR/docs/urlencoded'
 ---
 
 Você pode cancelar uma requisição usando um *cancel token*.

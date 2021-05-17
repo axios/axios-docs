@@ -2,9 +2,9 @@
 title: "Axios API"
 description: "A referência de API do Axios"
 prev_title: "Requisições POST"
-prev_link: "/docs/ptBR/post_example"
+prev_link: "/ptBR/docs/post_example"
 next_title: "Instância Axios"
-next_link: "/docs/ptBR/instance"
+next_link: "/ptBR/docs/instance"
 ---
 
 Requisições podem ser feitas passando as configuraçãos relevantes para o `axios`.
