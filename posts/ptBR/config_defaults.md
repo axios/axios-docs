@@ -1,9 +1,9 @@
 ---
 title: 'Configurações padrões'
 prev_title: 'Esquema de respostas'
-prev_link: '/docs/ptBR/res_schema'
+prev_link: '/ptBR/docs/res_schema'
 next_title: 'Interceptadores'
-next_link: '/docs/ptBR/interceptors'
+next_link: '/ptBR/docs/interceptors'
 ---
 
 ## Configurações padrões

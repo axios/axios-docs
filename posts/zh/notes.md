@@ -2,7 +2,7 @@
 title: '注意事项'
 description: '一些注意事项'
 prev_title: 'URL-Encoding Bodies'
-prev_link: '/docs/zh/urlencoded'
+prev_link: '/zh/docs/urlencoded'
 ---
 
 ## 语义化

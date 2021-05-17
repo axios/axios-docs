@@ -1,9 +1,9 @@
 ---
 title: '请求体编码'
 prev_title: '取消请求'
-prev_link: '/docs/zh/cancellation'
+prev_link: '/zh/docs/cancellation'
 next_title: '注意事项'
-next_link: '/docs/zh/notes'
+next_link: '/zh/docs/notes'
 ---
 
 默认情况下，axios将 JavaScript 对象序列化为 `JSON` 。 要以`application/x-www-form-urlencoded`格式发送数据，您可以使用以下选项之一。

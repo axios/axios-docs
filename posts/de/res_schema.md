@@ -1,9 +1,9 @@
 ---
 title: 'Antwortenschema'
 prev_title: 'Anfragenkonfigurationsschema'
-prev_link: '/docs/de/req_config'
+prev_link: '/de/docs/req_config'
 next_title: 'Konfigurationsstandardwerte'
-next_link: '/docs/de/config_defaults'
+next_link: '/de/docs/config_defaults'
 ---
 
 Die Antwort auf eine Anfrage enthält folgende informationen:
@@ -47,4 +47,4 @@ axios.get('/user/12345')
   });
 ```
 
-Bei der verwendung von `catch` oder eines [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) als zweiter Parameter zu `then`, wird die Antwort durch das Objekt `error` verfügbar, wie im Abschnitt [Errorverarbeitung](/docs/de/handling_errors) erklärt wird.
+Bei der verwendung von `catch` oder eines [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) als zweiter Parameter zu `then`, wird die Antwort durch das Objekt `error` verfügbar, wie im Abschnitt [Errorverarbeitung](/de/docs/handling_errors) erklärt wird.

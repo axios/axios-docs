@@ -1,9 +1,9 @@
 ---
 title: 'Anfragen Abbrechen'
 prev_title: 'Errorverarbeitung'
-prev_link: '/docs/de/handling_errors'
+prev_link: '/de/docs/handling_errors'
 next_title: 'URL-Ähnlich Kodierte Anfragenkörper'
-next_link: '/docs/de/urlencoded'
+next_link: '/de/docs/urlencoded'
 ---
 
 Anfragen können mit hilfe eines *Cancel Token*s abgebrochen werden.

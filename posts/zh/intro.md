@@ -2,7 +2,7 @@
 title: '起步'
 description: '基于promise可以用于浏览器和node.js的网络请求库'
 next_title: '基本用例'
-next_link: '/docs/zh/example'
+next_link: '/zh/docs/example'
 ---
 
 # Axios 是什么?

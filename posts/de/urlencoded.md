@@ -1,9 +1,9 @@
 ---
 title: 'URL-Ähnlich Kodierte Anfragenkörper'
 prev_title: 'Anfragen Abbrechen'
-prev_link: '/docs/de/cancellation'
+prev_link: '/de/docs/cancellation'
 next_title: 'Weitere Notizen'
-next_link: '/docs/de/notes'
+next_link: '/de/docs/notes'
 ---
 
 Normalerweise serialisiert Axios JavaScript-Objekte zu `JSON`. Um Daten stattdessen im format `application/x-www-form-urlencoded` zu senden, können sie die folgenden Methoden verwenden:

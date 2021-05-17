@@ -1,9 +1,9 @@
 ---
 title: 'Konfigurationsstandardwerte'
 prev_title: 'Antwortschema'
-prev_link: '/docs/de/res_schema'
+prev_link: '/de/docs/res_schema'
 next_title: 'Abfänger'
-next_link: '/docs/de/interceptors'
+next_link: '/de/docs/interceptors'
 ---
 
 ## Konfigurationsstandardwerte

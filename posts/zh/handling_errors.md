@@ -1,9 +1,9 @@
 ---
 title: '错误处理'
 prev_title: '拦截器'
-prev_link: '/docs/zh/interceptors'
+prev_link: '/zh/docs/interceptors'
 next_title: '取消请求'
-next_link: '/docs/zh/cancellation'
+next_link: '/zh/docs/cancellation'
 ---
 
 ```js

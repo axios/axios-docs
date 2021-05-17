@@ -1,9 +1,9 @@
 ---
 title: '请求配置'
 prev_title: 'Axios 实例'
-prev_link: '/docs/zh/instance'
+prev_link: '/zh/docs/instance'
 next_title: '响应结构'
-next_link: '/docs/zh/res_schema'
+next_link: '/zh/docs/res_schema'
 ---
 
 
@@ -160,7 +160,7 @@ next_link: '/docs/zh/res_schema'
     }
   },
 
-  // see https://axios-http.com/docs/zh/cancellation
+  // see https://axios-http.com/zh/docs/cancellation
   cancelToken: new CancelToken(function (cancel) {
   }),
 

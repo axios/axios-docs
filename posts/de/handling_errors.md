@@ -1,9 +1,9 @@
 ---
 title: 'Errorverarbeitung'
 prev_title: 'Abfänger'
-prev_link: '/docs/de/interceptors'
+prev_link: '/de/docs/interceptors'
 next_title: 'Anfragen Abbrechen'
-next_link: '/docs/de/cancellation'
+next_link: '/de/docs/cancellation'
 ---
 
 ```js

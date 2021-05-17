@@ -1,9 +1,9 @@
 ---
 title: 'Axios 实例'
 prev_title: 'Axios API'
-prev_link: '/docs/zh/api_intro'
+prev_link: '/zh/docs/api_intro'
 next_title: '请求配置'
-next_link: '/docs/zh/req_config'
+next_link: '/zh/docs/req_config'
 ---
 
 ### 创建一个实例

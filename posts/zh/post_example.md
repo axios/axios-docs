@@ -2,9 +2,9 @@
 title: 'POST 请求'
 description: '用Axios如何发起POST请求'
 prev_title: '基本用例'
-prev_link: '/docs/zh/example'
+prev_link: '/zh/docs/example'
 next_title: 'Axios API'
-next_link: '/docs/zh/api_intro'
+next_link: '/zh/docs/api_intro'
 ---
 
 发起一个 `POST` 请求
