@@ -3,7 +3,7 @@
 */
 
 module.exports = {
-  display: "Português Brasileiro",
+  display: "Brazilian Portuguese",
   prefix: "/ptBR/",
   p: {
     headline: "Cliente HTTP baseado em promessas para o navegador e node.js",

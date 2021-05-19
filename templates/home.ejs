@@ -128,9 +128,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
       const options = {
         strings: [`<span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span><%= ';' %></span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>)<%= ';' %></span><br/>  <span>})<%= ';' %></span>`],
-        typeSpeed: 40
+        typeSpeed: 40,
+        onComplete: async () => {
+          await sleep(3000)
+          document.querySelector('.typed-cursor').remove()
+        },
       };
 
       const typed = new Typed('.code-preview pre', options);

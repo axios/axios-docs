@@ -10,8 +10,5 @@
   "license": "MIT",
   "devDependencies": {
     "inert-ssg": "^2.0.0-alpha.15"
-  },
-  "dependencies": {
-    "netlify-cli": "^3.29.17"
   }
 }
