@@ -183,17 +183,17 @@
         <div class="options">
           <% config.custom.langs.forEach(lang => { %> <% if (lang.prefix !==
           locale.prefix) { %>
-          <a href="<%= lang.prefix %>docs/<%= file.withoutExtension %>"
-            ><%= lang.name %></a
-          >
+          <a href="<%= lang.prefix %>docs/<%= file.withoutExtension %>"><%= lang.config.display %></a>
           <% } %> <% }) %>
         </div>
       </details>
-      <% locale.sidebar.forEach(side => { %> <% if (side.type === 'link') { %>
-      <a href="<%= side.href %>"><%= side.text %></a>
-      <% } else { %>
-      <h3 class="group-name"><%= side.text %></h3>
-      <% } %> <% }) %>
+      <% locale.sidebar.forEach(side => { %>
+        <% if (side.type === 'link') { %>
+          <a href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
+        <% } else { %>
+            <h3 class="group-name"><%= side.text %></h3>
+        <% } %>
+      <% }) %>
     </aside>
     <main>
       <div class="body">
