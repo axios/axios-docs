@@ -16,6 +16,10 @@
   font-size: 5px;
 }
 
+.typed-cursor {
+  animation: dissapear linear 8s forwards;
+}
+
 @media screen and (min-width: 370px) {
   :root {
     font-size: 7px;
