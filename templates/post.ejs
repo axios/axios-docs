@@ -64,7 +64,7 @@
       </details>
       <% locale.sidebar.forEach(side => { %>
         <% if (side.type === 'link') { %>
-          <a href="<%= side.href %>"><%= side.text %></a>
+          <a href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
         <% } else { %>
             <h3 class="group-name"><%= side.text %></h3>
         <% } %>
