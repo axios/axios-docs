@@ -63,19 +63,19 @@
           <th><%= locale.t['Contribute'] || 'Contribute' %></th>
         </tr>
         <tr>
-          <td><%- config.custom.langs[0] ? `<a href="${config.custom.langs[0].prefix}">${config.custom.langs[0].name}</a>` : undefined %></td>
+          <td><%- config.custom.langs[0] ? `<a href="${config.custom.langs[0].prefix}">${config.custom.langs[0].config.display}</a>` : undefined %></td>
           <td><a href="https://github.com/axios/axios"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a></td>
           <td><a href="https://github.com/axios/axios"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a></td>
         </tr>
         <tr>
-          <td><%- config.custom.langs[1] ? `<a href="${config.custom.langs[1].prefix}">${config.custom.langs[1].name}</a>` : undefined%></td>
+          <td><%- config.custom.langs[1] ? `<a href="${config.custom.langs[1].prefix}">${config.custom.langs[1].config.display}</a>` : undefined%></td>
           <td><a href="https://github.com/axios/axios/issues"><%= locale.t['Issues'] || 'Issues' %></a></td>
           <td>
             <a href="https://github.com/axios/axios-docs"><%= locale.t['Fork the Website'] || 'Fork the Website' %></a>
           </td>
         </tr>
         <tr>
-          <td><%- config.custom.langs[2] ? `<a href="${config.custom.langs[2].prefix}">${config.custom.langs[2].name}</a>` : undefined%></td>
+          <td><%- config.custom.langs[2] ? `<a href="${config.custom.langs[2].prefix}">${config.custom.langs[2].config.display}</a>` : undefined%></td>
           <td>
             <a href="https://github.com/axios/axios/pulls"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
           </td>
@@ -86,7 +86,7 @@
           </td>
         </tr>
         <tr>
-          <td><%- config.custom.langs[3] ? `<a href="${config.custom.langs[3].prefix}">${config.custom.langs[3].name}</a>` : undefined%></td>
+          <td><%- config.custom.langs[3] ? `<a href="${config.custom.langs[3].prefix}">${config.custom.langs[3].config.display}</a>` : undefined%></td>
           <td>
             <a
               href="https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md"
@@ -98,7 +98,7 @@
         <% config.custom.langs.slice(4).forEach(lang => { %>
           <tr>
             <td>
-              <a href="<%= lang.prefix %>"><%= lang.name %></a>
+              <a href="<%= lang.prefix %>"><%= lang.config.display %></a>
             </td>
             <td></td>
             <td></td>

@@ -58,7 +58,7 @@
         <div class="options">
           <% config.custom.langs.forEach(lang => { %> <% if (lang.prefix !==
           locale.prefix) { %>
-          <a href="<%= lang.prefix %>docs/<%= file.withoutExtension %>"><%= lang.name %></a>
+          <a href="<%= lang.prefix %>docs/<%= file.withoutExtension %>"><%= lang.config.display %></a>
           <% } %> <% }) %>
         </div>
       </details>
