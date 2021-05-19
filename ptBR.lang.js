@@ -28,17 +28,17 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/ptBR/docs/intro",
+      href: "/docs/intro",
       text: "Introdução",
     },
     {
       type: "link",
-      href: "/ptBR/docs/example",
+      href: "/docs/example",
       text: "Exemplos",
     },
     {
       type: "link",
-      href: "/ptBR/docs/post_example",
+      href: "/docs/post_example",
       text: "Requisições POST",
     },
     {
@@ -47,47 +47,47 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/ptBR/docs/api_intro",
+      href: "/docs/api_intro",
       text: "Axios API",
     },
     {
       type: "link",
-      href: "/ptBR/docs/instance",
+      href: "/docs/instance",
       text: "Instância Axios",
     },
     {
       type: "link",
-      href: "/ptBR/docs/req_config",
+      href: "/docs/req_config",
       text: "Configurações de Requisição",
     },
     {
       type: "link",
-      href: "/ptBR/docs/res_schema",
+      href: "/docs/res_schema",
       text: "Esquema de Respostas",
     },
     {
       type: "link",
-      href: "/ptBR/docs/config_defaults",
+      href: "/docs/config_defaults",
       text: "Configurações Padrões",
     },
     {
       type: "link",
-      href: "/ptBR/docs/interceptors",
+      href: "/docs/interceptors",
       text: "Interceptores",
     },
     {
       type: "link",
-      href: "/ptBR/docs/handling_errors",
+      href: "/docs/handling_errors",
       text: "Manipulando Erros",
     },
     {
       type: "link",
-      href: "/ptBR/docs/cancellation",
+      href: "/docs/cancellation",
       text: "Cancelamento",
     },
     {
       type: "link",
-      href: "/ptBR/docs/urlencoded",
+      href: "/docs/urlencoded",
       text: "Corpo de codificação de URL",
     },
     {
@@ -96,7 +96,7 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/ptBR/docs/notes",
+      href: "/docs/notes",
       text: "Notas",
     },
   ],

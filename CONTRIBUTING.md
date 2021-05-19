@@ -17,7 +17,8 @@ Commit messages should be verb based, using the following pattern:
 
 ### Developing
 
-- `npm i -g inert-cli` or `yarn global add inert-cli` to work be able to use the Inert CLI.
+- If you have `inert-cli` installed, remove it.
+- `npm i -g inert-ssg` or `yarn global add inert-ssg` to work be able to use the Inert CLI.
 - `inert build` to build the documentation.
 
-Please don't include changes to `dist/` in your pull request. This should only be updated when releasing a new version.
+Please don't include changes to `dist/` or `public/` in your pull request. This should only be updated when releasing a new version.
