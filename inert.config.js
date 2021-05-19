@@ -11,13 +11,38 @@ const {
   htmlBuild,
   singleHTMLBuild,
   markdown,
-  halt
+  halt,
 } = inert;
 
-const enConfig = require('./en.lang.js');
-const deConfig = require('./de.lang.js');
-const zhConfig = require('./zh.lang.js');
-const ptBRConfig = require('./ptBR.lang.js');
+const enConfig = require("./en.lang.js");
+const deConfig = require("./de.lang.js");
+const zhConfig = require("./zh.lang.js");
+const ptBRConfig = require("./ptBR.lang.js");
+
+// List of languages
+const langs = [
+  {
+    name: "English",
+    prefix: "/",
+    postsDir: "en", // Not required if prefix is `/<name of folder containing documentation files>/`
+    config: enConfig,
+  },
+  {
+    name: "Brazilian Portuguese",
+    prefix: "/ptBR/",
+    config: ptBRConfig,
+  },
+  {
+    name: "Deutsch",
+    prefix: "/de/",
+    config: deConfig,
+  },
+  {
+    name: "中文",
+    prefix: "/zh/",
+    config: zhConfig,
+  },
+];
 
 /**
  * This is the inert configuration file. It contains all the information inert needs to build this template.
@@ -32,25 +57,8 @@ module.exports = {
      * Site Title
      */
     title: "Axios Docs",
-    // List of language display names
-    langs: [
-      {
-        name: 'English',
-        prefix: '/'
-      },
-      {
-        name: 'Brazilian Portuguese',
-        prefix: '/ptBR/'
-      },
-      {
-        name: 'Deutsch',
-        prefix: '/de/'
-      },
-      {
-        name: '中文',
-        prefix: '/zh/'
-      }
-    ]
+    // List of languages
+    langs: langs,
   },
   build: {
     /**
@@ -103,16 +111,34 @@ module.exports = {
       /**
        * Output for internationalized files
        */
-      deOutput: ":output:/de",
-      ptBROutput: ":output:/ptBR",
-      zhOutput: ":output:/zh",
+      ...langs.reduce(
+        (acc, lang) =>
+          lang.prefix === "/"
+            ? acc
+            : {
+                ...acc,
+                [lang.prefix.slice(1, -1) +
+                "Output"]: `:output:/${lang.prefix.slice(1, -1)}`,
+              },
+        {}
+      ),
       /**
        * Output for posts
        */
       postOutput: ":output:/docs",
-      dePosts: ":deOutput:/docs",
-      ptBRPosts: ":ptBROutput:/docs",
-      zhPosts: ":zhOutput:/docs"
+      ...langs.reduce(
+        (acc, lang) =>
+          lang.prefix === "/"
+            ? acc
+            : {
+                ...acc,
+                [lang.prefix.slice(1, -1) + "Posts"]: `:${lang.prefix.slice(
+                  1,
+                  -1
+                )}Output:/docs`,
+              },
+        {}
+      ),
     },
 
     rootFile: "templates/home.ejs",
@@ -131,17 +157,14 @@ module.exports = {
       /**
        * Build for other languages
        */
-      halt('templates/index.ejs'), // This makes sure that the output from the previous methods isn't passed into singleHTMLBuild
+      halt("templates/index.ejs"), // This makes sure that the output from the previous methods isn't passed into singleHTMLBuild
 
-      singleHTMLBuild(deConfig),
-      writeFile(":deOutput:/index.html"),
-      halt('templates/index.ejs'),
-
-      singleHTMLBuild(zhConfig),
-      writeFile(":zhOutput:/index.html"),
-
-      singleHTMLBuild(ptBRConfig),
-      writeFile(":ptBROutput:/index.html"),
+      ...langs
+        .map((lang) => [
+          singleHTMLBuild(lang.config),
+          writeFile(`:${lang.prefix === '/' ? 'output:/index.html' : lang.prefix.slice(1, -1)}Output:/index.html`),
+        ])
+        .flat(),
     ],
 
     /**
@@ -212,118 +235,19 @@ module.exports = {
           ],
         },
       },
-      {
-        folder: "posts/en",
-        build: {
-          traverseLevel: "recursive",
-          filePipeline: [
-            /**
-             * Compiles the content of markdown files into HTML. Does not save the result. If the argument
-             * `true` is passed, it will throw an error when it encounters a non-markdown file. Will always
-             * throw on markdown error.
-             */
-            markdown(),
-            /**
-             * This function takes an ejs file as an argument and builds it with the global `data` set to
-             * the value of the previous method's result. If this is the first method, the raw content
-             * of the given file is used. Will always throw on EJS error.
-             *
-             * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
-             * you can if you want to.
-             */
-            htmlBuild("post", enConfig),
-            /**
-             * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
-             * method and writes it to a file with the same name in the specified directory.
-             */
-            write("postOutput", ".html"),
-          ],
-        },
-      },
-      {
-        folder: "posts/de",
-        build: {
-          traverseLevel: "recursive",
-          filePipeline: [
-            /**
-             * Compiles the content of markdown files into HTML. Does not save the result. If the argument
-             * `true` is passed, it will throw an error when it encounters a non-markdown file. Will always
-             * throw on markdown error.
-             */
-            markdown(),
-            /**
-             * This function takes an ejs file as an argument and builds it with the global `data` set to
-             * the value of the previous method's result. If this is the first method, the raw content
-             * of the given file is used. Will always throw on EJS error.
-             *
-             * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
-             * you can if you want to.
-             */
-            htmlBuild("post", deConfig),
-            /**
-             * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
-             * method and writes it to a file with the same name in the specified directory.
-             */
-            write("dePosts", ".html"),
-          ],
-        },
-      },
-      {
-        folder: "posts/ptBR",
-        build: {
-          traverseLevel: "recursive",
-          filePipeline: [
-            /**
-             * Compiles the content of markdown files into HTML. Does not save the result. If the argument
-             * `true` is passed, it will throw an error when it encounters a non-markdown file. Will always
-             * throw on markdown error.
-             */
-            markdown(),
-            /**
-             * This function takes an ejs file as an argument and builds it with the global `data` set to
-             * the value of the previous method's result. If this is the first method, the raw content
-             * of the given file is used. Will always throw on EJS error.
-             *
-             * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
-             * you can if you want to.
-             */
-            htmlBuild("post", ptBRConfig),
-            /**
-             * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
-             * method and writes it to a file with the same name in the specified directory.
-             */
-            write("ptBRPosts", ".html"),
-          ],
-        },
-      },
-      {
-        folder: "posts/zh",
-        build: {
-          traverseLevel: "recursive",
-          filePipeline: [
-            /**
-             * Compiles the content of markdown files into HTML. Does not save the result. If the argument
-             * `true` is passed, it will throw an error when it encounters a non-markdown file. Will always
-             * throw on markdown error.
-             */
-            markdown(),
-            /**
-             * This function takes an ejs file as an argument and builds it with the global `data` set to
-             * the value of the previous method's result. If this is the first method, the raw content
-             * of the given file is used. Will always throw on EJS error.
-             *
-             * As most blogs are monolingual, we will not be including any fancy i18n stuff here, although
-             * you can if you want to.
-             */
-            htmlBuild("post", zhConfig),
-            /**
-             * Like in the `sass` folder's pipeline, the `write` method takes the output of the previous `htmlBuild`
-             * method and writes it to a file with the same name in the specified directory.
-             */
-            write("zhPosts", ".html"),
-          ],
-        },
-      },
+      ...langs.map(
+        (lang) => ({
+          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
+          build: {
+            traverseLevel: "recursive",
+            filePipeline: [
+              markdown(),
+              htmlBuild("post", lang.config),
+              write(lang.prefix === '/' ? 'postOutput' : `${lang.prefix.slice(1, -1)}Posts`, ".html"),
+            ],
+          },
+        })
+      ),
     ],
   },
 };
