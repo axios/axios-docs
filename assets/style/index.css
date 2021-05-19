@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #5A29E4;
+  --primary-color: #5a29e4;
   --primary-shadow-color: #5b29e45d;
-  --secondary-color: #D442C6;
+  --secondary-color: #d442c6;
   --fg-color: #1f1c24;
   --margin: 60px;
-  --font-sans: 'DM Sans', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
@@ -42,11 +42,12 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: var(--fg-color);
   font-family: var(--font-sans);
 }
@@ -60,14 +61,14 @@ header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   background: #ffffffd0;
   -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   z-index: 1;
 }
 
@@ -82,16 +83,16 @@ a.button {
   color: var(--primary-color);
   padding: 1.35rem 4.136rem;
   -webkit-box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   -webkit-transition-duration: 200ms;
-          transition-duration: 200ms;
+  transition-duration: 200ms;
   margin: 1.5rem;
 }
 
 a.button.primary {
   -webkit-box-shadow: 0px 1rem 3rem var(--primary-shadow-color);
-          box-shadow: 0px 1rem 3rem var(--primary-shadow-color);
+  box-shadow: 0px 1rem 3rem var(--primary-shadow-color);
   background: var(--primary-color);
   color: #fff;
 }
@@ -102,7 +103,7 @@ a.button.primary:hover {
 
 a.button:hover {
   -webkit-transform: scale(0.98);
-          transform: scale(0.98);
+  transform: scale(0.98);
   opacity: 0.9;
   color: var(--secondary-color);
 }
@@ -120,15 +121,15 @@ section#hero {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
 }
 
 section#hero div.content {
@@ -157,18 +158,26 @@ section#hero div.content .buttons {
   padding: 2rem 4rem;
   border-radius: 10px;
   -webkit-box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
   display: none;
+
+  max-width: 343px;
+  width: 100%;
+  height: 157px;
+}
+
+.code-preview pre {
+  display: inline;
 }
 
 .code-preview span {
   font-family: var(--font-mono);
-  opacity: 0;
+  /*opacity: 0;
   -webkit-animation: appear 500ms linear forwards;
-          animation: appear 500ms linear forwards;
+  animation: appear 500ms linear forwards;*/
 }
 
-.code-preview span:nth-child(1) {
+/*.code-preview span:nth-child(1) {
   -webkit-animation-delay: 300ms;
           animation-delay: 300ms;
 }
@@ -416,7 +425,7 @@ section#hero div.content .buttons {
 .code-preview span:nth-child(50) {
   -webkit-animation-delay: 15000ms;
           animation-delay: 15000ms;
-}
+}*/
 
 .code-preview span.p {
   font-weight: var(--fw-bold);
@@ -445,7 +454,8 @@ footer table {
   margin-bottom: 40px;
 }
 
-footer table td, footer table th {
+footer table td,
+footer table th {
   text-align: left;
 }
 
@@ -455,14 +465,17 @@ footer .row {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-@-webkit-keyframes appear {
+/*@-webkit-keyframes appear {
   0% {
     opacity: 0;
   }
@@ -478,4 +491,4 @@ footer .row {
   100% {
     opacity: 1;
   }
-}
+}*/

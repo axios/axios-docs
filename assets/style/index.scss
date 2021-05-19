@@ -104,11 +104,11 @@ section#hero {
     opacity: 0;
     animation: appear 500ms linear forwards;
 
-    @for $i from 1 through 50 {
-      &:nth-child(#{$i}) {
-        animation-delay: 300ms * $i;
-      }
-    }
+    //@for $i from 1 through 50 {
+    //  &:nth-child(#{$i}) {
+    //    animation-delay: 300ms * $i;
+    //  }
+    //}
 
     &.p {
       font-weight: var(--fw-bold);
@@ -137,7 +137,8 @@ footer {
     width: 100%;
     margin-bottom: 40px;
 
-    td, th {
+    td,
+    th {
       text-align: left;
     }
   }
