@@ -29,17 +29,17 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/de/docs/intro",
+      href: "/docs/intro",
       text: "Einführung",
     },
     {
       type: "link",
-      href: "/de/docs/example",
+      href: "/docs/example",
       text: "Beispiel",
     },
     {
       type: "link",
-      href: "/de/docs/post_example",
+      href: "/docs/post_example",
       text: "POST-Anfragen",
     },
     {
@@ -48,47 +48,47 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/de/docs/api_intro",
+      href: "/docs/api_intro",
       text: "Axios-API",
     },
     {
       type: "link",
-      href: "/de/docs/instance",
+      href: "/docs/instance",
       text: "Die Axios-Instanz",
     },
     {
       type: "link",
-      href: "/de/docs/req_config",
+      href: "/docs/req_config",
       text: "Anfragenkonfigurationsschema",
     },
     {
       type: "link",
-      href: "/de/docs/res_schema",
+      href: "/docs/res_schema",
       text: "Antwortenschema",
     },
     {
       type: "link",
-      href: "/de/docs/config_defaults",
+      href: "/docs/config_defaults",
       text: "Konfigurationsstandardwerte",
     },
     {
       type: "link",
-      href: "/de/docs/interceptors",
+      href: "/docs/interceptors",
       text: "Abfänger",
     },
     {
       type: "link",
-      href: "/de/docs/handling_errors",
+      href: "/docs/handling_errors",
       text: "Errorverarbeitung",
     },
     {
       type: "link",
-      href: "/de/docs/cancellation",
+      href: "/docs/cancellation",
       text: "Anfragen abbrechen",
     },
     {
       type: "link",
-      href: "/de/docs/urlencoded",
+      href: "/docs/urlencoded",
       text: "URL-Ähnlich Kodierte Anfragenkörper",
     },
     {
@@ -97,8 +97,32 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/de/docs/notes",
+      href: "/docs/notes",
       text: "Weitere Notizen",
     },
+    {
+      type: "heading",
+      text: "Mitwirken",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      text: "Code of Conduct",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      text: "Leitfaden",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      text: "Mitwirken"
+    },
+    {
+      type: "link",
+      href: "/docs/translating",
+      text: "Übersetzungen Hinzufügen"
+    }
   ],
 };

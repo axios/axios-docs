@@ -14,7 +14,17 @@ module.exports = {
               extensible interface.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
-  t: {},
+  t: {
+    "Get Started": undefined,
+    "View on GitHub": undefined,
+    "Languages": undefined,
+    "Open Source": undefined,
+    "Contribute": undefined,
+    "Source on GitHub": undefined,
+    "Fork on GitHub": undefined,
+    "Fork the Website": undefined,
+    "Create an Issue": undefined,
+  },
   sidebar: [
     {
       type: "heading",
@@ -93,5 +103,29 @@ module.exports = {
       href: "/docs/notes",
       text: "Notes",
     },
+    {
+      type: "heading",
+      text: "Contributors",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      text: "Code of Conduct",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      text: "Collaborator Guide",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      text: "Contributing to Axios"
+    },
+    {
+      type: "link",
+      href: "/docs/translating",
+      text: "Translating these docs"
+    }
   ],
 };

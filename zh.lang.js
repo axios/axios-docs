@@ -23,17 +23,17 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/zh/docs/intro",
+      href: "/docs/intro",
       text: "介绍",
     },
     {
       type: "link",
-      href: "/zh/docs/example",
+      href: "/docs/example",
       text: "用例",
     },
     {
       type: "link",
-      href: "/zh/docs/post_example",
+      href: "/docs/post_example",
       text: "POST请求",
     },
     {
@@ -42,47 +42,47 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/zh/docs/api_intro",
+      href: "/docs/api_intro",
       text: "Axios API",
     },
     {
       type: "link",
-      href: "/zh/docs/instance",
+      href: "/docs/instance",
       text: "Axios 实例",
     },
     {
       type: "link",
-      href: "/zh/docs/req_config",
+      href: "/docs/req_config",
       text: "请求配置",
     },
     {
       type: "link",
-      href: "/zh/docs/res_schema",
+      href: "/docs/res_schema",
       text: "响应结构",
     },
     {
       type: "link",
-      href: "/zh/docs/config_defaults",
+      href: "/docs/config_defaults",
       text: "默认配置",
     },
     {
       type: "link",
-      href: "/zh/docs/interceptors",
+      href: "/docs/interceptors",
       text: "拦截器",
     },
     {
       type: "link",
-      href: "/zh/docs/handling_errors",
+      href: "/docs/handling_errors",
       text: "错误处理",
     },
     {
       type: "link",
-      href: "/zh/docs/cancellation",
+      href: "/docs/cancellation",
       text: "取消请求",
     },
     {
       type: "link",
-      href: "/zh/docs/urlencoded",
+      href: "/docs/urlencoded",
       text: "请求体编码",
     },
     {
@@ -91,7 +91,7 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/zh/docs/notes",
+      href: "/docs/notes",
       text: "注意事项",
     },
   ],
