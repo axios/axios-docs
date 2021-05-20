@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="code-preview">
-          <pre><span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span><%= ';' %></span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>)<%= ';' %></span><br/>  <span>})<%= ';' %></span></pre>
+          <pre></pre>
         </div>
       </section>
     </main>
@@ -115,8 +115,7 @@
         >
       </div>
       <div class="row">
-        <span class="copyright-notice"
-          >The Axios Project: Copyright © 2014-present Matt Zabriskie.</span
+        <span class="copyright-notice">The Axios Project: Copyright © 2014-present Matt Zabriskie.</span
         >
         <span
           >Licensed under the
@@ -126,5 +125,22 @@
         >
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      const options = {
+        strings: [`<span class="p">import</span> <span>axios</span> <span class="p">from</span> <span class="s">"axios"</span><span><%= ';' %></span><br/><span>axios.</span><span class="p">get</span><span>(</span><span class="s">'/users'</span><span>)</span><br/>  <span class="p">.then</span><span>(</span><span class="s i">res</span><span class="p"> => </span><span>{</span><br/>    <span>console.</span><span class="p">log</span><span>(</span><span class="s i">res</span><span>.data</span><span>)<%= ';' %></span><br/>  <span>})<%= ';' %></span>`],
+        typeSpeed: 40,
+        onComplete: async () => {
+          await sleep(3000)
+          document.querySelector('.typed-cursor').remove()
+        },
+      };
+
+      const typed = new Typed('.code-preview pre', options);
+    </script>
   </body>
 </html>

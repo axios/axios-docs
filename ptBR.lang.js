@@ -99,5 +99,29 @@ module.exports = {
       href: "/docs/notes",
       text: "Notas",
     },
+    {
+      type: "heading",
+      text: "Contribuidores",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      text: "Código de conduta",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      text: "Guia dos Contribuidores",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      text: "Contribuindo para o Axios"
+    },
+    {
+      type: "link",
+      href: "/docs/translating",
+      text: "Traduzindo os documentos"
+    }
   ],
 };
