@@ -46,6 +46,7 @@ These are the available config options for making requests. Only the `url` is re
 
   // `params` are the URL parameters to be sent with the request
   // Must be a plain object or a URLSearchParams object
+  // NOTE: params that are null or undefined are not rendered in the URL.
   params: {
     ID: 12345
   },
