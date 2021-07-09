@@ -142,6 +142,8 @@ aside {
   left: 0;
   top: 5.6rem;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   width: 239px;
   height: calc(100vh - 5.6rem);
   border-right: 1px solid var(--gray-2);
@@ -149,18 +151,11 @@ aside {
   transform: translateX(-100%);
   transition: transform 300ms;
 
-  height: calc(100vh - 5.6rem);
-
   .aside-container {
-    width: 100%;
-    height: 100%;
+    flex: 1 0 0;
     position: relative;
     overflow: auto;
-    word-wrap: break-word;
-    overflow-y: scroll;
-    padding: 3rem 2rem;
-    padding-top: 1rem;
-    padding-bottom: 12rem;
+    padding: 1rem;
   }
 
   #home-theme {
@@ -280,13 +275,10 @@ aside {
   }
 
   .button-container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     box-sizing: border-box;
     padding: 2rem;
     width: 100%;
-    background: linear-gradient(to top, var(--col-bg) 90%, transparent);
+    background: var(--col-bg);
     transition: 300ms;
   }
 
