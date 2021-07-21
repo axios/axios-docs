@@ -38,16 +38,24 @@ body {
       }
     }
 
-
     .dark {
       svg {
         opacity: 1;
       }
     }
 
-    pre, pre code {
+    pre,
+    pre code {
       border-radius: 5px;
       opacity: 0.9;
+      background-color: #232635;
+      color: #cecece;
+    }
+  }
+
+  &.dark {
+    .token.punctuation {
+      color: #b8b8b8;
     }
   }
 
@@ -486,6 +494,19 @@ body {
     word-wrap: normal;
   }
 
+  &.dark {
+    main code {
+      background-color: #232635;
+      color: #a166ff;
+    }
+  }
+
+  &.dark {
+    main pre > code {
+      color: #cecece;
+    }
+  }
+
   .token {
     font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier,
       monospace;
@@ -540,6 +561,18 @@ body {
   .token.constant {
     font-weight: 500;
     color: #671ddf;
+  }
+
+  &.dark {
+    .token.function,
+    .token.keyword,
+    .token.important,
+    .token.property,
+    .token.attr-name,
+    .token.constant {
+      font-weight: 500;
+      color: #a166ff;
+    }
   }
 
   .token.deleted {
