@@ -1,6 +1,6 @@
 ---
 title: 'POST Requests'
-description: 'How to perfrom POST requests with Axios'
+description: 'How to perform POST requests with Axios'
 prev_title: 'Minimal Example'
 prev_link: '/docs/example'
 next_title: 'Axios API'
