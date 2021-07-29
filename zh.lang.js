@@ -94,5 +94,29 @@ module.exports = {
       href: "/docs/notes",
       text: "注意事项",
     },
+    {
+      type: "heading",
+      text: "致贡献者",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      text: "行为准则",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      text: "Collaborator指南",
+    },
+    {
+      type: "link",
+      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      text: "为Axios做出贡献"
+    },
+    {
+      type: "link",
+      href: "/docs/translating",
+      text: "翻译文档"
+    }
   ],
 };
