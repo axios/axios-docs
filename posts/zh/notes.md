@@ -10,7 +10,7 @@ prev_link: '/zh/docs/urlencoded'
 
 ## Promises
 
-axios 依赖原生的ES6 Promise实现而被支持[被支持](http://caniuse.com/promises)。
+axios 依赖原生的ES6 Promise实现而[被支持](http://caniuse.com/promises)。
 如果你的环境不支持 ES6 Promise，你可以使用[polyfill](https://github.com/jakearchibald/es6-promise)。
 
 ## TypeScript
