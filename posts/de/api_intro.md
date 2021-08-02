@@ -6,7 +6,7 @@ next_title: 'Die Axios-Instanz'
 next_link: '/de/docs/instance'
 ---
 
-Anfragen können alternativ mit der methode `axios` ausgeführt werden:
+Anfragen können alternativ mit der Methode `axios` ausgeführt werden:
 
 ##### axios(config)
 
@@ -45,7 +45,7 @@ axios('/user/12345');
 
 ### Weitere Methoden
 
-Für komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzugefügt.
+Für Komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzugefügt.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -57,4 +57,4 @@ Für komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzug
 ##### axios.patch(url[, data[, config]])
 
 ###### INFO
-Wenn die oben genannten 8 Methoden verwendet werden können die felder `url`, `method` und `data` im Parameter `config` ausgelassen werden.
+Wenn die oben genannten 8 Methoden verwendet werden, können die Felder `url`, `method` und `data` im Parameter `config` ausgelassen werden.
