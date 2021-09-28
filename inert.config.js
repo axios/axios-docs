@@ -17,6 +17,7 @@ const {
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
+const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
 
 // List of languages
@@ -41,6 +42,11 @@ const langs = [
     name: "中文",
     prefix: "/zh/",
     config: zhConfig,
+  },
+  {
+    name: "Українська",
+    prefix: "/uk/",
+    config: ukConfig,
   },
 ];
 
