@@ -72,7 +72,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/config_defaults",
-      text: "конфігурація за замовчуванням",
+      text: "Конфігурація за замовчуванням",
     },
     {
       type: "link",
