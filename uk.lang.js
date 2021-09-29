@@ -8,10 +8,10 @@ module.exports = {
   prefix: "/uk/",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
-    headline: "Promise based HTTP client for the browser and node.js",
-    subhead: `Axios is a simple promise based HTTP client for the browser and node.js.
-              Axios provides a simple to use library in a small package with a very
-              extensible interface.`,
+    headline: "HTTP-клієнт для браузера та node.js на основі Promise",
+    subhead: `Axios - це простий HTTP-клієнт для браузера та node.js на основі Promise.
+              Axios надає просту у використанні бібліотеку в невеликому пакеті з дуже 
+              розширюваним інтерфейсом.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
