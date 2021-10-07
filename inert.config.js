@@ -19,34 +19,46 @@ const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
 const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
+const kuConfig = require("./ku.lang.js");
 
 // List of languages
 const langs = [
   {
+    dir: "ltr",
     name: "English",
     prefix: "/",
     postsDir: "en", // Not required if prefix is `/<name of folder containing documentation files>/`
     config: enConfig,
   },
   {
+    dir: "ltr",
     name: "Brazilian Portuguese",
     prefix: "/ptBR/",
     config: ptBRConfig,
   },
   {
+    dir: "ltr",
     name: "Deutsch",
     prefix: "/de/",
     config: deConfig,
   },
   {
+    dir: "ltr",
     name: "中文",
     prefix: "/zh/",
     config: zhConfig,
   },
   {
+    dir: "ltr",
     name: "Українська",
     prefix: "/uk/",
     config: ukConfig,
+  },
+  {
+    name: "کوردی",
+    prefix: "/ku/",
+    config: kuConfig,
+    dir: "rtl",
   },
 ];
 

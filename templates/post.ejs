@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= locale.lang %>" dir="<%= locale.dir %>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -142,14 +142,14 @@
         <div class="links">
           <% if (data.attributes.prev_link) { %>
           <a href="<%= data.attributes.prev_link %>" class="next-link">
-            <span>« Previous</span>
+            <span>« <%= locale.t['Previous'] || 'Previous' %></span>
             <span class="l"> <%= data.attributes.prev_title %> </span>
           </a>
           <% } else { %>
           <span></span>
           <% } %> <% if (data.attributes.next_link) { %>
           <a href="<%= data.attributes.next_link %>" class="next-link">
-            <span>Next »</span>
+            <span><%= locale.t['Next'] || 'Next' %> »</span>
             <span class="l"> <%= data.attributes.next_title %> </span>
           </a>
           <% } %>

@@ -6,6 +6,8 @@ module.exports = {
   // Language display name. MUST BE THE SAME AS IN [inert.config.js].custom.langs
   display: "English",
   prefix: "/",
+  dir: "ltr",
+  lang: "en",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
     headline: "Promise based HTTP client for the browser and node.js",
@@ -24,6 +26,8 @@ module.exports = {
     "Fork on GitHub": undefined,
     "Fork the Website": undefined,
     "Create an Issue": undefined,
+    "Next": undefined,
+    "Previous": undefined,
   },
   sidebar: [
     {
