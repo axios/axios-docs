@@ -171,6 +171,16 @@
         document.querySelector("button.theme").classList.toggle("dark");
       });
 
+      // switch `dir` of those RTL oriented elements that start with an
+      // English letter, assuming they are not intended to be RTL aligned.
+      if (document.dir === "rtl") {
+        document.querySelectorAll("*").forEach(element => {
+          if (/[a-zA-Z]/.test(element.textContent.charAt(0))) {
+            element.dir = "ltr"
+          }
+        })
+      }
+
       window.onload = () => {
         if (isDarkThemeActive) {
           document.querySelector("button.theme").classList.toggle("dark");
