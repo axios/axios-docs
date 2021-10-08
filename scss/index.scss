@@ -466,6 +466,9 @@ main {
 }
 
 /* PRISM */
+// TODO add some style to blockquote elements
+// it's currently syled only with margins which
+// makes it as if it's mistakenly pushed away
 body {
   main code {
     font-size: 0.8em;
@@ -631,5 +634,32 @@ body {
     right: 0;
     text-align: right;
     top: 0;
+  }
+}
+
+/* RTL styles */
+
+html[dir="rtl"] {
+  aside {
+    right: 0;
+    left: unset;
+
+    details.dropdown-language {
+      div.options {
+        width: 100%;
+        padding-left: unset;
+        padding-right: 2.3rem;
+      }
+    }
+  }
+
+  main {
+    position: absolute;
+    right: var(--sidebar-width);
+    left: unset;
+
+    pre {
+      direction: ltr;
+    }
   }
 }
