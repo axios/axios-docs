@@ -10,8 +10,7 @@ module.exports = {
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
     headline: "ڕاژەخوازێکی HTTPـیە لەسەر بنجینەی Promise بۆ وێبگەڕ و نۆد",
-    subhead: `Axios is a simple promise based HTTP client for the browser and node.js.
-    ئەکسیۆس ڕاژەخوازێکی HTTPـیە لەسەر Promise بنچینەکراوە بۆ نۆد و وێبگەڕ. ئەکسیۆس ژێدەرگەیەکی ئاسان بۆ بەکارهێنان لە گورزەیەکی بچووک بە ناوبەستێکی شیاو بۆ پەرەسەندن دابین دەکات.`,
+    subhead: `ئەکسیۆس ڕاژەخوازێکی HTTPـیە لەسەر Promise بنچینەکراوە بۆ نۆد و وێبگەڕ. ئەکسیۆس ژێدەرگەیەکی ئاسان بۆ بەکارهێنان لە گورزەیەکی بچووک بە ناوبەستێکی شیاو بۆ پەرەسەندن دابین دەکات.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
@@ -26,6 +25,10 @@ module.exports = {
     "Create an Issue": "کێشەیەک دروست بکە",
     "Next": "دواتر",
     "Previous": "پێشتر",
+    "Website Copy Right Footer": 'ئەم ماڵپەڕە: مافی لەبەرگگرتنەوەی پارێزراوە @ 2020-ئێستا John Jakob "Jake" Sarjeant. بەکارهێنراوە پاش مۆڵەت وەرگرتن',
+    "View On Github": 'بڕوانە ئەم ماڵپەڕە لەسەر گیتهەب',
+    "Axios Project Copy Right Footer": 'پڕۆژەی ئەکسیۆس: مافی لەبەرگگرتنەوەی پارێزراوە @ 2014-ئێستا Matt Zabriskie.',
+    "License Label Footer":'بڵاوکراوەتەوە لە ژێر مۆڵەتی'
   },
   sidebar: [
     {

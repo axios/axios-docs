@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= locale.lang %>" dir="<%= locale.dir %>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -106,23 +106,22 @@
         <% }) %>
       </table>
       <div class="row">
-        <span class="copyright-notice"
-          >This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant.
-          Used by permission.</span
-        >
-        <a href="https://github.com/axios/axios-docs"
-          >View this site on GitHub</a
-        >
+        <span class="copyright-notice">
+          <%= locale.t['Website Copy Right Footer'] || 'This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant. Used
+            by permission.' %>
+        </span>
+        <a href="https://github.com/axios/axios-docs">
+          <%= locale.t['View On Github'] || 'View this site on GitHub' %>
+        </a>
       </div>
       <div class="row">
-        <span class="copyright-notice">The Axios Project: Copyright © 2014-present Matt Zabriskie.</span
-        >
-        <span
-          >Licensed under the
-          <b
-            ><a href="https://opensource.org/licenses/MIT">MIT License</a></b
-          ></span
-        >
+        <span class="copyright-notice">
+          <%= locale.t['Axios Project Copy Right Footer'] || 'The Axios Project: Copyright © 2014-present Matt Zabriskie.' %>
+        </span>
+        <span>
+          <%= locale.t['License Label Footer'] || 'Licensed under the' %>
+            <b><a href="https://opensource.org/licenses/MIT">MIT License</a></b>
+        </span>
       </div>
     </footer>
 
