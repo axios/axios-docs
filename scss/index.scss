@@ -436,6 +436,35 @@ main {
   }
 }
 
+/* RTL styles */
+
+html[dir="rtl"] {
+  aside {
+    right: 0;
+    left: unset;
+
+    transform: translateX(100%);
+
+    details.dropdown-language {
+      div.options {
+        width: 100%;
+        padding-left: unset;
+        padding-right: 2.3rem;
+      }
+    }
+  }
+
+  main {
+    position: absolute;
+    right: var(--sidebar-width);
+    left: unset;
+
+    pre {
+      direction: ltr;
+    }
+  }
+}
+
 @media screen and (min-width: 800px) {
   body {
     --sidebar-width: 239px;
@@ -634,32 +663,5 @@ body {
     right: 0;
     text-align: right;
     top: 0;
-  }
-}
-
-/* RTL styles */
-
-html[dir="rtl"] {
-  aside {
-    right: 0;
-    left: unset;
-
-    details.dropdown-language {
-      div.options {
-        width: 100%;
-        padding-left: unset;
-        padding-right: 2.3rem;
-      }
-    }
-  }
-
-  main {
-    position: absolute;
-    right: var(--sidebar-width);
-    left: unset;
-
-    pre {
-      direction: ltr;
-    }
   }
 }
