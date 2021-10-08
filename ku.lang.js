@@ -9,7 +9,7 @@ module.exports = {
   lang: "ckb-ku",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
-    headline: "ڕاژەخوازێکی HTTPـیە لەسەر بنجینەی Promise بۆ وێبگەڕ و نۆد",
+    headline: "ڕاژەخوازێکی HTTPـیە لەسەر بنچینەی Promise بۆ وێبگەڕ و نۆد",
     subhead: `ئەکسیۆس ڕاژەخوازێکی HTTPـیە لەسەر Promise بنچینەکراوە بۆ نۆد و وێبگەڕ. ئەکسیۆس ژێدەرگەیەکی ئاسان بۆ بەکارهێنان لە گورزەیەکی بچووک بە ناوبەستێکی شیاو بۆ پەرەسەندن دابین دەکات.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
