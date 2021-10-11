@@ -28,6 +28,10 @@ module.exports = {
     "Create an Issue": undefined,
     "Next": undefined,
     "Previous": undefined,
+    "Website Copy Right Footer": undefined,
+    "View On Github": undefined,
+    "Axios Project Copy Right Footer": undefined,
+    "License Label Footer": undefined
   },
   sidebar: [
     {
