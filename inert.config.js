@@ -20,6 +20,7 @@ const zhConfig = require("./zh.lang.js");
 const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
+const esConfig = require('./es.lang.js');
 
 // List of languages
 const langs = [
@@ -59,6 +60,12 @@ const langs = [
     prefix: "/ku/",
     config: kuConfig,
     dir: "rtl",
+  },
+  {
+    dir: "ltr",
+    name: "Español",
+    prefix: "/es/",
+    config: esConfig,
   },
 ];
 
