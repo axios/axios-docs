@@ -47,4 +47,4 @@ axios.get('/user/12345')
   });
 ```
 
-Al usar `catch`, o pasando un [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) como segundo parámetro de `then`, la respuesta estará disponible a través del objeto `error` como se explicó en la sección [Manipulando errores](/docs/handling_errors).
+Al usar `catch`, o pasando un [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) como segundo parámetro de `then`, la respuesta estará disponible a través del objeto `error` como se explicó en la sección [Manipulando errores](/es/docs/handling_errors).

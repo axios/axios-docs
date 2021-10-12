@@ -11,23 +11,23 @@ module.exports = {
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
     headline: "Cliente HTTP basado en Promesas para el navegador y node.js",
-    subhead: `Axios es un cliente HTTP simple basado en promesas para el navegador y node.js
+    subhead: `Axios es un cliente HTTP simple basado en promesas para el navegador y node.js.
               Axios provee una librería fácil de usar en un paquete pequeño con una
               interfaz muy extensible.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
-    "Empezar": undefined,
-    "Ver en GitHub": undefined,
-    "Idiomas": undefined,
-    "Código Abierto": undefined,
-    "Contribuir": undefined,
-    "Código en GitHub": undefined,
-    "Bifurcar en GitHub": undefined,
-    "Bifurcar el Sitio Web": undefined,
-    "Crear un reporte": undefined,
-    "Siguiente": undefined,
-    "Anterior": undefined,
+    "Get Started": "Empezando",
+    "View on GitHub": "Ver en GitHub",
+    "Languages": "Idiomas",
+    "Open Source": "Código Abierto",
+    "Contribute": "Contribuir",
+    "Source on GitHub": "Código en GitHub",
+    "Fork on GitHub": "Bifurcar en GitHub",
+    "Fork the Website": "Bifurcar el Sitio Web",
+    "Create an Issue": "Crear un reporte",
+    "Next": "Siguiente",
+    "Previous": "Anterior",
   },
   sidebar: [
     {
