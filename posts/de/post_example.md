@@ -1,9 +1,9 @@
 ---
 title: 'POST-Anfragen'
 prev_title: 'Minimalbeispiel'
-prev_link: '/docs/de/example'
+prev_link: '/de/docs/example'
 next_title: 'Axios-API'
-next_link: '/docs/de/api_intro'
+next_link: '/de/docs/api_intro'
 ---
 
 Eine `POST`-Anfrage ausführen:

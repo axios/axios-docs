@@ -1,16 +1,18 @@
 ---
 title: 'Axios-API'
 prev_title: 'POST-Anfragen'
-prev_link: '/docs/de/post_example'
+prev_link: '/de/docs/post_example'
 next_title: 'Die Axios-Instanz'
-next_link: '/docs/de/instance'
+next_link: '/de/docs/instance'
 ---
 
-Anfragen können alternative dadurch getätigt werden, die relevante configuration der funktion `axios` zu übergeben:
+Anfragen können alternativ mit der Methode `axios` ausgeführt werden:
 
 ##### axios(config)
 
 ```js
+import axios from 'axios';
+
 // Eine POST-Anfrage absenden
 axios({
   method: 'post',
@@ -41,9 +43,9 @@ axios({
 axios('/user/12345');
 ```
 
-### Request method aliases
+### Weitere Methoden
 
-Für komfort wurden Parallelbezeichnungen für jede HTTP-Methode hinzugefügt.
+Für Komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzugefügt.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -55,4 +57,4 @@ Für komfort wurden Parallelbezeichnungen für jede HTTP-Methode hinzugefügt.
 ##### axios.patch(url[, data[, config]])
 
 ###### INFO
-Wenn die oben genannten 8 Methoden verwendet werden können die felder `url`, `method` und `data` im Parameter `config` ausgelassen werden.
+Wenn die oben genannten 8 Methoden verwendet werden, können die Felder `url`, `method` und `data` im Parameter `config` ausgelassen werden.

@@ -1,7 +1,7 @@
 ---
 title: 'Notes'
 prev_title: 'URL-Ähnlich Kodierte Anfragenkörper'
-prev_link: '/docs/de/urlencoded'
+prev_link: '/de/docs/urlencoded'
 ---
 
 ## Semver

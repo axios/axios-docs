@@ -1,9 +1,9 @@
 ---
 title: 'Die Axios-Instanz'
 prev_title: 'Die Axios-API'
-prev_link: '/docs/de/api_intro'
+prev_link: '/de/docs/api_intro'
 next_title: 'Anfragenkonfigurationsschema'
-next_link: '/docs/de/req_config'
+next_link: '/de/docs/req_config'
 ---
 
 ### Eine Instanz erstellen

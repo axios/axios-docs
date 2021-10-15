@@ -2,12 +2,12 @@
 title: 'Minimalbeispiel'
 description: 'A kleines verwendungsbeispiel von axios'
 prev_title: 'Einleitung'
-prev_link: '/docs/de/intro'
+prev_link: '/de/docs/intro'
 next_title: 'POST-Anfragen'
-next_link: '/docs/de/post_example'
+next_link: '/de/docs/post_example'
 ---
 
-## notiz: Verwendung mit CommonJS
+## Verwendung mit CommonJS
 Um TypeScript-Typings (für Intellisense / Autocomplete) trotz der nutzung von CommonJS-Imports mit `require()` zu erhalten, verwenden Sie bitte die folgende Methode:
 
 ```js

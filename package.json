@@ -1,0 +1,14 @@
+{
+  "name": "axios-docs",
+  "version": "0.4.0",
+  "scripts": {
+    "build": "inert build"
+  },
+  "description": "The official axios documentation website",
+  "repository": "https://github.com/axios/axios-docs.git",
+  "author": "codemaster138 <pygamer138@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "inert-ssg": "^2.0.0-alpha.15"
+  }
+}

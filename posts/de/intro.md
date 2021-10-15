@@ -2,11 +2,11 @@
 title: 'Einleitung'
 description: 'Der Promise-basierte HTTP-Client für den Browser und Node.js'
 next_title: 'Minimalbeispiel'
-next_link: '/docs/de/example'
+next_link: '/de/docs/example'
 ---
 
 # Was ist Axios?
-Axios ist ein *[Promise-basierter](https://javascript.info/promise-basics)* HTTP-Client für [`node.js`](https://nodejs.org) und den browser. Er ist *[isomorphisch](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= kann auf dem server und im browser verwendet weden). Auf der Server-Seite wir das modul `http` verwendet, während im XMLHttpRequests (ajax) ausgeführt werden.
+Axios ist ein *[Promise-basierter](https://javascript.info/promise-basics)* HTTP-Client für [`node.js`](https://nodejs.org) und den browser. Er ist *[isomorphisch](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= kann auf dem server und im browser verwendet weden). Auf der Server-Seite wir das modul `http` verwendet, während im Browser XMLHttpRequests (ajax) ausgeführt werden.
 
 # Features
 

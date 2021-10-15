@@ -1,2 +1,7 @@
 node_modules
 .DS_Store
+public/
+*.css
+*.css.map
+# Local Netlify folder
+.netlify
