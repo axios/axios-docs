@@ -1,5 +1,5 @@
 ---
-title: 'Axios API\'si'
+title: "Axios API'si"
 description: 'Axios API Referansı'
 prev_title: 'POST İstekleri'
 prev_link: '/docs/post_example'

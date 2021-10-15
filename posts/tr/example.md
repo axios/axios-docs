@@ -1,6 +1,6 @@
 ---
 title: 'Basit Örnek'
-description: 'Axios\'u kullanımı için küçük bir örnek'
+description: "Axios'u kullanımı için küçük bir örnek"
 prev_title: 'Intro'
 prev_link: '/docs/intro'
 next_title: 'POST İstekleri'
