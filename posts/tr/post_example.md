@@ -3,7 +3,7 @@ title: 'POST İstekleri'
 description: 'Axios ile POST isteği nasıl gönderilir'
 prev_title: 'Basit Örnek'
 prev_link: '/docs/example'
-next_title: 'Axios API\'si'
+next_title: "Axios API'si"
 next_link: '/docs/api_intro'
 ---
 
