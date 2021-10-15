@@ -9,6 +9,6 @@
   "author": "codemaster138 <pygamer138@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "inert-ssg": "^2.0.1-alpha"
+    "inert-ssg": "^2.0.0-alpha.15"
   }
 }
