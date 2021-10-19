@@ -10,8 +10,8 @@
   lang: "kr",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
-    headline: "브라우저와 node.js에서 사용할 수 있는 Promise 기반 HTTP 클라이언트 라이브러리",
-    subhead: `Axios는 브라우저와 node.js를 위한 간단한 프로미스 기반 HTTP 클라이언트입니다.
+    headline: "브라우저와 node.js를 위한 Promise 기반 HTTP 클라이언트 라이브러리",
+    subhead: `Axios는 브라우저와 node.js를 위한 간단한 Promise 기반 HTTP 클라이언트입니다.
               Axios는 확장 가능한 인터페이스를 가진 작은 패키지로 사용하기 쉬운 라이브러리를 제공합니다.`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases

@@ -38,13 +38,13 @@ axios({
 ##### axios(url[, config])
 
 ```js
-// GET 요청 전송 (표준 모드)
+// GET 요청 전송 (기본값)
 axios('/user/12345');
 ```
 
 ###  요청 메소드 명령어
 
-편의를 위해 지원하는 모든 요청 방법의 명령어를 제공합니다.
+편의를 위해 지원하는 모든 요청 메소드의 명령어를 제공합니다.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -55,5 +55,5 @@ axios('/user/12345');
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
 
-###### NOTE
+###### 참고
 명령어 메소드를 사용시 'url', 'method', 'data' 속성을 config에서 지정할 필요가 없습니다.

@@ -29,7 +29,7 @@ next_link: '/kr/docs/config_defaults'
 
   // `request`는 이번 응답으로 생성된 요청입니다.
   // 이것은 node.js에서 마지막 ClientRequest 인스턴스 입니다.
-  // 그리고 브라우저에선 XMLHttpRequest입니다.
+  // 브라우저에서는 XMLHttpRequest입니다.
   request: {}
 }
 ```

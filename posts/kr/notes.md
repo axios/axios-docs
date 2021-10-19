@@ -9,10 +9,10 @@ prev_link: '/kr/docs/urlencoded'
 
 Axios가 `1.0` 배포 할때까지, 마이너 버전에서 주요 변경사항이 발생할 수도 있습니다. 예를들어 `0.5.1`와 `0.5.4`는 동일한 API를 가지고 있지만, `0.6.0`에서는 호환되지 않을 수 있습니다.
 
-## 프로미스
+## Promises
 
 Axios를 사용하려면 Promise API가 [지원](http://caniuse.com/promises)되어야 합니다. 
-만약 ES6 프로미스를 지원하지 않는 환경에서는 [polyfill](https://github.com/jakearchibald/es6-promise)을 사용할 수 있습니다.
+만약 ES6 Promises를 지원하지 않는 환경에서는 [polyfill](https://github.com/jakearchibald/es6-promise)을 사용할 수 있습니다.
 
 
 ## TypeScript

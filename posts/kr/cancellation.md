@@ -8,7 +8,7 @@ next_link: '/kr/docs/urlencoded'
 
 *취소 토큰*을 이용해 요청을 취소할 수 있습니다.
 
-> Axios의 취소 토큰 API는 중단된 [취소가능한 프로미스 제안](https://github.com/tc39/proposal-cancelable-promises)을 기반으로 하고 있습니다.
+> Axios의 취소 토큰 API는 중단된 [proposal-cancelable-promises](https://github.com/tc39/proposal-cancelable-promises)을 기반으로 하고 있습니다.
 
 아래와 같이 `CancelToken.source` 팩토리를 사용하여 취소 토큰을 만들수 있습니다:
 
@@ -32,7 +32,7 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// 요청 취소하기 (메시지 파라미터는 선택적입니다.)
+// 요청 취소하기 (메시지 파라미터는 옵션입니다)
 source.cancel('Operation canceled by the user.');
 ```
 

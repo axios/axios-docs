@@ -23,7 +23,7 @@ next_link: '/kr/docs/res_schema'
 
   // `transformRequest`는 요청 데이터를 서버로 전송하기 전에 변경할 수 있게 해줍니다.
   // 이것은 'PUT', 'POST', 'PATCH', 'DELETE' 메소드에서만 적용됩니다.
-  // 배열의 마지막 함수는 Buffer, ArrayBuffer, FormData 또는 Stream의 인스턴스 또는 문자열을 반환해야 합니다.
+  // 마지막 함수는 Buffer, ArrayBuffer, FormData 또는 Stream의 인스턴스 또는 문자열을 반환해야 합니다.
   // 헤더 객체를 수정할 수 있습니다.
   transformRequest: [function (data, headers) {
     // 데이터를 변환하려는 작업 수행
@@ -77,7 +77,7 @@ next_link: '/kr/docs/res_schema'
   withCredentials: false, // 기본값
 
   // `adapter`'은 커스텀 핸들링 요청을 처리할 수 있어 테스트가 쉬워집니다.
-  // 유효한 프로미스 응답을 반환해야 합니다. (lib/adapters/README.md 참고)
+  // 유효한 Promise 응답을 반환해야 합니다. (lib/adapters/README.md 참고)
   adapter: function (config) {
     /* ... */
   },
@@ -126,18 +126,16 @@ next_link: '/kr/docs/res_schema'
   // Node.js 전용
   maxBodyLength: 2000,
 
-  // `validateStatus`는 지정된 HTTP 응답 상태 코드에 대한 프로미스를 이행할지 또는 거부할지 여부를 정의합니다. 
-  // 만약 `validateStatus`가 true를 반환하면(또는 'null' 또는 'undefined'으로 설정) 프로미스는 이행됩니다.
-  // 그렇지 않으면, 그 프로미스는 거부될 것이다.
+  // `validateStatus`는 지정된 HTTP 응답 상태 코드에 대한 Promise를 이행할지 또는 거부할지 여부를 정의합니다. 
+  // 만약 `validateStatus`가 true를 반환하면(또는 'null' 또는 'undefined'으로 설정) Promise는 이행됩니다.
+  // 그렇지 않으면, 그 Promise는 거부될 것이다.
   validateStatus: function (status) {
     return status >= 200 && status < 300; // 기본값
   },
 
-
   // `maxRedirects`는 node.js에서 리디렉션 최대값을 정의합니다.
   // 0으로 설정하면 리디렉션되지 않습니다.
   maxRedirects: 5, // 기본값
-
 
   // `socketPath`는 node.js에서 사용될 UNIX 소켓을 정의합니다.
   // 예: '/var/run/docker.sock' 도커 데몬에 요청을 보냅니다.
@@ -145,20 +143,20 @@ next_link: '/kr/docs/res_schema'
   // 둘 다 지정되면 `socketPath`가 사용됩니다.
   socketPath: null, // 기본값
 
-
   // `httpAgent`와 `httpsAgent`는 각각 node.js에서 http 및 https 요청을 수행할 때 사용할 사용자 지정 에이전트를 정의합니다.
   // 이렇게 하면 기본적으로 활성화되지 않은 `keepAlive`와 같은 옵션을 추가할 수 있습니다.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
-
   // `proxy`는 프록시 서버의 호스트이름, 포트, 프로토콜을 정의합니다.
-  // 기존의 `http_proxy`와 `https_proxy` 환경 변수를 사용하여 프록시를 정의할 수도 있습니다.
-  // 프록시 구성에 환경 변수를 사용하는 경우,
-  // 'no_proxy' 환경 변수를 쉼표로 구분된 프록시가 되지 않는 도메인 목록으로 정의할 수도 있습니다.
+  // 기존의 `http_proxy`와 `https_proxy` 환경 변수를 사용하여
+  // 프록시를 정의할 수도 있습니다.
+  // 프록시 구성에 환경 변수를 사용하는 경우, 'no_proxy' 환경 변수를 
+  // 쉼표로 구분된 프록시가 되지 않는 도메인 목록으로 정의할 수도 있습니다.
   // `false`를 사용하면 프록시를 사용하지 않고, 환경 변수를 무시합니다.
-  // `auth`는 프록시에 연결하는데 HTTP Basic auth를 사용해야 함을 나타내며, 자격 증명을 제공합니다.
-  // 그러면 `Proxy-Authorization` 헤더가 설정되고, `headers`를 사용하여 기존의 `Proxy-Authorization` 사용자 지정 해더를 덮어씁니다.
+  // `auth`는 프록시에 연결하는데 HTTP Basic auth를 사용해야 함을 나타내며, 
+  // 자격 증명을 제공합니다. 그러면 `Proxy-Authorization` 헤더가 설정되고,
+  // `headers`를 사용하여 기존의 `Proxy-Authorization` 사용자 지정 해더를 덮어씁니다.
   // 만약 프록시 서버가 HTTPS를 사용한다면, 프로토콜을 반드시 `https`로 설정해야 합니다.
   proxy: {
     protocol: 'https',
@@ -170,16 +168,14 @@ next_link: '/kr/docs/res_schema'
     }
   },
 
-
   // `cancelToken`은 요청을 취소하는 데 사용할 수 있는 취소 토큰을 지정합니다.
   // (자세한 내용은 요청 취소 섹션 참조)
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-
   // `decompress`는 응답 바디의 자동 압축 해제 여부를 나타냅니다.
   //  `true`로 설정하면, 압축 해제된 모든 응답에서 'content-encoding' 헤더도 제거됩니다.
-  // - Node 전용 (XHR은 압축 해제할 수 없습니다)
+  // Node.js 전용 (XHR은 압축 해제할 수 없습니다)
   decompress: true // 기본값
 
 }

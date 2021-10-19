@@ -14,7 +14,7 @@ next_link: '/kr/docs/post_example'
 ```js
 const axios = require('axios').default;
 
-// axios.<method>는 이제 자동 완성과 파라미터 타이핑을 제공한다.
+// axios.<method>는 이제 자동 완성과 파라미터 타이핑을 제공합니다.
 ```
 
 # 예제
@@ -54,7 +54,7 @@ axios.get('/user', {
     // 항상 실행되는 영역
   });  
 
-// async/await 사용을 원하나요? 함수 외부에 `async` 키워드를 추가하세요.
+// async/await 사용을 원한다면, 함수 외부에 `async` 키워드를 추가하세요.
 async function getUser() {
   try {
     const response = await axios.get('/user?ID=12345');
