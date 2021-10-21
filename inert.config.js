@@ -22,6 +22,7 @@ const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
 const esConfig = require('./es.lang.js');
 const trConfig = require("./tr.lang.js");
+const krConfig = require("./kr.lang.js");
 
 // List of languages
 const langs = [
@@ -73,6 +74,12 @@ const langs = [
     name: "Türkçe",
     prefix: "/tr/",
     config: trConfig,
+  },
+  {
+    dir: "ltr",
+    name: "한국어",
+    prefix: "/kr/",
+    config: krConfig,
   },
 ];
 
