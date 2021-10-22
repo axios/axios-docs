@@ -1,6 +1,6 @@
 /**
  * Configuration for the brazilian portuguese translation
-*/
+ */
 
 module.exports = {
   display: "Português Brasileiro",
@@ -13,13 +13,15 @@ module.exports = {
   t: {
     "Get Started": "Começando",
     "View on GitHub": "Veja no GitHub",
-    "Languages": "Idiomas",
+    Languages: "Idiomas",
     "Open Source": "Código aberto",
-    "Contribute": "Contribua",
-    "Source on GitHub": "Fonte no GitHub",
+    Contribute: "Contribua",
+    "Source on GitHub": "Código-fonte no GitHub",
     "Fork on GitHub": "Faça uma copia no GitHub",
     "Fork the Website": "Faça uma copia do Website",
-    "Create an Issue": "Crie uma Issue"
+    "Create an Issue": "Crie uma Issue",
+    Next: "Próxima",
+    Previous: "Anterior",
   },
   sidebar: [
     {
@@ -116,12 +118,12 @@ module.exports = {
     {
       type: "link",
       href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
-      text: "Contribuindo para o Axios"
+      text: "Contribuindo para o Axios",
     },
     {
       type: "link",
       href: "/docs/translating",
-      text: "Traduzindo os documentos"
-    }
+      text: "Traduzindo os documentos",
+    },
   ],
 };
