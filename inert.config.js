@@ -23,6 +23,7 @@ const kuConfig = require("./ku.lang.js");
 const esConfig = require('./es.lang.js');
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
+const faConfig = require("./fa.lang.js");
 
 // List of languages
 const langs = [
@@ -80,6 +81,12 @@ const langs = [
     name: "한국어",
     prefix: "/kr/",
     config: krConfig,
+  },
+  {
+    dir: "rtl",
+    name: "فارسی",
+    prefix: "/fa/",
+    config: faConfig,
   },
 ];
 
