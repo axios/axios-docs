@@ -506,14 +506,12 @@ body {
     margin: 0 2px;
     padding: 3px 5px;
     white-space: pre-wrap;
-    font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier,
-      monospace;
+    font-family: "Fira Code", "Roboto Mono", Monaco, Consolas, monospace;
   }
   main code,
   main pre {
     background-color: #f8f8f8;
-    font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier,
-      monospace;
+    font-family: "Fira Code", "Roboto Mono", Monaco, Consolas, monospace;
   }
   main pre {
     -moz-osx-font-smoothing: initial;
@@ -540,8 +538,7 @@ body {
   }
 
   .token {
-    font-family: "Fira Code", "Courier New", "Roboto Mono", Monaco, courier,
-      monospace;
+    font-family: "Fira Code", "Roboto Mono", Monaco, Consolas, monospace;
   }
 
   .token.cdata,
@@ -631,7 +628,7 @@ body {
     border-radius: 2px;
     color: #33333c;
     display: block;
-    font-family: Roboto Mono, Monaco, courier, monospace;
+    font-family: Roboto Mono, Monaco, Consolas, monospace;
     line-height: inherit;
     margin: 0 2px;
     max-width: inherit;
