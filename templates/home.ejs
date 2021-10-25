@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Axios</title>
     <link rel="stylesheet" href="/assets/style/index.css" />
+    <style>
+      * {
+        <%= locale.fontSans ? 'font-family: ' + locale.fontSans + ';' : '' %>
+      }
+    </style>
     <link
       rel="preload"
       as="style"
       onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=<%= locale.fontSans || 'DM+Sans' %>:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
     />
     <link
       rel="preload"
@@ -20,7 +25,7 @@
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=<%= locale.fontSans || 'DM+Sans' %>:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
       />
       <link
         rel="stylesheet"

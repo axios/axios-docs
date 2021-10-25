@@ -23,6 +23,7 @@ const kuConfig = require("./ku.lang.js");
 const esConfig = require('./es.lang.js');
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
+const viConfig = require("./vi.lang.js");
 
 // List of languages
 const langs = [
@@ -80,6 +81,12 @@ const langs = [
     name: "한국어",
     prefix: "/kr/",
     config: krConfig,
+  },
+  {
+    dir: "ltr",
+    name: "Tiếng Việt",
+    prefix: "/vi/",
+    config: viConfig,
   },
 ];
 
@@ -201,7 +208,10 @@ module.exports = {
       ...langs
         .map((lang) => [
           singleHTMLBuild(lang.config),
-          writeFile(`:${lang.prefix === '/' ? 'output:/index.html' : lang.prefix.slice(1, -1)}Output:/index.html`),
+          writeFile(lang.prefix === '/'
+            ? ':output:/index.html'
+            : `:${lang.prefix.slice(1, -1)}Output:/index.html`
+          ),
         ])
         .flat(),
     ],
