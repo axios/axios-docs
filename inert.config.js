@@ -24,6 +24,7 @@ const esConfig = require('./es.lang.js');
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
+const faConfig = require("./fa.lang.js");
 
 // List of languages
 const langs = [
@@ -87,6 +88,12 @@ const langs = [
     name: "Tiếng Việt",
     prefix: "/vi/",
     config: viConfig,
+  },
+  {
+    dir: "rtl",
+    name: "فارسی",
+    prefix: "/fa/",
+    config: faConfig,
   },
 ];
 
