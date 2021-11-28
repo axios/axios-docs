@@ -17,6 +17,7 @@ The response for a request contains the following information.
   status: 200,
 
   // `statusText` is the HTTP status message from the server response
+  // Watch out, in HTTP/2, statusText: ''
   statusText: 'OK',
 
   // `headers` the HTTP headers that the server responded with
