@@ -111,11 +111,12 @@ a.button:hover {
 main {
   margin-left: calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
-  min-height: 100vh;
 }
 
 section#hero {
-  height: 100vh;
+  padding-top: 15rem;
+  padding-bottom: 5rem;
+  height: 100%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -130,6 +131,17 @@ section#hero {
   -webkit-box-direction: normal;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
+}
+
+section#bronze_sponsors {
+  padding-bottom: 5rem;
+}
+
+section#bronze_sponsors h2 {
+  font-size: 2.8rem;
+  color: var(--fg-color);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
 }
 
 section#hero div.content {
