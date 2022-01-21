@@ -17,6 +17,8 @@ The response for a request contains the following information.
   status: 200,
 
   // `statusText` is the HTTP status message from the server response
+  // As of HTTP/2 status text is blank or unsupported.
+  // (HTTP/2 RFC: https://www.rfc-editor.org/rfc/rfc7540#section-8.1.2.4)
   statusText: 'OK',
 
   // `headers` the HTTP headers that the server responded with
