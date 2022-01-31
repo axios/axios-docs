@@ -21,6 +21,7 @@ const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
 const esConfig = require('./es.lang.js');
+const frConfig = require("./fr.lang.js");
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
@@ -70,6 +71,12 @@ const langs = [
     name: "Español",
     prefix: "/es/",
     config: esConfig,
+  },
+  {
+    dir: "ltr",
+    name: "Français",
+    prefix: "/fr/",
+    config: frConfig,
   },
   {
     dir: "ltr",
