@@ -8,7 +8,7 @@ The documentation page was built using [`inert static site generator`](https://g
 To compile the documentation page, one must first install the inert CLI:
 
 ```bash
-npm i -g inert-cli # yarn global add inert-cli
+npm i -g inert-ssg # yarn global add inert-ssg
 ```
 
 Now, open a terminal and run the following command:
