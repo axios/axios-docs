@@ -34,7 +34,7 @@ If you need to remove an interceptor later you can.
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
-axios.interceptors.request.reject(myInterceptor);
+axios.interceptors.request.eject(myInterceptor);
 ```
 
 You can add interceptors to a custom instance of axios.
