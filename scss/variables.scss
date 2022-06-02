@@ -16,6 +16,9 @@
   --shadow-blue-dark: 0px 10px 20px rgba(var(--col-blue-rgb), 0.2);
 
   --shadow-blue: var(--shadow-blue-light);
+
+  /* Delays */
+  --transition-delay: 0ms;
 }
 
 body.dark {
