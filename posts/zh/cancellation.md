@@ -22,7 +22,7 @@ axios.get('/foo/bar', {
 controller.abort()
 ```
 
-## CancelToken `deprecated`
+## CancelToken `已被弃用`
 
 您还可以使用 *cancel token* 取消一个请求。
 
