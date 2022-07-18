@@ -53,7 +53,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   },
 
   // `data` são os dados a serem enviados no corpo da requisição
-  // Apenas aplicado em requisições com os métodos 'PUT', 'POTS', 'DELETE' e 'PATCH'
+  // Apenas aplicado em requisições com os métodos 'PUT', 'POST', 'DELETE' e 'PATCH'
   // Quando nenhum `transformRequest` é definido, deve ser um dos tipos a seguir:
   // - string, objetos simples, ArrayBuffer, ArrayBufferView, URLSearchParams
   // - Navegador apenas: FormData, File, Blob
