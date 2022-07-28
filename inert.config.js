@@ -34,9 +34,9 @@ const langs = [
   {
     dir: "rtl",
     name: "Arabic",
-    prefix: "/",
+    prefix: "/ar/",
     postsDir: "ar",
-    config: enConfig,
+    config: arConfig,
   },
   {
     dir: "ltr",

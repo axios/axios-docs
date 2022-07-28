@@ -4,7 +4,7 @@
 
 module.exports = {
   display: "Arabic",
-  prefix: "/",
+  prefix: "/ar/",
   dir: "rtl",
   lang: "ar",
 
