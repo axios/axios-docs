@@ -13,7 +13,7 @@ module.exports = {
               .كما أن أكسيوي يوفر مكتبة بسيطة و صغيرة و واجهة قابلة للتوسع`,
   },
   t: {
-    "Get Started":"هيا بنا بندأ",
+    "Get Started":"هيا بنا نبدأ",
     "View on GitHub": "اعرض في غيت هب",
     "Languages": "اللغات",
     "Open Source": "مصدر مفوح",
