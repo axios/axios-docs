@@ -14,7 +14,7 @@ const {
   halt,
 } = inert;
 
-const enConfig = require("./ar.lang.js");
+const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -31,13 +31,6 @@ const ruConfig = require("./ru.lang.js");
 
 // List of languages
 const langs = [
-  {
-    dir: "rtl",
-    name: "Arabic",
-    prefix: "/ar/",
-    postsDir: "ar",
-    config: arConfig,
-  },
   {
     dir: "ltr",
     name: "English",
@@ -116,6 +109,12 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },{
+    dir: "rtl",
+    name: "Arabic",
+    prefix: "/ar/",
+    postsDir: "ar",
+    config: arConfig,
   }
 ];
 
