@@ -32,7 +32,7 @@ const ruConfig = require("./ru.lang.js");
 // List of languages
 const langs = [
   {
-    dir: "ltr",
+    dir: "rtl",
     name: "Arabic",
     prefix: "/",
     postsDir: "ar",
