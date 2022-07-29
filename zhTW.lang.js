@@ -1,6 +1,6 @@
 module.exports = {
   display: "繁體中文 (台灣)",
-  prefix: "/zhTW",
+  prefix: "/zhTW/",
   dir: "ltr",
   lang: "zhTW",
   p: {
