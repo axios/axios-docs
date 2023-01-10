@@ -27,6 +27,7 @@ const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const zhTWConfig = require("./zhTW.lang.js");
 
 // List of languages
 const langs = [
@@ -51,7 +52,7 @@ const langs = [
   },
   {
     dir: "ltr",
-    name: "中文",
+    name: "简体中文",
     prefix: "/zh/",
     config: zhConfig,
   },
@@ -108,6 +109,12 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },
+  {
+    dir: "ltr",
+    name: "正體中文",
+    prefix: "/zhTW/",
+    config: zhTWConfig
   }
 ];
 
