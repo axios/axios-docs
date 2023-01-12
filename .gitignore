@@ -5,3 +5,4 @@ public/
 *.css.map
 # Local Netlify folder
 .netlify
+pnpm-lock.yaml
