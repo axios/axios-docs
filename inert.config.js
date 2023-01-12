@@ -52,6 +52,12 @@ const langs = [
   },
   {
     dir: "ltr",
+    name: "正體中文",
+    prefix: "/zhTW/",
+    config: zhTWConfig
+  },
+  {
+    dir: "ltr",
     name: "简体中文",
     prefix: "/zh/",
     config: zhConfig,
@@ -109,12 +115,6 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
-  },
-  {
-    dir: "ltr",
-    name: "正體中文",
-    prefix: "/zhTW/",
-    config: zhTWConfig
   }
 ];
 
