@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-  display: "中文",
+  display: "简体中文",
   prefix: "/zh/",
   p: {
     headline: "Axios 是一个基于 promise 的网络请求库，可以用于浏览器和 node.js",
