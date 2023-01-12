@@ -1,38 +1,38 @@
 ---
-title: 'Notes'
-description: 'A couple more notes to round it off'
+title: '注意事項'
+description: '可不可以多看一下下就好'
 prev_title: 'URL-Encoding Bodies'
-prev_link: '/docs/urlencoded'
+prev_link: '/zhTW/docs/urlencoded'
 ---
 
 ## Semver
 
-Until axios reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+在 Axios 達到 `1.0` 大版本釋出前，小版本之間會有影響相容性的重大變更。例如 `0.5.1` 及 `0.5.4` 版會有相同的 API，但 `0.6.0` 版則不。
 
-## Promises
+## Promise
 
-axios depends on a native ES6 Promise implementation to be [supported](http://caniuse.com/promises).
-If your environment doesn't support ES6 Promises, you can [polyfill](https://github.com/jakearchibald/es6-promise).
+Axios 需使用原生的 ES6 Promise，[此頁](http://caniuse.com/promises)統整了各瀏覽器實作的支援狀況。
+如果您的環境不支援 ES6 Promise，可以使用[替代方法](https://github.com/jakearchibald/es6-promise)。
 
 ## TypeScript
-axios includes [TypeScript](http://typescriptlang.org) definitions.
+Axios 包含了 [TypeScript](http://typescriptlang.org) 的型別定義。
 ```typescript
 import axios from 'axios';
 axios.get('/user?ID=12345');
 ```
 
-## Resources
+## 其他資源
 
-* [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
+* [版本紀錄](https://github.com/axios/axios/blob/master/CHANGELOG.md)
+* [升級指引](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
 * [Ecosystem](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [貢獻指引](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
+* [行為準則](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
 
-## Credits
+## 致謝
 
-axios is heavily inspired by the [$http service](https://docs.angularjs.org/api/ng/service/$http) provided in [Angular](https://angularjs.org/). Ultimately axios is an effort to provide a standalone `$http`-like service for use outside of Angular.
+Axios 很大程度地受到了 [Angular](https://angularjs.org/) 中 [$http service](https://docs.angularjs.org/api/ng/service/$http) 的啟發，Axios 的終極目標是提供一個在 Angular 以外能單獨使用，且類似於 `$http` 的服務。
 
-## License
+## 授權條款
 
 [MIT](https://github.com/axios/axios/blob/master/LICENSE)

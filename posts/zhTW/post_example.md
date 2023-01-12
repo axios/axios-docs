@@ -1,13 +1,13 @@
 ---
-title: 'POST Requests'
-description: 'How to perform POST requests with Axios'
-prev_title: 'Minimal Example'
-prev_link: '/docs/example'
+title: 'POST 請求'
+description: '了解如何以 Axios 發出 POST 請求'
+prev_title: '簡單示例'
+prev_link: '/zhTW/docs/example'
 next_title: 'Axios API'
-next_link: '/docs/api_intro'
+next_link: '/zhTW/docs/api_intro'
 ---
 
-Performing a `POST` request
+進行 `POST` 請求
 
 ```js
 axios.post('/user', {
@@ -22,7 +22,7 @@ axios.post('/user', {
   });
 ```
 
-Performing multiple concurrent requests
+進行多個並行（concurrent）的請求
 
 ```js
 function getUserAccount() {

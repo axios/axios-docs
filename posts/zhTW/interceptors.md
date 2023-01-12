@@ -1,15 +1,15 @@
 ---
-title: 'Interceptors'
-prev_title: 'Config Defaults'
-prev_link: '/docs/config_defaults'
-next_title: 'Handling Errors'
-next_link: '/docs/handling_errors'
+title: 'Interceptor'
+prev_title: '選項預設值'
+prev_link: '/zhTW/docs/config_defaults'
+next_title: '錯誤處理'
+next_link: '/zhTW/docs/handling_errors'
 ---
 
-You can intercept requests or responses before they are handled by `then` or `catch`.
+您可以在 `then` 或 `catch` 執行前，攔截請求及回應。
 
 ```js
-// Add a request interceptor
+// 新增一個請求的 interceptor
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
     return config;
@@ -18,26 +18,26 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
   });
 
-// Add a response interceptor
+// 新增一個回應的 interceptor
 axios.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
+    // 回應的狀態碼在 2xx 為範圍時，就會觸發此函式
     // Do something with response data
     return response;
   }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // 回應的狀態碼在 2xx 範圍以外時，就會觸發此函式
     // Do something with response error
     return Promise.reject(error);
   });
 ```
 
-If you need to remove an interceptor later you can.
+如不需要 interceptor，您可以將其移除。
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-You can add interceptors to a custom instance of axios.
+可以對自訂的 Axios 物件加上 interceptor。
 
 ```js
 const instance = axios.create();

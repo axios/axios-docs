@@ -1,34 +1,34 @@
 ---
-title: 'Translating the documentation'
+title: '翻譯本文件'
 ---
 
-To make Axios accessible to as many people as possible, it is important that these docs can be read in all languages. We always appreciate anyone who wants 
-to help translate the documentation. This guide provides instructions for adding a translation to this documentation.
+為了能讓 Axios 被更多人使用，翻譯是重要的一環，這使得各種語言的人們都能閱讀本文件，我們十分感謝所有想翻譯本文件的人。
+這份指引提供了翻譯本文件的步驟。
 
-## Structure
+## 檔案結構
 
-Every translation is composed of a configuration file, `{language-shortcut}.lang.js` (for example, `en.lang.js` or `de.lang.js`) and the translated documentation files in `posts/{language-shortcut}/*.md` (for example `posts/en` or `posts/de`). `{language-shortcut}` should be replaced with your language's [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) two-letter code.
+每個語言的翻譯都由一個檔名為 `{language-shortuct}.lang.js` 的組態檔（如 `en.lang.js` 或 `de.lang.js`），以及 `posts/{language-shortuct}/*.md` 的譯文（如 `posts/en` 或 `posts/de`）構成。其中 `{language-shortuct}` 應代換為您的語言代碼，關於語言代碼的清單請參閱 [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1)。
 
-## Configuring your language
+## 設定語言
 
- - Copy `en.lang.js`.
- - Rename it to `{language-shortcut}.lang.js`.
- - Replace `display` with the name of your language, in your language. For example, if you're translating german, place “Deutsch” instead of “German”.
- - Replace prefix with `/{language-shortcut}/`.
- - Translate the values in the `p` and `t` fields.
- - Translate all the properties labeled `text` in the sidebar. **Note:** Since the latest version of this documentation, links in the sidebar no longer need to be updated.
+ - 複製 `en.lang.js`.
+ - 將其重新命名為 `{language-shortuct}.lang.js`.
+ - 將 `display` 的值代換為您的語言本名，例如您翻譯的是德文，就使用「Deutsch」而非「德文」
+ - 將譯文的資料夾名稱替換為 `{language-shortuct}`
+ - 翻譯 `p` 及 `t` 屬性中的字串
+ - 翻譯所有在 sidebar 中標示為 `text` 的屬性。**注意：** 自本文件的最新版開始，無需更新 sidebar 中的連結
 
-### Registering the configuration
+### 更新設定值
 
-Once you've finished configuring your language and translating the phrases and links in the configuration file, you'll need to register it in the root configuration. To do this, open `inert.config.js` and add the following line near the top:
+在您完成調整組態檔，並翻譯了其中的句子、連結之後，還需要更新主設定檔。請開啟 `inert.config.js` 並在最上方加上：
 
 ```js
-const {language-shortcut}Config = require('./{language-shortcut}.config.js');
+const {language-shortuct}Config = require('./{language-shortuct}.config.js');
 ```
 
-Of course, remember to replace `{language-shortuct}` with the correct [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) code (in the variable name, too!).
+請記得要將 `{language-shortuct}` 及變數名稱代換為正確的 [ISO 369-1](https://zh.wikipedia.org/zh-tw/ISO_639-1) 代碼。
 
-Now, look for the `langs` constant. If this constant is located above your `require` statement, move your `require` statement above it. To the `langs` list, add the following object:
+接著請看 `langs` 常數，如果它高於剛才的 `require` 那行，請將 `require` 那行移到它上方。完成之後，在 `langs` 中加入這些內容：
 
 ```js
 const langs = [
@@ -42,6 +42,6 @@ const langs = [
 ];
 ```
 
-Now, you can begin translating the files. Copy the folder `posts/en` into a new folder `posts/{language-shortcut}` and translate all the files (don't translate the filenames, of course).
+現在您可以開始翻譯文件了，請複製一份 `posts/en` 的副本，並將其命名為 `posts/{language-shortcut}`，然後翻譯此資料夾中的所有檔案，記得別連檔名都翻譯了。
 
-If you hit any problems, feel free to [create and issue](https://github.com/axios/axios-docs/issues/new/choose).
+如果您在這些過程中遇到什麼問題，都歡迎您[建立一則 Issue](https://github.com/axios/axios-docs/issues/new/choose) 與我們討論。

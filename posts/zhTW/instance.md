@@ -1,14 +1,14 @@
 ---
-title: 'The Axios Instance'
+title: 'Axios 物件'
 prev_title: 'Axios API'
-prev_link: '/docs/api_intro'
-next_title: 'Request Config'
-next_link: '/docs/req_config'
+prev_link: '/zhTW/docs/api_intro'
+next_title: '請求選項'
+next_link: '/zhTW/docs/req_config'
 ---
 
-### Creating an instance
+### 建立實例
 
-You can create a new instance of axios with a custom config.
+您可以建立一個自訂選項的 Axios 實例。
 
 ##### axios.create([config])
 
@@ -20,9 +20,9 @@ const instance = axios.create({
 });
 ```
 
-### Instance methods
+### 實例方法
 
-The available instance methods are listed below. The specified config will be merged with the instance config.
+以下列出了所有可用的實例方法。如果您呼叫這些方法時額外提供了選項參數，它將與 Axios 實例自身的選項合併使用。
 
 ##### axios#request(config)
 ##### axios#get(url[, config])

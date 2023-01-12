@@ -1,16 +1,16 @@
 ---
-title: 'Config Defaults'
-prev_title: 'Response Schema'
-prev_link: '/docs/res_schema'
-next_title: 'Interceptors'
-next_link: '/docs/interceptors'
+title: '選項預設值'
+prev_title: '回應結構'
+prev_link: '/zhTW/docs/res_schema'
+next_title: 'Interceptor'
+next_link: '/zhTW/docs/interceptors'
 ---
 
-## Config Defaults
+## 選項預設值
 
-You can specify config defaults that will be applied to every request.
+您可以指定選項的預設值，如此一來每則發出每則請求時都會套用。
 
-### Global axios defaults
+### 全域 axios 預設值
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';
@@ -18,32 +18,32 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-### Custom instance defaults
+### 自訂 axios 實例預設值
 
 ```js
-// Set config defaults when creating the instance
+// 在建立 axios 實例時指定其選項預設值
 const instance = axios.create({
   baseURL: 'https://api.example.com'
 });
 
-// Alter defaults after instance has been created
+// axios 實例建立後仍可變更其選項預設值
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
-### Config order of precedence
+### 選項的疊加
 
-Config will be merged with an order of precedence. The order is library defaults found in [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), then `defaults` property of the instance, and finally `config` argument for the request. The latter will take precedence over the former. Here's an example.
+選項的內容會依疊加的順序改變。舉例而言，每次請求時的 `config` 參數會有最高的優先性，其次為該 Axios 實例的 `default` 屬性，最後才是 [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28) 中的預設值。參考以下範例：
 
 ```js
-// Create an instance using the config defaults provided by the library
-// At this point the timeout config value is `0` as is the default for the library
+// 建立一個照搬 Axios 函式庫選項預設值的實例
+// 此時逾時限制的值與函式庫預設的相同，都是 `0`
 const instance = axios.create();
 
-// Override timeout default for the library
-// Now all requests using this instance will wait 2.5 seconds before timing out
+// 覆寫 Axios 函式庫預設的逾時限制
+// 從此之後所有透過 `instance` 發出的請求，其逾時限制都是 2.5 秒
 instance.defaults.timeout = 2500;
 
-// Override timeout for this request as it's known to take a long time
+// 因為預期會耗時更久，所以覆寫此次請求的逾時限制
 instance.get('/longRequest', {
   timeout: 5000
 });

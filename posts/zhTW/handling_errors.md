@@ -1,44 +1,43 @@
 ---
-title: 'Handling Errors'
-prev_title: 'Interceptors'
-prev_link: '/docs/interceptors'
-next_title: 'Cancellation'
-next_link: '/docs/cancellation'
+title: '錯誤處理'
+prev_title: 'Interceptor'
+prev_link: '/zhTW/docs/interceptors'
+next_title: '取消請求'
+next_link: '/zhTW/docs/cancellation'
 ---
 
 ```js
 axios.get('/user/12345')
   .catch(function (error) {
     if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
+      // 送出請求後，伺服器回應的狀態碼不在 2xx 的範圍
       console.log(error.response.data);
       console.log(error.response.status);
       console.log(error.response.headers);
     } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
+      // 送出請求後，卻沒有收到回應
+      // 在瀏覽器中，`error.request` 是 XMLHttpRequest 物件；
+      // 而在 Node.js 中，則是 http.ClientRequest 物件
       console.log(error.request);
     } else {
-      // Something happened in setting up the request that triggered an Error
+      // 在準備請求時就發生的其他錯誤
       console.log('Error', error.message);
     }
     console.log(error.config);
   });
 ```
 
-Using the `validateStatus` config option, you can define HTTP code(s) that should throw an error.
+透過設定 `validateStatus` 選項，您可以自訂需對哪些 HTTP 狀態碼擲出 (throw) 錯誤。
 
 ```js
 axios.get('/user/12345', {
   validateStatus: function (status) {
-    return status < 500; // Resolve only if the status code is less than 500
+    return status < 500; // 只在狀態碼小於 500 時才 resolve promise
   }
 })
 ```
 
-Using `toJSON` you get an object with more information about the HTTP error.
+您可以使用 `toJSON` 來取得一個紀錄 HTTP 錯誤詳細資料的 object。
 
 ```js
 axios.get('/user/12345')

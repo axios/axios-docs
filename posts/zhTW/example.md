@@ -1,43 +1,43 @@
 ---
-title: 'Minimal Example'
-description: 'A little example of using axios'
-prev_title: 'Introduction'
-prev_link: '/docs/intro'
-next_title: 'POST Requests'
-next_link: '/docs/post_example'
+title: '簡單示例'
+description: '關於使用 Axios 的小範例'
+prev_title: '介紹'
+prev_link: '/zhTW/docs/intro'
+next_title: 'POST 請求'
+next_link: '/zhTW/docs/post_example'
 ---
 
-## note: CommonJS usage
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+## 附註：使用 CommonJS
+如果需要利用 TypeScript 型別（使文字編輯器的自動完成、IntelliSense 功能得以運作）以及 CommonJS 的 `require()` 來引入模組，請使用此方法：
 
 ```js
 const axios = require('axios').default;
 
-// axios.<method> will now provide autocomplete and parameter typings
+// 接下來編寫程式時，axios.<method> 會提供自動完成及參數的型別資訊
 ```
 
-# Example
+# 範例
 
-Performing a `GET` request
+進行 `GET` 請求
 
 ```js
 const axios = require('axios');
 
-// Make a request for a user with a given ID
+// 發出一個以 ID 查詢使用者資料的請求
 axios.get('/user?ID=12345')
   .then(function (response) {
-    // handle success
+    // 處理成功狀況
     console.log(response);
   })
   .catch(function (error) {
-    // handle error
+    // 錯誤處理
     console.log(error);
   })
   .then(function () {
-    // always executed
+    // 不論狀況，皆會執行
   });
 
-// Optionally the request above could also be done as
+// 上述的請求也可以改寫為
 axios.get('/user', {
     params: {
       ID: 12345
@@ -50,10 +50,10 @@ axios.get('/user', {
     console.log(error);
   })
   .then(function () {
-    // always executed
+    // 不論狀況，皆會執行
   });  
 
-// Want to use async/await? Add the `async` keyword to your outer function/method.
+// 那 async/await 怎麼寫呢？ 在最外層函式/方法前加上 async 就行了
 async function getUser() {
   try {
     const response = await axios.get('/user?ID=12345');
@@ -64,5 +64,4 @@ async function getUser() {
 }
 ```
 
-> **NOTE:** `async/await` is part of ECMAScript 2017 and is not supported in Internet
-> Explorer and older browsers, so use with caution.
+> **注意：** `async/await` 是 ECMAScript 2017 的一項功能，且不被 Internet Explorer 或更舊的瀏覽器支援

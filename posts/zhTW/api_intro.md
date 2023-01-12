@@ -1,18 +1,18 @@
 ---
 title: 'Axios API'
-description: 'The Axios API Reference'
-prev_title: 'POST Requests'
-prev_link: '/docs/post_example'
-next_title: 'The Axios Instance'
-next_link: '/docs/instance'
+description: 'Axios API 參考文件'
+prev_title: 'POST 請求'
+prev_link: '/zhTW/docs/post_example'
+next_title: 'Axios 物件'
+next_link: '/zhTW/docs/instance'
 ---
 
-Requests can be made by passing the relevant config to `axios`.
+您可以在送出請求時，提供 `axios` 相關的選項。
 
 ##### axios(config)
 
 ```js
-// Send a POST request
+// 送出 POST 請求
 axios({
   method: 'post',
   url: '/user/12345',
@@ -24,7 +24,7 @@ axios({
 ```
 
 ```js
-// GET request for remote image in node.js
+// 在 Node.js 中以 GET 請求取得遠端站臺的圖片
 axios({
   method: 'get',
   url: 'http://bit.ly/2mTM3nY',
@@ -38,13 +38,13 @@ axios({
 ##### axios(url[, config])
 
 ```js
-// Send a GET request (default method)
+// 送出 GET 請求（預設 HTTP 方法）
 axios('/user/12345');
 ```
 
 ### Request method aliases
 
-For convenience aliases have been provided for all supported request methods.
+為了方便使用，Axios 提供了所有支援的請求方法函式。
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -56,4 +56,4 @@ For convenience aliases have been provided for all supported request methods.
 ##### axios.patch(url[, data[, config]])
 
 ###### NOTE
-When using the alias methods `url`, `method`, and `data` properties don't need to be specified in config.
+使用請求方法函式時，您無需在選項中提供 `url`、`method` 及 `data` 屬性。

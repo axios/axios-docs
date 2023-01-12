@@ -1,51 +1,52 @@
 ---
-title: 'Getting Started'
-description: 'Promise based HTTP client for the browser and node.js'
-next_title: 'Minimal Example'
-next_link: '/docs/example'
+title: '新手上路'
+description: '基於 Promise 的 HTTP 客戶端函式庫，可用於瀏覽器及 Node.js'
+next_title: '簡單示例'
+next_link: '/zhTW/docs/example'
 ---
 
-# What is Axios?
-Axios is a *[promise-based](https://javascript.info/promise-basics)* HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is *[isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
+# Axios 是什麼？
 
-# Features
+Axios 提供了[基於 Promise](https://javascript.info/promise-basics) 的 HTTP 客戶端，可以執行於 [`Node.js`](https://nodejs.org/zh-tw/) 及瀏覽器中，此特性使得同樣的程式碼無需經過修改，就能在前後端使用。在伺服器端 Axios 使用了 Node.js 的 `http` 模組，而在客戶端上（也就是瀏覽器）使用了 XMLHttpRequests。
 
-- Make [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) from the browser
-- Make [http](http://nodejs.org/api/http.html) requests from node.js
-- Supports the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
-- Intercept request and response
-- Transform request and response data
-- Cancel requests
-- Automatic transforms for JSON data
-- Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+# 功能
 
-# Installing
+- 從瀏覽器發起 [XMLHttpRequests](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest) 請求
+- 從 Node.js 發起 [http](http://nodejs.org/api/http.html) 請求
+- 支援 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
+- 攔截請求及回應
+- 轉換請求及回應資料
+- 中止請求
+- 自動轉換 JSON 資料
+- 防禦客戶端的 [XSRF](https://zh.wikipedia.org/zh-tw/跨站請求偽造) 攻擊
 
-Using npm:
+# 安裝 Axios
+
+npm:
 
 ```bash
 $ npm install axios
 ```
 
-Using bower:
+bower:
 
 ```bash
 $ bower install axios
 ```
 
-Using yarn:
+yarn:
 
 ```bash
 $ yarn add axios
 ```
 
-Using jsDelivr CDN:
+使用 jsDelivr CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
 
-Using unpkg CDN:
+使用 unpkg CDN:
 
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

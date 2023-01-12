@@ -66,7 +66,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/instance",
-      text: "Axios 實例",
+      text: "Axios 物件",
     },
     {
       type: "link",
@@ -96,7 +96,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/cancellation",
-      text: "中止請求",
+      text: "取消請求",
     },
     {
       type: "link",

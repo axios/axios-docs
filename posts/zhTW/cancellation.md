@@ -1,14 +1,14 @@
 ---
-title: 'Cancellation'
-prev_title: 'Handling Errors'
-prev_link: '/docs/handling_errors'
+title: '取消請求'
+prev_title: '錯誤處理'
+prev_link: '/zhTW/docs/handling_errors'
 next_title: 'URL-Encoding Bodies'
-next_link: '/docs/urlencoded'
+next_link: '/zhTW/docs/urlencoded'
 ---
 
 ## AbortController
 
-Starting from `v0.22.0` Axios supports [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel requests in fetch API way:
+自 `v0.22.0` 開始，Axios 支援了 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) 讓您可以用類似 fetch API 的方式來取消請求
 
 ```js
 const controller = new AbortController();
@@ -22,15 +22,15 @@ axios.get('/foo/bar', {
 controller.abort()
 ```
 
-## CancelToken `deprecated`
+## CancelToken（已棄用）
 
-You can also cancel a request using a *CancelToken*. 
+您也可以用 *CancelToken* 來取消請求。
 
-> The axios cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+> Axios cancel token API 是以 [可取消的 Promise](https://github.com/tc39/proposal-cancelable-promises) 提案為基礎，這份提案已遭撤回。
 
-> This API is deprecated since `v0.22.0` and shouldn't be used in new projects
+> 自 `v0.22.0` 起此 API 已被棄用，不要再用於新專案
 
-You can create a cancel token using the `CancelToken.source` factory as shown below:
+您可以用 `CancelToken.source` 建立 cancel token
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -56,7 +56,7 @@ axios.post('/user/12345', {
 source.cancel('Operation canceled by the user.');
 ```
 
-You can also create a cancel token by passing an executor function to the `CancelToken` constructor:
+您也可以在 `CancelToken` 的建構子中傳入一個函式來產生 cancel token。
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -73,9 +73,9 @@ axios.get('/user/12345', {
 cancel();
 ```
 
-> Note: you can cancel several requests with the same cancel token / signal.
+> 備註：您可以用同樣的 cancel token/signal 取消多個請求
 
-During the transition period, you can use both cancellation APIs, even for the same request:
+在過渡期間，您仍可使用這兩種取消 API（即便是對於同個請求）
 
 ```js
 const controller = new AbortController();
@@ -100,8 +100,8 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
+// 取消請求（message 參數為選填）
 source.cancel('Operation canceled by the user.');
-// OR
-controller.abort(); // the message parameter is not supported
+// 或者
+controller.abort(); // 不支援 message 參數
 ```
