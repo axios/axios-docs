@@ -53,7 +53,7 @@ axios.get('/user', {
     // 不論狀況，皆會執行
   });  
 
-// 那 async/await 怎麼寫呢？ 在最外層函式/方法前加上 async 就行了
+// 那 async/await 怎麼寫呢？ 在外層的函式/方法前加上 async 就行了
 async function getUser() {
   try {
     const response = await axios.get('/user?ID=12345');
