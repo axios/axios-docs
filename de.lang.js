@@ -9,18 +9,18 @@ module.exports = {
     headline: "Promise-basierter HTTP-Client für den Browser und Node.js",
     subhead: `Axios ist ein einfacher Promise-basierter HTTP-Client für den Browser und Node.js.
               Axios stellt in einem kompakten Paket ein einfach zu verwendendes und erweiterbares
-              Interface zur verfügung.`,
+              Interface zur Verfügung.`,
   },
   t: {
     "Get Started": "Loslegen",
-    "View on GitHub": "Quellcode auf GitHub",
+    "View on GitHub": "Auf GitHub anschauen",
     "Languages": "Sprachen",
     "Open Source": "Open-Source",
     "Contribute": "Mitwirken",
     "Source on GitHub": "Quellcode auf GitHub",
     "Fork on GitHub": "Eine eigene version abspalten",
-    "Fork the Website": "Die website abspalten",
-    "Create an Issue": "Ein issue erstellen"
+    "Fork the Website": "Die Website abspalten",
+    "Create an Issue": "Ein Issue erstellen"
   },
   sidebar: [
     {
