@@ -6,7 +6,7 @@ next_title: 'Antwortenschema'
 next_link: '/de/docs/res_schema'
 ---
 
-Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das feld `url` wird benötigt. Für Anfragen wird standardmäßig die `GET`-Methode verwendet sofern die HTTP-Methode nicht explizit mit der Option `method` spezifiziert wird.
+Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das Feld `url` wird benötigt. Für Anfragen wird standardmäßig die `GET`-Methode verwendet sofern die HTTP-Methode nicht explizit mit der Option `method` spezifiziert wird.
 
 ```js
 {
@@ -23,19 +23,19 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
 
   // `transformRequest` erlaubt Änderungen an den Anfragendaten bevor sie zum
   // Server geschickt werden. Dies funktioniert nur bei den Methoden 'PUT',
-  // 'POST', 'PATCH' und 'DELETE'. Die letzte Funktion in der liste muss einen
-  // String,  Buffer, ArrayBuffer, FormData oder Stream zurückgeben.
-  // Das objekt `headers` darf bearbeitet werden.
+  // 'POST', 'PATCH' und 'DELETE'. Die letzte Funktion in der Liste muss einen
+  // String, Buffer, ArrayBuffer, FormData oder Stream zurückgeben.
+  // Das Objekt `headers` darf bearbeitet werden.
   transformRequest: [function (data, headers) {
-    // Tun sie was auch immer sie wollen um die daten zu transformieren
+    // Tun Sie was auch immer sie wollen um die Daten zu transformieren
 
     return data;
   }],
 
-  // `transformResponse` erlaubt Änderungen an denzZurückgegebenen Daten bevor
-  // diese an `then` bzw. `catch` weitergeben werden.
+  // `transformResponse` erlaubt Änderungen an den zurückgegebenen Daten bevor
+  // diese an `then` bzw. `catch` weitergegeben werden.
   transformResponse: [function (data) {
-    // Tun sie was auch immer sie wollen um die daten zu transformieren
+    // Tun Sie was auch immer sie wollen um die Daten zu transformieren
 
     return data;
   }],
@@ -44,7 +44,7 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
   headers: {'X-Requested-With': 'XMLHttpRequest'},
 
   // `params` sind die URL-Parameter, die in der Anfrage geschickt werden. Das Feld
-  // muss entweder ein einfaches Object oder eine Instanz der Klasse URLSearchParams
+  // muss entweder ein einfaches Objekt oder eine Instanz der Klasse URLSearchParams
   // beinhalten.
   params: {
     ID: 12345
@@ -52,7 +52,7 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
 
   // Mit `paramsSerializer` kann optional die Funktion zur Serialisierung des
   // Feldes `params` manuell überschrieben werden.
-  // (z.Bsp. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+  // (z.B. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: function (params) {
     return Qs.stringify(params, {arrayFormat: 'brackets'})
   },
@@ -94,9 +94,9 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
   responseType: 'json', // Standardwert
 
   // `responseEncoding` (Nur in nodejs) gibt das Encoding das zur Dekodierung der Antwort verwendet werden soll an
-  responseEncoding: 'utf8', // Standartwert
+  responseEncoding: 'utf8', // Standardwert
 
-  // `xsrfCookieName` Name des Cookies zur nutzung für XSRF-tokens
+  // `xsrfCookieName` Name des Cookies zur Nutzung für XSRF-tokens
   xsrfCookieName: 'XSRF-TOKEN', // Standardwert
 
   // `xsrfHeaderName` Name des Headers der das XSRF-token trägt
@@ -105,19 +105,19 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
   // `onUploadProgress` erlaubt die Behandlung von Progress-Events im Browser
   // Nur im Browser
   onUploadProgress: function (progressEvent) {
-    // Progress-Event Verarbeiten
+    // Progress-Event verarbeiten
   },
 
   // `onDownloadProgress` erlaubt die Behandlung von Progress-Events im Browser
   // Nur im Browser
   onDownloadProgress: function (progressEvent) {
-    /// Progress-Event Verarbeiten
+    /// Progress-Event verarbeiten
   },
 
-  // `maxContentLength` definiert die maximale Größe der Antwort (nur in Nodejs)
+  // `maxContentLength` definiert die maximale Größe in Bytes der Antwort (nur in Nodejs)
   maxContentLength: 2000,
 
-  // `maxBodyLength` definiert die maximale Größe des Anfragenkörpers (nur in Nodejs)
+  // `maxBodyLength` definiert die maximale Größe in Bytes des Anfragenkörpers (nur in Nodejs)
   maxBodyLength: 2000,
 
   // `validateStatus` Gibt, basierend auf dem Status-Code an, ob die Anfrage erfolgreich war.
@@ -139,7 +139,7 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
   // Ein Proxy kann auch durch das Setzen der Umgebungsvariablen
   // http_proxy und https_proxy konfiguriert werden.
   // `auth` gibt die HTTP basic auth credentials des Proxy-Servers an.
-  // Dies wird den `Proxy-Authorization` Header geschrieben.
+  // Dies wird in den `Proxy-Authorization` Header geschrieben.
   proxy: {
     protocol: 'https',
     host: '127.0.0.1',
@@ -154,8 +154,8 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das fe
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-  // Nur in nodejs (kann in XHR nicht deaktiviert werden) gibt dieser wert an ob
-  // die daten automatisch dekomprimiert werden sollen
+  // Nur in nodejs (kann in XHR nicht deaktiviert werden) gibt dieser Wert an ob
+  // die Daten automatisch dekomprimiert werden sollen
   decompress: true // default
 }
 ```
