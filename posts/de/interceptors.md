@@ -6,12 +6,12 @@ next_title: 'Errorverarbeitung'
 next_link: '/de/docs/handling_errors'
 ---
 
-Sie können Anfragen oder Antworten vor ihrer verarbeitung wie folgt abfangen:
+Sie können Anfragen oder Antworten vor ihrer Verarbeitung wie folgt abfangen:
 
 ```js
 // Einen Anfragenabfänger erstellen
 axios.interceptors.request.use(function (config) {
-    // Etwas mit der anfrage tun bevor sie gesendet wird
+    // Etwas mit der Anfrage tun bevor sie gesendet wird
     return config;
   }, function (error) {
     // Einen Anfragenfehler verarbeiten
