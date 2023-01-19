@@ -3,7 +3,7 @@ title: 'Axios API'
 description: 'Axios API 參考文件'
 prev_title: 'POST 請求'
 prev_link: '/zhTW/docs/post_example'
-next_title: 'Axios 物件'
+next_title: 'Axios 實例'
 next_link: '/zhTW/docs/instance'
 ---
 

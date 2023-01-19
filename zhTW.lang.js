@@ -66,7 +66,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/instance",
-      text: "Axios 物件",
+      text: "Axios 實例",
     },
     {
       type: "link",

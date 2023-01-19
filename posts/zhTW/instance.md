@@ -1,5 +1,5 @@
 ---
-title: 'Axios 物件'
+title: 'Axios 實例'
 prev_title: 'Axios API'
 prev_link: '/zhTW/docs/api_intro'
 next_title: '請求選項'

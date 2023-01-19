@@ -37,7 +37,7 @@ const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-可以對自訂的 Axios 物件加上 interceptor。
+可以對自訂的 Axios 實例加上 interceptor。
 
 ```js
 const instance = axios.create();
