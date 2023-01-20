@@ -53,7 +53,7 @@ axios.get('/user', {
     // 不論狀況，皆會執行
   });  
 
-// 那 async/await 怎麼寫呢？ 在外層的函式/方法前加上 async 就行了
+// 那 async/await 怎麼寫呢？在外層的函式/方法前加上 async 就行了
 async function getUser() {
   try {
     const response = await axios.get('/user?ID=12345');
@@ -64,4 +64,4 @@ async function getUser() {
 }
 ```
 
-> **注意：** `async/await` 是 ECMAScript 2017 的一項功能，且不被 Internet Explorer 或更舊的瀏覽器支援
+> **注意：** `async/await` 是 ECMAScript 2017 的一項功能，在 Internet Explorer 或更舊的瀏覽器中不支援

@@ -26,14 +26,14 @@ next_link: '/zhTW/docs/res_schema'
   // 陣列中的最後一個函式必須傳回一個字串或者 Buffer、ArrayBuffer、FormData 或 Stream 物件
   // 您可以修改 headers 物件
   transformRequest: [function (data, headers) {
-    // Do whatever you want to transform the data
+    // 在此隨意進行轉換資料的操作
 
     return data;
   }],
 
   // `transformResponse` 可以在請求資料被傳給 then/catch 前對資料進行變更
   transformResponse: [function (data) {
-    // Do whatever you want to transform the data
+    // 在此隨意進行轉換資料的操作
 
     return data;
   }],
@@ -110,13 +110,13 @@ next_link: '/zhTW/docs/res_schema'
   // `onUploadProgress` 可用來處理上傳進度事件
   // 僅在瀏覽器中有效
   onUploadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
+    // 在此對原始的 progress 事件進行操作
   },
 
   // `onDownloadProgress` 可用來處理下載進度事件
   // 僅在瀏覽器中有效
   onDownloadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
+    // 在此對原始的 progress 事件進行操作
   },
 
   // `maxContentLength` 選項定義了允許的 HTTP 回應內容大小上限（以位元組為單位）
@@ -172,9 +172,9 @@ next_link: '/zhTW/docs/res_schema'
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-  // `decompress` 選項定義了是否要自動 decompress 回應主體
-  // 如設為 `true`，則所有經 decompress 的回應的 `content-encoding` 標頭都會被去除
-  // - 因為 XHR 無法關閉 decompression，此選項僅可在 Node.js 上使用
+  // `decompress` 選項定義了是否要自動解壓縮回應主體（response body）
+  // 如設為 `true`，則對於所有解壓縮過的回應，其 `content-encoding` 標頭都會被去除
+  // - 因為 XHR 無法關閉解壓縮，此選項僅可在 Node.js 上使用
   decompress: true // 預設值
 
 }

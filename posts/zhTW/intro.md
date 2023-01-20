@@ -1,17 +1,17 @@
 ---
 title: '新手上路'
-description: '基於 Promise 的 HTTP 客戶端函式庫，可用於瀏覽器及 Node.js'
+description: '以 Promise 為基礎的 HTTP 用戶端函式庫，可用於瀏覽器及 Node.js'
 next_title: '簡單示例'
 next_link: '/zhTW/docs/example'
 ---
 
 # Axios 是什麼？
 
-Axios 提供了[基於 Promise](https://javascript.info/promise-basics) 的 HTTP 客戶端，可以執行於 [`Node.js`](https://nodejs.org/zh-tw/) 及瀏覽器中，此特性使得同樣的程式碼無需經過修改，就能在前後端使用。在伺服器端 Axios 使用了 Node.js 的 `http` 模組，而在客戶端上（也就是瀏覽器）使用了 XMLHttpRequests。
+Axios 提供了[以 Promise 為基礎](https://javascript.info/promise-basics) 的 HTTP 用戶端，可以執行於 [`Node.js`](https://nodejs.org/zh-tw/) 及瀏覽器中，此特性使得同樣的程式碼無需經過修改，就能在前後端使用。在伺服器端 Axios 使用了 Node.js 的 `http` 模組，而在客戶端上（也就是瀏覽器）使用了 XMLHttpRequest。
 
 # 功能
 
-- 從瀏覽器發起 [XMLHttpRequests](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest) 請求
+- 從瀏覽器發起 [XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest) 請求
 - 從 Node.js 發起 [http](http://nodejs.org/api/http.html) 請求
 - 支援 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
 - 攔截請求及回應

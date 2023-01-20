@@ -10,7 +10,7 @@ module.exports = {
   lang: "zhTW",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
   p: {
-    headline: "Axios 是一款簡易的 HTTP 客戶端函式庫，可在瀏覽器及 Node.js 環境中使用。",
+    headline: "Axios 是一款簡易的 HTTP 用戶端函式庫，可在瀏覽器及 Node.js 環境中使用。",
     subhead: `Axios 尺寸小巧，且提供了擴充彈性強大的介面。`,
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
@@ -26,7 +26,7 @@ module.exports = {
     "Code of Conduct": "行為準則",
     "Fork on GitHub": "在 GitHub 上 fork 本專案",
     "Fork the Website": "在 GitHub 上 fork 本網站",
-    "Create an Issue": "反應問題",
+    "Create an Issue": "建立 Issue",
     "Next": "下一頁",
     "Previous": "上一頁",
     "Website Copy Right Footer": "本網站：© 2020 至今 John Jakob \"Jake\" Sarjeant，版權所有。已獲准許使用。",

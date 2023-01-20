@@ -8,7 +8,7 @@ next_link: '/zhTW/docs/urlencoded'
 
 ## AbortController
 
-自 `v0.22.0` 開始，Axios 支援了 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) 讓您可以用類似 fetch API 的方式來取消請求
+自 `v0.22.0` 開始，Axios 支援了 [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) ，讓您可以用類似 fetch API 的方式來取消請求。
 
 ```js
 const controller = new AbortController();
@@ -18,7 +18,7 @@ axios.get('/foo/bar', {
 }).then(function(response) {
    //...
 });
-// cancel the request
+// 取消請求
 controller.abort()
 ```
 
@@ -42,7 +42,7 @@ axios.get('/user/12345', {
   if (axios.isCancel(thrown)) {
     console.log('Request canceled', thrown.message);
   } else {
-    // handle error
+    // 錯誤處理
   }
 });
 
@@ -52,7 +52,7 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
+// 取消請求（message 參數可省略）
 source.cancel('Operation canceled by the user.');
 ```
 
@@ -64,12 +64,12 @@ let cancel;
 
 axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
-    // An executor function receives a cancel function as a parameter
+    // executor 函式會接收一個取消函式參數
     cancel = c;
   })
 });
 
-// cancel the request
+// 取消請求
 cancel();
 ```
 
@@ -90,7 +90,7 @@ axios.get('/user/12345', {
   if (axios.isCancel(thrown)) {
     console.log('Request canceled', thrown.message);
   } else {
-    // handle error
+    // 錯誤處理
   }
 });
 
