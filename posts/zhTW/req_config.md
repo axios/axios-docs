@@ -73,7 +73,7 @@ next_link: '/zhTW/docs/res_schema'
   // 如果一則請求耗時超過此值，則中止該請求
   timeout: 1000, // 預設值為 `0`（無逾時限制）
 
-  // `withCredentials` 指定了是否要在 cross-site Access-Control 請求中使用認證機密
+  // `withCredentials` 指定了是否要在 cross-site Access-Control 請求中使用認證
   withCredentials: false, // 預設值
 
   // `adapter` 可用來自訂請求的處理方式，此選項可使測試變得更容易
@@ -82,7 +82,7 @@ next_link: '/zhTW/docs/res_schema'
     /* ... */
   },
 
-  // `auth` 選項會使用 HTTP Basic 來認證，並提供認證機密
+  // `auth` 選項會使用 HTTP Basic 認證，並提供認證資料
   // 此選項會覆寫 `headers` 中定義的 `Authorization` 標頭
   // 此選項僅能用來設定 HTTP Basic 認證，
   // 如需使用 Bearer token 或其他認證方式，請設定自訂的 `Authorization` 標頭
@@ -154,9 +154,9 @@ next_link: '/zhTW/docs/res_schema'
   // 您也可以透過傳統設定 `http_proxy` 及 `https_proxy` 環境變數的方式來定義 Proxy
   // 若您使用環境變數的方式配置 Proxy，也可以設定 `no_proxy` 環境變數來定義無需透過 Proxy 連接的網域白名單（以逗號隔開）
   // 此選項設為 `false` 時停用 Proxy，也會忽略相關的環境變數
-  // `auth` 子選項會使用 HTTP Basic 來認證，並提供認證機密
+  // `auth` 子選項會使用 HTTP Basic 認證，並提供認證資料
   // 提供 `auth` 子選項時，會覆寫 `headers` 選項中定義的 `Proxy-Authorization` 標頭
-  // 如果 Proxy 伺服器使用了 HTTPS，須將 protocol（協定）設為 `https`
+  // 如果 Proxy 伺服器使用了 HTTPS，須將 protocol（通訊協定）設為 `https`
   proxy: {
     protocol: 'https',
     host: '127.0.0.1',
