@@ -30,7 +30,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Ordre de priorité de la configuration
 
-Les différentes configurations sont combinées dans un certain ordre. Cet ordre est le suivant : d’abord les valeurs par défaut de la librairie que vous pouvez retrouver dans [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js), puis la propriété `defaults` de l’instance, et enfin l’argument `config` de la requête. Chaque nouvelle valeur a la priorité par rapport à ce qui était défini précédemment. Voici un exemple.
+Les différentes configurations sont combinées dans un certain ordre. Cet ordre est le suivant : d’abord les valeurs par défaut de la librairie que vous pouvez retrouver dans [`lib/defaults/index.js`](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js#L40), puis la propriété `defaults` de l’instance, et enfin l’argument `config` de la requête. Chaque nouvelle valeur a la priorité par rapport à ce qui était défini précédemment. Voici un exemple.
 
 ```js
 // Création d’une instance en utilisant la configuration par défaut de la

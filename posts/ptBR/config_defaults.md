@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Ordem de precedência
 
-As configurações serão mescladas pela ordem de precedente. A ordem é o padrão da biblioteca encontrados em [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), depos as propriedades `defaults` da instância, e finalmente `config` argumentos para a requisição. O último terá precedência sobre o primeiro. Aqui está um exemplo.
+As configurações serão mescladas pela ordem de precedente. A ordem é o padrão da biblioteca encontrados em [`lib/defaults/index.js`](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js#L40), depos as propriedades `defaults` da instância, e finalmente `config` argumentos para a requisição. O último terá precedência sobre o primeiro. Aqui está um exemplo.
 
 ```js
 // Cria uma instancia usando os padrões de configurações fornecidas pela biblioteca
