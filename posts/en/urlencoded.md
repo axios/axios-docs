@@ -6,7 +6,7 @@ next_title: 'Multipart Bodies'
 next_link: '/docs/multipart'
 ---
 
-By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following options.
+By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following approaches.
 
 ### Browser
 
@@ -101,15 +101,15 @@ The server will handle it as
   }
 ````
 
-If the backend framework request body parser (like `body-parser` of `express.js`) supports nested objects decoding, 
-you will automatically receive the same server-side object that you sent.
+If your server framework's request body parser (like `body-parser` of `express.js`) supports nested objects decoding, 
+you will automatically receive the same server object that you submitted.
 
 Echo server example (`express.js`) :
 
 ```js
   var app = express();
   
-  app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+  app.use(bodyParser.urlencoded({ extended: true })); // support url-encoded bodies
   
   app.post('/', function (req, res, next) {
      res.send(JSON.stringify(req.body));

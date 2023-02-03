@@ -1,5 +1,5 @@
 ---
-title: 'mMultipart Bodies'
+title: 'Multipart Bodies'
 prev_title: 'URL-Encoding Bodies'
 prev_link: '/docs/urlencoded'
 next_title: 'Notes'
@@ -21,7 +21,43 @@ form.append('my_file', fileInput.files[0]);
 axios.post('https://example.com', form)
 ```
 
+The same result can be achieved using the internal Axios serializer and corresponding shorthand method:
+
+```js
+axios.postForm('https://httpbin.org/post', {
+  my_field: 'my value',
+  my_buffer: new Blob([1,2,3]),
+  my_file:  fileInput.files // FileList will be unwrapped as sepate fields
+});
+```
+
+HTML form can be passes directly as a request payload
+
 #### Node.js
+
+```js 
+import axios from 'axios';
+
+const form = new FormData();
+form.append('my_field', 'my value');
+form.append('my_buffer', new Blob(['some content']));
+
+axios.post('https://example.com', form)
+```
+
+Since node.js does not currently support creating a `Blob` from a file, you can use a third-party package for this purpose.
+
+```js
+import {fileFromPath} from 'formdata-node/file-from-path'
+
+form.append('my_field', 'my value');
+form.append('my_file', await fileFromPath('/foo/bar.jpg'));
+
+axios.post('https://example.com', form)
+```
+
+For Axios older than `v1.3.0` you must import `form-data` package.
+
 ```js 
 const FormData = require('form-data');
 
@@ -43,7 +79,12 @@ The following request will submit the data in a FormData format (Browser & Node.
 ```js
 import axios from 'axios';
 
-axios.post('https://httpbin.org/post', {x: 1}, {
+axios.post('https://httpbin.org/post', {
+  user: {
+    name: 'Dmitriy'
+  },
+  file: fs.createReadStream('/foo/bar.jpg')
+}, {
   headers: {
     'Content-Type': 'multipart/form-data'
   }
@@ -105,7 +146,7 @@ formData.append('obj2{}', '[{"x":1}]');
 ```
 
 ```js
-const axios= require('axios');
+import axios from 'axios';
 
 axios.post('https://httpbin.org/post', {
   'myObj{}': {x: 1, s: "foo"},
