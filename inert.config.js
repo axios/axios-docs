@@ -20,13 +20,14 @@ const zhConfig = require("./zh.lang.js");
 const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
-const esConfig = require('./es.lang.js');
+const esConfig = require("./es.lang.js");
 const frConfig = require("./fr.lang.js");
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const arConfig = require("./ar.lang.js");
 
 // List of languages
 const langs = [
@@ -107,8 +108,15 @@ const langs = [
     dir: "ltr",
     name: "Русский",
     prefix: "/ru/",
-    config: ruConfig
-  }
+    config: ruConfig,
+  },
+  {
+    dir: "rtl",
+    name: "عربي",
+    prefix: "/ar/",
+    postsDir: "ar", // Not required if prefix is `/<name of folder containing documentation files>/`
+    config: arConfig,
+  },
 ];
 
 /**
@@ -229,9 +237,10 @@ module.exports = {
       ...langs
         .map((lang) => [
           singleHTMLBuild(lang.config),
-          writeFile(lang.prefix === '/'
-            ? ':output:/index.html'
-            : `:${lang.prefix.slice(1, -1)}Output:/index.html`
+          writeFile(
+            lang.prefix === "/"
+              ? ":output:/index.html"
+              : `:${lang.prefix.slice(1, -1)}Output:/index.html`
           ),
         ])
         .flat(),
@@ -305,19 +314,22 @@ module.exports = {
           ],
         },
       },
-      ...langs.map(
-        (lang) => ({
-          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
-          build: {
-            traverseLevel: "recursive",
-            filePipeline: [
-              markdown(),
-              htmlBuild("post", lang.config),
-              write(lang.prefix === '/' ? 'postOutput' : `${lang.prefix.slice(1, -1)}Posts`, ".html"),
-            ],
-          },
-        })
-      ),
+      ...langs.map((lang) => ({
+        folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
+        build: {
+          traverseLevel: "recursive",
+          filePipeline: [
+            markdown(),
+            htmlBuild("post", lang.config),
+            write(
+              lang.prefix === "/"
+                ? "postOutput"
+                : `${lang.prefix.slice(1, -1)}Posts`,
+              ".html"
+            ),
+          ],
+        },
+      })),
     ],
   },
 };
