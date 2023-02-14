@@ -14,6 +14,7 @@ const {
   halt,
 } = inert;
 
+const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -109,6 +110,12 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },{
+    dir: "rtl",
+    name: "Arabic",
+    prefix: "/ar/",
+    postsDir: "ar",
+    config: arConfig,
   },
   {
     dir: "ltr",
