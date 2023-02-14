@@ -16,7 +16,17 @@ Axios is a *[promise-based](https://javascript.info/promise-basics)* HTTP Client
 - Intercept request and response
 - Transform request and response data
 - Cancel requests
-- Automatic transforms for JSON data
+- Timeouts
+- Query parameters serialization with support for nested entries
+- Automatic request body serialization to:
+    - JSON (`application/json`)
+    - Multipart / FormData (`multipart/form-data`)
+    - URL encoded form (`application/x-www-form-urlencoded`)
+- Posting HTML forms as JSON    
+- Automatic JSON data handling in response   
+- Progress capturing for browsers and node.js with extra info (speed rate, remaining time)
+- Setting bandwidth limits for node.js
+- Compatible with spec-compliant FormData and Blob (including `node.js`)
 - Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
 # Installing
@@ -49,4 +59,11 @@ Using unpkg CDN:
 
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+Prebuilt CommonJS modules for direct importing with require (if your module bundler failed to resolve them automatically)
+
+```js
+const axios = require('axios/dist/browser/axios.cjs'); // browser
+const axios = require('axios/dist/node/axios.cjs'); // node
 ```

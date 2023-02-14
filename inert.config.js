@@ -28,6 +28,7 @@ const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const jaConfig = require("./ja.lang.js");
 
 // List of languages
 const langs = [
@@ -115,6 +116,12 @@ const langs = [
     prefix: "/ar/",
     postsDir: "ar",
     config: arConfig,
+  },
+  {
+    dir: "ltr",
+    name: "日本語",
+    prefix: "/ja/",
+    config: jaConfig
   }
 ];
 
