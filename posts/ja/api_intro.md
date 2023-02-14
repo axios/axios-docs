@@ -1,18 +1,18 @@
 ---
 title: 'Axios API'
-description: 'The Axios API Reference'
-prev_title: 'POST Requests'
+description: 'Axios API リファレンス'
+prev_title: 'POST リクエスト'
 prev_link: '/docs/post_example'
-next_title: 'The Axios Instance'
+next_title: 'Axios インスタンス'
 next_link: '/docs/instance'
 ---
 
-Requests can be made by passing the relevant config to `axios`.
+関連する設定を `axios` に渡すことでリクエストを行うことができます。
 
 ##### axios(config)
 
 ```js
-// Send a POST request
+// POST リクエストを送信する
 axios({
   method: 'post',
   url: '/user/12345',
@@ -24,7 +24,7 @@ axios({
 ```
 
 ```js
-// GET request for remote image in node.js
+// Node.js でのリモート画像を GET リクエスト
 axios({
   method: 'get',
   url: 'http://bit.ly/2mTM3nY',
@@ -38,13 +38,13 @@ axios({
 ##### axios(url[, config])
 
 ```js
-// Send a GET request (default method)
+// GET リクエストの送信（デフォルト メソッド）
 axios('/user/12345');
 ```
 
-### Request method aliases
+### リクエスト メソッドのエイリアス
 
-For convenience aliases have been provided for all supported request methods.
+使いやすいように、サポートされているすべてのリクエスト メソッドにエイリアスが提供されています。
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -54,9 +54,7 @@ For convenience aliases have been provided for all supported request methods.
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
-##### axios.postForm(url[, data[, config]])
-##### axios.putForm(url[, data[, config]])
-##### axios.patchForm(url[, data[, config]])
 
-###### NOTE
-When using the alias methods `url`, `method`, and `data` properties don't need to be specified in config.
+###### 注
+
+エイリアス メソッドを使用する場合、`url`、` method`、および `data` プロパティを設定で指定する必要はありません。
