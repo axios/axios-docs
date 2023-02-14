@@ -28,7 +28,7 @@ Você pode cancelar uma requisição usando um *cancel token*.
 
 > O token de cancelamento do axios é baseado em retirada [proposta de promessas canceláveis](https://github.com/tc39/proposal-cancelable-promises).
 
-Você pode criar um token de cancelamento usando o `CancelToken.souce` conforme mostrado abaixo:
+Você pode criar um token de cancelamento usando o `CancelToken.source` conforme mostrado abaixo:
 
 ```js
 const CancelToken = axios.CancelToken;
