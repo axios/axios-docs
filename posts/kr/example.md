@@ -34,7 +34,7 @@ axios.get('/user?ID=12345')
     // 에러 핸들링
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // 항상 실행되는 영역
   });
 
@@ -50,7 +50,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // 항상 실행되는 영역
   });  
 
