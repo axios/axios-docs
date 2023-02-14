@@ -6,7 +6,19 @@ next_title: 'URL-Encoding Bodies'
 next_link: '/docs/urlencoded'
 ---
 
-## AbortController
+## Cancelling requests
+
+Setting the `timeout` property in an axios call handles **response** related timeouts. 
+
+In some cases (e.g. network connection becomes unavailable) an axios call would benefit from cancelling the **connection** early. Without cancellation, the axios call can hang until the parent code/stack times out (might be a few minutes in a server-side applications). 
+
+To terminate an axios call you can use following methods:
+- `signal`
+- `cancelToken` (deprecated)
+
+Combining `timeout` and cancellation method (e.g. `signal`) should cover **response** related timeouts AND **connection** related timeouts.
+
+### `signal`: AbortController
 
 Starting from `v0.22.0` Axios supports [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel requests in fetch API way:
 
@@ -22,7 +34,32 @@ axios.get('/foo/bar', {
 controller.abort()
 ```
 
-## CancelToken `deprecated`
+Example with a timeout using latest [`AbortSignal.timeout()`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) API [nodejs 17.3+]:
+```js
+axios.get('/foo/bar', {
+   signal: AbortSignal.timeout(5000) //Aborts request after 5 seconds
+}).then(function(response) {
+   //...
+});
+```
+
+Example with a timeout helper function:
+```js
+function newAbortSignal(timeoutMs) {
+  const abortController = new AbortController();
+  setTimeout(() => abortController.abort(), timeoutMs || 0);
+
+  return abortController.signal;
+}
+
+axios.get('/foo/bar', {
+   signal: newAbortSignal(5000) //Aborts request after 5 seconds
+}).then(function(response) {
+   //...
+});
+```
+
+### CancelToken `deprecated`
 
 You can also cancel a request using a *CancelToken*. 
 
