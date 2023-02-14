@@ -2,11 +2,11 @@
 title: 'URL-Encoding Bodies'
 prev_title: 'Cancellation'
 prev_link: '/docs/cancellation'
-next_title: 'Multipart Bodies'
-next_link: '/docs/multipart'
+next_title: 'Notes'
+next_link: '/docs/notes'
 ---
 
-By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following approaches.
+By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following options.
 
 ### Browser
 
@@ -63,57 +63,31 @@ axios.post('http://something.com/', params.toString());
 
 You can also use the [`qs`](https://github.com/ljharb/qs) library.
 
-> Note: The `qs` library is preferable if you need to stringify nested objects, as the `querystring` method has known issues with that use case (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+###### NOTE
+The `qs` library is preferable if you need to stringify nested objects, as the `querystring` method has known issues with that use case (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
-### 🆕 Automatic serialization
+#### Form data
 
-Axios will automatically serialize the data object to urlencoded format if the `content-type` header is set to `application/x-www-form-urlencoded`.
-
-This works both in the browser and in `node.js`:
+In node.js, you can use the [`form-data`](https://github.com/form-data/form-data) library as follows:
 
 ```js
-const data = {
-  x: 1,
-  arr: [1, 2, 3],
-  arr2: [1, [2], 3],
-  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
-};
+const FormData = require('form-data');
+ 
+const form = new FormData();
+form.append('my_field', 'my value');
+form.append('my_buffer', new Buffer(10));
+form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
 
-await axios.post('https://postman-echo.com/post', data,
-  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
-);
+axios.post('https://example.com', form, { headers: form.getHeaders() })
 ```
 
-The server will handle it as 
+Alternatively, use an interceptor:
 
 ```js
-  {
-    x: '1',
-    'arr[]': [ '1', '2', '3' ],
-    'arr2[0]': '1',
-    'arr2[1][0]': '2',
-    'arr2[2]': '3',
-    'arr3[]': [ '1', '2', '3' ],
-    'users[0][name]': 'Peter',
-    'users[0][surname]': 'griffin',
-    'users[1][name]': 'Thomas',
-    'users[1][surname]': 'Anderson'
+axios.interceptors.request.use(config => {
+  if (config.data instanceof FormData) {
+    Object.assign(config.headers, config.data.getHeaders());
   }
-````
-
-If your server framework's request body parser (like `body-parser` of `express.js`) supports nested objects decoding, 
-you will automatically receive the same server object that you submitted.
-
-Echo server example (`express.js`) :
-
-```js
-  var app = express();
-  
-  app.use(bodyParser.urlencoded({ extended: true })); // support url-encoded bodies
-  
-  app.post('/', function (req, res, next) {
-     res.send(JSON.stringify(req.body));
-  });
-
-  server = app.listen(3000);
+  return config;
+});
 ```

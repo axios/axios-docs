@@ -14,6 +14,7 @@ const {
   halt,
 } = inert;
 
+const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -28,6 +29,7 @@ const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
 const zhTWConfig = require("./zhTW.lang.js")
+const jaConfig = require("./ja.lang.js");
 
 // List of languages
 const langs = [
@@ -115,6 +117,18 @@ const langs = [
     name: "繁體中文 (台灣)",
     prefix: "/zhTW/",
     config: zhTWConfig,
+  },{
+    dir: "rtl",
+    name: "Arabic",
+    prefix: "/ar/",
+    postsDir: "ar",
+    config: arConfig,
+  },
+  {
+    dir: "ltr",
+    name: "日本語",
+    prefix: "/ja/",
+    config: jaConfig
   }
 ];
 
