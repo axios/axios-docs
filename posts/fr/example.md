@@ -33,7 +33,7 @@ axios.get('/user?ID=12345')
     // en cas d’échec de la requête
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // dans tous les cas
   });
 
@@ -49,7 +49,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // dans tous les cas
   });  
 

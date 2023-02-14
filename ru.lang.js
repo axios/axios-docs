@@ -15,7 +15,14 @@
     "Source on GitHub": "Исходный код на GitHub",
     "Fork on GitHub": "Форкнуть на GitHub",
     "Fork the Website": "Форкнуть сайт",
-    "Create an Issue": "Создать Issue",
+    "Create an Issue": "Сообщить о проблеме",
+    "Issues": "Проблемы",
+    "Pull Requests": "Пулл-реквесты",
+    "Next": "Следующее",
+    "Previous": "Предыдущее",
+    "Website Copy Right Footer": "Веб-сайт: Copyright © 2020-настоящее время John Jakob \"Jake\" Sarjeant. Используется с разрешения.",
+    "Axios Project Copy Right Footer": "Проект Axios: Copyright © 2014-настоящее время Matt Zabriskie.",
+    "License Label Footer": "Под лицензией"
   },
   sidebar: [
     {

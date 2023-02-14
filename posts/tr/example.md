@@ -33,7 +33,7 @@ axios.get('/user?ID=12345')
     // hatayı ele al
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // her koşulda çalıştırılır
   });
 
@@ -49,7 +49,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // her koşulda çalıştırılır
   });  
 
