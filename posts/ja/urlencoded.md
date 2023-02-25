@@ -1,16 +1,16 @@
 ---
 title: 'URL-エンコードボディ'
 prev_title: 'キャンセル'
-prev_link: '/docs/cancellation'
-next_title: '特記事項'
-next_link: '/docs/notes'
+prev_link: '/ja/docs/cancellation'
+next_title: 'マルチパートボディ'
+next_link: '/ja/docs/multipart'
 ---
 
 デフォルトでは、Axios は JavaScript オブジェクトを `JSON` にシリアライズします。代わりに `application/x-www-form-urlencoded` 形式でデータを送信するには、次のいずれかのオプションを使用します。
 
 ### ブラウザ
 
-ブラウザでは、以下のように [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) の API を使用できます。
+ブラウザでは、以下のように [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) の API を使用できます:
 
 ```js
 const params = new URLSearchParams();
@@ -21,7 +21,7 @@ axios.post('/foo', params);
 
 > なお、`URLSearchParams` はすべてのブラウザでサポートされているわけではありませんが (参照: [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams))、[polyfill](https://github.com/WebReflection/url-search-params) が利用できます (必ずグローバル環境をポリフィルしてください)。
 
-または、以下のように [`qs`](https://github.com/ljharb/qs) ライブラリを使用してデータをエンコードすることもできます。
+または、以下のように [`qs`](https://github.com/ljharb/qs) ライブラリを使用してデータをエンコードすることもできます:
 
 ```js
 const qs = require('qs');
@@ -46,14 +46,14 @@ axios(options);
 
 #### クエリ文字列
 
-Node.js では、以下のように [`querystring`](https://nodejs.org/api/querystring.html) モジュールを使用することができます。
+Node.js では、以下のように [`querystring`](https://nodejs.org/api/querystring.html) モジュールを使用することができます:
 
 ```js
 const querystring = require('querystring');
 axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
-または、['url module'](https://nodejs.org/api/url.html) に定義された ['URLSearchParams'](https://nodejs.org/api/url.html#url_class_urlsearchparams) を以下のように使用します。
+または、['url module'](https://nodejs.org/api/url.html) に定義された ['URLSearchParams'](https://nodejs.org/api/url.html#url_class_urlsearchparams) を以下のように使用します:
 
 ```js
 const url = require('url');
@@ -63,32 +63,57 @@ axios.post('http://something.com/', params.toString());
 
 また、[`qs`](https://github.com/ljharb/qs) ライブラリを使用することもできます。
 
-###### 注
+> 注: ネストしたオブジェクトを文字列化する必要がある場合は、`qs` ライブラリの使用適しています。`querystring` メソッドには、その使用例に関する既知の問題があるからです (https://github.com/nodejs/node-v0.x-archive/issues/1665)。
 
-ネストしたオブジェクトを文字列化する必要がある場合は、`qs` ライブラリが適しています。なぜなら、 `querystring` メソッドには、その使用例に対して既知の問題があるからです (https://github.com/nodejs/node-v0.x-archive/issues/1665)。
+### 🆕 自動シリアライゼーション
 
-#### フォームデータ
+Axios は、`content-type` ヘッダーが `application/x-www-form-urlencoded` に設定されている場合、データオブジェクトを自動的に urlencoded 形式にシリアライズします。
 
-Node.js では、以下のように [`form-data`](https://github.com/form-data/form-data) ライブラリを使用することができます。
+これは、ブラウザと `Node.js` の両方で動作します:
 
 ```js
-const FormData = require('form-data');
- 
-const form = new FormData();
-form.append('my_field', 'my value');
-form.append('my_buffer', new Buffer(10));
-form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
+const data = {
+  x: 1,
+  arr: [1, 2, 3],
+  arr2: [1, [2], 3],
+  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
+};
 
-axios.post('https://example.com', form, { headers: form.getHeaders() })
+await axios.post('https://postman-echo.com/post', data,
+  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+);
 ```
 
-または、以下のようにインターセプターを使用します。
+サーバーはそれを次のように処理します
 
 ```js
-axios.interceptors.request.use(config => {
-  if (config.data instanceof FormData) {
-    Object.assign(config.headers, config.data.getHeaders());
+  {
+    x: '1',
+    'arr[]': [ '1', '2', '3' ],
+    'arr2[0]': '1',
+    'arr2[1][0]': '2',
+    'arr2[2]': '3',
+    'arr3[]': [ '1', '2', '3' ],
+    'users[0][name]': 'Peter',
+    'users[0][surname]': 'griffin',
+    'users[1][name]': 'Thomas',
+    'users[1][surname]': 'Anderson'
   }
-  return config;
-});
+```
+
+サーバーフレームワークのリクエストボディパーサー（`express.js` の `body-parser` など）がネストしたオブジェクトのデコードをサポートしている場合、
+送信したものと同じサーバーオブジェクトが自動的に受信されます。
+
+エコーサーバーの例（`express.js`） :
+
+```js
+  var app = express();
+  
+  app.use(bodyParser.urlencoded({ extended: true })); // URL-エンコードボディをサポート
+  
+  app.post('/', function (req, res, next) {
+     res.send(JSON.stringify(req.body));
+  });
+
+  server = app.listen(3000);
 ```

@@ -1,15 +1,14 @@
 ---
-title: '最小構成の使用例'
+title: '最小限の例'
 description: 'Axios の簡単な使用例'
-prev_title: 'Axios 入門'
-prev_link: '/docs/intro'
+prev_title: 'はじめに'
+prev_link: '/ja/docs/intro'
 next_title: 'POST リクエスト'
-next_link: '/docs/post_example'
+next_link: '/ja/docs/post_example'
 ---
 
 ## 注: CommonJS の使用法
-
-CommonJS の `require()` 関数でインポートをしながら、TypeScript の型付け (インテリセンスやオートコンプリートのため) を利用するためには、以下の方法を使用します。
+CommonJS の `require()` 関数でインポートをしながら、TypeScript の型付け (インテリセンスやオートコンプリートのため) を利用するためには、以下の方法を使用します:
 
 ```js
 const axios = require('axios').default;
@@ -34,7 +33,7 @@ axios.get('/user?ID=12345')
     // エラー処理
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // 常に実行
   });
 
@@ -50,7 +49,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // 常に実行
   });  
 
@@ -65,5 +64,5 @@ async function getUser() {
 }
 ```
 
-> **注:** `async/await`は ECMAScript 2017 の一部であり、Internet Explorer および
-> 古いブラウザーではサポートされていないため、注意して使用してください。
+> **注:** `async/await` は ECMAScript 2017 の一部であり、Internet Explorer および
+> 古いブラウザではサポートされていないため、注意して使用してください。

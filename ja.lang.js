@@ -39,12 +39,12 @@ module.exports = {
   sidebar: [
     {
       type: "heading",
-      text: "Axiom 入門",
+      text: "はじめに",
     },
     {
       type: "link",
       href: "/docs/intro",
-      text: "Axiom 入門",
+      text: "はじめに",
     },
     {
       type: "link",
@@ -103,7 +103,12 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "URL-エンコードボディ",
+      text: "🆕 URL-エンコードボディ",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 マルチパートボディ",
     },
     {
       type: "heading",

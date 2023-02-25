@@ -1,8 +1,8 @@
 ---
 title: '特記事項'
 description: '最後にもういくつかの注意点をあげておきます'
-prev_title: 'URL-エンコードボディ'
-prev_link: '/docs/urlencoded'
+prev_title: 'マルチパートボディ'
+prev_link: '/ja/docs/multipart'
 ---
 
 ## Semver
@@ -15,9 +15,7 @@ Axios は、ネイティブの ES6 Promise の実装に依存し、[サポート
 ES6 Promise をサポートしていない環境では、[ポリフィル](https://github.com/jakearchibald/es6-promise) を利用できます。
 
 ## TypeScript
-
 Axios には、[TypeScript](http://typescriptlang.org/) の定義が含まれています。
-
 ```typescript
 import axios from 'axios';
 axios.get('/user?ID=12345');

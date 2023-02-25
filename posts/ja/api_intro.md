@@ -2,9 +2,9 @@
 title: 'Axios API'
 description: 'Axios API リファレンス'
 prev_title: 'POST リクエスト'
-prev_link: '/docs/post_example'
+prev_link: '/ja/docs/post_example'
 next_title: 'Axios インスタンス'
-next_link: '/docs/instance'
+next_link: '/ja/docs/instance'
 ---
 
 関連する設定を `axios` に渡すことでリクエストを行うことができます。
@@ -54,7 +54,9 @@ axios('/user/12345');
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### 注
-
-エイリアス メソッドを使用する場合、`url`、` method`、および `data` プロパティを設定で指定する必要はありません。
+エイリアス メソッドを使用する場合、config に `url`、`method`、および `data` プロパティを指定する必要はありません。
