@@ -34,7 +34,9 @@ module.exports = {
     "Website Copy Right Footer": undefined,
     "View On Github": undefined,
     "Axios Project Copy Right Footer": undefined,
-    "License Label Footer": undefined
+    "License Label Footer": undefined,
+    "Sponsors": undefined,
+    "Become a sponsor": undefined
   },
   sidebar: [
     {

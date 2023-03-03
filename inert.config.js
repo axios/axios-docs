@@ -28,6 +28,8 @@ const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
 
+const data = require('./temp/data.json');
+
 // List of languages
 const langs = [
   {
@@ -126,6 +128,7 @@ module.exports = {
     title: "Axios Docs",
     // List of languages
     langs: langs,
+    ...data
   },
   build: {
     /**
@@ -258,7 +261,7 @@ module.exports = {
            *
            * `flat` is a little faster, so If you can, you should use it.
            */
-          traverseLevel: "flat", // There will be no subfolders, at least in this template
+          traverseLevel: "recursive", // There will be no subfolders, at least in this template
           /**
            * A list of methods.
            *

@@ -15,7 +15,7 @@ module.exports = {
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
-    "Get Started": "Починаючи",
+    "Get Started": "Почати",
     "View on GitHub": "Переглянути на GitHub",
     "Languages": "Мови",
     "Open Source": "Open Source",
@@ -24,6 +24,8 @@ module.exports = {
     "Fork on GitHub": "Форкнути на GitHub",
     "Fork the Website": "Форкнути сайт",
     "Create an Issue": "Створіть Issue",
+    "Sponsors": "Спонсори",
+    "Become a sponsor": "Стати спонсором"
   },
   sidebar: [
     {
