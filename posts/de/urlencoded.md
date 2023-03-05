@@ -6,11 +6,11 @@ next_title: 'Weitere Notizen'
 next_link: '/de/docs/notes'
 ---
 
-Normalerweise serialisiert Axios JavaScript-Objekte zu `JSON`. Um Daten stattdessen im format `application/x-www-form-urlencoded` zu senden, können sie die folgenden Methoden verwenden:
+Normalerweise serialisiert Axios JavaScript-Objekte zu `JSON`. Um Daten stattdessen im Format `application/x-www-form-urlencoded` zu senden, können die folgenden Methoden verwendet werden:
 
 ### Browser
 
-In einem browser können sie die [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)-API wie folgt verwenden:
+In einem Browser kann die [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)-API wie folgt verwendet werden:
 
 ```js
 const params = new URLSearchParams();
@@ -19,9 +19,9 @@ params.append('param2', 'value2');
 axios.post('/foo', params);
 ```
 
-> `URLSearchParams` wird nciht von allen Browser unterstützt (siehe [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), aber es gibt einen [Polyfill](https://github.com/WebReflection/url-search-params).
+> `URLSearchParams` wird nicht von allen Browsern unterstützt (siehe [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), aber es gibt ein [Polyfill](https://github.com/WebReflection/url-search-params).
 
-Als alternative können sie Daten mit dem Modul [`qs`](https://github.com/ljharb/qs) verarbeiten:
+Als Alternative können Daten mit dem Modul [`qs`](https://github.com/ljharb/qs) verarbeitet werden:
 
 ```js
 const qs = require('qs');
@@ -46,14 +46,14 @@ axios(options);
 
 #### Query string
 
-In Node.js können sie das Modul [`querystring`](https://nodejs.org/api/querystring.html) zur hand nehmen:
+In Node.js kann das Modul [`querystring`](https://nodejs.org/api/querystring.html) verwendet werden:
 
 ```js
 const querystring = require('querystring');
 axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
-oder [`URLSearchParams`](https://nodejs.org/api/url.html#url_class_urlsearchparams) aus dem Modul [`url`](https://nodejs.org/api/url.html) wie folgt verwenden:
+oder [`URLSearchParams`](https://nodejs.org/api/url.html#url_class_urlsearchparams) aus dem Modul [`url`](https://nodejs.org/api/url.html):
 
 ```js
 const url = require('url');
@@ -61,12 +61,12 @@ const params = new url.URLSearchParams({ foo: 'bar' });
 axios.post('http://something.com/', params.toString());
 ```
 
-Das Modul [`qs`](https://github.com/ljharb/qs) funktioniert auch.
+Das Modul [`qs`](https://github.com/ljharb/qs) funktioniert ebenso.
 
-###### NOTE
-Falls sie genestete Objekte senden müssen ist das Modul `qs` die besser wahl, da das Modul `querystring` bekanntlich Probleme mit solchen Fällen hat (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+###### Hinweis
+Um verschachtelte Objekte senden zu können ist das Modul `qs` die bessere Wahl, da das Modul `querystring` bekanntlich Probleme mit solchen Fällen hat (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
-#### Form data
+#### Formulardaten
 
 In Node.js funktioniert auch das Module [`form-data`](https://github.com/form-data/form-data):
 
@@ -81,7 +81,7 @@ form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
 axios.post('https://example.com', form, { headers: form.getHeaders() })
 ```
 
-Alternativ können sie auch einen Abfänger verwenden.
+Alternativ kann auch ein Abfänger verwendet werden.
 
 ```js
 axios.interceptors.request.use(config => {

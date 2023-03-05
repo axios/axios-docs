@@ -105,7 +105,12 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "URL-Encoding Bodies",
+      text: "🆕 URL-Encoding Bodies",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Multipart Bodies",
     },
     {
       type: "heading",

@@ -6,11 +6,29 @@ next_title: 'Corpo de codificação de URL'
 next_link: '/ptBR/docs/urlencoded'
 ---
 
+## AbortController
+
+A partir da `v0.22.0`, o Axios oferece suporte ao [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) para cancelar requisições em forma de API fetch.
+
+```js
+const controller = new AbortController();
+
+axios.get('/foo/bar', {
+   signal: controller.signal
+}).then(function(response) {
+   //...
+});
+// cancela a requisição
+controller.abort()
+```
+
+## CancelToken `descontinuado`
+
 Você pode cancelar uma requisição usando um *cancel token*.
 
 > O token de cancelamento do axios é baseado em retirada [proposta de promessas canceláveis](https://github.com/tc39/proposal-cancelable-promises).
 
-Você pode criar um token de cancelamento usando o `CancelToken.souce` conforme mostrado abaixo:
+Você pode criar um token de cancelamento usando o `CancelToken.source` conforme mostrado abaixo:
 
 ```js
 const CancelToken = axios.CancelToken;

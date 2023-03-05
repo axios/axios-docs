@@ -60,13 +60,13 @@ body {
   }
 
   background: var(--col-bg);
-  transition: 300ms;
+  transition: var(--transition-delay);
 }
 
 header {
   z-index: 100;
   background: var(--col-bg);
-  transition: 300ms;
+  transition: var(--transition-delay);
   position: fixed;
   top: 0;
   left: 0;
@@ -121,7 +121,7 @@ header {
   nav {
     display: none;
     a {
-      transition: opacity 300ms;
+      transition: opacity var(--transition-delay);
       color: var(--col-fg);
       opacity: 0.5;
       text-decoration: none;
@@ -157,7 +157,7 @@ aside {
   border-right: 1px solid var(--gray-2);
 
   transform: translateX(-100%);
-  transition: transform 300ms;
+  transition: transform var(--transition-delay);
 
   .aside-container {
     flex: 1 0 0;
@@ -287,13 +287,13 @@ aside {
     padding: 2rem;
     width: 100%;
     background: var(--col-bg);
-    transition: 300ms;
+    transition: var(--transition-delay);
   }
 
   .theme {
     color: var(--gray-2);
     background: var(--gray-2);
-    transition: 300ms;
+    transition: var(--transition-delay);
 
     width: 100%;
 /*    height: 8rem;*/
@@ -312,19 +312,19 @@ aside {
 
     .light,
     .dark {
-      transition: 300ms;
+      transition: var(--transition-delay);
       font-size: 0;
 
       svg > circle,
       svg > path {
-        transition: 300ms;
+        transition: var(--transition-delay);
         color: var(--col-fg);
       }
     }
 
     .slider {
       margin: 0px 25px;
-      transition: 300ms;
+      transition: var(--transition-delay);
 
       border-radius: 100px;
       height: 20px;
@@ -333,7 +333,7 @@ aside {
       position: relative;
 
       .roller {
-        transition: 300ms;
+        transition: var(--transition-delay);
         height: 16px;
         width: 16px;
         border-radius: 50%;

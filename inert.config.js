@@ -16,6 +16,7 @@ const {
 
 const fs = require("fs");
 
+const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -29,6 +30,7 @@ const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const jaConfig = require("./ja.lang.js");
 
 const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
   sponsors: []
@@ -114,6 +116,18 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },{
+    dir: "rtl",
+    name: "Arabic",
+    prefix: "/ar/",
+    postsDir: "ar",
+    config: arConfig,
+  },
+  {
+    dir: "ltr",
+    name: "日本語",
+    prefix: "/ja/",
+    config: jaConfig
   }
 ];
 

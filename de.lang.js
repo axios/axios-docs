@@ -98,7 +98,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/notes",
-      text: "Weitere Notizen",
+      text: "Weitere Hinweise",
     },
     {
       type: "heading",
