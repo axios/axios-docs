@@ -14,6 +14,8 @@ const {
   halt,
 } = inert;
 
+const fs = require("fs");
+
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -28,7 +30,9 @@ const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
 
-const data = require('./temp/data.json');
+const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
+  sponsors: []
+};
 
 // List of languages
 const langs = [
