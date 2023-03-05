@@ -79,7 +79,7 @@
                   <li class="splide__slide sponsor-card opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-is-active="<%= sponsor.hasActiveTier ? "yes" : "no" %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
                     <a href="<%= sponsor.utmLink || '' %>" target="_blank" >
                       <% if(sponsor.image){ %><img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/><% } %>
-                        <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
+                        <% if(sponsor.showCaption !== false){ %><span class="caption"><span><%= sponsor.displayName %></span></span><% } %>
                     </a>
                   </li>
                 <% } %>
