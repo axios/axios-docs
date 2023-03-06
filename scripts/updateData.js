@@ -151,7 +151,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
       if(!link) return;
 
-      return `<a href="${link}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
+      return `<a href="${makeUTMURL(link)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
     }).filter(Boolean).join('');
 
     tooltip += `<div class="social">${icons}</div>`
