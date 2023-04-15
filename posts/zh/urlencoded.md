@@ -2,8 +2,8 @@
 title: '请求体编码'
 prev_title: '取消请求'
 prev_link: '/zh/docs/cancellation'
-next_title: '注意事项'
-next_link: '/zh/docs/notes'
+next_title: 'Multipart 实体请求'
+next_link: '/zh/docs/multipart'
 ---
 
 默认情况下，axios将 JavaScript 对象序列化为 `JSON` 。 要以`application/x-www-form-urlencoded`格式发送数据，您可以使用以下选项之一。
@@ -90,4 +90,56 @@ axios.interceptors.request.use(config => {
   }
   return config;
 });
+```
+
+### 🆕 自动序列化
+
+当请求头中的 `content-type` 是  `application/x-www-form-urlencoded` 时，Axios 将自动地将普通对象序列化成 urlencoded 的格式。
+
+在浏览器和 `node.js` 环境中都适用：
+
+```js
+const data = {
+  x: 1,
+  arr: [1, 2, 3],
+  arr2: [1, [2], 3],
+  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
+};
+
+await axios.post('https://postman-echo.com/post', data,
+  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+);
+```
+
+服务器接收到的数据就像是这样：
+
+```js
+  {
+    x: '1',
+    'arr[]': [ '1', '2', '3' ],
+    'arr2[0]': '1',
+    'arr2[1][0]': '2',
+    'arr2[2]': '3',
+    'arr3[]': [ '1', '2', '3' ],
+    'users[0][name]': 'Peter',
+    'users[0][surname]': 'griffin',
+    'users[1][name]': 'Thomas',
+    'users[1][surname]': 'Anderson'
+  }
+````
+
+如果您的服务器框架的请求体解析器（例如`express.js`的`body-parser`）支持嵌套对象解码，则其接收到的数据将与您提交的数据一样。
+
+以下是一个`express.js`的服务器示例，它将会把接收到的数据作为响应返回：
+
+```js
+  var app = express();
+  
+  app.use(bodyParser.urlencoded({ extended: true })); // support url-encoded bodies
+  
+  app.post('/', function (req, res, next) {
+     res.send(JSON.stringify(req.body));
+  });
+
+  server = app.listen(3000);
 ```
