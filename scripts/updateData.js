@@ -42,8 +42,25 @@ const makeUTMURL = (url, params) => {
   return urlObj.toString();
 }
 
+const getWithRetry = (url, retries = 3) => {
+  let counter = 0;
+  const doRequest = async () => {
+    try {
+      return await axios.get(url)
+    } catch (err) {
+      if (counter++ >= retries) {
+        throw err;
+      }
+      await new Promise(resolve => setTimeout(resolve, counter ** counter * 1000));
+      return doRequest();
+    }
+  }
+
+  return doRequest();
+};
+
 const pullSponsors = async (collective, {type = 'organizations'} = {}) => {
-  const {data} = await axios.get(`https://opencollective.com/${collective}/members/${type}.json`);
+  const {data} = await getWithRetry(`https://opencollective.com/${collective}/members/${type}.json`);
 
   return data.map(({lastTransactionAt, ...entry}) => {
     const {profile, website} = entry;
