@@ -15,7 +15,7 @@ module.exports = {
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
-    "Get Started": "Почати",
+    "Get Started": "Починаючи",
     "View on GitHub": "Переглянути на GitHub",
     "Languages": "Мови",
     "Open Source": "Open Source",
