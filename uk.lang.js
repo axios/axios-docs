@@ -19,7 +19,7 @@ module.exports = {
     "View on GitHub": "Переглянути на GitHub",
     "Languages": "Мови",
     "Open Source": "Open Source",
-    "Contribute": "Внести свій внесок",
+    "Contribute": "Внесіть свій внесок",
     "Source on GitHub": "Джерело на GitHub",
     "Fork on GitHub": "Форкнути на GitHub",
     "Fork the Website": "Форкнути сайт",
@@ -28,7 +28,7 @@ module.exports = {
   sidebar: [
     {
       type: "heading",
-      text: "Почати",
+      text: "Починаючи",
     },
     {
       type: "link",
