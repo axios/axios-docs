@@ -16,7 +16,17 @@ Axios 是一个基于 *[promise](https://javascript.info/promise-basics)* 网络
 - 拦截请求和响应
 - 转换请求和响应数据
 - 取消请求
+- 超时处理
+- 查询参数序列化支持嵌套项处理
+- 自动将请求体序列化为：
+    - JSON (`application/json`)
+    - Multipart / FormData (`multipart/form-data`)
+    - URL encoded form (`application/x-www-form-urlencoded`)
+- 将 HTML Form 转换成 JSON 进行请求
 - 自动转换JSON数据
+- 获取浏览器和 node.js 的请求进度，并提供额外的信息（速度、剩余时间）
+- 为 node.js 设置带宽限制
+- 兼容符合规范的 FormData 和 Blob（包括 node.js）
 - 客户端支持防御[XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
 # 安装
@@ -49,4 +59,11 @@ $ yarn add axios
 
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+为了直接使用 `require` 导入预构建的 CommonJS 模块（如果您的模块打包器无法自动解析它们），我们提供了以下预构建模块：
+
+```js
+const axios = require('axios/dist/browser/axios.cjs'); // browser
+const axios = require('axios/dist/node/axios.cjs'); // node
 ```
