@@ -24,6 +24,11 @@
     />
 
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
@@ -91,6 +96,8 @@
           <% } %>
         <% }) %>
       </div>
+      <section id="sponsors" aria-label="Axios sponsors">
+      </section>
       <div class="button-container">
         <button class="theme">
           <div class="light">
@@ -150,14 +157,17 @@
             <span>« <%= locale.t['Previous'] || 'Previous' %></span>
             <span class="l"> <%= data.attributes.prev_title %> </span>
           </a>
-          <% } else { %>
-          <span></span>
-          <% } %> <% if (data.attributes.next_link) { %>
-          <a href="<%= data.attributes.next_link %>" class="next-link">
-            <span><%= locale.t['Next'] || 'Next' %> »</span>
-            <span class="l"> <%= data.attributes.next_title %> </span>
-          </a>
           <% } %>
+          <span>
+
+
+          </span>
+            <% if (data.attributes.next_link) { %>
+              <a href="<%= data.attributes.next_link %>" class="next-link">
+                <span><%= locale.t['Next'] || 'Next' %> »</span>
+                <span class="l"> <%= data.attributes.next_title %> </span>
+              </a>
+            <% } %>
         </div>
       </div>
       <div class="col-right"></div>

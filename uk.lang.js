@@ -24,6 +24,8 @@ module.exports = {
     "Fork on GitHub": "Форкнути на GitHub",
     "Fork the Website": "Форкнути сайт",
     "Create an Issue": "Створіть Issue",
+    "Sponsors": "Спонсори",
+    "Become a sponsor": "Стати спонсором"
   },
   sidebar: [
     {
