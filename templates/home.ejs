@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Axios</title>
-    <link rel="stylesheet" href="/assets/style/index.css" />
+    <link rel="stylesheet" href="/style/home.css" />
     <style>
       * {
         <%= locale.fontSans ? 'font-family: ' + locale.fontSans + ';' : '' %>
@@ -37,6 +37,11 @@
     </noscript>
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <script src="https://cdn.usefathom.com/script.js" data-site="PHYVDASO" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<!--    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>-->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
   <body>
     <header>
@@ -52,7 +57,7 @@
           <p><%= locale.p.subhead %></p>
           <div class="buttons">
             <a href="<%= locale.prefix %>docs/intro" class="button primary">
-              <%= locale.t['Get Started'] || 'Get Started' %>
+              <%= locale.t['Get Started'] || 'Get Started' %>
             </a>
             <a href="https://github.com/axios/axios" class="button">
               <%= locale.t['View on GitHub'] || 'View on GitHub' %>
@@ -62,23 +67,29 @@
         <div class="code-preview">
           <pre></pre>
         </div>
+
       </section>
-      <section id="sponsors">
-        <h2>Sponsors:</h2>
-        <a href="https://www.serpapi.com" target="_blank">
-          <img
-            src="/assets/sponsors/serpapi.png"
-            alt="serpapi.com"
-            style="width: 15rem; padding: 2rem 0rem 3rem;"
-          >
-        </a>
-        <a href="https://www.casinoreviews.net" target="_blank">
-          <img
-            src="/assets/sponsors/casinoreviews.png"
-            alt="casinoreviews.net"
-            style="width: 30rem; margin-left: 2rem; padding: 2rem 0rem 3rem; top: -1rem; position: relative;"
-          >
-        </a>
+      <section id="sponsors" aria-label="Axios sponsors">
+        <h2><%= locale.t['Sponsors'] || 'Sponsors' %>:</h2>
+        <div class="splide" oncontextmenu="return false;">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
+                <% if(!sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
+                  <li class="splide__slide sponsor-card opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-is-active="<%= sponsor.hasActiveTier ? "yes" : "no" %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                    <a href="<%= sponsor.utmLink || '' %>" target="_blank" >
+                      <% if(sponsor.image){ %><img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/><% } %>
+                        <% if(sponsor.showCaption !== false){ %><span class="caption"><span><%= sponsor.displayName %></span></span><% } %>
+                    </a>
+                  </li>
+                <% } %>
+              <% }) %>
+                <li class="splide__slide sponsor-card become_sponsor">
+                  <a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a>
+                </li>
+            </ul>
+          </div>
+        </div>
       </section>
     </main>
     <footer>
@@ -119,7 +130,11 @@
               ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
             >
           </td>
-          <td></td>
+          <td>
+            <a href="https://opencollective.com/axios/contribute"
+            ><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a
+            >
+          </td>
         </tr>
         <% config.custom.langs.slice(4).forEach(lang => { %>
           <tr>
@@ -141,7 +156,7 @@
       </div>
       <div class="row">
         <span class="copyright-notice">
-          <%= locale.t['Axios Project Copy Right Footer'] || 'The Axios Project: Copyright © 2014-present Matt Zabriskie.' %>
+          <%= locale.t['Axios Project Copy Right Footer'] || 'The Axios Project: Copyright © 2014-present Matt Zabriskie and contributors' %>
         </span>
         <span>
           <%= locale.t['License Label Footer'] || 'Licensed under the' %>
@@ -165,6 +180,36 @@
       };
 
       const typed = new Typed('.code-preview pre', options);
+    </script>
+
+    <script>
+      const splide = new Splide( '.splide', {
+        type   : 'slide',
+        drag   : 'free',
+        focus  : 'left',
+        perPage: 5,
+/*        autoScroll: {
+          speed: 0.5,
+        },*/
+      });
+
+      splide.mount(/*window.splide.Extensions*/);
+
+      tippy('.sponsor-card', {
+        trigger: 'mouseenter focus focusin oncontextmenu',
+        delay: [500, 200],
+        animation: 'fade',
+        allowHTML: true,
+        hideOnClick: true,
+        interactive: true,
+        maxWidth: '450px',
+        appendTo: () => document.body,
+        onShow(instance) {
+          if (instance.props.content.trim() === '') {
+            return false;
+          }
+        }
+      });
     </script>
   </body>
 </html>

@@ -1,6 +1,8 @@
 node_modules
 .DS_Store
 public/
+temp/
+assets/sponsors/opencollective
 *.css
 *.css.map
 # Local Netlify folder

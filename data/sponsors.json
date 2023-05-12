@@ -1,0 +1,37 @@
+{
+  "totalAmountDonatedThreshold": 100,
+  "monthlyContributionThreshold": 10,
+  "disappearCredit": 10,
+  "scoreTierPriceFactor": 0.5,
+  "scoreTotalAmountFactor": 0.2,
+  "tiers": {
+    "$49 a month": {
+      "price": 49,
+      "benefits": {
+        "showAtSponsorList": true
+      }
+    },
+    "$99 a month" : {
+      "price": 99,
+      "benefits": {
+        "showAtSponsorList": true,
+        "showAtPages": true
+      }
+    }
+  },
+  "sponsors": {
+    "serp_api": {
+      "image": "/assets/sponsors/serpapi.png",
+      "showCaption": false
+    },
+    "casinoreviews": {
+      "image": "/assets/sponsors/casinoreviews.png"
+    },
+    "github-sponsors": {
+      "hide": true
+    },
+    "intra-mart": {
+      "showCaption": false
+    }
+  }
+}
