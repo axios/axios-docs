@@ -21,7 +21,7 @@ axios.get('/user/12345')
       // http.ClientRequest no node.js
       console.error(error.request);
     } else {
-      // Alguma coisa acontenceu ao configurar a requisição que acionou este erro.
+      // Alguma coisa aconteceu ao configurar a requisição que acionou este erro.
       console.error('Error', error.message);
     }
     console.error(error.config);

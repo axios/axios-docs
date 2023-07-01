@@ -62,7 +62,7 @@ let cancel;
 
 axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
-    // Uma função executora recebe uma função de cancelamento como parametro
+    // Uma função executora recebe uma função de cancelamento como parâmetro
     cancel = c;
   })
 });
@@ -71,4 +71,4 @@ axios.get('/user/12345', {
 cancel();
 ```
 
-> Nota: você pode cancelar multiplas requisições com o mesmo token de cancelamento.
+> Nota: você pode cancelar múltiplas requisições com o mesmo token de cancelamento.

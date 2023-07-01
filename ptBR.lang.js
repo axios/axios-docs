@@ -7,7 +7,7 @@ module.exports = {
   prefix: "/ptBR/",
   p: {
     headline: "Cliente HTTP baseado em promessas para o navegador e node.js",
-    subhead: `Axios é um cliente HTTP simples baseado em promessas para o navegador e para o node.js. 
+    subhead: `Axios é um cliente HTTP simples baseado em promessas para o navegador e para o node.js.
     Axios fornece uma biblioteca simples de usar em um pacote pequeno com uma grande interface.`,
   },
   t: {

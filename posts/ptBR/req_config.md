@@ -31,7 +31,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
     return data;
   }],
 
-  // `transformResponse` permite mudar os dados da responsta antes de ser passado para o then/catch
+  // `transformResponse` permite mudar os dados da resposta antes de ser passado para o then/catch
   transformResponse: [function (data) {
     // Faça o que quiser para transformar os dados
     return data;
@@ -40,7 +40,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `headers` são cabeçalhos customizáveis para serem enviados
   headers: {'X-Requested-With': 'XMLHttpRequest'},
 
-  // `params` são os parametros da URL para serem enviados junto com a requisição
+  // `params` são os parâmetros da URL para serem enviados junto com a requisição
   // Deve sempre ser um objeto ou um objeto de URLSearchParams
   params: {
     ID: 12345
@@ -67,7 +67,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // apenas o valor é enviado, e não as chaves
   data: 'Country=Brasil&City=Guarapari',
 
-  // `timeout` expecifica o número em milisegundos antes do tempo da requisição acabar.
+  // `timeout` específica o número em milissegundos antes do tempo da requisição acabar.
   // Se a requisição levar um tempo maior do que o `timeout`, a requisição será abortada.
   timeout: 1000, // o valor padrão do timeout é de `0` (sem intervalo)
 
@@ -84,7 +84,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `auth` indica que a autenticação básica do HTTP deve ser usada e fornece as credenciais.
   // Isso vai definir um novo cabeçalho de `Authorization`, sobrescrevendo uma já existente
   // `Authorization` cabeçalhos personalizados que você definiu usando `headers`.
-  // Por favor, note que apenas autenticação HTTP Basic é configuravel por meio deste parâmetro
+  // Por favor, note que apenas autenticação HTTP Basic é configurável por meio deste parâmetro
   // Para tokens Bearer e outros, use o cabeçalho personalizado de `Authorization`
   auth: {
     username: 'janedoe',
@@ -144,20 +144,20 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
 
   // `httpAgent` e `httpsAgent` define um agente personalizado para ser usando quando performando uma requisições http
   // ou https, no node.js. Isso permite opções a serem adicionadas como
-  // `keepAlive` que não está habilidado por padrão.
+  // `keepAlive` que não está habilitado por padrão.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
   // `proxy` define o nome do host, a porta e o protocolo do proxy do servidor.
-  // Você pode defirnir também seu próprio proxy usando `http_proxy` e
+  // Você pode definir também seu próprio proxy usando `http_proxy` e
   // `https_proxy` das variáveis de ambiente. Se você estiver usando variáveis de ambiente
   // para a configuração do seu proxy, você também pode definir uma variável de ambiente `no_proxy`
   // como uma lista separada por vírgulas de domínios que não devem utilizar proxy.
-  // Use `false` para desabilidar proxies, ignorando as variáveis de ambiente.
+  // Use `false` para desabilitar proxies, ignorando as variáveis de ambiente.
   // `auth` indica que o HTTP Basic auth deve ser usado para conectar no proxy e
   // fornecer credenciais.
   // Isso definirá um cabeçalho `Proxy-Authorization`, sobrescrevendo qualquer outro
-  // `Proxy-Authorization` existente que você definiu usando `headres`.
+  // `Proxy-Authorization` existente que você definiu usando `headers`.
   // Se o proxy do servidor utilizar HTTPS, então você deve definir o protocolo para `https`.
 
 

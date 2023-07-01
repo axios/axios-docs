@@ -6,7 +6,7 @@ Para tornar os Axios acessíveis ao maior número de pessoas possível, é extre
 
 ## Estrutura
 
-Toda tradução é composta por um arquivo de configuração, `{language-shortcut}.lang.js` (por exemplo, `en.lang.js` ou `ptBR.lang.js`) e os arquvios traduzidos em `posts/{language-shortcut}/*.md` (exemplo `posts/en` ou `posts/ptBR`). `{language-shortcut}` deve ser substituído pelo código de duas letras [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) do seu idioma.
+Toda tradução é composta por um arquivo de configuração, `{language-shortcut}.lang.js` (por exemplo, `en.lang.js` ou `ptBR.lang.js`) e os arquivos traduzidos em `posts/{language-shortcut}/*.md` (exemplo `posts/en` ou `posts/ptBR`). `{language-shortcut}` deve ser substituído pelo código de duas letras [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) do seu idioma.
 
 ## Configurando seu idioma
 
@@ -15,7 +15,7 @@ Toda tradução é composta por um arquivo de configuração, `{language-shortcu
  - Substitua `display` com o nome do seu idioma, no formato do seu idioma. Por exemplo, se você estiver traduzindo alemão, coloque “Deutsch” ao invés de “German”.
  - Substitua o prefixo com `/{language-shortcut}/`.
  - Traduza os valores dos campos `p` e `t`.
- - Traduza todas as propriedades `text` na sidebar. **Nota:** Desde a última versão deste documento, links na sidebar não precisam ser 
+ - Traduza todas as propriedades `text` na sidebar. **Nota:** Desde a última versão deste documento, links na sidebar não precisam ser
 
 ### Registrando a configuração
 

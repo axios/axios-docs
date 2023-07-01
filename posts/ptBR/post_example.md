@@ -22,7 +22,7 @@ axios.post('/user', {
   });
 ```
 
-Executando multiplas requisições simultaneamente
+Executando múltiplas requisições simultaneamente
 
 ```js
 function getUserAccount() {

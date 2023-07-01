@@ -1,5 +1,5 @@
 ---
-title: 'Exemplos minimalistas'
+title: 'Exemplos Minimalistas'
 description: 'Um pequeno exemplo de como usar o axios'
 prev_title: 'Introdução'
 prev_link: '/ptBR/docs/intro'
@@ -8,7 +8,7 @@ next_link: '/ptBR/docs/post_example'
 ---
 
 ## nota: Uso de CommonJS
-Em ordem de usar o TypeScript (para intellissen e/ou preenchimento automático) enquanto usando CommonJS, importe com o `require()` utilize a seguinte abordagem:
+Em ordem de usar o TypeScript (para intellisense e/ou preenchimento automático) enquanto usando CommonJS, importe com o `require()` utilize a seguinte abordagem:
 
 ```js
 const axios = require('axios').default;
@@ -23,7 +23,7 @@ Executando uma requisição `GET`
 ```js
 const axios = require('axios');
 
-// Faz uma requisição a um usuarío com um ID expecifico
+// Faz uma requisição a um usuário com um ID específico
 axios.get('/user?ID=12345')
   .then(function (response) {
     // manipula o sucesso da requisição
@@ -51,7 +51,7 @@ axios.get('/user', {
   })
   .finally(function () {
     // sempre será executado
-  });  
+  });
 
 // Quer usar async/await? Adicione o prefixo `async` na sua função/método
 async function getUser() {
@@ -63,5 +63,6 @@ async function getUser() {
   }
 }
 ```
+
 > **NOTA:** `async/await` faz parte do ECMAScript 2017 e não é suportado no Internet
 > Explorer e versões antigas de browsers, use com cuidado.

@@ -22,7 +22,7 @@ const instance = axios.create({
 
 ### Métodos de instância
 
-Os métodos de instâncias disponiveis estão listadas abaixo. A configuração especificada será mesclada com a configuração da instância.
+Os métodos de instâncias disponíveis estão listadas abaixo. A configuração especificada será mesclada com a configuração da instância.
 
 ##### axios#request(config)
 ##### axios#get(url[, config])
