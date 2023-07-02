@@ -38,11 +38,11 @@ axios({
 ##### axios(url[, config])
 
 ```js
-// Enviar petición GET (método por defecto)
+// Enviar petición GET (método predeterminado)
 axios('/user/12345');
 ```
 
-### Alias de metodos de petición
+### Alias de métodos de petición
 
 Por conveniencia los alias han sido proveídos para todos los métodos de petición.
 

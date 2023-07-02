@@ -14,26 +14,26 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
   // `url` es la URL del servidor que sera usada para la petición
   url: '/user',
 
-  // `method` es el método a ser utilizado al hacer la petición 
+  // `method` es el método de petición que se utilizará al realizar la petición
   method: 'get', // defecto
 
-  // `baseURL` será precedido a `url` a no ser que `url` sea absoluto.
-  // Es conveniente establecer un `baseURL` en una instancia de axios para pasar URLs relativas
-  // a los métodos de esta
+  // `baseURL` se antepondrá a `url` a menos que `url` sea absoluta.
+  // Es conveniente establecer `baseURL` para una instancia de axios para pasar URLs relativas
+  // a los métodos de esa instancia
   baseURL: 'https://some-domain.com/api',
 
   // `transformRequest` permite cambios al data de la petición antes de ser enviado al servidor
   // Esto es solo aplicable para los métodos de petición 'PUT', 'POST', 'PATCH' y 'DELETE'
   // La última función en el arreglo debe regresar un string o una instancia de Buffer, ArrayBuffer,
   // FormData o Stream
-  // Debes modificar el objeto headers.
+  // Puedes modificar el objeto headers.
   transformRequest: [function (data, headers) {
     // Haz lo que quieras para transformar data
 
     return data;
   }],
 
-  // `transformResponse` permite que se realicen cambios en los datos de respuesta antes
+  // `transformResponse` permite realizar cambios en los datos de respuesta antes de
   //  que pasen a then/catch
   transformResponse: [function (data) {
     // Haz lo que quieras para transformar data
@@ -46,12 +46,12 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
 
   // `params` son los parámetros de la URL a ser enviados con la petición
   // Deben ser un objeto plano o un objeto URLSearchParams
-  // NOTA: parámetros que son null o undefined no son renderizados en la URL.
+  // NOTA: parámetros que son null o undefined no se muestran en la URL.
   params: {
     ID: 12345
   },
 
-  // `paramsSerializer` es una funcion opcional a cargo de serializar `params`
+  // `paramsSerializer` es una función opcional encargada de serializar `params`
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: function (params) {
     return Qs.stringify(params, {arrayFormat: 'brackets'})
@@ -72,16 +72,16 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
   // solo el valor es enviando, no la llave
   data: 'Country=Brasil&City=Belo Horizonte',
 
-  // `timeout` especifica el número de milisegundos antes que la petición expire.
-  // Si la petición toma más tiempo que `timeout`, esta será abortada.
-  timeout: 1000, // `0` es el valor por defecto (no timeout)
+  // `timeout` especifica el número de milisegundos antes de que se agote el tiempo de espera de la solicitud.
+  // Si la petición toma más tiempo que `timeout`, será abortada.
+  timeout: 1000, // por defecto es `0` (sin tiempo de espera)
 
   // `withCredentials` indica cuando o no se pueden hacer peticiones cross-site Access-Control 
   // usando credenciales
   withCredentials: false, // defecto
 
   // `adapter` permite la manipulación personalizada de peticiones, haciendo las pruebas más fácil.
-  // Retorna una promesa y provee una respuesta valida (ver lib/adapters/README.md).
+  // Regresa una promesa y provee una respuesta valida (ver lib/adapters/README.md).
   adapter: function (config) {
     /* ... */
   },
@@ -111,7 +111,7 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
   // `xsrfHeaderName` es el nombre de la cabecera http que lleva el valor del token xsrf
   xsrfHeaderName: 'X-XSRF-TOKEN', // defecto
 
-  // `onUploadProgress` permite la manipulación del evento progress para subidas
+  // `onUploadProgress` permite gestionar los eventos de progreso de descarga
   // solo en el navegador
   onUploadProgress: function (progressEvent) {
     // Haz lo que quieras con el evento nativo progress
@@ -142,7 +142,7 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
   maxRedirects: 5, // defecto
 
   // `socketPath` define un Socket UNIX a ser utilizado en node.js.
-  // e.g. '/var/run/docker.sock' para enviar peticiones al demonio de docker (docker daemon).
+  // e.g. '/var/run/docker.sock' para enviar peticiones al daemon docker (docker daemon).
   // Solo `socketPath` o `proxy` puede ser especificado.
   // Si ambos son especificados, `socketPath` es utilizado.
   socketPath: null, // defecto

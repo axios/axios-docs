@@ -30,7 +30,7 @@ axios.interceptors.response.use(function (response) {
   });
 ```
 
-Si necesitas remover un interceptor después, puedes hacerlo.
+Si necesitas quitar un interceptor después, puedes hacerlo.
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});

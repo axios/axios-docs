@@ -10,7 +10,7 @@ next_link: '/es/docs/cancellation'
 axios.get('/user/12345')
   .catch(function (error) {
     if (error.response) {
-      // La respuesta fue hecha y el servidor respondió con un código de estado
+      // La solicitud se ha realizado y el servidor ha respondido con un código de estado
       // que esta fuera del rango de 2xx
       console.log(error.response.data);
       console.log(error.response.status);
