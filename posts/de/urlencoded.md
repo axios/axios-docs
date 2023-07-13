@@ -46,14 +46,14 @@ axios(options);
 
 #### Query String
 
-In Node.js können sie das Modul [`querystring`](https://nodejs.org/api/querystring.html) zur hand nehmen:
+In Node.js kann das Modul [`querystring`](https://nodejs.org/api/querystring.html) verwendet werden:
 
 ```js
 const querystring = require('querystring');
 axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
-oder [`URLSearchParams`](https://nodejs.org/api/url.html#url_class_urlsearchparams) aus dem Modul [`url`](https://nodejs.org/api/url.html) wie folgt verwenden:
+oder [`URLSearchParams`](https://nodejs.org/api/url.html#url_class_urlsearchparams) aus dem Modul [`url`](https://nodejs.org/api/url.html):
 
 ```js
 const url = require('url');
@@ -61,12 +61,12 @@ const params = new url.URLSearchParams({ foo: 'bar' });
 axios.post('http://something.com/', params.toString());
 ```
 
-Das Modul [`qs`](https://github.com/ljharb/qs) funktioniert auch.
+Das Modul [`qs`](https://github.com/ljharb/qs) funktioniert ebenso.
 
 ###### NOTE
 Falls Sie genestete Objekte senden müssen ist das Modul `qs` die bessere Wahl, da das Modul `querystring` bekanntlich Probleme mit solchen Fällen hat (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
-#### Form data
+#### Formulardaten
 
 In Node.js funktioniert auch das Modul [`form-data`](https://github.com/form-data/form-data):
 

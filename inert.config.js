@@ -14,6 +14,9 @@ const {
   halt,
 } = inert;
 
+const fs = require("fs");
+
+const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
 const zhConfig = require("./zh.lang.js");
@@ -27,6 +30,11 @@ const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const jaConfig = require("./ja.lang.js");
+
+const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
+  sponsors: []
+};
 
 // List of languages
 const langs = [
@@ -108,6 +116,18 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },{
+    dir: "rtl",
+    name: "Arabic",
+    prefix: "/ar/",
+    postsDir: "ar",
+    config: arConfig,
+  },
+  {
+    dir: "ltr",
+    name: "日本語",
+    prefix: "/ja/",
+    config: jaConfig
   }
 ];
 
@@ -126,6 +146,7 @@ module.exports = {
     title: "Axios Docs",
     // List of languages
     langs: langs,
+    ...data
   },
   build: {
     /**
@@ -258,7 +279,7 @@ module.exports = {
            *
            * `flat` is a little faster, so If you can, you should use it.
            */
-          traverseLevel: "flat", // There will be no subfolders, at least in this template
+          traverseLevel: "recursive", // There will be no subfolders, at least in this template
           /**
            * A list of methods.
            *

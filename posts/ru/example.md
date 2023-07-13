@@ -8,7 +8,7 @@ next_link: '/docs/post_example'
 ---
 
 ## note: использование CommonJS 
-Чтобы получить типизацию TypeScript (для intellisense / автозаполнения) при импользовании импорта CommonJS с `require()` используйте следующий подход:
+Чтобы получить типизацию TypeScript (для intellisense / автозаполнения) при использовании импорта CommonJS с `require()` используйте следующий подход:
 
 ```js
 const axios = require('axios').default;
@@ -33,7 +33,7 @@ axios.get('/user?ID=12345')
     // обработка ошибки
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // выполняется всегда
   });
 
@@ -49,7 +49,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // выполняется всегда
   });  
 

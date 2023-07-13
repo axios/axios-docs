@@ -34,7 +34,9 @@ module.exports = {
     "Website Copy Right Footer": undefined,
     "View On Github": undefined,
     "Axios Project Copy Right Footer": undefined,
-    "License Label Footer": undefined
+    "License Label Footer": undefined,
+    "Sponsors": undefined,
+    "Become a sponsor": undefined
   },
   sidebar: [
     {
@@ -103,7 +105,12 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "URL-Encoding Bodies",
+      text: "🆕 URL-Encoding Bodies",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Multipart Bodies",
     },
     {
       type: "heading",
