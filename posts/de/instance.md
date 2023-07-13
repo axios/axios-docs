@@ -20,7 +20,7 @@ const instance = axios.create({
 });
 ```
 
-### Instance methods
+### Instanczmethoden
 
 Die verfügbaren Instanzmethoden sind im folgenden aufgelistet. Die beim Aufruf dieser Methoden angegebene Konfiguration wird mit der Instanzkonfiguration zusammengeführt.
 
