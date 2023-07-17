@@ -21,7 +21,7 @@ axios.post('/user', {
   });
 ```
 
-Mehrere anfragen gleichzeitig:
+Mehrere Anfragen gleichzeitig:
 
 ```js
 function getUserAccount() {
