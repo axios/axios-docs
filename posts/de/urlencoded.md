@@ -6,11 +6,11 @@ next_title: 'Weitere Notizen'
 next_link: '/de/docs/notes'
 ---
 
-Normalerweise serialisiert Axios JavaScript-Objekte zu `JSON`. Um Daten stattdessen im Format `application/x-www-form-urlencoded` zu senden, können die folgenden Methoden verwendet werden:
+Normalerweise serialisiert Axios JavaScript-Objekte zu `JSON`. Um Daten stattdessen im Format `application/x-www-form-urlencoded` zu senden, können Sie die folgenden Methoden verwenden:
 
 ### Browser
 
-In einem Browser kann die [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)-API wie folgt verwendet werden:
+In einem Browser können Sie die [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)-API wie folgt verwenden:
 
 ```js
 const params = new URLSearchParams();
@@ -19,9 +19,9 @@ params.append('param2', 'value2');
 axios.post('/foo', params);
 ```
 
-> `URLSearchParams` wird nicht von allen Browsern unterstützt (siehe [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), aber es gibt ein [Polyfill](https://github.com/WebReflection/url-search-params).
+> `URLSearchParams` wird nicht von allen Browsern unterstützt (siehe [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), aber es gibt einen [Polyfill](https://github.com/WebReflection/url-search-params).
 
-Als Alternative können Daten mit dem Modul [`qs`](https://github.com/ljharb/qs) verarbeitet werden:
+Als Alternative können Sie Daten mit dem Modul [`qs`](https://github.com/ljharb/qs) verarbeiten:
 
 ```js
 const qs = require('qs');
@@ -44,7 +44,7 @@ axios(options);
 
 ### Node.js
 
-#### Query string
+#### Query String
 
 In Node.js kann das Modul [`querystring`](https://nodejs.org/api/querystring.html) verwendet werden:
 
@@ -63,12 +63,12 @@ axios.post('http://something.com/', params.toString());
 
 Das Modul [`qs`](https://github.com/ljharb/qs) funktioniert ebenso.
 
-###### Hinweis
-Um verschachtelte Objekte senden zu können ist das Modul `qs` die bessere Wahl, da das Modul `querystring` bekanntlich Probleme mit solchen Fällen hat (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+###### NOTE
+Falls Sie genestete Objekte senden müssen ist das Modul `qs` die bessere Wahl, da das Modul `querystring` bekanntlich Probleme mit solchen Fällen hat (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
 #### Formulardaten
 
-In Node.js funktioniert auch das Module [`form-data`](https://github.com/form-data/form-data):
+In Node.js funktioniert auch das Modul [`form-data`](https://github.com/form-data/form-data):
 
 ```js
 const FormData = require('form-data');
@@ -81,7 +81,7 @@ form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
 axios.post('https://example.com', form, { headers: form.getHeaders() })
 ```
 
-Alternativ kann auch ein Abfänger verwendet werden.
+Alternativ können Sie auch einen Abfänger verwenden.
 
 ```js
 axios.interceptors.request.use(config => {

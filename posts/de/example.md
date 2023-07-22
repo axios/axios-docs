@@ -8,12 +8,12 @@ next_link: '/de/docs/post_example'
 ---
 
 ## Verwendung mit CommonJS
-Um TypeScript-Typings (für Intellisense / Autocomplete) trotz der nutzung von CommonJS-Imports mit `require()` zu erhalten, verwenden Sie bitte die folgende Methode:
+Um TypeScript-Typings (für Intellisense / Autocomplete) trotz der Nutzung von CommonJS-Imports mit `require()` zu erhalten, verwenden Sie bitte die folgende Methode:
 
 ```js
 const axios = require('axios').default;
 
-// axios.<methode> wird nun autocomplete und typings zur verfügung stellen.
+// axios.<methode> wird nun autocomplete und typings zur Verfügung stellen.
 ```
 
 # Beispiel
@@ -23,7 +23,7 @@ Eine `GET`-Anfrage ausführen:
 ```js
 const axios = require('axios');
 
-// Einen nutzer mit einer bestimmten ID anfragen
+// Einen Nutzer mit einer bestimmten ID anfragen
 axios.get('/user?ID=12345')
   .then(function (response) {
     // Erfolg verarbeiten
@@ -37,7 +37,7 @@ axios.get('/user?ID=12345')
     // Wird immer ausgeführt
   });
 
-// Die obige anfrage könnte auch so ausgeführt werden:
+// Die obige Anfrage könnte auch so ausgeführt werden:
 axios.get('/user', {
     params: {
       ID: 12345
@@ -64,5 +64,5 @@ async function getUser() {
 }
 ```
 
-> **NOTIZ:** `async/await` ist teil von ECMAScript 2017 und wird von Internet
-> Explorer und älternen Browsern nicht unterstützt.
+> **NOTIZ:** `async/await` ist Teil von ECMAScript 2017 und wird von Internet
+> Explorer und älteren Browsern nicht unterstützt.
