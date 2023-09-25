@@ -49,6 +49,14 @@ $ bower install axios
 $ yarn add axios
 ```
 
+使用 Boot CDN（中国大陆推荐）:
+
+```html
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.5.0/axios.min.js"></script>
+```
+
+> 你可以在**[这个](https://www.bootcdn.cn/axios/)**网站获取最新版本的链接
+
 使用 jsDelivr CDN:
 
 ```html
