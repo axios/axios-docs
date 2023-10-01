@@ -92,6 +92,10 @@ section#hero {
     .buttons {
       margin-left: -1.5rem;
     }
+    // media query to prevent navbar from overlapping with the heading on desktop
+    @media screen and (min-width: 1024px) {
+      margin-top: 40px;
+    }
   }
 }
 
