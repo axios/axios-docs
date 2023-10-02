@@ -8,7 +8,7 @@ next_link: '/de/docs/interceptors'
 
 ## Konfigurationsstandardwerte
 
-Sie Konfigurationsstandardwerte angeben die bei jeder anfrage verwendet werden.
+Sie können Konfigurationsstandardwerte angeben, die bei jeder Anfrage verwendet werden.
 
 ### Globale Axios-Standardwerte
 
@@ -21,29 +21,29 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 ### Eigene Instanzstandardwerte
 
 ```js
-// Bei erstellen der Instanz
+// Bei Erstellen der Instanz
 const instance = axios.create({
   baseURL: 'https://api.example.com'
 });
 
-// Nach dem erstellen der Instanz
+// Nach dem Erstellen der Instanz
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
 ### Konfigurationsreihenfolge
 
-Konfigurationswerte werden mit folgender Reihenfolge zusammengefügt: Zuerst die Standardwerte des Moduls ([`lib/defaults.js`](https://github.com/axios/axios/blob/master/lib/defaults.js#L28)), dann die der Instanz und am ende die der Anfrage. Jedes Element in der Reihenfolge überschreibt seinen Vorgänger. Hier sehen Sie ein Beispiel:
+Konfigurationswerte werden mit folgender Reihenfolge zusammengefügt: Zuerst die Standardwerte des Moduls ([`lib/defaults.js`](https://github.com/axios/axios/blob/master/lib/defaults.js#L28)), dann die der Instanz und am Ende die der Anfrage. Jedes Element in der Reihenfolge überschreibt seinen Vorgänger. Hier sehen Sie ein Beispiel:
 
 ```js
-// Eine instanz mit den Standartwerten des moduls
-// In diesem moment wird der Standardwert für `timeout` (0) verwendet
+// Eine Instanz mit den Standartwerten des moduls
+// In diesem Moment wird der Standardwert für `timeout` (0) verwendet
 const instance = axios.create();
 
 // Die Modulstandartwerte werden nun überschrieben:
 // Alle Anfragen werden nun nach 2,5 Sekunden abgebrochen.
 instance.defaults.timeout = 2500;
 
-// Jetzt werden auch die Instanzstanderwerte überschrieben:
+// Jetzt werden auch die Instanzstandardwerte überschrieben:
 // Diese Anfrage wird 5 Sekunden warten bevor sie abbricht.
 instance.get('/longRequest', {
   timeout: 5000

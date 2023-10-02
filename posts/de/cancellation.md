@@ -8,7 +8,7 @@ next_link: '/de/docs/urlencoded'
 
 Anfragen können mit hilfe eines *Cancel Token*s abgebrochen werden.
 
-> Diese API basiert auf den zurückgezogen vorschlag für *[abbrechbare Promises](https://github.com/tc39/proposal-cancelable-promises)*.
+> Diese API basiert auf den zurückgezogenen Vorschlag für *[abbrechbare Promises](https://github.com/tc39/proposal-cancelable-promises)*.
 
 Ein CancelToken kann wie folgt erstellt werden:
 
@@ -32,8 +32,8 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// Anfrage abbrechen. (Das argument mit der Nachricht ist optional.)
-source.cancel('Operation canceled by the user.');
+// Anfrage abbrechen. (Das Argument mit der Nachricht ist optional.)
+source.cancel('Operation wurde vom Nutzer abgebrochen');
 ```
 
 Ein CancelToken kann auch wie folgt erstellt werden:
@@ -44,7 +44,7 @@ let cancel;
 
 axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
-    // Diese funktion bekommt eine funktion zum abbrechen der Anfrage als argument
+    // Diese Funktion bekommt eine Funktion zum Abbrechen der Anfrage als Argument
     cancel = c;
   })
 });

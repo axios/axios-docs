@@ -1,8 +1,8 @@
 ---
 title: '注意事项'
 description: '一些注意事项'
-prev_title: 'URL-Encoding Bodies'
-prev_link: '/zh/docs/urlencoded'
+prev_title: 'Multipart 实体请求'
+prev_link: '/zh/docs/multipart'
 ---
 
 ## 语义化
