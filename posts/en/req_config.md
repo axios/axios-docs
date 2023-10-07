@@ -53,9 +53,11 @@ These are the available config options for making requests. Only the `url` is re
 
   // `paramsSerializer` is an optional function in charge of serializing `params`
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
-  },
+  paramsSerializer: {
+    encode: function(params) {
+        return Qs.stringify(params, {arrayFormat: 'brackets'})
+    }
+},
 
   // `data` is the data to be sent as the request body
   // Only applicable for request methods 'PUT', 'POST', 'DELETE', and 'PATCH'
