@@ -224,16 +224,14 @@ li.sponsor-card {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+    padding-left: 0.5rem;
   }
 
   .caption{
     font-size: 3rem;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .caption > span{
-    margin-left: 0.5rem;
+    padding-left: 0.5rem;
   }
 
   img + .caption {
