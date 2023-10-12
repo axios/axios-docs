@@ -21,6 +21,7 @@ const ensurePath = async (path) => {
   try {
     await fs.mkdir(path, { recursive: true });
   } catch (e){
+    throw new e(`Failed to create Directory: ${err.message}`);
 
   }
 }
