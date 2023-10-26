@@ -21,7 +21,7 @@ axios.post('/foo', params);
 
 > Nota que `URLSearchParams` no es soportado por todos los navegadores (ver [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), pero hay un [polyfill](https://github.com/WebReflection/url-search-params) disponible (asegurate de usar polyfill en el ambiente global).
 
-Alternativamente, puedes codificar data usando la librería [`qs`](https://github.com/ljharb/qs):
+Alternativamente, puedes codificar data usando la biblioteca [`qs`](https://github.com/ljharb/qs):
 
 ```js
 const qs = require('qs');
@@ -61,14 +61,14 @@ const params = new url.URLSearchParams({ foo: 'bar' });
 axios.post('http://something.com/', params.toString());
 ```
 
-También puedes usar la librería [`qs`](https://github.com/ljharb/qs).
+También puedes usar la biblioteca [`qs`](https://github.com/ljharb/qs).
 
 ###### NOTA
-La librería `qs` es preferida si necesitas un stringify de objetos anidados, ya que el método `querystring` tiene problemas conocidos con ese caso de uso (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+La biblioteca `qs` es preferida si necesitas un stringify de objetos anidados, ya que el método `querystring` tiene problemas conocidos con ese caso de uso (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
 #### Form data
 
-En node.js, puedes usar la librería [`form-data`](https://github.com/form-data/form-data) de la siguiente manera:
+En node.js, puedes usar la biblioteca [`form-data`](https://github.com/form-data/form-data) de la siguiente manera:
 
 ```js
 const FormData = require('form-data');
