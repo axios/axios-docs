@@ -12,7 +12,7 @@ next_link: '/docs/notes'
 
 #### Browser
 
-```js 
+```js
 const form = new FormData();
 form.append('my_field', 'my value');
 form.append('my_buffer', new Blob([1,2,3]));
@@ -31,11 +31,11 @@ axios.postForm('https://httpbin.org/post', {
 });
 ```
 
-HTML form can be passes directly as a request payload
+HTML form can be passed directly as a request payload
 
 #### Node.js
 
-```js 
+```js
 import axios from 'axios';
 
 const form = new FormData();
@@ -58,7 +58,7 @@ axios.post('https://example.com', form)
 
 For Axios older than `v1.3.0` you must import `form-data` package.
 
-```js 
+```js
 const FormData = require('form-data');
 
 const form = new FormData();
@@ -94,9 +94,9 @@ axios.post('https://httpbin.org/post', {
 Axios FormData serializer supports some special endings to perform the following operations:
 
 - `{}` - serialize the value with JSON.stringify
-- `[]` - unwrap the array-like object as separate fields with the same key 
+- `[]` - unwrap the array-like object as separate fields with the same key
 
-> NOTE: 
+> NOTE:
 > unwrap/expand operation will be used by default on arrays and FileList objects
 
 FormData serializer supports additional options via `config.formSerializer: object` property to handle rare cases:
@@ -106,15 +106,15 @@ to a `FormData` object by following custom rules.
 
 - `dots: boolean = false` - use dot notation instead of brackets to serialize arrays and objects;
 
-- `metaTokens: boolean = true` - add the special ending (e.g `user{}: '{"name": "John"}'`) in the FormData key. 
+- `metaTokens: boolean = true` - add the special ending (e.g `user{}: '{"name": "John"}'`) in the FormData key.
 The back-end body-parser could potentially use this meta-information to automatically parse the value as JSON.
 
 - `indexes: null|false|true = false` - controls how indexes will be added to unwrapped keys of `flat` array-like objects
 
-    - `null` - don't add brackets (`arr: 1`, `arr: 2`, `arr: 3`) 
+    - `null` - don't add brackets (`arr: 1`, `arr: 2`, `arr: 3`)
     - `false`(default) - add empty brackets (`arr[]: 1`, `arr[]: 2`, `arr[]: 3`)
     - `true` - add brackets with indexes  (`arr[0]: 1`, `arr[1]: 2`, `arr[2]: 3`)
-    
+
 Let's say we have an object like this one:
 
 ```js
@@ -150,7 +150,7 @@ import axios from 'axios';
 
 axios.post('https://httpbin.org/post', {
   'myObj{}': {x: 1, s: "foo"},
-  'files[]': document.querySelector('#fileInput').files 
+  'files[]': document.querySelector('#fileInput').files
 }, {
   headers: {
     'Content-Type': 'multipart/form-data'
