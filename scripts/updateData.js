@@ -5,9 +5,9 @@ const mime = require('mime-types');
 const sharp = require('sharp');
 
 const parseURL = (url) => {
-  try{
+  try {
     return new URL(url);
-  } catch(e) {
+  } catch (e) {
     return null;
   }
 }
@@ -20,15 +20,15 @@ const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.st
 const ensurePath = async (path) => {
   try {
     await fs.mkdir(path, { recursive: true });
-  } catch (e){
-
+  } catch (e) {
+    throw new Error(`Failed to create Directory: ${e.message}`);
   }
 }
 
 const makeUTMURL = (url, params) => {
   const urlObj = new URL(url);
 
-  const {searchParams} = urlObj;
+  const { searchParams } = urlObj;
 
   if (!searchParams.utm_source && !searchParams.utm_campaign) {
     Object.entries({
@@ -59,11 +59,11 @@ const getWithRetry = (url, retries = 3) => {
   return doRequest();
 };
 
-const pullSponsors = async (collective, {type = 'organizations'} = {}) => {
-  const {data} = await getWithRetry(`https://opencollective.com/${collective}/members/${type}.json`);
+const pullSponsors = async (collective, { type = 'organizations' } = {}) => {
+  const { data } = await getWithRetry(`https://opencollective.com/${collective}/members/${type}.json`);
 
-  return data.map(({lastTransactionAt, ...entry}) => {
-    const {profile, website} = entry;
+  return data.map(({ lastTransactionAt, ...entry }) => {
+    const { profile, website } = entry;
 
     const login = new URL(profile).pathname.split('/').pop();
 
@@ -90,13 +90,13 @@ const processAvatars = async (sponsorsData, avatarsPath = './assets/sponsors/ope
   await ensurePath(avatarsPath);
 
   await Promise.all(Object.values(sponsorsData).map(async (sponsor) => {
-    const {image, profile} = sponsor;
+    const { image, profile } = sponsor;
 
     if (!/^https?:/.test(image)) {
       return;
     }
 
-    const {data, headers} = await axios.get(image, {responseType: 'arraybuffer'});
+    const { data, headers } = await axios.get(image, { responseType: 'arraybuffer' });
 
     const login = new URL(profile).pathname.split('/').pop();
 
@@ -129,7 +129,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
   } = await readJSON(sponsorsConfig) || {};
 
   Object.entries(sponsors).forEach(([login, entry]) => {
-    computedSponsors[login] = {login, ...entry};
+    computedSponsors[login] = { login, ...entry };
   });
 
   sponsorsData.forEach(sponsor => {
@@ -137,7 +137,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
       return null;
     }
 
-    const {login} = sponsor;
+    const { login } = sponsor;
 
     const entry = computedSponsors[login] || null;
 
@@ -166,7 +166,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     const icons = Object.entries(social).map(([name, icon]) => {
       const link = sponsor[name];
 
-      if(!link) return;
+      if (!link) return;
 
       return `<a href="${makeUTMURL(link)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
     }).filter(Boolean).join('');
@@ -186,10 +186,10 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     const monthsPassed = (Date.now() - createdAt) / MONTH;
     const averageMonthlyContribution = sponsor.totalAmountDonated / (monthsPassed || 1);
 
-    const {isActive} = sponsor;
-    const {tier} = isActive && sponsor;
+    const { isActive } = sponsor;
+    const { tier } = isActive && sponsor;
     const hasActiveTier = tier && tier !== 'Backer';
-    const {price = 0, benefits = null} = tier && tiers[tier] || {};
+    const { price = 0, benefits = null } = tier && tiers[tier] || {};
 
     sponsor.benefits = {
       showAtSponsorList: sponsor.totalAmountDonated >= totalAmountDonatedThreshold && averageMonthlyContribution >= monthlyContributionThreshold,
@@ -224,7 +224,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
 
 ((async (dataFile) => {
-  const sponsors = await pullSponsors('axios', {type: 'all'});
+  const sponsors = await pullSponsors('axios', { type: 'all' });
 
   await ensurePath(path.dirname(dataFile));
 
