@@ -1,8 +1,8 @@
 {
-  "totalAmountDonatedThreshold": 100,
-  "monthlyContributionThreshold": 10,
-  "disappearCredit": 10,
-  "scoreTierPriceFactor": 0.5,
+  "totalAmountDonatedThreshold": 200,
+  "monthlyContributionThreshold": 15,
+  "disappearCredit": 20,
+  "scoreTierPriceFactor": 0.70,
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
     "$49 a month": {
@@ -31,7 +31,7 @@
       "hide": true
     },
     "intra-mart": {
-      "showCaption": false
+      "showCaption": true
     }
   }
 }
