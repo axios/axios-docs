@@ -6,6 +6,21 @@ next_title: "Cuerpos de solicitud codificados como URL"
 next_link: "/es/docs/urlencoded"
 ---
 
+## Cancelando peticiones
+
+Configurar la propiedad `timeout` en una llamada axios gestiona los tiempos de espera relacionados con la **respuesta**.
+
+In some cases (e.g. network connection becomes unavailable) an axios call would benefit from cancelling the **connection** early. Without cancellation, the axios call can hang until the parent code/stack times out (might be a few minutes in a server-side applications).
+
+En algunos casos (por ejemplo, si la conexión de red se interrumpe), sería beneficioso cancelar la **connection** de la llamada axios de manera temprana. Sin esta cancelación, la llamada axios puede quedar suspendida hasta que el código base (o la pila principal) alcance el tiempo de espera (puede ser de unos minutos en aplicaciones del lado del servidor).
+
+Para terminar una llamada axios, puedes usar uno de los siguientes métodos:
+
+- `signal`
+- `cancelToken` (obsoleto)
+
+Combinar `timeout` y algún método de cancelación (por ejemplo, `signal`), debería cubrir los tiempos de espera tanto de la **response** como de la **connection**.
+
 ## AbortController
 
 Empezando desde `v0.22.0` Axios soporta el [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) para cancelar peticiones de la misma forma que la API de fetch:
@@ -30,9 +45,9 @@ También puedes cancelar una petición usando un _CancelToken_.
 
 > La API token de cancelación está basado en la propuesta [propuesta para cancelar promesas](https://github.com/tc39/proposal-cancelable-promises).
 
-> Esta API es obsoleto desde `v0.22.0` y no debería ser usada en proyectos nuevos
+> Esta API está obsoleta desde `v0.22.0` y no debería ser usada en nuevos proyectos.
 
-Puedes crear un token de cancelación usando el factory `CancelToken.source` a como se muestra a continuación:
+Puedes crear un token de cancelación usando el factory `CancelToken.source`, como se muestra a continuación:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -83,7 +98,7 @@ cancel();
 
 > Nota: puedes cancelar muchas peticiones con el mismo token / signal.
 
-Durante el periodo de transición, puedes usar ambas APIs de cancelación, aun para la misma petición:
+Durante el período de transición, puedes usar ambas APIs de cancelación, aun para la misma petición:
 
 ```js
 const controller = new AbortController();
