@@ -7,12 +7,12 @@ prev_link: "/es/docs/urlencoded"
 
 ## Semver
 
-Hasta que axios alcance una version `1.0`, cambios significativos seran liberados con una nueva versión menor. Por ejemplo `0.5.1`, y `0.5.4` tendran la misma API, pero `0.6.0` tendra cambios mayores.
+Hasta que axios alcance una version `1.0`, los cambios significativos serán liberados con una nueva versión menor. Por ejemplo `0.5.1`, y `0.5.4` tendrán la misma API, pero `0.6.0` tendrá cambios mayores.
 
 ## Promesas
 
-Axios depende de una impletación nativa de las Promesas de ES6 [verificar soporte](http://caniuse.com/promises).
-Si tu ambiente no soporta las Promesas de ES6, puedes usar [polyfill](https://github.com/jakearchibald/es6-promise).
+Axios depende de una implementación nativa de las Promesas de ES6 [verificar soporte](http://caniuse.com/promises).
+Si tu entorno no soporta las Promesas de ES6, puedes usar [polyfill](https://github.com/jakearchibald/es6-promise).
 
 ## TypeScript
 
@@ -33,7 +33,7 @@ axios.get("/user?ID=12345");
 
 ## Créditos
 
-Axios está fuertemente inspirado por el [servicio $http](https://docs.angularjs.org/api/ng/service/$http) provisto en [Angular](https://angularjs.org/). Finalmente axios es un esfuerzo para proveer de una versión independiente del servicio `$http` fuera de Angular.
+Axios está fuertemente inspirado por el [servicio $http](https://docs.angularjs.org/api/ng/service/$http) provisto en [Angular](https://angularjs.org/). En definitiva, axios es un esfuerzo para proveer una versión independiente del servicio `$http` fuera de Angular.
 
 ## Licencia
 

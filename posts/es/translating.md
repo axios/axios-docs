@@ -13,22 +13,22 @@ de archivos de documentación traducidos en `posts/{language-shortcut}/*.md` (po
 ## Configurando tu idioma
 
 - Copia `en.lang.js`.
-- Renombralo a `{language-shortcut}.lang.js`.
-- Reemplaza `display` con el nombre de tu idioma, en tu idioma. Por ejemplo, si estas traduciendo al alemán, usa “Deutsch” en vez de “Alemán”.
+- Renómbralo a `{language-shortcut}.lang.js`.
+- Reemplaza `display` con el nombre de tu idioma, en tu idioma. Por ejemplo, si estás traduciendo al alemán, usa “Deutsch” en lugar de “Alemán”.
 - Reemplaza el prefijo con `/{language-shortcut}/`.
 - Traduce los valores en los campos `p` y `t`.
-- Traduce todas las propiedades de nombre `text` en sidebar. **Nota:** Desde la última versión de esta documentación, los links en el sidebar no necesitan ser traducidos.
+- Traduce todas las propiedades de nombre `text` en el sidebar. **Nota:** Desde la última versión de esta documentación, los links en el sidebar no necesitan ser traducidos.
 
 ### Registrando la configuración
 
-Una vez que has finalizado de configurar tu idioma y traducido las frases y enlaces en el archivo de configuración, necesitaras registrarlo
+Una vez que has finalizado de configurar tu idioma y traducido las frases y enlaces en el archivo de configuración, necesitarás registrarlo
 en la configuración principal. Para hacerlo, abre `inert.config.js` y agrega lo siguiente en la parte de arriba:
 
 ```js
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-Claro, recuerda reemplazar `{language-shortcut}` con el código correcto [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) (en el nombre de la variable, !tambien!).
+Claro, recuerda reemplazar `{language-shortcut}` con el código correcto [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) (¡En el nombre de la variable también!).
 
 Ahora, busca la constante `langs`. Si la constante esta por encima de tu declaración `require`, mueve tu declaración `require` arriba. En la lista `langs`, agrega el siguiente objecto:
 
