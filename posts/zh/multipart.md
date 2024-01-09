@@ -27,7 +27,7 @@ Axios 会将传入数据序列化，因此使用 Axios 提供的 API 可以无�
 axios.postForm('https://httpbin.org/post', {
   my_field: 'my value',
   my_buffer: new Blob([1,2,3]),
-  my_file:  fileInput.files // FileList will be unwrapped as sepate fields
+  my_file:  fileInput.files // FileList will be unwrapped as separate fields
 });
 ```
 
