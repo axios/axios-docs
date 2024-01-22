@@ -47,10 +47,20 @@ next_link: '/zh/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer`是可选方法，主要用于序列化`params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` 是一个可选配置，允许您自定义序列化 `params`。
+  paramsSerializer: {
+
+    //自定义编码器函数，以迭代方式发送键/值对。
+    encode?: (param: string): string => { /* 在这里进行自定义操作并返回转换后的字符串 */ }, 
+    
+    // 整个参数的自定义序列化器函数。允许用户模仿 1.x 之前的行为。
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //用于格式化参数中数组索引的配置。
+    indexes: false // 三个可用选项：
+    // (1) indexes: null (导致没有括号), 
+    // (2) (default) indexes: false (导致空括号),
+    // (3) indexes: true (引导空字符串).    
   },
 
   // `data` 是作为请求体被发送的数据
