@@ -30,6 +30,7 @@ const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
+const zhTWConfig = require("./zhTW.lang.js")
 const jaConfig = require("./ja.lang.js");
 
 const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
@@ -116,6 +117,12 @@ const langs = [
     name: "Русский",
     prefix: "/ru/",
     config: ruConfig
+  },
+  {
+    dir: "ltr",
+    name: "繁體中文 (台灣)",
+    prefix: "/zhTW/",
+    config: zhTWConfig,
   },{
     dir: "rtl",
     name: "Arabic",
