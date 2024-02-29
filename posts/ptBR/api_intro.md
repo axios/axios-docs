@@ -7,7 +7,7 @@ next_title: "Instância Axios"
 next_link: "/ptBR/docs/instance"
 ---
 
-Requisições podem ser feitas passando as configuraçãos relevantes para o `axios`.
+Requisições podem ser feitas passando as configurações relevantes para o `axios`.
 
 ##### axios(config)
 
