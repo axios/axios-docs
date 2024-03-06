@@ -1,5 +1,5 @@
 ---
-title: 'Axiom 入門'
+title: 'Axios 入門'
 description: 'ブラウザと Node.js のための Promise ベースの HTTP クライアント'
 next_title: '最小構成の使用例'
 next_link: '/docs/example'
@@ -7,7 +7,7 @@ next_link: '/docs/example'
 
 # Axios とは?
 
-Axios は、[`Node.js`]（https://nodejs.org/）とブラウザのための *[Promise ベース](https://javascript.info/promise-basics)* の HTTP クライアントです。 これは *[Isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*（= 同じコードベースでブラウザと Node.js の両方で実行できる）と呼ばれます。 サーバー側ではネイティブ の Node.js `http` モジュールを使用し、クライアント (ブラウザ) では XMLHttpRequests を使用します。
+Axios は、[`Node.js`](https://nodejs.org/)とブラウザのための [*Promise ベース*](https://javascript.info/promise-basics) の HTTP クライアントです。 これは [*Isomorphic*](https://www.lullabot.com/articles/what-is-an-isomorphic-application)（= 同じコードベースでブラウザと Node.js の両方で実行できる）と呼ばれます。 サーバー側ではネイティブ の Node.js `http` モジュールを使用し、クライアント (ブラウザ) では XMLHttpRequests を使用します。
 
 
 # 特徴
