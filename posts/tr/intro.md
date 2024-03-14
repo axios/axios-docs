@@ -39,6 +39,12 @@ yarn ile:
 $ yarn add axios
 ```
 
+pnpm ile:
+
+```bash
+$ pnpm add axios
+```
+
 jsDelivr CDN'i ile:
 
 ```html
