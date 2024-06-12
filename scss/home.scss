@@ -152,6 +152,13 @@ footer {
     th {
       text-align: left;
     }
+
+    th {
+      font-size: 16px;
+      a {
+        font-size: 16px;
+      }
+    }
   }
 
   .row {
@@ -162,6 +169,9 @@ footer {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
+  }
+  #sponsors {
+    padding: 90px 0;
   }
 }
 
