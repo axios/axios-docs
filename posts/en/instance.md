@@ -8,7 +8,7 @@ next_link: '/docs/req_config'
 
 ### Creating an instance
 
-You can create a new instance of axios with a custom config.
+You can create a new instance of `axios` with a custom config.
 
 ##### axios.create([config])
 

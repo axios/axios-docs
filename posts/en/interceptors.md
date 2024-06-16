@@ -37,7 +37,7 @@ const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-You can add interceptors to a custom instance of axios.
+You can add interceptors to a custom instance of `axios`.
 
 ```js
 const instance = axios.create();
