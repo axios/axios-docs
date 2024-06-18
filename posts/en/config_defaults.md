@@ -10,7 +10,7 @@ next_link: '/docs/interceptors'
 
 You can specify config defaults that will be applied to every request.
 
-### Global axios defaults
+### Global `axios` defaults
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';

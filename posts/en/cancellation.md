@@ -8,11 +8,11 @@ next_link: '/docs/urlencoded'
 
 ## Cancelling requests
 
-Setting the `timeout` property in an axios call handles **response** related timeouts. 
+Setting the `timeout` property in an `axios` call handles **response** related timeouts.
 
-In some cases (e.g. network connection becomes unavailable) an axios call would benefit from cancelling the **connection** early. Without cancellation, the axios call can hang until the parent code/stack times out (might be a few minutes in a server-side applications). 
+In some cases (e.g. network connection becomes unavailable) an `axios` call would benefit from cancelling the **connection** early. Without cancellation, the `axios` call can hang until the parent code/stack times out (might be a few minutes in a server-side applications).
 
-To terminate an axios call you can use following methods:
+To terminate an `axios` call you can use following methods:
 - `signal`
 - `cancelToken` (deprecated)
 
@@ -61,9 +61,9 @@ axios.get('/foo/bar', {
 
 ### CancelToken `deprecated`
 
-You can also cancel a request using a *CancelToken*. 
+You can also cancel a request using a *CancelToken*.
 
-> The axios cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+> The `axios` cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
 
 > This API is deprecated since `v0.22.0` and shouldn't be used in new projects
 
