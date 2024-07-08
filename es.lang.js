@@ -129,7 +129,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/translating",
-      text: "Traducir estos documentos",
+      text: "Traduciendo esta documentación",
     },
   ],
 };
