@@ -42,9 +42,9 @@ axios({
 axios('/user/12345');
 ```
 
-### Alias de metodos de petición
+### Alias de métodos de petición
 
-Por conveniencia los alias han sido proveídos para todos los métodos de petición.
+Por conveniencia los alias han sido proveídos para todos los métodos de petición soportados.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
