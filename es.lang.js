@@ -14,20 +14,32 @@ module.exports = {
     subhead: `Axios es un cliente HTTP simple basado en promesas para el navegador y node.js.
               Axios provee una librería fácil de usar en un paquete pequeño con una
               interfaz muy extensible.`,
+    sponsors: `<p>Gracias por considerar ayudar nuestro proyecto.</p>
+               <p>Serás automáticamente agregado a esta lista en 24 horas si el plan seleccionado provee este beneficio.</p>`
+
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
     "Get Started": "Empezando",
     "View on GitHub": "Ver en GitHub",
-    Languages: "Idiomas",
+    "Languages": "Idiomas",
     "Open Source": "Código Abierto",
-    Contribute: "Contribuir",
+    "Contribute": "Contribuir",
     "Source on GitHub": "Código en GitHub",
+    "Issues": "Problemas",
+    "Pull Requests": "Pull Requests",
+    "Code of conduct": "Código de Conducta",
     "Fork on GitHub": "Bifurcar en GitHub",
     "Fork the Website": "Bifurcar el Sitio Web",
     "Create an Issue": "Crear un reporte",
-    Next: "Siguiente",
-    Previous: "Anterior",
+    "Next": "Siguiente",
+    "Previous": "Anterior",
+    "Website Copy Right Footer": "Website Copy Right Footer",
+    "Axios Project Copy Right Footer": "Axios Project Copy Right Footer",
+    "License Label Footer": "License Label Footer",
+    "Sponsors": "Patrocinadores",
+    "Become a sponsor": "Convertirse en patrocinador"
+
   },
   sidebar: [
     {
@@ -96,7 +108,42 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "Cuerpos de solicitud codificados como URL",
+      text: "🆕 Datos codificados como URL",
+    },
+    {
+      type: "link",
+      href: "/docs/res_schema",
+      text: "Esquema de Respuesta",
+    },
+    {
+      type: "link",
+      href: "/docs/config_defaults",
+      text: "Configuraciones por Defecto",
+    },
+    {
+      type: "link",
+      href: "/docs/interceptors",
+      text: "Interceptores",
+    },
+    {
+      type: "link",
+      href: "/docs/handling_errors",
+      text: "Manejando Errores",
+    },
+    {
+      type: "link",
+      href: "/docs/cancellation",
+      text: "Cancelación",
+    },
+    {
+      type: "link",
+      href: "/docs/urlencoded",
+      text: "🆕 Contenido tipo URL-Encoding",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Contenido tipo Multipart",
     },
     {
       type: "heading",
