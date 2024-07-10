@@ -107,11 +107,6 @@ module.exports = {
     },
     {
       type: "link",
-      href: "/docs/urlencoded",
-      text: "🆕 Datos codificados como URL",
-    },
-    {
-      type: "link",
       href: "/docs/res_schema",
       text: "Esquema de Respuesta",
     },
