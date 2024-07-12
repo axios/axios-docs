@@ -1,13 +1,15 @@
 ---
-title: 'Peticion POST'
-description: 'Como ejecutar una peticion POST con Axios'
+title: 'Petición POST'
+description: 'Como ejecutar una petición POST con Axios'
 prev_title: 'Ejemplo Mínimo'
-prev_link: '/es/docs/example'
+prev_link: 'es/docs/example'
 next_title: 'Axios API'
-next_link: '/es/docs/api_intro'
+next_link: 'es/docs/api_intro'
 ---
 
-Ejecutando una peticion `POST`
+## Ejecutando una petición `POST` 
+
+### JSON
 
 ```js
 axios.post('/user', {
@@ -22,7 +24,7 @@ axios.post('/user', {
   });
 ```
 
-Ejecutando múltiples peticiones concurrentes
+Ejecutando multiple peticiones concurrentes
 
 ```js
 function getUserAccount() {
@@ -33,9 +35,54 @@ function getUserPermissions() {
   return axios.get('/user/12345/permissions');
 }
 
+const [acct, perm] = await Promise.all([getUserAccount(), getUserPermissions()]);
+
+// OR
+
 Promise.all([getUserAccount(), getUserPermissions()])
-  .then(function (results) {
-    const acct = results[0];
-    const perm = results[1];
+  .then(function ([acct, perm]) {
+    // ...
   });
+```
+
+Postear un Form HTML como JSON
+
+```js
+const {data} = await axios.post('/user', document.querySelector('#my-form'), {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+```
+
+### Forms
+
+- Multipart (`multipart/form-data`)
+
+```js
+const {data} = await axios.post('https://httpbin.org/post', {
+    firstName: 'Fred',
+    lastName: 'Flintstone',
+    orders: [1, 2, 3],
+    photo: document.querySelector('#fileInput').files
+  }, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+)
+```
+
+- URL encoded form (`application/x-www-form-urlencoded`)
+
+```js
+const {data} = await axios.post('https://httpbin.org/post', {
+    firstName: 'Fred',
+    lastName: 'Flintstone',
+    orders: [1, 2, 3]
+  }, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+})
 ```
