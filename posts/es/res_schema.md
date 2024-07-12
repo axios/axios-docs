@@ -14,6 +14,8 @@ La respuesta para una petición contiene la siguiente información.
   data: {},
 
   // `status` es el código HTTP de la respuesta del servidor
+  // A partir de HTTP/2, el texto de estado está en blanco o no es compatible.
+  // (HTTP/2 RFC: https://www.rfc-editor.org/rfc/rfc7540#section-8.1.2.4)
   status: 200,
 
   // `statusText` es el mensaje del estado HTTP de la respuesta del servidor
