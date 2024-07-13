@@ -282,6 +282,24 @@ li.sponsor-card[data-is-active = "yes"] {
     word-break: break-word;
   }
 
+  .links {
+    padding: 5px 0px;
+  }
+
+  .links a:not(:first-child):before {
+    content: "|";
+    padding: 0 10px 0 5px;
+  }
+
+  .caption {
+    display: flex;
+    align-items: center;
+  }
+
+  .sponsor-icon {
+    padding-right: 3px;
+  }
+
   .social {
     display: flex;
     justify-content: center;
