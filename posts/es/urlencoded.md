@@ -1,9 +1,9 @@
 ---
-title: 'Cuerpos de solicitud codificados como URL'
+title: 'Contenido tipo URL-Encoding'
 prev_title: 'Cancelación'
 prev_link: '/es/docs/cancellation'
-next_title: 'Notas'
-next_link: '/es/docs/notes'
+next_title: 'Contenido tipo Multipart'
+next_link: '/es/docs/multipart'
 ---
 
 Por defecto, axios serializa objetos JavaScript a `JSON`. Para enviar data en un formato distinto a `application/x-www-form-urlencoded`, puedes usar una de las siguientes opciones.
@@ -28,7 +28,7 @@ const qs = require('qs');
 axios.post('/foo', qs.stringify({ 'bar': 123 }));
 ```
 
-O de otra manera (ES6),
+O de otra forma (ES6),
 
 ```js
 import qs from 'qs';
@@ -63,31 +63,57 @@ axios.post('http://something.com/', params.toString());
 
 También puedes usar la librería [`qs`](https://github.com/ljharb/qs).
 
-###### NOTA
-La librería `qs` es preferida si necesitas un stringify de objetos anidados, ya que el método `querystring` tiene problemas conocidos con ese caso de uso (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+> Nota: Se prefiere usar la librería `qs` si necesitas un stringify de objetos anidados, ya que el método `querystring` tiene problemas conocidos con ese caso de uso (https://github.com/nodejs/node-v0.x-archive/issues/1665).
 
-#### Form data
+### 🆕 Serialización Automática
 
-En node.js, puedes usar la librería [`form-data`](https://github.com/form-data/form-data) de la siguiente manera:
+Axios serializará automáticamente el objeto data al formato urlencoded si el contenido de la cabecera `content-type` es `application/x-www-form-urlencoded`.
+
+Esto funciona en el navegador y en `node.js`:
 
 ```js
-const FormData = require('form-data');
- 
-const form = new FormData();
-form.append('my_field', 'my value');
-form.append('my_buffer', new Buffer(10));
-form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
+const data = {
+  x: 1,
+  arr: [1, 2, 3],
+  arr2: [1, [2], 3],
+  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
+};
 
-axios.post('https://example.com', form, { headers: form.getHeaders() })
+await axios.post('https://postman-echo.com/post', data,
+  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+);
 ```
 
-Alternativamente, usa un interceptor:
+El servidor lo manejara como
 
 ```js
-axios.interceptors.request.use(config => {
-  if (config.data instanceof FormData) {
-    Object.assign(config.headers, config.data.getHeaders());
+  {
+    x: '1',
+    'arr[]': [ '1', '2', '3' ],
+    'arr2[0]': '1',
+    'arr2[1][0]': '2',
+    'arr2[2]': '3',
+    'arr3[]': [ '1', '2', '3' ],
+    'users[0][name]': 'Peter',
+    'users[0][surname]': 'griffin',
+    'users[1][name]': 'Thomas',
+    'users[1][surname]': 'Anderson'
   }
-  return config;
-});
+````
+
+ Si el body parser de tu framework de server soporta la decodificación de objetos anidados (como `body-parser` de `express.js`), 
+recibirás automáticamente el mismo objeto server que enviaste.
+
+Ejemplo Echo server (`express.js`) :
+
+```js
+  var app = express();
+  
+  app.use(bodyParser.urlencoded({ extended: true })); // support url-encoded bodies
+  
+  app.post('/', function (req, res, next) {
+     res.send(JSON.stringify(req.body));
+  });
+
+  server = app.listen(3000);
 ```
