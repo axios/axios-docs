@@ -82,25 +82,15 @@ const pullSponsors = async (collective, {type = 'organizations'} = {}) => {
   const {data} = await getWithRetry(`https://opencollective.com/${collective}/members/${type}.json`);
 
   return data.map(({lastTransactionAt, ...entry}) => {
-    const {profile, website} = entry;
+    const {profile} = entry;
 
     const login = new URL(profile).pathname.split('/').pop();
 
-    console.log(`Sponsor: ${login}`);
-
-    const targetLink = website || entry.twitter || entry.github || entry.profile;
-
-    const parsed = parseURL(targetLink);
-
-    const alt = parsed && parsed.origin;
+    console.log(`Open Collective member: ${login}`);
 
     return {
       ...entry,
-      alt,
-      login,
-      displayName: entry.name || login,
-      targetLink,
-      utmLink: parsed && makeUTMURL(targetLink)
+      login
     }
   });
 }
@@ -208,11 +198,8 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
   // merge Open Collective sponsors
   sponsorsData.forEach(sponsor => {
     if (sponsor.role !== 'BACKER' && sponsor.role && sponsor.totalAmountDonated <= 0) {
-      console.log(`Ignore sponsor [${sponsor.displayName}]`);
       return;
     }
-
-    console.log(`Process sponsor [${sponsor.displayName}]`);
 
     computedSponsors[sponsor.login] = {...sponsor};
   });
@@ -226,6 +213,10 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
   await Promise.all(Object.values(computedSponsors).map(async (sponsor) => {
     let {login, icon, website, displayName, description, links} = sponsor;
+
+    sponsor.displayName = displayName = displayName || sponsor.name || login;
+
+    console.log(`Process sponsor [${displayName}]`);
 
     const iconHTML = icon ? `<img class="sponsor-icon" src="${await downloadImage(icon)}" alt="${login}"/>` : '';
 
@@ -266,6 +257,12 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     tooltip += `<div class="social">${icons}</div>`
 
     sponsor.tooltip = tooltip;
+
+    sponsor.targetLink = website || sponsor.twitter || sponsor.github || sponsor.profile;
+
+    const parsed = parseURL(sponsor.targetLink);
+
+    sponsor.utmLink = !sponsor.utmLink && parsed && makeUTMURL(sponsor.targetLink);
   }));
 
   const sortedSponsors = {};
