@@ -1,8 +1,27 @@
 const fs = require('fs/promises');
-const axios = require('axios');
 const path = require('path');
 const mime = require('mime-types');
 const sharp = require('sharp');
+const cheerio = require('cheerio');
+const html = require('html-escaper');
+const crypto = require('crypto');
+
+const axios = require("axios").create({
+  headers: {
+    "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+  }
+});
+
+const social = {
+  website: 'website.png',
+  facebook: 'facebook.png',
+  github: 'github.png',
+  instagram: 'instagram.png',
+  reddit: 'reddit.png',
+  tiktok: 'tiktok.png',
+  twitter: 'twitter.png',
+  youtube: 'youtube.png'
+}
 
 const parseURL = (url) => {
   try{
@@ -92,28 +111,86 @@ const processAvatars = async (sponsorsData, avatarsPath = './assets/sponsors/ope
   await Promise.all(Object.values(sponsorsData).map(async (sponsor) => {
     const {image, profile} = sponsor;
 
-    if (!/^https?:/.test(image)) {
-      return;
+    try {
+      if (!/^https?:/.test(image)) {
+        return;
+      }
+
+      const {data, headers} = await axios.get(image, {responseType: 'arraybuffer'});
+
+      const login = new URL(profile).pathname.split('/').pop();
+
+      const ext = mime.extension(headers.getContentType()) || '';
+
+      const localAvatarPath = path.join(avatarsPath, `${login}${ext ? '.' + ext : ''}`);
+
+      sponsor.image = '/' + localAvatarPath;
+
+      await sharp(data)
+        .resize(400, 150, {
+          fit: sharp.fit.inside,
+          withoutEnlargement: true
+        })
+        .png()
+        .toFile(localAvatarPath)
+
+    } catch(err){
+      console.log(`Error while loading logo [${image}]: ${err}`);
+      sponsor.image = '';
+    }
+  }));
+}
+
+const downloadImage = async (src, maxWidth = 32, maxHeight = 32, imagesPath = './assets/sponsors/') => {
+  let buffer;
+  let name, ext;
+
+  console.log(`Download [${src}] and resize image to ${maxWidth} x ${maxHeight}`);
+
+  try {
+    if (/^https?:/.test(src)) {
+      const {data, headers} = await axios.get(src, {responseType: 'arraybuffer'});
+      name = new URL(src).pathname.split('/').pop();
+      ext = mime.extension(headers.getContentType()) || '';
+      buffer = data;
+    } else {
+      buffer = await fs.readFile(src);
+      ext = path.extname(src);
+      name = path.basename(src, ext);
+      ext = ext.replace(/^\./, '');
     }
 
-    const {data, headers} = await axios.get(image, {responseType: 'arraybuffer'});
+    const sha = crypto.createHash('sha1')
 
-    const login = new URL(profile).pathname.split('/').pop();
+    const dest = `${name}_${sha.update(src).digest('hex')}${ext ? '.' + ext : ''}`;
 
-    const ext = mime.extension(headers.getContentType()) || '';
+    const fullPath = path.join(imagesPath, dest);
 
-    const localAvatarPath = path.join(avatarsPath, `${login}${ext ? '.' + ext : ''}`);
+    console.log(`Save as [${fullPath}]`);
 
-    sponsor.image = '/' + localAvatarPath;
-
-    await sharp(data)
-      .resize(400, 150, {
+    await sharp(buffer)
+      .resize(maxWidth, maxHeight, {
         fit: sharp.fit.inside,
         withoutEnlargement: true
       })
       .png()
-      .toFile(localAvatarPath)
-  }));
+      .toFile(fullPath);
+
+    return fullPath;
+  } catch (err) {
+    console.log(`Error while loading logo [${src}]: ${err}`);
+  }
+}
+
+const getPageDescription = async (website) => {
+  try {
+    const {data} = await axios.get(website);
+    const $ = cheerio.load(data);
+
+    return $('head > meta[name=description]').first().attr('content') || $('head > meta[name=title]').first().attr('content');
+  } catch (e) {
+    console.log(`Error while loading page ${website}: ${e}`);
+  }
 }
 
 const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.json') => {
@@ -128,39 +205,54 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     scoreTotalAmountFactor = 0.2
   } = await readJSON(sponsorsConfig) || {};
 
-  Object.entries(sponsors).forEach(([login, entry]) => {
-    computedSponsors[login] = {login, ...entry};
+  // merge Open Collective sponsors
+  sponsorsData.forEach(sponsor => {
+    if (sponsor.role !== 'BACKER' && sponsor.role && sponsor.totalAmountDonated <= 0) {
+      console.log(`Ignore sponsor [${sponsor.displayName}]`);
+      return;
+    }
+
+    console.log(`Process sponsor [${sponsor.displayName}]`);
+
+    computedSponsors[sponsor.login] = {...sponsor};
   });
 
-  sponsorsData.forEach(sponsor => {
-    if (sponsor.role !== 'BACKER' && sponsor.totalAmountDonated <= 0) {
-      return null;
+  // merge config sponsors
+  Object.entries(sponsors).forEach(([login, entry]) => {
+    const existing = computedSponsors[login] || {};
+
+    computedSponsors[login] = {login, ...existing, ...entry};
+  });
+
+  await Promise.all(Object.values(computedSponsors).map(async (sponsor) => {
+    let {login, icon, website, displayName, description, links} = sponsor;
+
+    const iconHTML = icon ? `<img class="sponsor-icon" src="${await downloadImage(icon)}" alt="${login}"/>` : '';
+
+    let tooltip = `<h2 class="caption">${iconHTML}<span>${displayName} (${sponsor.totalAmountDonated}$${sponsor.tier && sponsor.isActive ? ' <sup class="tier">' + sponsor.tier + '</sup>' : ''})</span></h2> `;
+
+    if (!description && website) {
+      description = await getPageDescription(website);
+
+      console.log(`Website ${website} description: ${description}`);
     }
 
-    const {login} = sponsor;
-
-    const entry = computedSponsors[login] || null;
-
-    const newEntry = {
-      ...sponsor,
-      ...entry
-    };
-
-    let tooltip = `<h2>${newEntry.displayName} (${sponsor.totalAmountDonated}$${sponsor.tier && sponsor.isActive ? ' <sup class="tier">' + sponsor.tier + '</sup>' : ''})</h2> `;
-
-    const social = {
-      website: 'website.png',
-      facebook: 'facebook.png',
-      github: 'github.png',
-      instagram: 'instagram.png',
-      reddit: 'reddit.png',
-      tiktok: 'tiktok.png',
-      twitter: 'twitter.png',
-      youtube: 'youtube.png'
+    if (description) {
+      tooltip += `<div class="description">${description}</div>`;
     }
 
-    if (newEntry.description) {
-      tooltip += `<div class="description">${newEntry.description}</div>`;
+    const linksArray = Object.entries(links || {});
+
+    if (linksArray.length) {
+      const rendered = linksArray.map(([text, entry]) => {
+        const {href} = typeof entry === 'string' ? {
+          href: entry
+        } : entry || {};
+
+        return `<a href="${makeUTMURL(href)}">${html.escape(text)}</a>`;
+      }).join('');
+
+      tooltip += `<div class="links">${rendered}</divclass>`
     }
 
     const icons = Object.entries(social).map(([name, icon]) => {
@@ -173,11 +265,8 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
     tooltip += `<div class="social">${icons}</div>`
 
-    computedSponsors[login] = {
-      tooltip,
-      ...newEntry
-    };
-  });
+    sponsor.tooltip = tooltip;
+  }));
 
   const sortedSponsors = {};
 
@@ -187,7 +276,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     const averageMonthlyContribution = sponsor.totalAmountDonated / (monthsPassed || 1);
 
     const {isActive} = sponsor;
-    const {tier} = isActive && sponsor;
+    const tier = isActive && sponsor.tier;
     const hasActiveTier = tier && tier !== 'Backer';
     const {price = 0, benefits = null} = tier && tiers[tier] || {};
 
