@@ -2,9 +2,9 @@
 title: 'Ejemplo Mínimo'
 description: 'Un ejemplo pequeño de como usar Axios'
 prev_title: 'Introducción'
-prev_link: '/es/docs/intro'
+prev_link: 'intro'
 next_title: 'Petición POST'
-next_link: '/es/docs/post_example'
+next_link: 'post_example'
 ---
 
 ## nota: Uso de CommonJS

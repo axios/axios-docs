@@ -1,9 +1,9 @@
 ---
 title: 'La instancia Axios'
 prev_title: 'API de Axios'
-prev_link: '/es/docs/api_intro'
+prev_link: 'api_intro'
 next_title: 'Configuración de Petición'
-next_link: '/es/docs/req_config'
+next_link: 'req_config'
 ---
 
 ### Creando una instancia

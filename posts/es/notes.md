@@ -2,7 +2,7 @@
 title: "Notas"
 description: "Un par más de notas de clarificatorias"
 prev_title: "Contenido tipo URL-Encoding"
-prev_link: "/es/docs/urlencoded"
+prev_link: "urlencoded"
 ---
 
 ## Semver

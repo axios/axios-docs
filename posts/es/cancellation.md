@@ -1,9 +1,9 @@
 ---
 title: 'Cancelación'
 prev_title: 'Manejando Errores'
-prev_link: '/es/docs/handling_errors'
+prev_link: 'handling_errors'
 next_title: 'Contenido tipo URL-Encoding'
-next_link: '/es/docs/urlencoded'
+next_link: 'urlencoded'
 ---
 
 ## Cancelando solicitudes

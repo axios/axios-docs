@@ -1,9 +1,9 @@
 ---
 title: 'Contenido tipo URL-Encoding'
 prev_title: 'Cancelación'
-prev_link: '/es/docs/cancellation'
+prev_link: 'cancellation'
 next_title: 'Contenido tipo Multipart'
-next_link: '/es/docs/multipart'
+next_link: 'multipart'
 ---
 
 Por defecto, axios serializa objetos JavaScript a `JSON`. Para enviar data en un formato distinto a `application/x-www-form-urlencoded`, puedes usar una de las siguientes opciones.

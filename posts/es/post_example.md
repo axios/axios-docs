@@ -2,9 +2,9 @@
 title: 'Petición POST'
 description: 'Como ejecutar una petición POST con Axios'
 prev_title: 'Ejemplo Mínimo'
-prev_link: 'es/docs/example'
+prev_link: 'example'
 next_title: 'Axios API'
-next_link: 'es/docs/api_intro'
+next_link: 'api_intro'
 ---
 
 ## Ejecutando una petición `POST` 

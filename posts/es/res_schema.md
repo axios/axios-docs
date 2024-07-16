@@ -1,9 +1,9 @@
 ---
 title: 'Esquema de Respuesta'
 prev_title: 'Configuración de Petición'
-prev_link: '/es/docs/req_config'
+prev_link: 'req_config'
 next_title: 'Configuraciones por Defecto'
-next_link: '/es/docs/config_defaults'
+next_link: 'config_defaults'
 ---
 
 La respuesta para una petición contiene la siguiente información.

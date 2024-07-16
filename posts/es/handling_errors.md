@@ -1,9 +1,9 @@
 ---
 title: 'Manejando Errores'
 prev_title: 'Interceptores'
-prev_link: '/es/docs/interceptors'
+prev_link: 'interceptors'
 next_title: 'Cancelación'
-next_link: '/es/docs/cancellation'
+next_link: 'cancellation'
 ---
 
 ```js

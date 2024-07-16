@@ -1,9 +1,9 @@
 ---
 title: 'Contenido tipo Multipart'
 prev_title: 'Contenido tipo URL-Encoding'
-prev_link: '/es/docs/urlencoded'
-next_title: 'Notes'
-next_link: '/es/docs/notes'
+prev_link: 'urlencoded'
+next_title: 'Notas'
+next_link: 'notes'
 ---
 
 ## Publicando datos como `multipart/form-data`

@@ -1,9 +1,9 @@
 ---
 title: 'Configuraciones por Defecto'
 prev_title: 'Esquema de Respuesta'
-prev_link: '/es/docs/res_schema'
+prev_link: 'res_schema'
 next_title: 'Interceptores'
-next_link: '/es/docs/interceptors'
+next_link: 'interceptors'
 ---
 
 ## Configuraciones por Defecto
