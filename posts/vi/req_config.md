@@ -49,10 +49,18 @@ next_link: '/vi/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` là hàm tùy chọn để đảm nhiệm tuần tự hóa `params`.
+  // `paramsSerializer` là một trường để thiết lập tuần tự hóa của `params`.
+  // Bạn có thể sử dụng trường serialize để sử dụng một hàm tuần tự hóa tùy chỉnh.
+  // Bạn có thể sử dụng trường encode để sử dụng một hàm mã hóa tùy chỉnh.
+  // Nếu bạn thiết lập một hàm vào `paramsSerializer` như trước đây, hàm mã hóa mặc định từ axios sẽ được gán vào trường encode.
   // (vd https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` là dữ liệu làm phần thân request để được gửi đi.
