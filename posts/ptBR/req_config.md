@@ -46,10 +46,18 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
     ID: 12345
   },
 
-  // `paramsSerializer` é uma função opcional que comanda a serialização dos `params`
+  // `paramsSerializer` é um campo para definir a serialização de `params`.
+  // Você pode usar o campo serialize para usar uma função de serialização personalizada.
+  // Você pode usar o campo encode para usar uma função de codificação personalizada.
+  // Se você definir uma função em `paramsSerializer` como antes, a função de codificação padrão do axios será atribuída ao campo encode.
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+      serialize: (params) => {
+          return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+          encode: (str) => {
+          return encodeURIComponent(str)
+      }
   },
 
   // `data` são os dados a serem enviados no corpo da requisição
