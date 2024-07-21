@@ -52,11 +52,19 @@ Voici les différentes options de configuration que vous pouvez utiliser pour fa
     ID: 12345
   },
 
-  // `paramsSerializer` est une fonction optionnelle qui permet de définir
+  // `paramsSerializer` est un champ pour définir la sérialisation de `params`.
+  // Vous pouvez utiliser le champ serialize pour utiliser une fonction de sérialisation personnalisée.
+  // Vous pouvez utiliser le champ encode pour utiliser une fonction de codage personnalisée.
+  // Si vous définissez une fonction sur `paramsSerializer` comme auparavant, la fonction de codage par défaut d'axios sera attribuée au champ encode.
   // comment `params` doit être sérialisé (avec https://www.npmjs.com/package/qs
   // ou http://api.jquery.com/jquery.param/ par exemple).
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+      serialize: (params) => {
+          return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+          encode: (str) => {
+          return encodeURIComponent(str)
+      }
   },
 
   // `data` correspond aux données qui constitueront le corps de la requête.
