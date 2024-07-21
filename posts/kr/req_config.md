@@ -48,10 +48,18 @@ next_link: '/kr/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer`는 `params`의 시리얼라이즈를 담당하는 옵션 함수입니다.
+  // `paramsSerializer`는 `params`의 시리얼라이즈를 설정하는 필드입니다.
+  // serialize 필드를 통해 사용자 정의 시리얼라이즈 함수를 사용할 수 있습니다.
+  // encode 필드를 통해 사용자 정의 인코딩 함수를 사용할 수 있습니다.
+  // 이전처럼 `paramsSerializer`에 함수를 설정하면 encode 필드에 axios에서 사용하는 기본 인코딩 함수가 할당됩니다.  
   // (예: https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data`는 요청 바디로 전송될 데이터입니다.  
