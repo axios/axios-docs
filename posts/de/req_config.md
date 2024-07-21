@@ -50,12 +50,19 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das Fe
     ID: 12345
   },
 
-  // Mit `paramsSerializer` kann optional die Funktion zur Serialisierung des
-  // Feldes `params` manuell überschrieben werden.
-  // (z.B. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
-  },
+    // `paramsSerializer` ist ein Feld zum Festlegen der Serialisierung von `params`.
+    // Über das Feld serialize kann eine benutzerdefinierte Serialisierungsfunktion verwendet werden.
+    // Über das Feld encode kann eine benutzerdefinierte Kodierungsfunktion verwendet werden.
+    // Wenn Sie wie zuvor eine Funktion auf `paramsSerializer` setzen, wird die Standard-Kodierungsfunktion von axios dem Feld encode zugewiesen.
+    // (z.B. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+    paramsSerializer: {
+        serialize: (params) => {
+            return Qs.stringify(params, {arrayFormat: 'brackets'})
+        },
+            encode: (str) => {
+            return encodeURIComponent(str)
+        }
+    },
 
   // `data` beinhaltet die Daten, die im Körper der Anfrage übertragen werden sollen.
   // `data` wird nur bei den HTTP-Methoden 'PUT', 'POST', 'DELETE' und 'PATCH' berücksichtigt.
