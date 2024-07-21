@@ -48,10 +48,18 @@ next_link: '/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` یک عملکرد اختیاری است که وظیفه سریال سازی `params` را بر عهده دارد 
+  // `paramsSerializer` یک فیلد برای تنظیم سریال‌سازی `params` است.
+  // می‌توانید از فیلد serialize برای استفاده از یک تابع سریال‌سازی سفارشی استفاده کنید.
+  // می‌توانید از فیلد encode برای استفاده از یک تابع رمزگذاری سفارشی استفاده کنید.
+  // اگر همانند قبل تابعی به `paramsSerializer` تنظیم کنید، تابع رمزگذاری پیش‌فرض axios به فیلد encode اختصاص داده می‌شود.
   // (به عنوان مثال، https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+      serialize: (params) => {
+          return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+          encode: (str) => {
+          return encodeURIComponent(str)
+      }
   },
 
   // `data` داده ای است که به عنوان بدنه درخواست ارسال می شود 
