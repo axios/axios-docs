@@ -49,10 +49,18 @@ next_link: '/uk/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` - це додаткова функція, яка відповідає за серіалізацію` params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` - це поле для налаштування серіалізації `params`.
+  // Ви можете використовувати поле serialize для використання власної функції серіалізації.
+  // Ви можете використовувати поле encode для використання власної функції кодування.
+  // Якщо ви, як і раніше, задасте функцію в `paramsSerializer`, за замовчуванням функція кодування з axios буде призначена полю encode.
+  // (e.g. https://www.npmjs.com/package/qs, https://api.jquery.com/jquery.param/)
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` - це дані, які надсилаються як тіло запиту
