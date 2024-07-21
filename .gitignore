@@ -7,3 +7,6 @@ assets/sponsors/opencollective
 *.css.map
 # Local Netlify folder
 .netlify
+
+# intelij
+.idea/
