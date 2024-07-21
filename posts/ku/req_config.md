@@ -52,10 +52,18 @@ next_link: "/ku/docs/res_schema"
     ID: 12345
   },
 
-  // ـەکان`params` کردنی serializing فەنکشنێکی بژاردەییە بەرپرسە لە
+  // `paramsSerializer` بەشێکە بۆ دانانی سریالکەرەوەی `params`.
+  // دەتوانی بەشە serialize بەکاربهێنی بۆ بەکارھێنانی فەرمی سریالکەرەوەی خۆی.
+  // دەتوانی بەشە encode بەکاربهێنی بۆ بەکارھێنانی فەرمی کۆدکردنی خۆی.
+  // ئەگەر پێشتر وەکوو پێشتر فەرمی بۆ `paramsSerializer` دانیت، فەرمی بنەڕەتی کۆدکردنی axios بەپێی encode بەشەکە دەکرێتەوە.
   // (https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/ نموونە)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+      serialize: (params) => {
+          return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+          encode: (str) => {
+          return encodeURIComponent(str)
+      }
   },
 
   // بریتییە لەو داتاییە کە دەنێردرێت وەکو لاشەی داواکارییەکە `data`
