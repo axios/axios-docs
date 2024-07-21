@@ -46,11 +46,19 @@ next_link: '/zh/docs/res_schema'
   params: {
     ID: 12345
   },
-
-  // `paramsSerializer`是可选方法，主要用于序列化`params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  
+  // `paramsSerializer` 是一个用于设置 `params` 序列化的字段。
+  // 你可以通过 serialize 字段来使用自定义的序列化函数。
+  // 你可以通过 encode 字段来使用自定义的编码函数。
+  // 如果像以前一样在 `paramsSerializer` 中设置一个函数，axios 的默认编码函数将被分配给 encode 字段。
+  // (e.g. https://www.npmjs.com/package/qs, https://api.jquery.com/jquery.param/)
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` 是作为请求体被发送的数据
