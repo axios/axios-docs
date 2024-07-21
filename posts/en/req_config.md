@@ -51,19 +51,19 @@ These are the available config options for making requests. Only the `url` is re
     ID: 12345
   },
 
-    // `paramsSerializer` is a field for setting the serialization of `params`.
-    // You can use the serialize field to use a custom serialization function.
-    // You can use the encode field to use a custom encoding function.
-    // If you set a function to `paramsSerializer` as before, the default encoding function from axios will be assigned to the encode field.
-    // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-    paramsSerializer: {
-      serialize: (params) => {
-        return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-      encode: (str) => {
-        return encodeURIComponent(str)
-      }
+  // `paramsSerializer` is a field for setting the serialization of `params`.
+  // You can use the serialize field to use a custom serialization function.
+  // You can use the encode field to use a custom encoding function.
+  // If you set a function to `paramsSerializer` as before, the default encoding function from axios will be assigned to the encode field.
+  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
     },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
+  },
 
   // `data` is the data to be sent as the request body
   // Only applicable for request methods 'PUT', 'POST', 'DELETE', and 'PATCH'
