@@ -55,12 +55,12 @@ next_link: '/docs/res_schema'
   // 以前のように`paramsSerializer`に関数を設定すると、axiosのデフォルトエンコーディング関数がencodeフィールドに割り当てられます。
   // (たとえば、https://www.npmjs.com/package/qs、http://api.jquery.com/jquery.param/)
   paramsSerializer: {
-      serialize: (params) => {
-          return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-          encode: (str) => {
-          return encodeURIComponent(str)
-      }
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` はリクエスト ボディとして送信されるデータです。

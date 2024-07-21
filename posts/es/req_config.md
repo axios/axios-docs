@@ -58,10 +58,10 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: {
     serialize: (params) => {
-        return Qs.stringify(params, {arrayFormat: 'brackets'})
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
     },
     encode: (str) => {
-        return encodeURIComponent(str)
+      return encodeURIComponent(str)
     }
   },    
 

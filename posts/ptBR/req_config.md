@@ -52,12 +52,12 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // Se você definir uma função em `paramsSerializer` como antes, a função de codificação padrão do axios será atribuída ao campo encode.
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: {
-      serialize: (params) => {
-          return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-          encode: (str) => {
-          return encodeURIComponent(str)
-      }
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` são os dados a serem enviados no corpo da requisição

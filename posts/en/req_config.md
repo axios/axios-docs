@@ -57,12 +57,12 @@ These are the available config options for making requests. Only the `url` is re
     // If you set a function to `paramsSerializer` as before, the default encoding function from axios will be assigned to the encode field.
     // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
     paramsSerializer: {
-        serialize: (params) => {
-            return Qs.stringify(params, {arrayFormat: 'brackets'})
-        },
-            encode: (str) => {
-            return encodeURIComponent(str)
-        }
+      serialize: (params) => {
+        return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+      encode: (str) => {
+        return encodeURIComponent(str)
+      }
     },
 
   // `data` is the data to be sent as the request body

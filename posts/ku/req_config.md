@@ -58,12 +58,12 @@ next_link: "/ku/docs/res_schema"
   // ئەگەر پێشتر وەکوو پێشتر فەرمی بۆ `paramsSerializer` دانیت، فەرمی بنەڕەتی کۆدکردنی axios بەپێی encode بەشەکە دەکرێتەوە.
   // (https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/ نموونە)
   paramsSerializer: {
-      serialize: (params) => {
-          return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-          encode: (str) => {
-          return encodeURIComponent(str)
-      }
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // بریتییە لەو داتاییە کە دەنێردرێت وەکو لاشەی داواکارییەکە `data`

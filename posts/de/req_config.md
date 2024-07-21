@@ -56,12 +56,12 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das Fe
     // Wenn Sie wie zuvor eine Funktion auf `paramsSerializer` setzen, wird die Standard-Kodierungsfunktion von axios dem Feld encode zugewiesen.
     // (z.B. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
     paramsSerializer: {
-        serialize: (params) => {
-            return Qs.stringify(params, {arrayFormat: 'brackets'})
-        },
-            encode: (str) => {
-            return encodeURIComponent(str)
-        }
+      serialize: (params) => {
+        return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+      encode: (str) => {
+        return encodeURIComponent(str)
+      }
     },
 
   // `data` beinhaltet die Daten, die im Körper der Anfrage übertragen werden sollen.

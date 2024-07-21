@@ -59,12 +59,12 @@ Voici les différentes options de configuration que vous pouvez utiliser pour fa
   // comment `params` doit être sérialisé (avec https://www.npmjs.com/package/qs
   // ou http://api.jquery.com/jquery.param/ par exemple).
   paramsSerializer: {
-      serialize: (params) => {
-          return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-          encode: (str) => {
-          return encodeURIComponent(str)
-      }
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` correspond aux données qui constitueront le corps de la requête.

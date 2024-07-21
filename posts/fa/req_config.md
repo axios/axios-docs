@@ -54,12 +54,12 @@ next_link: '/docs/res_schema'
   // اگر همانند قبل تابعی به `paramsSerializer` تنظیم کنید، تابع رمزگذاری پیش‌فرض axios به فیلد encode اختصاص داده می‌شود.
   // (به عنوان مثال، https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: {
-      serialize: (params) => {
-          return Qs.stringify(params, {arrayFormat: 'brackets'})
-      },
-          encode: (str) => {
-          return encodeURIComponent(str)
-      }
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` داده ای است که به عنوان بدنه درخواست ارسال می شود 
