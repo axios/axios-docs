@@ -49,10 +49,18 @@ next_link: '/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` は、 `params` のシリアライズを担当するオプションの関数です。
+  // `paramsSerializer`は、`params`のシリアル化を設定するフィールドです。
+  // serializeフィールドを使用して、カスタムシリアル化関数を使用できます。
+  // encodeフィールドを使用して、カスタムエンコーディング関数を使用できます。
+  // 以前のように`paramsSerializer`に関数を設定すると、axiosのデフォルトエンコーディング関数がencodeフィールドに割り当てられます。
   // (たとえば、https://www.npmjs.com/package/qs、http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+      serialize: (params) => {
+          return Qs.stringify(params, {arrayFormat: 'brackets'})
+      },
+          encode: (str) => {
+          return encodeURIComponent(str)
+      }
   },
 
   // `data` はリクエスト ボディとして送信されるデータです。
