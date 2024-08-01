@@ -273,11 +273,12 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     const averageMonthlyContribution = sponsor.totalAmountDonated / (monthsPassed || 1);
 
     const {isActive} = sponsor;
-    const tier = isActive && sponsor.tier;
-    const hasActiveTier = tier && tier !== 'Backer';
+    const tier = isActive && String(sponsor.tier || '').toLowerCase();
+    const hasActiveTier = !!(tier && tier !== 'backer');
     const {price = 0, benefits = null} = tier && tiers[tier] || {};
 
     sponsor.benefits = {
+      // backers without active tier
       showAtSponsorList: sponsor.totalAmountDonated >= totalAmountDonatedThreshold && averageMonthlyContribution >= monthlyContributionThreshold,
       ...benefits
     };
@@ -287,6 +288,16 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
     sponsor.visual = {
       opacity: hasActiveTier ? 1 : Math.max(0.5, Math.min(1, creditLeft / disappearCredit)).toFixed(1)
     }
+
+    console.log(
+      `Add sponsor badge [${sponsor.displayName}]
+        - tier: ${tier ? tier + '(' + price + '$)' : '< none >'}
+        - total amount donated: ${sponsor.totalAmountDonated}$
+        - website: ${sponsor.website}
+        - credit left: ${creditLeft}$
+        - has active tier: ${hasActiveTier}
+        - showAtSponsorList: ${sponsor.benefits.showAtSponsorList}
+      `);
 
     return {
       ...sponsor,
