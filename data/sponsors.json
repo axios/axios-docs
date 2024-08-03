@@ -5,14 +5,28 @@
   "scoreTierPriceFactor": 0.70,
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
-    "$49 a month": {
+    "bronze": {
       "price": 49,
       "benefits": {
         "showAtSponsorList": true
       }
     },
-    "$99 a month" : {
+    "silver" : {
       "price": 99,
+      "benefits": {
+        "showAtSponsorList": true,
+        "showAtPages": true
+      }
+    },
+    "gold" : {
+      "price": 299,
+      "benefits": {
+        "showAtSponsorList": true,
+        "showAtPages": true
+      }
+    },
+    "platinum" : {
+      "price": 599,
       "benefits": {
         "showAtSponsorList": true,
         "showAtPages": true
