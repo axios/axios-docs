@@ -44,12 +44,12 @@ const ensurePath = async (path) => {
   }
 }
 
-const makeUTMURL = (url, params) => {
+const makeUTMURL = (url, params, bypass) => {
   const urlObj = new URL(url);
 
   const {searchParams} = urlObj;
 
-  if (!searchParams.utm_source && !searchParams.utm_campaign) {
+  if (!bypass && !searchParams.utm_source && !searchParams.utm_campaign) {
     Object.entries({
       utm_source: 'axios',
       utm_medium: 'sponsorlist',
@@ -232,6 +232,10 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
       tooltip += `<div class="description">${description}</div>`;
     }
 
+    sponsor.targetLink = website || sponsor.twitter || sponsor.github || sponsor.profile;
+
+    const autoUTMLinks = sponsor.autoUTMLinks !== false; // hotfix
+
     const linksArray = Object.entries(links || {});
 
     if (linksArray.length) {
@@ -240,7 +244,7 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
           href: entry
         } : entry || {};
 
-        return `<a href="${makeUTMURL(href)}">${html.escape(text)}</a>`;
+        return `<a href="${makeUTMURL(href, undefined, !autoUTMLinks)}">${html.escape(text)}</a>`;
       }).join('');
 
       tooltip += `<div class="links">${rendered}</divclass>`
@@ -251,18 +255,16 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
       if(!link) return;
 
-      return `<a href="${makeUTMURL(link)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
+      return `<a href="${makeUTMURL(link, undefined, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
     }).filter(Boolean).join('');
 
     tooltip += `<div class="social">${icons}</div>`
 
     sponsor.tooltip = tooltip;
 
-    sponsor.targetLink = website || sponsor.twitter || sponsor.github || sponsor.profile;
-
     const parsed = parseURL(sponsor.targetLink);
 
-    sponsor.utmLink = !sponsor.utmLink && parsed && makeUTMURL(sponsor.targetLink);
+    sponsor.utmLink = !sponsor.utmLink && parsed && makeUTMURL(sponsor.targetLink, undefined, !autoUTMLinks);
   }));
 
   const sortedSponsors = {};
