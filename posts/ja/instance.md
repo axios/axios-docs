@@ -1,9 +1,9 @@
 ---
 title: 'Axios インスタンス'
 prev_title: 'Axios API'
-prev_link: '/docs/api_intro'
+prev_link: '/ja/docs/api_intro'
 next_title: 'リクエスト設定'
-next_link: '/docs/req_config'
+next_link: '/ja/docs/req_config'
 ---
 
 ### インスタンスの作成

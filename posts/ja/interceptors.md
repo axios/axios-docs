@@ -1,9 +1,9 @@
 ---
 title: 'インターセプター'
 prev_title: 'デフォルト設定'
-prev_link: '/docs/config_defaults'
+prev_link: '/ja/docs/config_defaults'
 next_title: 'エラー処理'
-next_link: '/docs/handling_errors'
+next_link: '/ja/docs/handling_errors'
 ---
 
 リクエストやレスポンスが `then` や `catch` で処理される前に、それをインターセプトできます。
@@ -34,7 +34,7 @@ axios.interceptors.response.use(function (response) {
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
-axios.interceptors.request.reject(myInterceptor);
+axios.interceptors.request.eject(myInterceptor);
 ```
 
 axios のカスタム インスタンスにインターセプターを追加できます。
