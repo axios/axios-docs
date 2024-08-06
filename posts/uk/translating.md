@@ -25,7 +25,7 @@ title: 'Переклад документації'
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-Звичайно, не забудьте замінити `{language-shortcut}` правильним кодом [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) (також у назві змінної!).
+Звичайно, не забудьте замінити `{language-shortcut}` правильним кодом [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) (також у назві змінної!).
 
 Тепер шукайте константу `langs`. Якщо ця константа знаходиться над вашим оператором `require`, перемістіть його над ним. До списку `langs` додайте такий об’єкт:
 

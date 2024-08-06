@@ -25,7 +25,7 @@ Uma vez que tiver terminado a configuração do seu idioma e a tradução das fr
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-E claro, lembre-se de substituir `{language-shortcut}` com o valor código correto do [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) (no nome da variável também).
+E claro, lembre-se de substituir `{language-shortcut}` com o valor código correto do [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) (no nome da variável também).
 
 Agora procure pela constante `langs`. Se a constante estiver localizada antes do seu `require`, mova o seu `require` acima dele. Na lista de `langs`, adicione o seguinte objeto:
 

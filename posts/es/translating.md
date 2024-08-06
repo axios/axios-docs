@@ -28,7 +28,7 @@ en la configuración principal. Para hacerlo, abre `inert.config.js` y agrega lo
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-Claro, recuerda reemplazar `{language-shortcut}` con el código correcto [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) (en el nombre de la variable, !tambien!).
+Claro, recuerda reemplazar `{language-shortcut}` con el código correcto [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) (en el nombre de la variable, !tambien!).
 
 Ahora, busca la constante `langs`. Si la constante esta por encima de tu declaración `require`, mueve tu declaración `require` arriba. En la lista `langs`, agrega el siguiente objecto:
 

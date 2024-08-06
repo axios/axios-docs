@@ -25,7 +25,7 @@ title: '翻译文档'
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-当然，别忘了将上面这行代码的`{language-shortuct}`部分替换成你所使用语言的[ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1)双字母代号。
+当然，别忘了将上面这行代码的`{language-shortuct}`部分替换成你所使用语言的[ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1)双字母代号。
 
 现在，找到该文件的`langs`常量。如果该常量的声明在你的`require`语句之前，请将你的`require`语句移至该常量声明之前。对于`langs`列表，你需要添加如下这个对象：
 
