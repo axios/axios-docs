@@ -51,10 +51,11 @@ These are the available config options for making requests. Only the `url` is re
     ID: 12345
   },
 
-  // `paramsSerializer` is an optional function in charge of serializing `params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` is an optional config in charge of serializing `params`
+  paramsSerializer: {
+    encode?: (param: string): string => { /* Do custom ops here and return transformed string */ }, // custom encoder function; sends Key/Values in an iterative fashion
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), // mimic pre 1.x behavior and send entire params object to a custom serializer func. Allows consumer to control how params are serialized.
+    indexes: false // array indexes format (null - no brackets, false (default) - empty brackets, true - brackets with indexes)
   },
 
   // `data` is the data to be sent as the request body
@@ -139,13 +140,27 @@ These are the available config options for making requests. Only the `url` is re
 
   // `maxRedirects` defines the maximum number of redirects to follow in node.js.
   // If set to 0, no redirects will be followed.
-  maxRedirects: 5, // default
+  maxRedirects: 21, // default
+
+  // `beforeRedirect` defines a function that will be called before redirect.
+  // Use this to adjust the request options upon redirecting,
+  // to inspect the latest response headers,
+  // or to cancel the request by throwing an error
+  // If maxRedirects is set to 0, `beforeRedirect` is not used.
+  beforeRedirect: (options, { headers }) => {
+   if (options.hostname === "example.com") {
+     options.auth = "user:password";
+   }
+  },
 
   // `socketPath` defines a UNIX Socket to be used in node.js.
   // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
   // Only either `socketPath` or `proxy` can be specified.
   // If both are specified, `socketPath` is used.
   socketPath: null, // default
+
+  // `transport` determines the transport method that will be used to make the request. If defined, it will be used. Otherwise, if `maxRedirects` is 0, the default `http` or `https` library will be used, depending on the protocol specified in `protocol`. Otherwise, the `httpFollow` or `httpsFollow` library will be used, again depending on the protocol, which can handle redirects.
+  transport: undefined, // default
 
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
@@ -179,11 +194,54 @@ These are the available config options for making requests. Only the `url` is re
   cancelToken: new CancelToken(function (cancel) {
   }),
 
+  // an alternative way to cancel Axios requests using AbortController
+  signal: new AbortController().signal,
+
   // `decompress` indicates whether or not the response body should be decompressed 
   // automatically. If set to `true` will also remove the 'content-encoding' header 
   // from the responses objects of all decompressed responses
   // - Node only (XHR cannot turn off decompression)
   decompress: true // default
+
+  // `insecureHTTPParser` boolean.
+  // Indicates where to use an insecure HTTP parser that accepts invalid HTTP headers.
+  // This may allow interoperability with non-conformant HTTP implementations.
+  // Using the insecure parser should be avoided.
+  // see options https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_request_url_options_callback
+  // see also https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/#strict-http-header-parsing-none
+  insecureHTTPParser: undefined // default
+
+  // transitional options for backward compatibility that may be removed in the newer versions
+  transitional: {
+    // silent JSON parsing mode
+    // `true`  - ignore JSON parsing errors and set response.data to null if parsing failed (old behaviour)
+    // `false` - throw SyntaxError if JSON parsing failed (Note: responseType must be set to 'json')
+    silentJSONParsing: true, // default value for the current Axios version
+
+      // try to parse the response string as JSON even if `responseType` is not 'json'
+      forcedJSONParsing: true,
+
+      // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts
+      clarifyTimeoutError: false,
+  },
+
+  env: {
+    // The FormData class to be used to automatically serialize the payload into a FormData object
+    FormData: window?.FormData || global?.FormData
+  },
+
+  formSerializer: {
+    visitor: (value, key, path, helpers) => {}; // custom visitor function to serialize form values
+    dots: boolean; // use dots instead of brackets format
+    metaTokens: boolean; // keep special endings like {} in parameter key
+    indexes: boolean; // array indexes format null - no brackets, false - empty brackets, true - brackets with indexes
+  },
+
+  // http adapter only (node.js)
+  maxRate: [
+    100 * 1024, // 100KB/s upload limit,
+    100 * 1024  // 100KB/s download limit
+  ]
 
 }
 ```
