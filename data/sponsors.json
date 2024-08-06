@@ -64,6 +64,9 @@
         "Free Trial": "https://route4me.com/platform/marketplace/pricing",
         "Contact": "https://route4me.com/contact"
       }
+    },
+    "slotozilla-deutschland" : {
+      "autoUTMLinks": false
     }
   }
 }
