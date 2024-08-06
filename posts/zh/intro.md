@@ -49,6 +49,12 @@ $ bower install axios
 $ yarn add axios
 ```
 
+使用 pnpm:
+
+```bash
+$ pnpm add axios
+```
+
 使用 jsDelivr CDN:
 
 ```html
