@@ -282,6 +282,16 @@ li.sponsor-card[data-is-active = "yes"] {
     word-break: break-word;
   }
 
+  .video {
+    display: flex;
+    justify-content: center;
+  }
+
+  .video > iframe{
+    border: none;
+    border-radius: 5px;
+  }
+
   .links {
     padding: 5px 0px;
   }

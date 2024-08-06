@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= data.attributes.title %> | <%= locale.title || config.custom.title %></title>
     <link rel="stylesheet" href="/style/index.css" />
+    <link rel="stylesheet" href="/style/post.css" />
     <style>
       * {
         <%= locale.fontSans ? 'font-family: ' + locale.fontSans + ';' : '' %>
@@ -151,6 +152,35 @@
         <h1 class="title"><%= data.attributes.title %></h1>
         <p class="description"><%= data.attributes.description %></p>
         <%- data.body %>
+        <div class="sponsors_container">
+          <a class="link-sponsors" href="https://opencollective.com/axios/contribute">Sponsors</a>
+          <section class="splide" aria-label="Axios sponsors">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <% const count = config.custom.sponsors.filter(({benefits}) => benefits.showAtPages).length %>
+
+                <% if (count) { %>
+                  <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
+                    <% if(!sponsor.hide && sponsor.benefits.showAtPages ){ %>
+                      <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-is-active="<%= sponsor.hasActiveTier ? "yes" : "no" %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                        <a href="<%= sponsor.utmLink || '' %>" target="_blank" >
+                          <% if(sponsor.image){ %><div><img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/></div><% } %>
+                          <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
+                        </a>
+                      </li>
+                    <% } %>
+                  <% }) %>
+                <% } else { %>
+                  <li class="splide__slide sponsor-card become_sponsor" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+                    <div><a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
+                  </li>
+                <% } %>
+
+
+              </ul>
+            </div>
+          </section>
+        </div>
         <div class="links">
           <% if (data.attributes.prev_link) { %>
           <a href="<%= data.attributes.prev_link %>" class="next-link">
@@ -159,6 +189,7 @@
           </a>
           <% } %>
           <span>
+
 
 
           </span>
@@ -202,6 +233,75 @@
         }
         document.documentElement.style.setProperty('--transition-delay', '300ms');
       };
+
+
+      const splide = new Splide('.splide', {
+        //type: 'slide',
+        type: '<%= !count || count>7 ? 'loop' : 'slide' %>',
+        drag: 'free',
+        focus: 'left',
+        perPage: <%= Math.max(3, Math.min(count, 7)) %>,
+        snap: true,
+        pagination: false,
+        autoScroll: {
+          speed: 0.5,
+          autoStart: false
+        }
+      });
+
+      splide.mount(window.splide.Extensions);
+
+      let timer;
+
+      const stop = () => {
+        if( timer ) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      tippy('.sponsor-card', {
+        trigger: 'mouseenter focus focusin oncontextmenu',
+        delay: [500, 500],
+        animation: 'fade',
+        allowHTML: true,
+        hideOnClick: true,
+        interactive: true,
+        maxWidth: '470px',
+        appendTo: () => document.body,
+        onShow(instance) {
+          if (instance.props.content.trim() === '') {
+            return false;
+          }
+
+          splide.Components.AutoScroll.pause();
+        },
+
+        onHide() {
+          stop();
+
+          timer = setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 3000);
+        }
+      });
+
+      const $splide = document.querySelector('.splide');
+
+      const onScroll = (e) => {
+        const {bottom} = $splide.getBoundingClientRect();
+
+        if (bottom < window.innerHeight) {
+          window.removeEventListener('scroll', onScroll);
+
+          setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 3000);
+        }
+      }
+
+      window.addEventListener('scroll', onScroll);
+
     </script>
   </body>
 </html>

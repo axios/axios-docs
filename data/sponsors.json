@@ -15,6 +15,7 @@
       "price": 99,
       "benefits": {
         "showAtSponsorList": true,
+        "github": true,
         "showAtPages": true
       }
     },
@@ -22,14 +23,22 @@
       "price": 299,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": true,
+        "links": 3,
+        "video": true,
+        "readme": true
       }
     },
     "platinum" : {
       "price": 599,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": true,
+        "links": 5,
+        "video": true,
+        "readme": true
       }
     }
   },
@@ -51,6 +60,7 @@
       "hide": true
     },
     "route4me": {
+      "tier": "gold",
       "image": "/assets/sponsors/route4me.png",
       "website": "https://route4me.com/",
       "displayName": "Route4Me",
@@ -63,6 +73,75 @@
         "Explore": "https://route4me.com/platform/route-optimization-software",
         "Free Trial": "https://route4me.com/platform/marketplace/pricing",
         "Contact": "https://route4me.com/contact"
+      }
+    },
+    "fake-gold1" : {
+      "tier": "gold",
+      "github": "https://github.com/DigitalBrainJS",
+      "image": "/assets/sponsors/dummy1.png",
+      "icon": "/assets/sponsors/dummy2.png",
+      "website": "https://route4me.com/",
+      "alt": "Route Planner and Route Optimizer",
+      "isActive": true,
+      "totalAmountDonated": 300,
+      "createdAt": "2024-07-22 00:00",
+      "description": "test html <b>injection</b>",
+      "benefits": {
+        "github": true,
+        "links": 3,
+        "video": true,
+        "readme": true
+      }
+    },
+    "fake-gold2" : {
+      "tier": "silver",
+      "github": "https://github.com/DigitalBrainJS",
+      "image": "/assets/sponsors/dummy1.png",
+      "icon": "/assets/sponsors/dummy2.png",
+      "website": "https://route4me.com/",
+      "alt": "Route Planner and Route Optimizer",
+      "isActive": true,
+      "totalAmountDonated": 300,
+      "createdAt": "2024-07-22 00:00",
+      "benefits": {
+        "github": true,
+        "links": 3,
+        "video": true,
+        "readme": true
+      }
+    },
+    "fake-platinum1" : {
+      "tier": "silver",
+      "github": "https://github.com/DigitalBrainJS",
+      "image": "/assets/sponsors/dummy1.png",
+      "icon": "/assets/sponsors/dummy2.png",
+      "website": "https://route4me.com/",
+      "alt": "Route Planner and Route Optimizer",
+      "isActive": true,
+      "totalAmountDonated": 300,
+      "createdAt": "2024-07-22 00:00",
+      "benefits": {
+        "github": true,
+        "links": 3,
+        "video": true,
+        "readme": true
+      }
+    },
+    "fake-platinum2" : {
+      "tier": "silver",
+      "github": "https://github.com/DigitalBrainJS",
+      "image": "/assets/sponsors/dummy1.png",
+      "icon": "/assets/sponsors/dummy2.png",
+      "website": "https://route4me.com/",
+      "alt": "Route Planner and Route Optimizer",
+      "isActive": true,
+      "totalAmountDonated": 300,
+      "createdAt": "2024-07-22 00:00",
+      "benefits": {
+        "github": true,
+        "links": 3,
+        "video": true,
+        "readme": true
       }
     }
   }

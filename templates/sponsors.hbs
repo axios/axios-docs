@@ -1,0 +1,32 @@
+{{#if sponsors}}
+  <h3 align="center">
+    {{caption}}
+    <br>
+  </h3>
+
+  {{#table sponsors cells separate}}
+      {{#if displayName}}
+        {{#if image}}
+        <a href="{{website}}">
+            {{#if image_dark}}
+              <picture>
+              <source width="{{../width}}px" media="(prefers-color-scheme: dark)" srcset="{{image_dark}}">
+              <source width="{{../width}}px" media="(prefers-color-scheme: light)" srcset="{{image}}">
+              <img width="{{../width}}px" src="{{image}}" alt="{{displayName}}"/>
+              </picture>
+            {{else}}
+              <img width="{{../width}}px" src="{{image}}" alt="{{displayName}}"/>
+            {{/if}}
+        </a>
+        {{else}}
+          {{displayName}}
+        {{/if}}
+        {{#if description}}<p align="center">{{description}}</p>{{/if}}
+        {{#if links}}<p align="center">
+          {{#each links}}<a href="{{this}}"><b>{{@key}}</b></a>{{#sep}} | {{/sep}}{{/each}}
+        </p>{{/if}}
+      {{else}}
+        - {{displayName}}
+      {{/if}}
+  {{/table}}
+{{/if}}

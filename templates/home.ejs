@@ -39,7 +39,7 @@
     <script src="https://cdn.usefathom.com/script.js" data-site="PHYVDASO" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<!--    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
@@ -184,30 +184,58 @@
 
     <script>
       const splide = new Splide( '.splide', {
-        type   : 'slide',
+        //type   : 'slide',
+        type   : 'loop',
         drag   : 'free',
         focus  : 'left',
         perPage: 5,
-/*        autoScroll: {
+        snap   : true,
+        autoScroll: {
           speed: 0.5,
-        },*/
+          autoStart: false
+        }
       });
 
-      splide.mount(/*window.splide.Extensions*/);
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          splide.Components.AutoScroll.play();
+        }, 3000);
+      });
+
+      splide.mount(window.splide.Extensions);
+
+      let timer;
+
+      const stop = () => {
+        if( timer ) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
 
       tippy('.sponsor-card', {
         trigger: 'mouseenter focus focusin oncontextmenu',
-        delay: [500, 200],
+        delay: [500, 500],
         animation: 'fade',
         allowHTML: true,
         hideOnClick: true,
         interactive: true,
-        maxWidth: '450px',
+        maxWidth: '470px',
         appendTo: () => document.body,
         onShow(instance) {
           if (instance.props.content.trim() === '') {
             return false;
           }
+
+          splide.Components.AutoScroll.pause();
+        },
+
+        onHide() {
+          stop();
+
+          timer = setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 3000);
         }
       });
     </script>
