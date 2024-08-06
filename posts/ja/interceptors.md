@@ -18,14 +18,14 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
   });
 
-// リクエスト インターセプターを追加します
+// レスポンス インターセプターを追加します
 axios.interceptors.response.use(function (response) {
     // ステータスコードが 2xx の範囲にある場合、この関数が起動します
-    // リクエスト データの処理
+    // レスポンス データの処理
     return response;
   }, function (error) {
     // ステータスコードが 2xx の範囲外の場合、この関数が起動します
-    // リクエスト エラーの処理
+    // レスポンス エラーの処理
     return Promise.reject(error);
   });
 ```
