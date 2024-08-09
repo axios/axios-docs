@@ -19,16 +19,20 @@ axios.interceptors.request.use(function (config) {
   });
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
+axios.interceptors.response.use(function onFulfilled(response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response;
-  }, function (error) {
+  }, function onRejected(error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
   });
 ```
+
+In normal circumstances the `onFulfilled` response interceptor is only called for responses in the 2xx range, and `onRejected` is called otherwise.
+However, this behavior depends on [validateStatus](/docs/req_config).
+For instance, if `validateStatus` is setup to always return `true`, then `onFulfilled` will be called for *all* responses.
 
 If you need to remove an interceptor later you can.
 
