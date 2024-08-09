@@ -1,9 +1,9 @@
 ---
 title: 'Interceptores'
 prev_title: 'Configuraciones por Defecto'
-prev_link: '/es/docs/config_defaults'
+prev_link: 'config_defaults'
 next_title: 'Manejando Errores'
-next_link: '/es/docs/handling_errors'
+next_link: 'handling_errors'
 ---
 
 Puedes interceptar peticiones o respuestas antes que sean manipulados por `then` o `catch`. 

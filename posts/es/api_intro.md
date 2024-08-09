@@ -2,9 +2,9 @@
 title: 'API de Axios'
 description: 'Referencia del API de Axios'
 prev_title: 'Petición Post'
-prev_link: '/es/docs/post_example'
+prev_link: 'post_example'
 next_title: 'La instancia Axios'
-next_link: '/es/docs/instance'
+next_link: 'instance'
 ---
 
 Las peticiones pueden ser hechas pasando la configuración relevante a `axios`.
@@ -42,9 +42,9 @@ axios({
 axios('/user/12345');
 ```
 
-### Alias de metodos de petición
+### Alias de métodos de petición
 
-Por conveniencia los alias han sido proveídos para todos los métodos de petición.
+Por conveniencia los alias han sido proveídos para todos los métodos de petición soportados.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])

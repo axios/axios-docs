@@ -1,9 +1,9 @@
 ---
 title: 'Configuración de Petición'
 prev_title: 'La Instancia Axios'
-prev_link: '/es/docs/instance'
+prev_link: 'instance'
 next_title: 'Esquema de Respuesta'
-next_link: '/es/docs/res_schema'
+next_link: 'res_schema'
 ---
 
 

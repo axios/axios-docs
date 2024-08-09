@@ -1,9 +1,9 @@
 ---
 title: 'Configuraciones por Defecto'
 prev_title: 'Esquema de Respuesta'
-prev_link: '/es/docs/res_schema'
+prev_link: 'res_schema'
 next_title: 'Interceptores'
-next_link: '/es/docs/interceptors'
+next_link: 'interceptors'
 ---
 
 ## Configuraciones por Defecto
@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Configurar orden de precedencia
 
-La configuración será combinada en orden de precedencia. El orden es: valores predeterminados de la biblioteca que se encuentran en [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), luego la propiedad `defaults` de la instancia, y finalmente el argumento `config` de la petición. Este último tendrá prioridad sobre el primero. Aquí hay un ejemplo.
+La configuración será combinada en orden de precedencia. El orden es: valores predeterminados de la librería que se encuentran en [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), luego la propiedad `defaults` de la instancia, y finalmente el argumento `config` de la petición. Este último tendrá prioridad sobre el primero. Aquí hay un ejemplo.
 
 ```js
 // Crear una instancia usando la configuración por defecto proveída por la librería
