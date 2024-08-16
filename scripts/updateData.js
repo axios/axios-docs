@@ -742,11 +742,11 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 const updateReadmeSponsors = async(sponsors) => {
   const markdown = await renderMarkdownSponsors(sponsors);
   try {
-    await fs.mkdir('./public/data');
+    await fs.mkdir('./public/data', {recursive: true}).catch(() => {});
+    await fs.writeFile('./public/data/sponsors.md', markdown);
   } catch(err) {
-
+    console.log(err);
   }
-  await fs.writeFile('./public/data/sponsors.md', markdown);
 }
 
 
