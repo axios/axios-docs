@@ -96,6 +96,9 @@
     },
     "descope": {
       "tier": "gold"
+    },
+    "principal": {
+      "tier": "gold"
     }
   }
 }
