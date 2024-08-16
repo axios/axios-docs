@@ -741,6 +741,11 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
 const updateReadmeSponsors = async(sponsors) => {
   const markdown = await renderMarkdownSponsors(sponsors);
+  try {
+    await fs.mkdir('./public/data');
+  } catch(err) {
+
+  }
   await fs.writeFile('./public/data/sponsors.md', markdown);
 }
 
