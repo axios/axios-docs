@@ -77,18 +77,18 @@ li.sponsor-card {
     align-items: center;
     justify-content: center;
     position: relative;
-    min-width: 40%;
+    min-width: 20%;
   }
 
-  .caption{
+  .caption {
     font-size: 2rem;
-/*    display: inline-block;*/
     overflow: hidden;
     text-overflow: ellipsis;
     /*  white-space:nowrap;*/
-/*    min-width: 10rem;*/
+    /*  min-width: 10rem;*/
     text-align: center;
-/*    max-height: 100%;*/
+    /*  max-height: 100%;*/
+    /*  flex-shrink: 10;*/
     position: relative;
     padding: 0 0.5rem;
     text-shadow: #a9a9a9 0 0 5px;
