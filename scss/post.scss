@@ -2,9 +2,9 @@ li.sponsor-card {
 
   width: calc(15%);
 
-  &[data-has-logo=true] .caption {
+/*  &[data-has-logo=true] .caption {
     display: none;
-  }
+  }*/
 
   &[data-tier=gold] {
     width: calc(25%);

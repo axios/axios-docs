@@ -107,7 +107,7 @@
                       <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
                         <% if(sponsor.image){ %>
                           <div>
-                            <% if(sponsor.benefits.crown) { %><span class="sponsor_chevron_crown"></span><% } %>
+                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
                             <img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/>
                           </div><% } %>
                         <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
