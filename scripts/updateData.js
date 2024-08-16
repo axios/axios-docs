@@ -326,7 +326,7 @@ const renderMarkdownSponsors = async (sponsors) => {
             utm_source: 'axios',
             utm_medium: 'readme_sponsorlist',
             utm_campaign: 'sponsorship',
-          }) : '';
+          }, false, !sponsor.autoUTMLinks) : '';
         });
 
         return {
