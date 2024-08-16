@@ -657,9 +657,9 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
   const normalizedSponsors = await Promise.all(Object.values(mergedSponsors).map(async (sponsor) => {
     let {isActive, benefits, autoUTMLinks} = sponsor;
 
-/*    if (isActive && benefits.github) {
+    if (isActive && benefits.github) {
       await processGithub(sponsor);
-    }*/
+    }
 
     let {website, displayName} = sponsor;
 
