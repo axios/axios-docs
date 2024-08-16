@@ -319,8 +319,19 @@ const renderMarkdownSponsors = async (sponsors) => {
       sponsors: sponsors.map(sponsor => {
         const [w = 0, h = 0] = sponsor.image ? fitInRect(sponsor.imageWidth, sponsor.imageHeight, width, height) : [];
 
+        const links = {};
+
+        sponsor.links && Object.entries(sponsor.links).forEach(([name, href]) =>{
+          links[name] = href ? makeUTMURL(href, {
+            utm_source: 'axios',
+            utm_medium: 'readme_sponsorlist',
+            utm_campaign: 'sponsorship',
+          }) : '';
+        });
+
         return {
           ...sponsor,
+          links,
           image: sponsor.image && absoluteURI(sponsor.image),
           image_black: sponsor.image && absoluteURI(sponsor.image_black),
           readmeImageWidth: w,
