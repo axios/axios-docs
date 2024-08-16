@@ -2,9 +2,16 @@
   "totalAmountDonatedThreshold": 200,
   "monthlyContributionThreshold": 15,
   "disappearCredit": 20,
-  "scoreTierPriceFactor": 0.70,
+  "scoreTierPriceFactor": 0.80,
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
+    "backer" : {
+      "price": 20,
+      "benefits": {
+        "showAtSponsorList": true
+      },
+      "period": 2
+    },
     "bronze": {
       "price": 49,
       "benefits": {
@@ -15,21 +22,34 @@
       "price": 99,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": false
       }
     },
     "gold" : {
       "price": 299,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": true,
+        "links": 3,
+        "video": true,
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 100
       }
     },
     "platinum" : {
       "price": 599,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": true,
+        "links": 4,
+        "video": true,
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 150
       }
     }
   },
@@ -51,10 +71,13 @@
       "hide": true
     },
     "route4me": {
+      "tier": "gold",
       "image": "/assets/sponsors/route4me.png",
+      "image_dark": "/assets/sponsors/route4me_white.png",
       "website": "https://route4me.com/",
       "displayName": "Route4Me",
       "alt": "Route Planner and Route Optimizer",
+      "description": "Best Route Planning And Route Optimization Software",
       "isActive": true,
       "totalAmountDonated": 300,
       "createdAt": "2024-07-12 00:00",
@@ -67,6 +90,12 @@
     },
     "slotozilla-deutschland" : {
       "autoUTMLinks": false
+    },
+    "stytch": {
+      "tier": "gold"
+    },
+    "descope": {
+      "tier": "gold"
     }
   }
 }

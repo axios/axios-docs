@@ -1,0 +1,37 @@
+li.sponsor-card {
+
+  width: calc(15%);
+
+  &[data-has-logo=true] .caption {
+    display: none;
+  }
+
+  &[data-tier=gold] {
+    width: calc(25%);
+  }
+
+  &[data-tier=platinum] {
+    width: calc(33%);
+  }
+}
+
+.body {
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table,th,td{
+    border: 1px solid #1f1c24;
+    padding: 3px;
+  }
+}
+
+blockquote{
+  border-left: 5px solid var(--primary-color);
+  margin-left: 1rem;
+
+  > p {
+    padding: 10px;
+  }
+}
