@@ -20,7 +20,7 @@
         {{else}}
           <h3>{{displayName}}</h3>
         {{/if}}
-        {{#if description}}<p align="center">{{#short benefits.maxReadmeDescLength}}{{description}}{{/short}}</p>{{/if}}
+        {{#if description}}<p align="center" title="{{description}}">{{#short benefits.maxReadmeDescLength}}{{description}}{{/short}}</p>{{/if}}
         {{#if links}}<p align="center">
           {{#each links}}<a href="{{this}}"><b>{{@key}}</b></a>{{#sep}} | {{/sep}}{{/each}}
         </p>{{/if}}
