@@ -92,7 +92,8 @@
       "autoUTMLinks": false
     },
     "stytch": {
-      "tier": "gold"
+      "tier": "gold",
+      "description": "API-first authentication, authorization, and fraud prevention"
     },
     "descope": {
       "tier": "gold"

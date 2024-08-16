@@ -459,7 +459,7 @@ const renderTooltip = async (sponsor) => {
   let tooltip = `<h2 class="caption">${iconHTML}<span>${html.escape(displayName)} (${sponsor.totalAmountDonated || 0}$${' <sup class="tier">' + renderedTier + '</sup>'})</span></h2> `;
 
   if (!description && website) {
-    description = await getPageDescription(website);
+    description = sponsor.description = await getPageDescription(website);
 
     console.log(`Website ${website} description: ${description}`);
   }
