@@ -201,147 +201,15 @@ html[dir="rtl"] {
   }
 }
 
-#sponsors {
-  .splide {
-    padding: 0 40px;
-    margin: 0 -50px;
-  }
+.sponsors_container{
+  margin: 8px 0 10px 0;
 }
 
-li.sponsor-card {
-  margin-bottom: 20px;
-  padding: 10px;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  > a {
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    padding-left: 0.5rem;
-  }
-
-  .caption{
-    font-size: 3rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: 0.5rem;
-  }
-
-  img + .caption {
-    font-size: 1.5rem;
-  }
-
-  img{
-    max-width: 100%;
-    max-height: 7rem;
-    position: relative;
-  }
+.link-sponsors {
+  color: var(--col-fg);
 }
 
-li.sponsor-card[data-is-active = "yes"] {
-  opacity: 1;
-}
-
-/*.splide {
-  .splide__arrows {
-    opacity: 0.5;
-    transition-duration: 200ms;
-  }
-
-  &:hover {
-    .splide__arrows {
-      opacity: 1;
-    }
-  }
-}*/
-
-.tippy-box {
-  background-color: var(--primary-color);
-  pointer-events: all;
-
-  *{
-    color: white;
-  }
-
-  .tippy-arrow{
-    color: var(--primary-color);
-  }
-
-  .tier {
-    font-size: 0.75rem;
-  }
-
-  .description{
-    word-break: break-word;
-  }
-
-  .video {
-    display: flex;
-    justify-content: center;
-  }
-
-  .video > iframe{
-    border: none;
-    border-radius: 5px;
-  }
-
-  .links {
-    padding: 5px 0px;
-  }
-
-  .links a:not(:first-child):before {
-    content: "|";
-    padding: 0 10px 0 5px;
-  }
-
-  .caption {
-    display: flex;
-    align-items: center;
-  }
-
-  .sponsor-icon {
-    padding-right: 3px;
-  }
-
-  .social {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > a{
-      margin: 0.4rem 1rem 0 1rem;
-    }
-
-    .icon{
-      max-width: 3rem;
-      max-height: 3rem;
-    }
-  }
-}
-
-.opacity_100 {
-  opacity: 1;
-}
-
-.opacity_75 {
-  opacity: 0.75;
-}
-
-.opacity_50 {
-  opacity: 0.5;
-}
-
-.opacity_25 {
-  opacity: 0.25;
-}
-
+/*
 .become_sponsor{
   > a {
     justify-content: center;
@@ -351,9 +219,60 @@ li.sponsor-card[data-is-active = "yes"] {
     text-align: center;
   }
 }
+*/
+
+.tippy-box {
+  background-color: var(--primary-color);
+
+  .tippy-arrow{
+    color: var(--primary-color);
+  }
+}
+
+.splide {
+  height: 9rem;
+  padding: 0 45px;
+  margin: 0 -55px;
+}
+
+li.sponsor-card {
+  width: calc(12%);
+
+  &[data-tier=silver] {
+    width: calc(17%);
+  }
+
+  &[data-tier=gold] {
+    width: calc(22%);
+  }
+
+  &[data-tier=platinum] {
+    width: calc(30%);
+  }
+}
+
+@media (max-width: 1400px) {
+  li.sponsor-card {
+    width: calc(20%);
+
+    &[data-tier=silver] {
+      width: calc(25%);
+    }
+
+    &[data-tier=gold] {
+      width: calc(30%);
+    }
+
+    &[data-tier=platinum] {
+      width: calc(35%);
+    }
+  }
+}
 
 @media (max-width: 1000px) {
   li.sponsor-card img + .caption {
     display: none;
   }
+
+
 }

@@ -20,7 +20,7 @@
   /* Delays */
   --transition-delay: 0ms;
 
-  --tip-bg: var(--primary-color);
+
 }
 
 body.dark {
@@ -35,6 +35,4 @@ body.dark {
   --max-contrast: #ffffff;
 
   --shadow-blue: var(--shadow-blue-dark);
-
-  --tip-bg: var(--gray-3);
 }

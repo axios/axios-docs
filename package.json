@@ -25,6 +25,8 @@
     "joi": "^17.13.3",
     "mime-types": "^2.1.35",
     "sharp": "^0.31.3",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0"
   }
 }

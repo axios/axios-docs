@@ -7,21 +7,20 @@
   {{#table sponsors cells separate}}
       {{#if displayName}}
         {{#if image}}
-        <a href="{{website}}">
+        <a href="{{website}}" style="padding: 10px; display: inline-block">
             {{#if image_dark}}
               <picture>
-              <source width="{{../width}}px" media="(prefers-color-scheme: dark)" srcset="{{image_dark}}">
-              <source width="{{../width}}px" media="(prefers-color-scheme: light)" srcset="{{image}}">
-              <img width="{{../width}}px" src="{{image}}" alt="{{displayName}}"/>
+              <source width="{{readmeImageWidth}}px" height="{{readmeImageHeight}}px" media="(prefers-color-scheme: dark)" srcset="{{image_dark}}">
+              <img width="{{readmeImageWidth}}px"  height="{{readmeImageHeight}}px" src="{{image}}" alt="{{displayName}}"/>
               </picture>
             {{else}}
-              <img width="{{../width}}px" src="{{image}}" alt="{{displayName}}"/>
+              <img width="{{readmeImageWidth}}px" height="{{readmeImageHeight}}px" src="{{image}}" alt="{{displayName}}"/>
             {{/if}}
         </a>
         {{else}}
-          {{displayName}}
+          <h3>{{displayName}}</h3>
         {{/if}}
-        {{#if description}}<p align="center">{{description}}</p>{{/if}}
+        {{#if description}}<p align="center">{{#short benefits.maxReadmeDescLength}}{{description}}{{/short}}</p>{{/if}}
         {{#if links}}<p align="center">
           {{#each links}}<a href="{{this}}"><b>{{@key}}</b></a>{{#sep}} | {{/sep}}{{/each}}
         </p>{{/if}}

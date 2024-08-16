@@ -2,9 +2,16 @@
   "totalAmountDonatedThreshold": 200,
   "monthlyContributionThreshold": 15,
   "disappearCredit": 20,
-  "scoreTierPriceFactor": 0.70,
+  "scoreTierPriceFactor": 0.80,
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
+    "backer" : {
+      "price": 20,
+      "benefits": {
+        "showAtSponsorList": true
+      },
+      "period": 2
+    },
     "bronze": {
       "price": 49,
       "benefits": {
@@ -16,7 +23,7 @@
       "benefits": {
         "showAtSponsorList": true,
         "github": true,
-        "showAtPages": true
+        "showAtPages": false
       }
     },
     "gold" : {
@@ -27,7 +34,9 @@
         "showAtPages": true,
         "links": 3,
         "video": true,
-        "readme": true
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 100
       }
     },
     "platinum" : {
@@ -36,9 +45,11 @@
         "showAtSponsorList": true,
         "github": true,
         "showAtPages": true,
-        "links": 5,
+        "links": 4,
         "video": true,
-        "readme": true
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 150
       }
     }
   },
@@ -62,9 +73,11 @@
     "route4me": {
       "tier": "gold",
       "image": "/assets/sponsors/route4me.png",
+      "image_dark": "/assets/sponsors/route4me_white.png",
       "website": "https://route4me.com/",
       "displayName": "Route4Me",
       "alt": "Route Planner and Route Optimizer",
+      "description": "Best Route Planning And Route Optimization Software",
       "isActive": true,
       "totalAmountDonated": 300,
       "createdAt": "2024-07-12 00:00",
@@ -75,74 +88,14 @@
         "Contact": "https://route4me.com/contact"
       }
     },
-    "fake-gold1" : {
-      "tier": "gold",
-      "github": "https://github.com/DigitalBrainJS",
-      "image": "/assets/sponsors/dummy1.png",
-      "icon": "/assets/sponsors/dummy2.png",
-      "website": "https://route4me.com/",
-      "alt": "Route Planner and Route Optimizer",
-      "isActive": true,
-      "totalAmountDonated": 300,
-      "createdAt": "2024-07-22 00:00",
-      "description": "test html <b>injection</b>",
-      "benefits": {
-        "github": true,
-        "links": 3,
-        "video": true,
-        "readme": true
-      }
+    "slotozilla-deutschland" : {
+      "autoUTMLinks": false
     },
-    "fake-gold2" : {
-      "tier": "silver",
-      "github": "https://github.com/DigitalBrainJS",
-      "image": "/assets/sponsors/dummy1.png",
-      "icon": "/assets/sponsors/dummy2.png",
-      "website": "https://route4me.com/",
-      "alt": "Route Planner and Route Optimizer",
-      "isActive": true,
-      "totalAmountDonated": 300,
-      "createdAt": "2024-07-22 00:00",
-      "benefits": {
-        "github": true,
-        "links": 3,
-        "video": true,
-        "readme": true
-      }
+    "stytch": {
+      "tier": "gold"
     },
-    "fake-platinum1" : {
-      "tier": "silver",
-      "github": "https://github.com/DigitalBrainJS",
-      "image": "/assets/sponsors/dummy1.png",
-      "icon": "/assets/sponsors/dummy2.png",
-      "website": "https://route4me.com/",
-      "alt": "Route Planner and Route Optimizer",
-      "isActive": true,
-      "totalAmountDonated": 300,
-      "createdAt": "2024-07-22 00:00",
-      "benefits": {
-        "github": true,
-        "links": 3,
-        "video": true,
-        "readme": true
-      }
-    },
-    "fake-platinum2" : {
-      "tier": "silver",
-      "github": "https://github.com/DigitalBrainJS",
-      "image": "/assets/sponsors/dummy1.png",
-      "icon": "/assets/sponsors/dummy2.png",
-      "website": "https://route4me.com/",
-      "alt": "Route Planner and Route Optimizer",
-      "isActive": true,
-      "totalAmountDonated": 300,
-      "createdAt": "2024-07-22 00:00",
-      "benefits": {
-        "github": true,
-        "links": 3,
-        "video": true,
-        "readme": true
-      }
+    "descope": {
+      "tier": "gold"
     }
   }
 }
