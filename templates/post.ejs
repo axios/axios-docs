@@ -36,13 +36,16 @@
   <body>
     <script>
       let isDarkThemeActive = false;
-      const THEME_TIMEOUT = 3600; // 1 hour
+      const THEME_TIMEOUT = 24 * 3600; // 24 hours
       const userDefaultTheme = localStorage.getItem("@axios-docs:theme");
       const userTS = +localStorage.getItem("@axios-docs:ts");
       const darkQuery = "(prefers-color-scheme: dark)";
       const darkMQL = window.matchMedia ? window.matchMedia(darkQuery) : {};
 
-      if ((!userTS || (Date.now() - userTS) / 1000 > THEME_TIMEOUT) && darkMQL.media === darkQuery || userDefaultTheme && userDefaultTheme === "true") {
+      if (
+         ((!userTS || (Date.now() - userTS) / 1000 > THEME_TIMEOUT) && darkMQL.media === darkQuery) ||
+         (userDefaultTheme && userDefaultTheme === "true")
+      ) {
         document.body.classList.add("dark");
         isDarkThemeActive = true;
       }
