@@ -93,7 +93,9 @@
     },
     "stytch": {
       "tier": "gold",
-      "description": "API-first authentication, authorization, and fraud prevention"
+      "description": "API-first authentication, authorization, and fraud prevention",
+      "image": "/assets/sponsors/stytch.png",
+      "image_dark": "/assets/sponsors/stytch_white.png"
     },
     "descope": {
       "tier": "gold",
@@ -101,9 +103,7 @@
       "image_dark": "/assets/sponsors/descope_white.png"
     },
     "principal": {
-      "tier": "gold",
-      "image": "/assets/sponsors/stytch.png",
-      "image_dark": "/assets/sponsors/stytch_white.png"
+      "tier": "gold"
     }
   }
 }
