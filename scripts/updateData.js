@@ -235,12 +235,12 @@ const addImageMetadata = async (sponsors) => {
     const {image} = sponsor;
     if(!image) return;
     try {
-      const {width, height} = await sharp('.' + image).metadata();
+      const {width, height, format} = await sharp('.' + image).metadata();
 
       sponsor.imageWidth = width;
       sponsor.imageHeight = height;
       sponsor.isWideImage = sponsor.showCaption === undefined && width > height * 1.8;
-      sponsor.imageType = path.extname(image).toLowerCase().slice(1);
+      sponsor.imageType = format;
     } catch(err) {
       console.log(`Error while reading image metadata [${image}]: ${err}`);
     }
