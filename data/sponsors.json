@@ -96,10 +96,14 @@
       "description": "API-first authentication, authorization, and fraud prevention"
     },
     "descope": {
-      "tier": "gold"
+      "tier": "gold",
+      "image": "/assets/sponsors/descope.png",
+      "image_dark": "/assets/sponsors/descope_white.png",
     },
     "principal": {
-      "tier": "gold"
+      "tier": "gold",
+      "image": "/assets/sponsors/stytch.png",
+      "image_dark": "/assets/sponsors/stytch_white.png"
     }
   }
 }
