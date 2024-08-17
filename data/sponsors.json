@@ -98,7 +98,7 @@
     "descope": {
       "tier": "gold",
       "image": "/assets/sponsors/descope.png",
-      "image_dark": "/assets/sponsors/descope_white.png",
+      "image_dark": "/assets/sponsors/descope_white.png"
     },
     "principal": {
       "tier": "gold",
