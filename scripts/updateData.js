@@ -134,19 +134,21 @@ const ensurePath = async (path) => {
   }
 }
 
-const makeUTMURL = (url, params, rewrite, bypass) => {
+const makeUTMURL = (url, bypass, params) => {
   try {
     const urlObj = new URL(url);
 
     const {searchParams} = urlObj;
 
-    if (!bypass && (rewrite || (!searchParams.utm_source && !searchParams.utm_campaign))) {
+    if(!bypass) {
       Object.entries({
         utm_source: 'axios',
         utm_medium: 'sponsorlist',
         utm_campaign: 'sponsorship',
         ...params
-      }).forEach(([param, value]) => searchParams.set(param, value));
+      }).forEach(([param, value]) => {
+        !searchParams.has(param) && searchParams.set(param, value)
+      });
     }
 
     return urlObj.toString();
@@ -327,7 +329,7 @@ const renderMarkdownSponsors = async (sponsors) => {
             utm_source: 'axios',
             utm_medium: 'readme_sponsorlist',
             utm_campaign: 'sponsorship',
-          }, false, !sponsor.autoUTMLinks) : '';
+          }, !sponsor.autoUTMLinks) : '';
         });
 
         return {
@@ -500,7 +502,7 @@ const renderTooltip = async (sponsor) => {
         href: entry
       } : entry || {};
 
-      return `<a href="${makeUTMURL(href, undefined, false, !autoUTMLinks)}">${html.escape(text)}</a>`;
+      return `<a href="${makeUTMURL(href, !autoUTMLinks)}">${html.escape(text)}</a>`;
     }).join('');
 
     tooltip += `<div class="links">${rendered}</div>`
@@ -511,7 +513,7 @@ const renderTooltip = async (sponsor) => {
 
     if(!link) return;
 
-    return `<a href="${makeUTMURL(link, undefined, false, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
+    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
   }).filter(Boolean).join('');
 
   tooltip += `<div class="social">${icons}</div>`
@@ -681,7 +683,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     let targetLink = sponsor.targetLink || website || sponsor.twitter || sponsor.github || sponsor.profile || undefined;
 
-    sponsor.targetLink = targetLink && makeUTMURL(targetLink, {}, false, !autoUTMLinks) || undefined;
+    sponsor.targetLink = targetLink && makeUTMURL(targetLink, !autoUTMLinks) || undefined;
 
     return {...sponsor};
   }));
