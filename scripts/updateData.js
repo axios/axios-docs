@@ -240,6 +240,7 @@ const addImageMetadata = async (sponsors) => {
       sponsor.imageWidth = width;
       sponsor.imageHeight = height;
       sponsor.isWideImage = sponsor.showCaption === undefined && width > height * 1.8;
+      sponsor.imageType = path.extname(image).toLowerCase().slice(1);
     } catch(err) {
       console.log(`Error while reading image metadata [${image}]: ${err}`);
     }

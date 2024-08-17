@@ -59,6 +59,12 @@ li.sponsor-card {
     }
   }
 
+  &[data-image-type='svg'] {
+    > a > div {
+      flex-grow: 10;
+    }
+  }
+
   > a {
     height: 100%;
 /*    overflow: hidden;*/
@@ -78,7 +84,6 @@ li.sponsor-card {
     justify-content: center;
     position: relative;
     min-width: 20%;
-    flex-grow: 10;
   }
 
   .caption {
