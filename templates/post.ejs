@@ -120,7 +120,7 @@
       <div class="aside-container">
         <% locale.sidebar.forEach(side => { %>
           <% if (side.type === 'link') { %>
-            <a href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
+            <a class="<%= side.href && new URL(side.href, 'https://localhost').pathname.endsWith('/' + file.withoutExtension) ? 'selected' : '' %>" href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
           <% } else { %>
             <h3 class="group-name"><%= side.text %></h3>
           <% } %>
@@ -301,7 +301,7 @@
         pagination: false,
         autoWidth: true,
         autoScroll: {
-          speed: 0.5,
+          speed: 0.7,
           autoStart: false
         }
       });
@@ -343,7 +343,7 @@
 
           timer = setTimeout(() => {
             splide.Components.AutoScroll.play();
-          }, 3000);
+          }, 5000);
         }
       });
 
