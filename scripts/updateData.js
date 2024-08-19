@@ -5,12 +5,90 @@ const sharp = require('sharp');
 const cheerio = require('cheerio');
 const html = require('html-escaper');
 const crypto = require('crypto');
+const Joi = require('joi');
+const showdown  = require('showdown');
+const Handlebars = require('handlebars');
+const axios = require('axios');
 
-const axios = require("axios").create({
+const origin = 'https://axios-http.com/';
+//const origin = 'http://127.0.0.1:8080/';
+
+const absoluteURI = (path) => new URL(path, origin);
+
+/*const converter = new showdown.Converter();*/
+
+Handlebars.registerHelper("sep", function(options){
+  if(options.data.last) {
+    return options.inverse();
+  } else {
+    return options.fn(this);
+  }
+});
+
+Handlebars.registerHelper("short", function (...args) {
+  const options = args.pop();
+  const [max = 50] = args;
+
+  let s = options.fn(this)?.trim();
+
+  if (s.length > max) {
+    s = s.slice(0, max) + '...';
+  }
+
+  return new Handlebars.SafeString(s);
+});
+
+Handlebars.registerHelper("table", function(...args) {
+  const options = args.pop();
+  const [context, columns = 1, separate] = args;
+
+  const rows = [[]];
+  let arr = rows[0];
+
+  const last = context.length - 1;
+
+  const width = 100 / columns;
+
+  context.forEach((that, i) => {
+    arr.push(`<td align="center" width="${width}%">${options.fn(that)}</td>`);
+    if (i !== last && arr.length === columns) {
+      rows.push(arr = []);
+    }
+  });
+
+  return new Handlebars
+    .SafeString(separate ?
+      rows.map(cells => `<table align="center"><tr>${cells.join('')}</tr></table>`).join('') :
+      `<table align="center" width="100%">${rows.map(cells => `<tr width="${width}%">${cells.join('')}</tr>`).join('')}</table>`
+    );
+});
+
+const removeExtraLineBreaks = (str) => str.replace(/(?:\r\n|\r|\n){3,}/gm, '\r\n\r\n');
+
+const cleanTemplate = template => template
+  .replace(/\s\s+/g, ' ')
+  .replace(/\n +/g, '\n')
+  .replace(/^ +/, '')
+  .replace(/\n\n\n+/g, '\n\n')
+  .replace(/\n\n$/, '\n');
+
+const renderTemplate = async (data, template) => {
+  const compile = Handlebars.compile(String(await fs.readFile(template)))
+
+  const content = compile(data);
+
+  return removeExtraLineBreaks(cleanTemplate(content));
+}
+
+
+
+const axiosInstance = axios.create({
   headers: {
     "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
   }
 });
+
+
 
 const social = {
   website: 'website.png',
@@ -31,10 +109,22 @@ const parseURL = (url) => {
   }
 }
 
-const MONTH = 30 * 24 * 3600 * 1000;
+const DAY = 24 * 3600;
+const MONTH = 30 * DAY;
+const PERIOD = 30;
 
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
+const openJSON = async (filePath) => {
+  try {
+    return await readJSON(filePath);
+  } catch(err) {
+    if (err.code === 'ENOENT') {
+      return null;
+    }
+    throw err;
+  }
+}
 
 const ensurePath = async (path) => {
   try {
@@ -44,28 +134,34 @@ const ensurePath = async (path) => {
   }
 }
 
-const makeUTMURL = (url, params, bypass) => {
-  const urlObj = new URL(url);
+const makeUTMURL = (url, bypass, params) => {
+  try {
+    const urlObj = new URL(url);
 
-  const {searchParams} = urlObj;
+    const {searchParams} = urlObj;
 
-  if (!bypass && !searchParams.utm_source && !searchParams.utm_campaign) {
-    Object.entries({
-      utm_source: 'axios',
-      utm_medium: 'sponsorlist',
-      utm_campaign: 'sponsorship',
-      ...params
-    }).forEach(([param, value]) => searchParams.set(param, value));
+    if(!bypass) {
+      Object.entries({
+        utm_source: 'axios',
+        utm_medium: 'sponsorlist',
+        utm_campaign: 'sponsorship',
+        ...params
+      }).forEach(([param, value]) => {
+        !searchParams.has(param) && searchParams.set(param, value)
+      });
+    }
+
+    return urlObj.toString();
+  } catch (err) {
+    console.warn(`Failed to make UTM link for [${url}]: ${err}`);
   }
-
-  return urlObj.toString();
 }
 
 const getWithRetry = (url, retries = 3) => {
   let counter = 0;
   const doRequest = async () => {
     try {
-      return await axios.get(url)
+      return await axiosInstance.get(url)
     } catch (err) {
       if (counter++ >= retries) {
         throw err;
@@ -81,15 +177,14 @@ const getWithRetry = (url, retries = 3) => {
 const pullSponsors = async (collective, {type = 'organizations'} = {}) => {
   const {data} = await getWithRetry(`https://opencollective.com/${collective}/members/${type}.json`);
 
-  return data.map(({lastTransactionAt, ...entry}) => {
-    const {profile} = entry;
-
+  return data.map((sponsor) => {
+    const {profile} = sponsor;
     const login = new URL(profile).pathname.split('/').pop();
 
     console.log(`Open Collective member: ${login}`);
 
     return {
-      ...entry,
+      ...sponsor,
       login
     }
   });
@@ -99,34 +194,57 @@ const processAvatars = async (sponsorsData, avatarsPath = './assets/sponsors/ope
   await ensurePath(avatarsPath);
 
   await Promise.all(Object.values(sponsorsData).map(async (sponsor) => {
-    const {image, profile} = sponsor;
+    const {image, profile, displayName} = sponsor;
+
+    console.log(`Process avatar [${image}] for [${displayName}]`);
 
     try {
       if (!/^https?:/.test(image)) {
         return;
       }
 
-      const {data, headers} = await axios.get(image, {responseType: 'arraybuffer'});
+      const {data, headers} = await axiosInstance.get(image, {responseType: 'arraybuffer'});
 
-      const login = new URL(profile).pathname.split('/').pop();
+      const login = profile ? new URL(profile).pathname.split('/').pop() : undefined;
 
       const ext = mime.extension(headers.getContentType()) || '';
 
-      const localAvatarPath = path.join(avatarsPath, `${login}${ext ? '.' + ext : ''}`);
+      const localAvatarPath = path.join(avatarsPath, `${login || displayName}${ext ? '.' + ext : ''}`);
 
-      sponsor.image = '/' + localAvatarPath;
-
-      await sharp(data)
+      const sharpImage = await sharp(data)
+        .trim({
+          background: {r: 255, g: 255, b: 255, alpha: 0}
+        })
         .resize(400, 150, {
           fit: sharp.fit.inside,
           withoutEnlargement: true
-        })
-        .png()
-        .toFile(localAvatarPath)
+        });
 
+      await sharpImage.png().toFile(localAvatarPath);
+
+      sponsor.image = '/' + localAvatarPath;
+
+      console.log(`Avatar for [${displayName}] saved as [${sponsor.image}]`);
     } catch(err){
       console.log(`Error while loading logo [${image}]: ${err}`);
       sponsor.image = '';
+    }
+  }));
+}
+
+const addImageMetadata = async (sponsors) => {
+  await Promise.all(Object.values(sponsors).map(async (sponsor) => {
+    const {image} = sponsor;
+    if(!image) return;
+    try {
+      const {width, height, format} = await sharp('.' + image).metadata();
+
+      sponsor.imageWidth = width;
+      sponsor.imageHeight = height;
+      sponsor.isWideImage = sponsor.showCaption === undefined && width > height * 1.8;
+      sponsor.imageType = format;
+    } catch(err) {
+      console.log(`Error while reading image metadata [${image}]: ${err}`);
     }
   }));
 }
@@ -139,12 +257,12 @@ const downloadImage = async (src, maxWidth = 32, maxHeight = 32, imagesPath = '.
 
   try {
     if (/^https?:/.test(src)) {
-      const {data, headers} = await axios.get(src, {responseType: 'arraybuffer'});
+      const {data, headers} = await axiosInstance.get(src, {responseType: 'arraybuffer'});
       name = new URL(src).pathname.split('/').pop();
       ext = mime.extension(headers.getContentType()) || '';
       buffer = data;
     } else {
-      buffer = await fs.readFile(src);
+      buffer = await fs.readFile(src.replace(/^\//, './'));
       ext = path.extname(src);
       name = path.basename(src, ext);
       ext = ext.replace(/^\./, '');
@@ -174,7 +292,7 @@ const downloadImage = async (src, maxWidth = 32, maxHeight = 32, imagesPath = '.
 
 const getPageDescription = async (website) => {
   try {
-    const {data} = await axios.get(website);
+    const {data} = await axiosInstance.get(website);
     const $ = cheerio.load(data);
 
     return $('head > meta[name=description]').first().attr('content') || $('head > meta[name=title]').first().attr('content');
@@ -183,142 +301,466 @@ const getPageDescription = async (website) => {
   }
 }
 
-const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.json') => {
-  const computedSponsors = {};
+const fitInRect = (w, h, mw = w, mh = h) => {
+  const ws = w / mw;
+  const hs = h / mh;
+
+  if (ws > hs) {
+    return ws > 1 ? [mw, Math.round(h / ws)] : [w, h];
+  } else {
+    return hs > 1 ? [Math.round(w / hs), mh] : [w, h];
+  }
+}
+
+const renderMarkdownSponsors = async (sponsors) => {
+  const render = async (sponsors, caption = 'Sponsors', cells, width = 300, height= 70, separate = false) => {
+
+    return await renderTemplate({
+      caption,
+      cells,
+      separate,
+      sponsors: sponsors.map(sponsor => {
+        const [w = 0, h = 0] = sponsor.image ? fitInRect(sponsor.imageWidth, sponsor.imageHeight, width, height) : [];
+
+        const links = {};
+
+        sponsor.links && Object.entries(sponsor.links).forEach(([name, href]) =>{
+          links[name] = href ? makeUTMURL(href, {
+            utm_source: 'axios',
+            utm_medium: 'readme_sponsorlist',
+            utm_campaign: 'sponsorship',
+          }, !sponsor.autoUTMLinks) : '';
+        });
+
+        return {
+          ...sponsor,
+          links,
+          image: sponsor.image && absoluteURI(sponsor.image),
+          image_black: sponsor.image && absoluteURI(sponsor.image_black),
+          readmeImageWidth: w,
+          readmeImageHeight: h
+        };
+      }),
+    }, './templates/sponsors.hbs');
+  }
+
+  const filterSponsors = (fn) => Object.values(sponsors).filter(fn);
+
+  const rendered = [];
+
+  rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
+    return isActive && benefits.readme && tierId === 'platinum';
+  }), '💎 Platinum sponsors', 1, 300, 90,  true));
+
+  rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
+    return isActive && benefits.readme && tierId === 'gold';
+  }), '🥇 Gold sponsors', 3, 200, 70));
+
+  rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
+    return isActive && benefits.readme && tierId === 'silver';
+  }), '🥈 Silver sponsors', 4, 150, 50));
+
+  return rendered.join('\n');
+}
+
+/*const updateReadmeSponsors = async (dest, path, sponsors, marker = '<br><br>') => {
+  let {data} = await getWithRetry(`https://api.github.com/repos/axios/axios/contents/${dest}`);
+
+  let content = Buffer.from(data.content, 'base64').toString();
+
+  const index = content.indexOf(marker);
+
+  if(index >= 0) {
+    const sponsorBlock = await renderMarkdownSponsors(sponsors)
+
+    content = sponsorBlock + '\n' + content.slice(index);
+
+    await fs.writeFile(path, content);
+  } else {
+    console.warn(`Can not find marker (${marker}) in ${uri}`);
+  }
+};*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const schema  = Joi.object({
+  github: Joi.string().alphanum().max(255),
+  displayName: Joi.string().alphanum().min(1).max(64),
+  website: Joi.string().alphanum().max(255),
+  alt: Joi.string().alphanum().max(255),
+  icon: Joi.string().alphanum().max(255),
+  image: Joi.string().alphanum().max(255),
+  image_dark: Joi.string().alphanum().max(255),
+  targetLink: Joi.string().alphanum().max(255),
+  twitter: Joi.string().alphanum().max(255),
+  video: Joi.string().alphanum().max(255),
+  description: Joi.string().alphanum().max(1000),
+  links: Joi.object({}).unknown(true),
+  showCaption: Joi.boolean(),
+  crown: Joi.boolean(),
+  hide: Joi.boolean()
+}).unknown(true);
+
+const processGithub = async (sponsor, repo = 'axios-sponsor', file = 'sponsor.json') => {
+  let {github, displayName} = sponsor;
+
+  console.log(`Process github (${github}) of ${displayName}...`);
+
+  if (github && (github = github.trim())) {
+    try {
+      const url = new URL(github);
+      if (url.hostname === 'github.com') {
+        const [githubUser] = url.pathname.slice(1).split('/');
+
+        if (githubUser) {
+          const targetURI = `https://raw.githubusercontent.com/${githubUser}/${repo}/main/${file}`;
+
+          console.log(`Pull sponsor content from [${targetURI}]`);
+
+          const {data} = await axiosInstance.get(targetURI);
+
+          schema.validate(data);
+
+          ['github', 'displayName', 'website', 'alt', 'image', 'image_dark', 'description', 'icon', 'video', 'twitter', 'targetLink']
+            .forEach(key => {
+              if (data[key] !== undefined) {
+                sponsor[key] = String(data[key]);
+              }
+            });
+
+          data.links && (sponsor.links = data.links);
+
+          'showCaption' in data && (sponsor.showCaption = !!data.showCaption);
+          data.crown === false && (sponsor.benefits.crown = false);
+          data.hide === true && (sponsor.hide = true);
+        }
+      }
+    } catch (err) {
+      console.warn(String(err));
+    }
+  }
+}
+
+const addMonths = (date, months) => {
+  const d = date.getDate();
+  date.setMonth(+months + date.getMonth());
+  date.getDate() !== d && date.setDate(0);
+  return date;
+}
+
+
+
+const renderTooltip = async (sponsor) => {
+  let {icon, isActive, displayName, tier, associatedTierId, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
+
+  const iconSrc = icon && (await downloadImage(icon));
+
+  const iconHTML = iconSrc ? `<img class="sponsor-icon" src="/${iconSrc}" alt="${html.escape(displayName)}"/>` : '';
+
+  const renderedTier = isActive && tier.toLowerCase() === 'backer' ? `${price || lastTransactionAmount || 0}$ a month` : tier;
+
+  let tooltip = `<h2 class="caption">${iconHTML}<span>${html.escape(displayName)} (${sponsor.totalAmountDonated || 0}$${' <sup class="tier">' + renderedTier + '</sup>'})</span></h2> `;
+
+  if (!description && website) {
+    description = sponsor.description = await getPageDescription(website);
+
+    console.log(`Website ${website} description: ${description}`);
+  }
+
+  if (description) {
+    tooltip += `<div class="description">${html.escape(description)}</div>`;
+  }
+
+  if (benefits.video && video) {
+    try {
+      const {hostname} = new URL(video);
+
+      if (/youtube.com$/.test(hostname)) {
+        tooltip += `<div class="video"><iframe width="426" height="240" src="${html.escape(video)}"></iframe></div>`;
+      }
+    } catch (e) {
+      console.warn(`Failed to include youtube link: ${e}`);
+    }
+  }
+
+  const linksArray = Object.entries(links || {});
+
+  if (benefits.links && linksArray.length && benefits.links) {
+    const rendered = linksArray.slice(0, benefits.links).map(([text, entry]) => {
+      const {href} = typeof entry === 'string' ? {
+        href: entry
+      } : entry || {};
+
+      return `<a href="${makeUTMURL(href, !autoUTMLinks)}">${html.escape(text)}</a>`;
+    }).join('');
+
+    tooltip += `<div class="links">${rendered}</div>`
+  }
+
+  const icons = Object.entries(social).map(([name, icon]) => {
+    const link = sponsor[name];
+
+    if(!link) return;
+
+    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
+  }).filter(Boolean).join('');
+
+  tooltip += `<div class="social">${icons}</div>`
+
+  return tooltip;
+}
+
+const fitInRange = (v, min, max) => Math.max(Math.min(v, max), min);
+
+/*const mapObject = (obj, fn) => {
+  const newObj = {};
+
+  Object.entries(obj).forEach((key, value) => {
+    const ret = fn(key, value, obj);
+
+    if()
+  });
+}*/
+
+const findTier = (price, tiers) => {
+  let found;
+  let max = 0;
+
+  price && Object.entries(tiers).forEach(([tier, data]) => {
+    if (data.price <= price && max < price) {
+      max = data.price;
+      found = tier;
+    }
+  });
+
+  return found;
+}
+
+const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/sponsors.json') => {
+
   const {
     sponsors,
     tiers,
-    totalAmountDonatedThreshold = 100,
-    monthlyContributionThreshold = 10,
-    disappearCredit = 10,
     scoreTierPriceFactor = 0.5,
-    scoreTotalAmountFactor = 0.2
+    scoreTotalAmountFactor = 0.2,
+    creditDays = 0
   } = await readJSON(sponsorsConfig) || {};
 
+  const mergedSponsors = {};
+
   // merge Open Collective sponsors
-  sponsorsData.forEach(sponsor => {
-    if (sponsor.role !== 'BACKER' && sponsor.role && sponsor.totalAmountDonated <= 0) {
+  collectiveSponsors.forEach(sponsor => {
+    if (sponsor.role !== 'BACKER' && sponsor.role) {
       return;
     }
 
-    computedSponsors[sponsor.login] = {...sponsor};
+    const {isActive, totalAmountDonated, lastTransactionAmount} = sponsor;
+
+    sponsor.isActive = !!(isActive && lastTransactionAmount > 0 && totalAmountDonated);
+
+    mergedSponsors[sponsor.login] = {...sponsor};
   });
 
-  // merge config sponsors
-  Object.entries(sponsors).forEach(([login, entry]) => {
-    const existing = computedSponsors[login] || {};
+  // merge sponsors from sponsors.json
+  Object.entries(sponsors).forEach(([login, local]) => {
+    let collective = mergedSponsors[login];
 
-    computedSponsors[login] = {login, ...existing, ...entry};
+    mergedSponsors[login] = {
+      login,
+      ...collective,
+      ...local,
+      localConfig: {...local},
+      manualBilling: !!(local.lastTransactionAt && local.lastTransactionAmount || local.endDate)
+    }
   });
 
-  await Promise.all(Object.values(computedSponsors).map(async (sponsor) => {
-    let {login, icon, website, displayName, description, links} = sponsor;
 
-    sponsor.displayName = displayName = displayName || sponsor.name || login;
 
-    console.log(`Process sponsor [${displayName}]`);
-
-    const iconHTML = icon ? `<img class="sponsor-icon" src="${await downloadImage(icon)}" alt="${login}"/>` : '';
-
-    let tooltip = `<h2 class="caption">${iconHTML}<span>${displayName} (${sponsor.totalAmountDonated}$${sponsor.tier && sponsor.isActive ? ' <sup class="tier">' + sponsor.tier + '</sup>' : ''})</span></h2> `;
-
-    if (!description && website) {
-      description = await getPageDescription(website);
-
-      console.log(`Website ${website} description: ${description}`);
+  // normalize sponsors config
+  Object.entries(mergedSponsors).forEach(([login, sponsor]) => {
+    if (!sponsor.tier) {
+      sponsor.tier = 'backer';
     }
 
-    if (description) {
-      tooltip += `<div class="description">${description}</div>`;
+    let {isActive, tier, lastTransactionAmount = 0, createdAt, lastTransactionAt, totalAmountDonated, manualBilling, localConfig} = sponsor;
+
+    const tierLower = tier.toLowerCase();
+
+    const tierData = tiers[tierLower];
+
+    if (!tierData) {
+      console.log(`Unknown tier [${tier}]`);
     }
 
-    sponsor.targetLink = website || sponsor.twitter || sponsor.github || sponsor.profile;
+    const {price, benefits, period = PERIOD} = tierData || {};
 
-    const autoUTMLinks = sponsor.autoUTMLinks !== false; // hotfix
+    console.log(sponsor.login);
 
-    const linksArray = Object.entries(links || {});
+    const isBacker = tierLower === 'backer';
 
-    if (linksArray.length) {
-      const rendered = linksArray.map(([text, entry]) => {
-        const {href} = typeof entry === 'string' ? {
-          href: entry
-        } : entry || {};
+    sponsor.tierId = tierLower;
+    sponsor.tierPrice = isBacker && isActive && lastTransactionAmount ? lastTransactionAmount : price;
+    sponsor.totalAmountDonated = sponsor.totalAmountDonated || lastTransactionAmount || 0;
 
-        return `<a href="${makeUTMURL(href, undefined, !autoUTMLinks)}">${html.escape(text)}</a>`;
-      }).join('');
+    sponsor.associatedTierId = tierLower;
 
-      tooltip += `<div class="links">${rendered}</divclass>`
+
+    let assoc;
+
+    if (localConfig?.isActive === false) {
+      sponsor.isActive = false;
+    } else if (tier && (manualBilling || tierLower === 'backer')) {
+      if(sponsor.endDate || lastTransactionAmount >= price) {
+        const pricePerSec = price / (period * DAY);
+        const timePaid = lastTransactionAmount / pricePerSec
+        const endDate = sponsor.endDate = sponsor.endDate || +(new Date(lastTransactionAt)) + timePaid * 1000;
+        const timeLeft = new Date(endDate) - Date.now();
+
+        sponsor.timeLeft = Math.round(timeLeft / 1000); // seconds
+        sponsor.isActive = sponsor.timeLeft > 0;
+      } else {
+        sponsor.isActive = false;
+      }
     }
 
-    const icons = Object.entries(social).map(([name, icon]) => {
-      const link = sponsor[name];
+    if( Date.now() - new Date(sponsor.boostEnd) > 0) {
+      sponsor.boost = sponsor.boost || 1;
+    }
 
-      if(!link) return;
+    if (isActive && isBacker && !localConfig?.tier && (assoc = findTier(lastTransactionAmount, tiers))) {
+      const tier = assoc.toLowerCase();
+      tier !== 'backer' && (sponsor.associatedTierId = tier);
+    }
 
-      return `<a href="${makeUTMURL(link, undefined, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
-    }).filter(Boolean).join('');
+    sponsor.isActive = sponsor.isActive === true;
 
-    tooltip += `<div class="social">${icons}</div>`
+    sponsor.benefits = {
+      ...benefits,
+      ...sponsor.benefits
+    };
 
-    sponsor.tooltip = tooltip;
+    sponsor.autoUTMLinks = sponsor.autoUTMLinks !== false;
 
-    const parsed = parseURL(sponsor.targetLink);
+    let displayName = sponsor.displayName || sponsor.name || sponsor.login || login;
 
-    sponsor.utmLink = !sponsor.utmLink && parsed && makeUTMURL(sponsor.targetLink, undefined, !autoUTMLinks);
+    if (displayName && /^https?:\/\//.test(displayName = displayName.trim())) {
+      try {
+        displayName = new URL(displayName).host;
+      } catch (err) {
+        console.log(`Failed to process url as a name: ${err}`);
+      }
+    }
+
+    sponsor.displayName = displayName;
+  });
+
+
+
+
+  const normalizedSponsors = await Promise.all(Object.values(mergedSponsors).map(async (sponsor) => {
+    let {isActive, benefits, autoUTMLinks} = sponsor;
+
+    if (isActive && benefits.github) {
+      await processGithub(sponsor);
+    }
+
+    let {website, displayName} = sponsor;
+
+    console.log(`Process sponsor [${displayName}]\n`);
+
+    sponsor.tooltip = await renderTooltip(sponsor);
+
+    let targetLink = sponsor.targetLink || website || sponsor.twitter || sponsor.github || sponsor.profile || undefined;
+
+    sponsor.targetLink = targetLink && makeUTMURL(targetLink, !autoUTMLinks) || undefined;
+
+    return {...sponsor};
   }));
 
   const sortedSponsors = {};
 
-  Object.values(computedSponsors).map((sponsor) => {
+  normalizedSponsors.map((sponsor) => {
     const createdAt = new Date(sponsor.createdAt);
-    const monthsPassed = (Date.now() - createdAt) / MONTH;
+    const monthsPassed = (Date.now() - createdAt) / (MONTH * 1000);
     const averageMonthlyContribution = sponsor.totalAmountDonated / (monthsPassed || 1);
 
-    const {isActive} = sponsor;
-    const tier = isActive && String(sponsor.tier || '').toLowerCase();
-    const hasActiveTier = !!(tier && tier !== 'backer');
-    const {price = 0, benefits = null} = tier && tiers[tier] || {};
-
-    sponsor.benefits = {
-      // backers without active tier
-      showAtSponsorList: sponsor.totalAmountDonated >= totalAmountDonatedThreshold && averageMonthlyContribution >= monthlyContributionThreshold,
-      ...benefits
-    };
-
-    const creditLeft = averageMonthlyContribution - monthlyContributionThreshold;
+    const {tier, tierPrice, timeLeft, endDate} = sponsor;
 
     sponsor.visual = {
-      opacity: hasActiveTier ? 1 : Math.max(0.5, Math.min(1, creditLeft / disappearCredit)).toFixed(1)
+      opacity: timeLeft == null || timeLeft > 0 ? 1 :(sponsor.timeLeft / (creditDays * DAY))
     }
 
     console.log(
       `Add sponsor badge [${sponsor.displayName}]
-        - tier: ${tier ? tier + '(' + price + '$)' : '< none >'}
+        - tier: ${tier ? tier + '(' + tierPrice + '$)' : '< none >'}
         - total amount donated: ${sponsor.totalAmountDonated}$
-        - website: ${sponsor.website}
-        - credit left: ${creditLeft}$
-        - has active tier: ${hasActiveTier}
-        - showAtSponsorList: ${sponsor.benefits.showAtSponsorList}
+        - last donation date: ${sponsor.lastTransactionAt}
+        - created: ${sponsor.createdAt}
+        - target link: ${sponsor.targetLink}
+        - end date: ${endDate ? new Date(endDate) : '---'}
+        - benefits: ${
+            Object.entries(sponsor.benefits).map(([benefit, value]) => benefit + ': ' + value).join(', ')
+          }
       `);
 
     return {
       ...sponsor,
-      averageMonthlyContribution: Math.round(averageMonthlyContribution),
-      hasActiveTier,
-      score: Math.round(sponsor.totalAmountDonated * scoreTotalAmountFactor + averageMonthlyContribution + price * scoreTierPriceFactor)
+      averageMonthlyContribution,
+      score: Math.round(sponsor.totalAmountDonated * scoreTotalAmountFactor + averageMonthlyContribution + tierPrice * scoreTierPriceFactor)
     };
   })
     .sort((a, b) => b.score - a.score)
     //.sort((a, b) => b.totalAmountDonated - a.totalAmountDonated)
     //.sort((a, b) => b.hasActiveTier - a.hasActiveTier)
     .sort((a, b) => (b.index || 0) - (a.index || 0))
+    .sort((a, b) => b.boost - a.boost)
     .forEach((sponsor) => {
       sortedSponsors[sponsor.login] = sponsor;
     })
 
   await processAvatars(sortedSponsors);
 
+  await addImageMetadata(sortedSponsors);
+
   return sortedSponsors;
+};
+
+/*const triggerActionEvent = async (token, owner, repo) => {
+  try {
+    const {data} = await axios.post(`https://api.github.com/repos/${owner}/${repo}/dispatches`, {
+      "event_type": "webhook"
+    }, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `token ${token}`
+      }
+    });
+
+    console.log(data);
+  } catch (err) {
+    console.log(`Request failed: ${err}`);
+  }
+}*/
+
+const updateReadmeSponsors = async(sponsors) => {
+  const markdown = await renderMarkdownSponsors(sponsors);
+  try {
+    await fs.mkdir('./public/data', {recursive: true}).catch(() => {});
+    await fs.writeFile('./public/data/sponsors.md', markdown);
+  } catch(err) {
+    console.log(err);
+  }
 }
 
 
@@ -327,8 +769,14 @@ const processSponsors = async (sponsorsData, sponsorsConfig = './data/sponsors.j
 
   await ensurePath(path.dirname(dataFile));
 
+  const sorted = await processSponsors(sponsors);
+
   await writeJSON(dataFile, {
-    sponsors: Object.values(await processSponsors(sponsors))
+    sponsors: Object.values(sorted)
   });
+
+
+  await updateReadmeSponsors(sorted);
+
 })('./temp/data.json'));
 
