@@ -159,6 +159,7 @@ These are the available config options for making requests. Only the `url` is re
   // for your proxy configuration, you can also define a `no_proxy` environment
   // variable as a comma-separated list of domains that should not be proxied.
   // Use `false` to disable proxies, ignoring environment variables.
+  // Disable if supplying a custom httpAgent/httpsAgent to manage proxying requests.
   // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
   // supplies credentials.
   // This will set an `Proxy-Authorization` header, overwriting any existing
