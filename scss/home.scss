@@ -57,7 +57,7 @@ a.button {
 }
 
 main {
-  margin-left: calc(var(--margin) / 2);
+  margin: 0 calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
   min-height: 100vh;
   display: flex;
