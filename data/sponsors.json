@@ -1,21 +1,55 @@
 {
-  "totalAmountDonatedThreshold": 100,
-  "monthlyContributionThreshold": 10,
-  "disappearCredit": 10,
-  "scoreTierPriceFactor": 0.5,
+  "totalAmountDonatedThreshold": 200,
+  "monthlyContributionThreshold": 15,
+  "disappearCredit": 20,
+  "scoreTierPriceFactor": 0.80,
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
-    "$49 a month": {
+    "backer" : {
+      "price": 20,
+      "benefits": {
+        "showAtSponsorList": true
+      },
+      "period": 2
+    },
+    "bronze": {
       "price": 49,
       "benefits": {
         "showAtSponsorList": true
       }
     },
-    "$99 a month" : {
+    "silver" : {
       "price": 99,
       "benefits": {
         "showAtSponsorList": true,
-        "showAtPages": true
+        "github": true,
+        "showAtPages": false
+      }
+    },
+    "gold" : {
+      "price": 299,
+      "benefits": {
+        "showAtSponsorList": true,
+        "github": true,
+        "showAtPages": true,
+        "links": 3,
+        "video": true,
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 100
+      }
+    },
+    "platinum" : {
+      "price": 599,
+      "benefits": {
+        "showAtSponsorList": true,
+        "github": true,
+        "showAtPages": true,
+        "links": 4,
+        "video": true,
+        "readme": true,
+        "crown": true,
+        "maxReadmeDescLength": 150
       }
     }
   },
@@ -31,7 +65,61 @@
       "hide": true
     },
     "intra-mart": {
-      "showCaption": false
+      "showCaption": true
+    },
+    "user-5d607d62": {
+      "hide": true
+    },
+    "route4me": {
+      "tier": "gold",
+      "image": "/assets/sponsors/route4me.png",
+      "image_dark": "/assets/sponsors/route4me_white.png",
+      "website": "https://route4me.com/",
+      "displayName": "Route4Me",
+      "alt": "Route Planner and Route Optimizer",
+      "description": "Best Route Planning And Route Optimization Software",
+      "isActive": false,
+      "totalAmountDonated": 300,
+      "createdAt": "2024-07-12 00:00",
+      "icon": "./assets/sponsors/route4me_icon.png",
+      "links": {
+        "Explore": "https://route4me.com/platform/route-optimization-software",
+        "Free Trial": "https://route4me.com/platform/marketplace/pricing",
+        "Contact": "https://route4me.com/contact"
+      }
+    },
+    "slotozilla-deutschland" : {
+      "autoUTMLinks": false
+    },
+    "stytch": {
+      "tier": "gold",
+      "description": "API-first authentication, authorization, and fraud prevention",
+      "image": "/assets/sponsors/stytch.png",
+      "image_dark": "/assets/sponsors/stytch_white.png",
+      "targetLink": "https://stytch.com/?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=website-link&utm_campaign=axios-http",
+      "links": {
+        "Website": "https://stytch.com/?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=website-link&utm_campaign=axios-http",
+        "Documentation": "https://stytch.com/docs?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=docs-link&utm_campaign=axios-http",
+        "Node.js": "https://github.com/stytchauth/stytch-node?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=node-sdk&utm_campaign=axios-http"
+      }
+    },
+    "descope": {
+      "tier": "gold",
+      "image": "/assets/sponsors/descope.png",
+      "image_dark": "/assets/sponsors/descope_white.png",
+      "targetLink": "https://www.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
+      "links": {
+        "Website": "https://www.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
+        "Documentation": "https://docs.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
+        "Community": "https://www.descope.com/community?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship"
+      }
+    },
+    "principal": {
+      "tier": "gold",
+      "image": "/assets/sponsors/principal.svg"
+    },
+    "buy-instagram-followers-buzzoid":  {
+      "website": "https://buzzoid.com/buy-instagram-followers/"
     }
   }
 }
