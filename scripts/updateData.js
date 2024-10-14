@@ -313,8 +313,16 @@ const renderMarkdownSponsors = async (sponsors) => {
         const links = {};
 
         if (sponsor.website && (!sponsor.links || !Object.keys(sponsor.links).length)) {
+          let host;
+
+          try {
+            host = new URL(sponsor.website).host;
+          } catch {
+
+          }
+
           sponsor.links = {
-            Website: sponsor.website
+            [host || 'Website']: sponsor.website
           };
         }
 
