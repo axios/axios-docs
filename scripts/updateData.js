@@ -312,12 +312,18 @@ const renderMarkdownSponsors = async (sponsors) => {
 
         const links = {};
 
+        if (sponsor.website && (!sponsor.links || !Object.keys(sponsor.links).length)) {
+          sponsor.links = {
+            Website: sponsor.website
+          };
+        }
+
         sponsor.links && Object.entries(sponsor.links).forEach(([name, href]) =>{
-          links[name] = href ? makeUTMURL(href, {
+          links[name] = href ? makeUTMURL(href, !sponsor.autoUTMLinks, {
             utm_source: 'axios',
             utm_medium: 'readme_sponsorlist',
             utm_campaign: 'sponsorship',
-          }, !sponsor.autoUTMLinks) : '';
+          }) : '';
         });
 
         return {
