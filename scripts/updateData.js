@@ -6,14 +6,20 @@ const cheerio = require('cheerio');
 const html = require('html-escaper');
 const crypto = require('crypto');
 const Joi = require('joi');
-const showdown  = require('showdown');
 const Handlebars = require('handlebars');
 const axios = require('axios');
 
 const origin = 'https://axios-http.com/';
 //const origin = 'http://127.0.0.1:8080/';
 
-const absoluteURI = (path) => new URL(path, origin);
+const absoluteURI = (path) => {
+  try {
+    return new URL(path, origin).toString();
+  } catch(err) {
+    console.log(`Failed to parse path [${path}]`);
+    return path;
+  }
+}
 
 /*const converter = new showdown.Converter();*/
 
@@ -101,30 +107,12 @@ const social = {
   youtube: 'youtube.png'
 }
 
-const parseURL = (url) => {
-  try{
-    return new URL(url);
-  } catch(e) {
-    return null;
-  }
-}
-
 const DAY = 24 * 3600;
 const MONTH = 30 * DAY;
 const PERIOD = 30;
 
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
-const openJSON = async (filePath) => {
-  try {
-    return await readJSON(filePath);
-  } catch(err) {
-    if (err.code === 'ENOENT') {
-      return null;
-    }
-    throw err;
-  }
-}
 
 const ensurePath = async (path) => {
   try {
@@ -336,7 +324,7 @@ const renderMarkdownSponsors = async (sponsors) => {
           ...sponsor,
           links,
           image: sponsor.image && absoluteURI(sponsor.image),
-          image_black: sponsor.image && absoluteURI(sponsor.image_black),
+          image_dark: sponsor.image_dark && absoluteURI(sponsor.image_dark),
           readmeImageWidth: w,
           readmeImageHeight: h
         };
@@ -362,37 +350,6 @@ const renderMarkdownSponsors = async (sponsors) => {
 
   return rendered.join('\n');
 }
-
-/*const updateReadmeSponsors = async (dest, path, sponsors, marker = '<br><br>') => {
-  let {data} = await getWithRetry(`https://api.github.com/repos/axios/axios/contents/${dest}`);
-
-  let content = Buffer.from(data.content, 'base64').toString();
-
-  const index = content.indexOf(marker);
-
-  if(index >= 0) {
-    const sponsorBlock = await renderMarkdownSponsors(sponsors)
-
-    content = sponsorBlock + '\n' + content.slice(index);
-
-    await fs.writeFile(path, content);
-  } else {
-    console.warn(`Can not find marker (${marker}) in ${uri}`);
-  }
-};*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const schema  = Joi.object({
   github: Joi.string().alphanum().max(255),
@@ -452,17 +409,10 @@ const processGithub = async (sponsor, repo = 'axios-sponsor', file = 'sponsor.js
   }
 }
 
-const addMonths = (date, months) => {
-  const d = date.getDate();
-  date.setMonth(+months + date.getMonth());
-  date.getDate() !== d && date.setDate(0);
-  return date;
-}
-
 
 
 const renderTooltip = async (sponsor) => {
-  let {icon, isActive, displayName, tier, associatedTierId, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
+  let {icon, isActive, displayName, tier, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
 
   const iconSrc = icon && (await downloadImage(icon));
 
@@ -513,25 +463,13 @@ const renderTooltip = async (sponsor) => {
 
     if(!link) return;
 
-    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}"/></a>`;
+    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}" alt="sponsor icon"/></a>`;
   }).filter(Boolean).join('');
 
   tooltip += `<div class="social">${icons}</div>`
 
   return tooltip;
 }
-
-const fitInRange = (v, min, max) => Math.max(Math.min(v, max), min);
-
-/*const mapObject = (obj, fn) => {
-  const newObj = {};
-
-  Object.entries(obj).forEach((key, value) => {
-    const ret = fn(key, value, obj);
-
-    if()
-  });
-}*/
 
 const findTier = (price, tiers) => {
   let found;
@@ -593,7 +531,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       sponsor.tier = 'backer';
     }
 
-    let {isActive, tier, lastTransactionAmount = 0, createdAt, lastTransactionAt, totalAmountDonated, manualBilling, localConfig} = sponsor;
+    let {isActive, tier, lastTransactionAmount = 0, lastTransactionAt, manualBilling, localConfig} = sponsor;
 
     const tierLower = tier.toLowerCase();
 
