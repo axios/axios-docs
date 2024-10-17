@@ -163,6 +163,11 @@ footer {
     gap: 1rem;
     margin-bottom: 1.5rem;
   }
+  .light-hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
 }
 
 // @keyframes appear {
