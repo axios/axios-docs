@@ -12,7 +12,7 @@ Axios é um cliente HTTP *[baseado-em-promessas](https://javascript.info/promise
 
 - Faz [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) do navegador
 - Faz requisições [http](http://nodejs.org/api/http.html) do node.js
-- Suporta a API de [Promessas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 
+- Suporta a API de [Promessas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - Intercepta requisições e respostas
 - Transforma os dados de requisições e de respostas
 - Cancela requisições
