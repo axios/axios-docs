@@ -48,10 +48,20 @@ next_link: '/kr/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer`는 `params`의 시리얼라이즈를 담당하는 옵션 함수입니다.
-  // (예: https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer`는 `params` 직렬화를 맞춤설정할 수 있는 선택적 구성입니다.
+  paramsSerializer: {
+
+    //반복적인 방식으로 키/값 쌍을 보내는 사용자 정의 인코더 기능입니다.
+    encode?: (param: string): string => { /* 여기에서 사용자 정의 작업을 수행하고 변환된 문자열을 반환합니다. */ }, 
+    
+    // 전체 매개변수에 대한 사용자 정의 직렬 변환기 기능입니다. 사용자가 1.x 이전 동작을 모방할 수 있습니다.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //매개변수의 배열 인덱스 형식을 지정하기 위한 구성입니다.
+    indexes: false // 사용 가능한 세 가지 옵션: 
+    // (1) indexes: null (대괄호가 없습니다.), 
+    // (2) (default) indexes: false (빈 괄호로 이어짐),
+    // (3) indexes: true (인덱스가 있는 괄호로 연결됨).    
   },
 
   // `data`는 요청 바디로 전송될 데이터입니다.  

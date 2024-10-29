@@ -48,10 +48,19 @@ next_link: '/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` یک عملکرد اختیاری است که وظیفه سریال سازی `params` را بر عهده دارد 
-  // (به عنوان مثال، https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // 'paramsSerializer' یک پیکربندی اختیاری است که به شما امکان می‌دهد سریال‌سازی 'params' را سفارشی کنید
+  paramsSerializer: {
+
+    //عملکرد رمزگذار سفارشی که جفت های کلید/مقدار را به صورت تکراری ارسال می کند.
+    encode?: (param: string): string => { /* عملیات سفارشی را در اینجا انجام دهید و رشته تبدیل شده را برگردانید */ }, 
+    
+    // عملکرد سریالساز سفارشی برای کل پارامتر. به کاربر امکان تقلید از رفتار قبل از 1.x را می دهد.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //پیکربندی برای قالب بندی شاخص های آرایه در پارامترها.
+    indexes: false // سه گزینه موجود: (1) indexes: null (منجر به عدم وجود براکت می شود), 
+    // (2) (default) indexes: false (منجر به پرانتزهای خالی می شود),
+    // (3) indexes: true (منجر به براکت هایی با شاخص می شود).    
   },
 
   // `data` داده ای است که به عنوان بدنه درخواست ارسال می شود 
