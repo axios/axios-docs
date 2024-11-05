@@ -4,7 +4,8 @@
     <br>
   </h3>
 
-  {{#table sponsors cells separate}}
+  {{#table sponsors cells separate fill}}
+    {{#if this}}
       {{#if displayName}}
         {{#if image}}
         <a href="{{targetLink}}" style="padding: 10px; display: inline-block">
@@ -27,5 +28,8 @@
       {{else}}
         - {{displayName}}
       {{/if}}
+    {{else}}
+      <a href="https://opencollective.com/axios/contribute">💜 Become a sponsor</a>
+    {{/if}}
   {{/table}}
 {{/if}}
