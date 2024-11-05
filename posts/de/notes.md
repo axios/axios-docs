@@ -6,12 +6,12 @@ prev_link: '/de/docs/urlencoded'
 
 ## Semver
 
-Bis Axios eine Version `1.0` erreicht, können breaking changes auch in minor-versionen stattfinden. Zum beispiel sind `0.5.1` und `0.5.4` kompatibel, aber `0.6.0` moglicherweise nicht mehr.
+Bis Axios eine Version `1.0` erreicht, können Breaking Changes auch in Minor-Versionen stattfinden. Zum Beispiel sind `0.5.1` und `0.5.4` kompatibel, aber `0.6.0` moglicherweise nicht mehr.
 
 ## Promises
 
-Axios benötigt das die Promise-API [unterstützt wird](http://caniuse.com/promises).
-Falls ihre Umgebung dieser Vorraussetzung nicht nachkommt können sie diesen [Polyfill](https://github.com/jakearchibald/es6-promise) verwenden.
+Axios benötigt, dass die Promise-API [unterstützt wird](http://caniuse.com/promises).
+Falls ihre Umgebung dieser Voraussetzung nicht nachkommt, können Sie diesen [Polyfill](https://github.com/jakearchibald/es6-promise) verwenden.
 
 ## TypeScript
 Axios beinhaltet [TypeScript](http://typescriptlang.org)-Definitionen.
@@ -20,7 +20,7 @@ import axios from 'axios';
 axios.get('/user?ID=12345');
 ```
 
-## Resourcen
+## Ressourcen
 
 * [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
 * [Upgrade Guide](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
@@ -30,7 +30,7 @@ axios.get('/user?ID=12345');
 
 ## Credits
 
-Axios wurde stark vom [`$http` service](https://docs.angularjs.org/api/ng/service/$http) in [Angular](https://angularjs.org/) inspiriert. Das Ultimative ziel von Axios ist eine auserhalb von Angular verwendbare Version des `$http` service zu erstellen.
+Axios wurde stark vom [`$http` Service](https://docs.angularjs.org/api/ng/service/$http) in [Angular](https://angularjs.org/) inspiriert. Das ultimative Ziel von Axios ist eine außerhalb von Angular verwendbare Version des `$http` Service zu erstellen.
 
 ## License
 

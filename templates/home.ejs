@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Axios</title>
-    <link rel="stylesheet" href="/assets/style/index.css" />
+    <link rel="stylesheet" href="/style/sponsors.css" />
+    <link rel="stylesheet" href="/style/home.css" />
     <style>
       * {
         <%= locale.fontSans ? 'font-family: ' + locale.fontSans + ';' : '' %>
@@ -37,6 +38,11 @@
     </noscript>
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <script src="https://cdn.usefathom.com/script.js" data-site="PHYVDASO" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
   <body>
     <header>
@@ -52,7 +58,7 @@
           <p><%= locale.p.subhead %></p>
           <div class="buttons">
             <a href="<%= locale.prefix %>docs/intro" class="button primary">
-              <%= locale.t['Get Started'] || 'Get Started' %>
+              <%= locale.t['Get Started'] || 'Get Started' %>
             </a>
             <a href="https://github.com/axios/axios" class="button">
               <%= locale.t['View on GitHub'] || 'View on GitHub' %>
@@ -62,23 +68,61 @@
         <div class="code-preview">
           <pre></pre>
         </div>
+
       </section>
-      <section id="sponsors">
-        <h2>Sponsors:</h2>
-        <a href="https://www.serpapi.com" target="_blank">
-          <img
-            src="/assets/sponsors/serpapi.png"
-            alt="serpapi.com"
-            style="width: 15rem; padding: 2rem 0rem 3rem;"
-          >
-        </a>
-        <a href="https://www.casinoreviews.net" target="_blank">
-          <img
-            src="/assets/sponsors/casinoreviews.png"
-            alt="casinoreviews.net"
-            style="width: 30rem; margin-left: 2rem; padding: 2rem 0rem 3rem; top: -1rem; position: relative;"
-          >
-        </a>
+      <section class="sponsors_container" aria-label="Axios sponsors">
+        <div>
+        <a class="link-sponsors" href="/docs/sponsor"><h2><%= locale.t['Sponsors'] || 'Sponsors' %></h2></a>
+        <span class="btn-container">
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+              <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                        stroke="#000000"
+                        stroke-opacity="30%"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12.0122 5.57169L10.9252 4.48469C8.77734 2.33681 5.29493 2.33681 3.14705 4.48469C0.999162 6.63258 0.999162 10.115 3.14705 12.2629L11.9859 21.1017L11.9877 21.0999L12.014 21.1262L20.8528 12.2874C23.0007 10.1395 23.0007 6.65711 20.8528 4.50923C18.705 2.36134 15.2226 2.36134 13.0747 4.50923L12.0122 5.57169ZM11.9877 18.2715L16.9239 13.3352L18.3747 11.9342L18.3762 11.9356L19.4386 10.8732C20.8055 9.50635 20.8055 7.29028 19.4386 5.92344C18.0718 4.55661 15.8557 4.55661 14.4889 5.92344L12.0133 8.39904L12.006 8.3918L12.005 8.39287L9.51101 5.89891C8.14417 4.53207 5.92809 4.53207 4.56126 5.89891C3.19442 7.26574 3.19442 9.48182 4.56126 10.8487L7.10068 13.3881L7.10248 13.3863L11.9877 18.2715Z"
+                        fill="white"
+                />
+              </svg>
+              <span>Become a sponsor</span>
+            </a>
+          </span>
+        </div>
+        <section class="splide" aria-label="Axios sponsors" oncontextmenu="return false;">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <% const count = config.custom.sponsors.filter(({benefits}) => benefits.showAtPages).length %>
+
+              <% if (count) { %>
+                <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
+                  <% if(sponsor.isActive && !sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
+                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.associatedTierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                      <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
+                        <% if(sponsor.image){ %>
+                          <div>
+                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
+                            <img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/>
+                          </div><% } %>
+                        <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
+                      </a>
+                    </li>
+                  <% } %>
+                <% }) %>
+              <% } else { %>
+                <li class="splide__slide sponsor-card become_sponsor" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+                  <div><a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </section>
       </section>
     </main>
     <footer>
@@ -119,7 +163,11 @@
               ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
             >
           </td>
-          <td></td>
+          <td>
+            <a href="https://opencollective.com/axios/contribute"
+            ><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a
+            >
+          </td>
         </tr>
         <% config.custom.langs.slice(4).forEach(lang => { %>
           <tr>
@@ -141,7 +189,7 @@
       </div>
       <div class="row">
         <span class="copyright-notice">
-          <%= locale.t['Axios Project Copy Right Footer'] || 'The Axios Project: Copyright © 2014-present Matt Zabriskie.' %>
+          <%= locale.t['Axios Project Copy Right Footer'] || 'The Axios Project: Copyright © 2014-present Matt Zabriskie and contributors' %>
         </span>
         <span>
           <%= locale.t['License Label Footer'] || 'Licensed under the' %>
@@ -165,6 +213,66 @@
       };
 
       const typed = new Typed('.code-preview pre', options);
+    </script>
+
+    <script>
+      const splide = new Splide( '.splide', {
+        //type   : 'slide',
+        type   : 'loop',
+        drag   : 'free',
+        focus  : 'left',
+        perPage: 5,
+        snap   : true,
+        autoWidth: true,
+        pagination: false,
+        autoScroll: {
+          speed: 0.7,
+          autoStart: false
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          splide.Components.AutoScroll.play();
+        }, 3000);
+      });
+
+      splide.mount(window.splide.Extensions);
+
+      let timer;
+
+      const stop = () => {
+        if( timer ) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      tippy('.sponsor-card, .tip', {
+        trigger: 'mouseenter focus focusin oncontextmenu',
+        delay: [500, 500],
+        animation: 'fade',
+        allowHTML: true,
+        hideOnClick: true,
+        interactive: true,
+        maxWidth: '470px',
+        appendTo: () => document.body,
+        onShow(instance) {
+          if (instance.props.content.trim() === '') {
+            return false;
+          }
+
+          splide.Components.AutoScroll.pause();
+        },
+
+        onHide() {
+          stop();
+
+          timer = setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 5000);
+        }
+      });
     </script>
   </body>
 </html>

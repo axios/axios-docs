@@ -83,7 +83,12 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "请求体编码",
+      text: "🆕 请求体编码",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Multipart 实体请求",
     },
     {
       type: "heading",

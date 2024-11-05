@@ -6,7 +6,7 @@ next_title: 'Konfigurationsstandardwerte'
 next_link: '/de/docs/config_defaults'
 ---
 
-Die Antwort auf eine Anfrage enthält folgende informationen:
+Die Antwort auf eine Anfrage enthält folgende Informationen:
 
 ```js
 {
@@ -20,21 +20,21 @@ Die Antwort auf eine Anfrage enthält folgende informationen:
   statusText: 'OK',
 
   // `headers`: Die HTTP-Header der Serverantwort
-  // Alle Header-Namen sind in kleinbuchstaben.
-  // Example: `response.headers['content-type']`
+  // Alle Header-Namen sind in Kleinbuchstaben.
+  // Beispiel: `response.headers['content-type']`
   headers: {},
 
-  // `config` Die konfiguration die in der anfrage angegeben wurde
+  // `config` Die konfiguration, die in der Anfrage angegeben wurde
   config: {},
 
-  // `request` Die Anfrage die diese Antwort generiert hat. Auf
+  // `request` Die Anfrage, die diese Antwort generiert hat. Auf
   // Node.js ein ClientRequest, im Browser eine Instanz von
   // XMLHttpRequest
   request: {}
 }
 ```
 
-Die antwort wird so empfangen:
+Die Antwort wird so empfangen:
 
 ```js
 axios.get('/user/12345')
@@ -47,4 +47,4 @@ axios.get('/user/12345')
   });
 ```
 
-Bei der verwendung von `catch` oder eines [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) als zweiter Parameter zu `then`, wird die Antwort durch das Objekt `error` verfügbar, wie im Abschnitt [Errorverarbeitung](/de/docs/handling_errors) erklärt wird.
+Bei der Verwendung von `catch` oder eines [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) als zweiter Parameter zu `then`, wird die Antwort durch das Objekt `error` verfügbar, wie im Abschnitt [Errorverarbeitung](/de/docs/handling_errors) erklärt wird.
