@@ -33,7 +33,7 @@ axios.get('/user?ID=12345')
     // هەڵە چارەسەربکە
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // هەمووکات جێبەجێدەکرێ
   });
 
@@ -49,7 +49,7 @@ axios.get('/user', {
   .catch(function (error) {
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // هەمووکات جێبەجێدەکرێت
   });  
 
