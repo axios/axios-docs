@@ -175,7 +175,10 @@ These are the available config options for making requests. Only the `url` is re
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
+  // `signal` and instance of AbortController can be used to cancel the request
+  signal: new AbortController().signal,
+
+  // (Deprecatred) `cancelToken` specifies a cancel token that can also be used to cancel the request
   // (see Cancellation section below for details)
   cancelToken: new CancelToken(function (cancel) {
   }),

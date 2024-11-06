@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Axios</title>
+    <link rel="stylesheet" href="/style/sponsors.css" />
     <link rel="stylesheet" href="/style/home.css" />
     <style>
       * {
@@ -39,7 +40,7 @@
     <script src="https://cdn.usefathom.com/script.js" data-site="PHYVDASO" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<!--    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
@@ -69,27 +70,59 @@
         </div>
 
       </section>
-      <section id="sponsors" aria-label="Axios sponsors">
-        <h2><%= locale.t['Sponsors'] || 'Sponsors' %>:</h2>
-        <div class="splide" oncontextmenu="return false;">
+      <section class="sponsors_container" aria-label="Axios sponsors">
+        <div>
+        <a class="link-sponsors" href="/docs/sponsor"><h2><%= locale.t['Sponsors'] || 'Sponsors' %></h2></a>
+        <span class="btn-container">
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+              <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                        stroke="#000000"
+                        stroke-opacity="30%"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12.0122 5.57169L10.9252 4.48469C8.77734 2.33681 5.29493 2.33681 3.14705 4.48469C0.999162 6.63258 0.999162 10.115 3.14705 12.2629L11.9859 21.1017L11.9877 21.0999L12.014 21.1262L20.8528 12.2874C23.0007 10.1395 23.0007 6.65711 20.8528 4.50923C18.705 2.36134 15.2226 2.36134 13.0747 4.50923L12.0122 5.57169ZM11.9877 18.2715L16.9239 13.3352L18.3747 11.9342L18.3762 11.9356L19.4386 10.8732C20.8055 9.50635 20.8055 7.29028 19.4386 5.92344C18.0718 4.55661 15.8557 4.55661 14.4889 5.92344L12.0133 8.39904L12.006 8.3918L12.005 8.39287L9.51101 5.89891C8.14417 4.53207 5.92809 4.53207 4.56126 5.89891C3.19442 7.26574 3.19442 9.48182 4.56126 10.8487L7.10068 13.3881L7.10248 13.3863L11.9877 18.2715Z"
+                        fill="white"
+                />
+              </svg>
+              <span>Become a sponsor</span>
+            </a>
+          </span>
+        </div>
+        <section class="splide" aria-label="Axios sponsors" oncontextmenu="return false;">
           <div class="splide__track">
             <ul class="splide__list">
-              <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
-                <% if(!sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
-                  <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-is-active="<%= sponsor.hasActiveTier ? "yes" : "no" %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
-                    <a href="<%= sponsor.utmLink || '' %>" target="_blank" >
-                      <% if(sponsor.image){ %><img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/><% } %>
-                        <% if(sponsor.showCaption !== false){ %><span class="caption"><span><%= sponsor.displayName %></span></span><% } %>
-                    </a>
-                  </li>
-                <% } %>
-              <% }) %>
+              <% const count = config.custom.sponsors.filter(({benefits}) => benefits.showAtPages).length %>
+
+              <% if (count) { %>
+                <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
+                  <% if(sponsor.isActive && !sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
+                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.associatedTierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                      <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
+                        <% if(sponsor.image){ %>
+                          <div>
+                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
+                            <img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/>
+                          </div><% } %>
+                        <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
+                      </a>
+                    </li>
+                  <% } %>
+                <% }) %>
+              <% } else { %>
                 <li class="splide__slide sponsor-card become_sponsor" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
-                  <a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a>
+                  <div><a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
                 </li>
+              <% } %>
             </ul>
           </div>
-        </div>
+        </section>
       </section>
     </main>
     <footer>
@@ -146,6 +179,7 @@
           </tr>
         <% }) %>
       </table>
+      <hr class="light-hr">
       <div class="row">
         <span class="copyright-notice">
           <%= locale.t['Website Copy Right Footer'] || 'This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant. Used by permission.' %>
@@ -184,30 +218,60 @@
 
     <script>
       const splide = new Splide( '.splide', {
-        type   : 'slide',
+        //type   : 'slide',
+        type   : 'loop',
         drag   : 'free',
         focus  : 'left',
         perPage: 5,
-/*        autoScroll: {
-          speed: 0.5,
-        },*/
+        snap   : true,
+        autoWidth: true,
+        pagination: false,
+        autoScroll: {
+          speed: 0.7,
+          autoStart: false
+        }
       });
 
-      splide.mount(/*window.splide.Extensions*/);
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          splide.Components.AutoScroll.play();
+        }, 3000);
+      });
 
-      tippy('.sponsor-card', {
+      splide.mount(window.splide.Extensions);
+
+      let timer;
+
+      const stop = () => {
+        if( timer ) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      tippy('.sponsor-card, .tip', {
         trigger: 'mouseenter focus focusin oncontextmenu',
-        delay: [500, 200],
+        delay: [500, 500],
         animation: 'fade',
         allowHTML: true,
         hideOnClick: true,
         interactive: true,
-        maxWidth: '450px',
+        maxWidth: '470px',
         appendTo: () => document.body,
         onShow(instance) {
           if (instance.props.content.trim() === '') {
             return false;
           }
+
+          splide.Components.AutoScroll.pause();
+        },
+
+        onHide() {
+          stop();
+
+          timer = setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 5000);
         }
       });
     </script>
