@@ -21,7 +21,7 @@ body.dark {
 /*  background-color: var(--carousel-bg);*/
   border-radius: 5px;
   padding: 0 55px;
-  margin: 0 -55px;
+  margin: 0 calc(-1 * var(--margin) / 2);
 
   .splide__arrows {
     visibility: hidden;

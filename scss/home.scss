@@ -57,7 +57,7 @@ a.button {
 }
 
 main {
-  margin-left: calc(var(--margin) / 2);
+  margin: 0 calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
   min-height: 100vh;
   display: flex;
@@ -237,7 +237,7 @@ html[dir="rtl"] {
 .splide {
   height: 9rem;
   padding: 0 45px;
-  margin: 0 -55px;
+  margin: 0 calc(-1 * var(--margin) / 2);
 }
 
 li.sponsor-card {
