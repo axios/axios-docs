@@ -37,7 +37,7 @@ Handlebars.registerHelper("short", function (...args) {
 
   let s = options.fn(this)?.trim();
 
-  if (s.length > max) {
+  if (s.length > max + 1) {
     s = s.slice(0, max) + '...';
   }
 
@@ -352,7 +352,9 @@ const renderMarkdownSponsors = async (sponsors) => {
     }, './templates/sponsors.hbs');
   }
 
-  const filterSponsors = (fn) => Object.values(sponsors).filter(fn);
+  const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(fn)
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
   const rendered = [];
 
