@@ -46,20 +46,25 @@ Handlebars.registerHelper("short", function (...args) {
 
 Handlebars.registerHelper("table", function(...args) {
   const options = args.pop();
-  const [context, columns = 1, separate] = args;
+  const [context, columns = 1, separate, fill] = args;
 
   const rows = [[]];
   let arr = rows[0];
 
-  const last = context.length - 1;
-
   const width = 100 / columns;
+
+  if (fill) {
+    for (let i = columns - context.length % columns; i > 0; i--) {
+      context.push(null);
+    }
+  }
+
+  const last = context.length - 1;
 
   context.forEach((that, i) => {
     arr.push(`<td align="center" width="${width}%">${options.fn(that)}</td>`);
-    if (i !== last && arr.length === columns) {
-      rows.push(arr = []);
-    }
+
+    last !== i && arr.length === columns && rows.push(arr = []);
   });
 
   return new Handlebars
@@ -307,17 +312,32 @@ const renderMarkdownSponsors = async (sponsors) => {
       caption,
       cells,
       separate,
+      fill: true,
       sponsors: sponsors.map(sponsor => {
         const [w = 0, h = 0] = sponsor.image ? fitInRect(sponsor.imageWidth, sponsor.imageHeight, width, height) : [];
 
         const links = {};
 
+        if (sponsor.website && (!sponsor.links || !Object.keys(sponsor.links).length)) {
+          let host;
+
+          try {
+            host = new URL(sponsor.website).host;
+          } catch {
+
+          }
+
+          sponsor.links = {
+            [host || 'Website']: sponsor.website
+          };
+        }
+
         sponsor.links && Object.entries(sponsor.links).forEach(([name, href]) =>{
-          links[name] = href ? makeUTMURL(href, {
+          links[name] = href ? makeUTMURL(href, !sponsor.autoUTMLinks, {
             utm_source: 'axios',
             utm_medium: 'readme_sponsorlist',
             utm_campaign: 'sponsorship',
-          }, !sponsor.autoUTMLinks) : '';
+          }) : '';
         });
 
         return {
