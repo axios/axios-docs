@@ -54,6 +54,9 @@ axios('/user/12345');
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### 참고
 명령어 메소드를 사용시 'url', 'method', 'data' 속성을 config에서 지정할 필요가 없습니다.

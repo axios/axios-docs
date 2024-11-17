@@ -54,5 +54,8 @@ Pour plus de simplicité, des alias correspondant à toutes les méthodes suppor
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 > **Note :** lorsque vous utilisez des alias de méthodes, les champs `url`, `method` et `data` n’ont pas besoin d’être spécifiés dans la configuration.
