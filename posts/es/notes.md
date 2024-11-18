@@ -1,8 +1,8 @@
 ---
 title: "Notas"
-description: "Un par mas de notas de clarificación"
-prev_title: "Cuerpos de solicitud codificados como URL"
-prev_link: "/es/docs/urlencoded"
+description: "Un par más de notas de clarificatorias"
+prev_title: "Contenido tipo URL-Encoding"
+prev_link: "urlencoded"
 ---
 
 ## Semver
