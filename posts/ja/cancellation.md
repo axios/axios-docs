@@ -1,14 +1,26 @@
 ---
-title: 'Cancellation'
-prev_title: 'Handling Errors'
-prev_link: '/docs/handling_errors'
-next_title: 'URL-Encoding Bodies'
-next_link: '/docs/urlencoded'
+title: 'キャンセル'
+prev_title: 'エラー処理'
+prev_link: '/ja/docs/handling_errors'
+next_title: 'URL-エンコードボディ'
+next_link: '/ja/docs/urlencoded'
 ---
 
-## AbortController
+## リクエストのキャンセル
 
-Starting from `v0.22.0` Axios supports [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel requests in fetch API way:
+axios の呼び出しで `timeout` プロパティを設定すると、**応答** 関連のタイムアウトが処理されます。
+
+場合によっては（ネットワーク接続が利用できなくなるなど）、axios の呼び出しは **接続** を早期にキャンセルしたほうがよいことがあります。キャンセルしないと、親 コード/スタック がタイムアウトするまで（サーバーサイドアプリケーションでは数分）、axios の呼び出しがハングアップする可能性があります。
+
+axios の呼び出しを終了させるには、次の方法があります:
+- `signal`
+- `cancelToken` (非推奨)
+
+`timeout` とキャンセル方法（例: `signal`）を組み合わせることで、**レスポンス** に関するタイムアウトと **コネクション** に関するタイムアウトをカバーすることができるはずです。
+
+### `signal`: AbortController
+
+`v0.22.0` 以降、Axios は [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) をサポートし、フェッチ API の方法でリクエストをキャンセルできるようになりました:
 
 ```js
 const controller = new AbortController();
@@ -18,19 +30,44 @@ axios.get('/foo/bar', {
 }).then(function(response) {
    //...
 });
-// cancel the request
+// リクエストをキャンセルする
 controller.abort()
 ```
 
-## CancelToken `deprecated`
+最新の [`AbortSignal.timeout()`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) API [Node.js 17.3+] を使用したタイムアウトの例です:
+```js
+axios.get('/foo/bar', {
+   signal: AbortSignal.timeout(5000) // 5 秒後にリクエストを中止する
+}).then(function(response) {
+   //...
+});
+```
 
-You can also cancel a request using a *CancelToken*. 
+タイムアウトヘルパー関数付きの例:
+```js
+function newAbortSignal(timeoutMs) {
+  const abortController = new AbortController();
+  setTimeout(() => abortController.abort(), timeoutMs || 0);
 
-> The axios cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+  return abortController.signal;
+}
 
-> This API is deprecated since `v0.22.0` and shouldn't be used in new projects
+axios.get('/foo/bar', {
+   signal: newAbortSignal(5000) // 5 秒後にリクエストを中止する
+}).then(function(response) {
+   //...
+});
+```
 
-You can create a cancel token using the `CancelToken.source` factory as shown below:
+### CancelToken `非推奨`
+
+*CancelToken* を使用してリクエストをキャンセルすることもできます。
+
+> axios の cancel token APIは、[撤回された promises の提案](https://github.com/tc39/proposal-cancelable-promises) に基づくものです。
+
+> この API は `v0.22.0` から非推奨となり、新しいプロジェクトでは使用しないでください。
+
+`CancelToken.source` ファクトリーを使用して、以下のようにキャンセルトークンを作成することができます:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -42,7 +79,7 @@ axios.get('/user/12345', {
   if (axios.isCancel(thrown)) {
     console.log('Request canceled', thrown.message);
   } else {
-    // handle error
+    // エラー処理
   }
 });
 
@@ -52,11 +89,11 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
+// リクエストをキャンセルする (message パラメータはオプション)
 source.cancel('Operation canceled by the user.');
 ```
 
-You can also create a cancel token by passing an executor function to the `CancelToken` constructor:
+`CancelToken` のコンストラクタに executor 関数を渡すことで、キャンセルトークンを作成することもできます:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -64,18 +101,18 @@ let cancel;
 
 axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
-    // An executor function receives a cancel function as a parameter
+    // executor 関数はパラメータとして cancel 関数を受け取る
     cancel = c;
   })
 });
 
-// cancel the request
+// リクエストをキャンセル
 cancel();
 ```
 
-> Note: you can cancel several requests with the same cancel token / signal.
+> 注意: 同じ キャンセルトークン / シグナル で複数のリクエストをキャンセルすることができます。
 
-During the transition period, you can use both cancellation APIs, even for the same request:
+移行期間中は、同じリクエストであっても、両方のキャンセル API を使用することができます:
 
 ```js
 const controller = new AbortController();
@@ -90,7 +127,7 @@ axios.get('/user/12345', {
   if (axios.isCancel(thrown)) {
     console.log('Request canceled', thrown.message);
   } else {
-    // handle error
+    // エラー処理
   }
 });
 
@@ -100,8 +137,8 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
+// リクエストをキャンセルする (message パラメータはオプション)
 source.cancel('Operation canceled by the user.');
-// OR
-controller.abort(); // the message parameter is not supported
+// または
+controller.abort(); // message パラメータはサポートされていません。
 ```
