@@ -37,7 +37,7 @@ Handlebars.registerHelper("short", function (...args) {
 
   let s = options.fn(this)?.trim();
 
-  if (s.length > max) {
+  if (s.length > max + 1) {
     s = s.slice(0, max) + '...';
   }
 
@@ -46,20 +46,25 @@ Handlebars.registerHelper("short", function (...args) {
 
 Handlebars.registerHelper("table", function(...args) {
   const options = args.pop();
-  const [context, columns = 1, separate] = args;
+  const [context, columns = 1, separate, fill] = args;
 
   const rows = [[]];
   let arr = rows[0];
 
-  const last = context.length - 1;
-
   const width = 100 / columns;
+
+  if (fill) {
+    for (let i = columns - context.length % columns; i > 0; i--) {
+      context.push(null);
+    }
+  }
+
+  const last = context.length - 1;
 
   context.forEach((that, i) => {
     arr.push(`<td align="center" width="${width}%">${options.fn(that)}</td>`);
-    if (i !== last && arr.length === columns) {
-      rows.push(arr = []);
-    }
+
+    last !== i && arr.length === columns && rows.push(arr = []);
   });
 
   return new Handlebars
@@ -307,6 +312,7 @@ const renderMarkdownSponsors = async (sponsors) => {
       caption,
       cells,
       separate,
+      fill: true,
       sponsors: sponsors.map(sponsor => {
         const [w = 0, h = 0] = sponsor.image ? fitInRect(sponsor.imageWidth, sponsor.imageHeight, width, height) : [];
 
@@ -346,7 +352,9 @@ const renderMarkdownSponsors = async (sponsors) => {
     }, './templates/sponsors.hbs');
   }
 
-  const filterSponsors = (fn) => Object.values(sponsors).filter(fn);
+  const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(fn)
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
   const rendered = [];
 
