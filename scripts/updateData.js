@@ -116,6 +116,8 @@ const DAY = 24 * 3600;
 const MONTH = 30 * DAY;
 const PERIOD = 30;
 
+const days = (from, to = Date.now()) => (new Date(to) - new Date(from)) / DAY / 1000;
+
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
 
@@ -360,7 +362,7 @@ const renderMarkdownSponsors = async (sponsors) => {
 
   rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
     return isActive && benefits.readme && tierId === 'platinum';
-  }), '💎 Platinum sponsors', 1, 300, 90,  true));
+  }), '💎 Platinum sponsors', 2, 300, 90,  true));
 
   rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
     return isActive && benefits.readme && tierId === 'gold';
@@ -525,9 +527,17 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       return;
     }
 
-    const {isActive, totalAmountDonated, lastTransactionAmount} = sponsor;
+    // seems due to https://github.com/opencollective/opencollective-rest/pull/600
+    // the isActive property is not working properly anymore,
+    // so we have to emulate it by ourselves
+    let {tier, totalAmountDonated, lastTransactionAmount, lastTransactionAt} = sponsor;
 
-    sponsor.isActive = !!(isActive && lastTransactionAmount > 0 && totalAmountDonated);
+    const passed = days(lastTransactionAt);
+    const tierData = tier && tiers[tier.toLowerCase()];
+    const {period = 31} = tierData || {};
+    const isActiveSubscription = tierData && passed <= period;
+
+    sponsor.isActive = !!(isActiveSubscription && lastTransactionAmount > 0 && totalAmountDonated);
 
     mergedSponsors[sponsor.login] = {...sponsor};
   });
