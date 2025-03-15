@@ -103,7 +103,7 @@
               <% if (count) { %>
                 <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
                   <% if(sponsor.isActive && !sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
-                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.associatedTierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.tierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
                       <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
                         <% if(sponsor.image){ %>
                           <div>
