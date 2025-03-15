@@ -6,6 +6,7 @@
   "scoreTotalAmountFactor": 0.2,
   "tiers": {
     "backer" : {
+      "name": "Backer",
       "price": 20,
       "benefits": {
         "showAtSponsorList": true
@@ -13,12 +14,14 @@
       "period": 2
     },
     "bronze": {
+      "name": "Bronze",
       "price": 49,
       "benefits": {
         "showAtSponsorList": true
       }
     },
     "silver" : {
+      "name": "Silver",
       "price": 99,
       "benefits": {
         "showAtSponsorList": true,
@@ -27,6 +30,7 @@
       }
     },
     "gold" : {
+      "name": "Gold",
       "price": 299,
       "benefits": {
         "showAtSponsorList": true,
@@ -40,6 +44,7 @@
       }
     },
     "platinum" : {
+      "name": "Platinum",
       "price": 599,
       "benefits": {
         "showAtSponsorList": true,
@@ -92,7 +97,6 @@
       "autoUTMLinks": false
     },
     "stytch": {
-      "tier": "gold",
       "description": "API-first authentication, authorization, and fraud prevention",
       "image": "/assets/sponsors/stytch.png",
       "image_dark": "/assets/sponsors/stytch_white.png",
@@ -101,22 +105,36 @@
         "Website": "https://stytch.com/?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=website-link&utm_campaign=axios-http",
         "Documentation": "https://stytch.com/docs?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=docs-link&utm_campaign=axios-http",
         "Node.js": "https://github.com/stytchauth/stytch-node?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_content=node-sdk&utm_campaign=axios-http"
+      },
+      "tiers": {
+        "gold": {
+          "price": 200
+        }
       }
     },
     "descope": {
-      "tier": "gold",
       "image": "/assets/sponsors/descope.png",
       "image_dark": "/assets/sponsors/descope_white.png",
       "targetLink": "https://www.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
       "links": {
         "Website": "https://www.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
-        "Documentation": "https://docs.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
+        "Docs": "https://docs.descope.com/?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship",
         "Community": "https://www.descope.com/community?utm_source=axios&utm_medium=referral&utm_campaign=axios-oss-sponsorship"
+      },
+      "tiers": {
+        "gold": {
+          "price": 200
+        }
       }
     },
     "principal": {
       "tier": "gold",
-      "image": "/assets/sponsors/principal.svg"
+      "image": "/assets/sponsors/principal.svg",
+      "tiers": {
+        "gold": {
+          "price": 175
+        }
+      }
     },
     "buy-instagram-followers-buzzoid":  {
       "website": "https://buzzoid.com/buy-instagram-followers/"
