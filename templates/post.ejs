@@ -236,7 +236,7 @@
         </div>
         <div class="links">
           <% if (data.attributes.prev_link) { %>
-          <a href="<%= data.attributes.prev_link %>" class="next-link">
+          <a href="<%= locale.prefix + data.attributes.prev_link %>" class="next-link">
             <span>« <%= locale.t['Previous'] || 'Previous' %></span>
             <span class="l"> <%= data.attributes.prev_title %> </span>
           </a>
@@ -245,7 +245,7 @@
 
           </span>
             <% if (data.attributes.next_link) { %>
-              <a href="<%= data.attributes.next_link %>" class="next-link">
+              <a href="<%= locale.prefix + data.attributes.next_link %>" class="next-link">
                 <span><%= locale.t['Next'] || 'Next' %> »</span>
                 <span class="l"> <%= data.attributes.next_title %> </span>
               </a>
