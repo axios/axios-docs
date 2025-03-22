@@ -31,7 +31,12 @@ module.exports = {
     "Website Copy Right Footer": "پاورقی حق چاپ و استفاده وب سایت",
     "View On Github": "مشاهده در Github",
     "Axios Project Copy Right Footer": "پاورقی حق استفاده از پروژه Axios",
-    "License Label Footer": "پاورقی برچسب مجوز"
+    "License Label Footer": "پاورقی برچسب مجوز",
+    "Become a sponsor": "اسپانسر شوید",
+    "Sponsors": "اسپانسر ها",
+    "Issues": "مشکلات",
+    "Pull Requests": "درخواست‌های ادغام",
+    "Code of Conduct": "منشور اخلاقی"
   },
   sidebar: [
     {
