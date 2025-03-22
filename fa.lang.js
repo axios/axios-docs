@@ -34,6 +34,7 @@ module.exports = {
     "License Label Footer": "پاورقی برچسب مجوز",
     "Become a sponsor": "اسپانسر شوید",
     "Sponsors": "اسپانسر ها",
+    "Gold Sponsors": "اسپانسر های طلایی",
     "Issues": "مشکلات",
     "Pull Requests": "درخواست‌های ادغام",
     "Code of Conduct": "منشور اخلاقی"
