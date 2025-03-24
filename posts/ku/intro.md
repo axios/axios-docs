@@ -39,6 +39,12 @@ $ bower install axios
 $ yarn add axios
 ```
 
+بە pnpm:
+
+```bash
+$ pnpm add axios
+```
+
 بە CDNـی jsDelivr:
 
 ```html
