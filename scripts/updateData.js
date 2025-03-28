@@ -356,6 +356,7 @@ const renderMarkdownSponsors = async (sponsors) => {
   }
 
   const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(({hide}) => !hide)
     .filter(fn)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
