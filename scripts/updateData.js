@@ -582,7 +582,11 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       console.log(`Unknown tier [${sponsor.tier}]`);
     }
 
-    const {price, benefits, period = PERIOD} = tierData || {};
+    let {price, benefits, period = PERIOD, credit = 3} = tierData || {};
+
+    sponsor.credit ??= credit || 0;
+
+    period += sponsor.credit;
 
     if (sponsor.isActive == null) {
       sponsor.isActive = tierData && days(lastTransactionAt) <= period && sponsor.lastTransactionAmount >= price;
