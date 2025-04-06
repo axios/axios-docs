@@ -4,6 +4,9 @@
   "disappearCredit": 20,
   "scoreTierPriceFactor": 0.80,
   "scoreTotalAmountFactor": 0.2,
+  "hide": {
+    "incognito": true
+  },
   "tiers": {
     "backer" : {
       "name": "Backer",
@@ -141,6 +144,9 @@
     },
     "stephan9": {
       "website": "https://webogram.net/"
+    },
+    "soleks": {
+      "showCaption": false
     }
   }
 }
