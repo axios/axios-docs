@@ -49,10 +49,20 @@ next_link: '/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` は、 `params` のシリアライズを担当するオプションの関数です。
-  // (たとえば、https://www.npmjs.com/package/qs、http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` は、`params` のシリアル化をカスタマイズできるオプションの設定です。
+  paramsSerializer: {
+
+    //キーと値のペアを反復的に送信するカスタム エンコーダー関数。
+    encode?: (param: string): string => { /* ここでカスタム操作を実行し、変換された文字列を返します */ }, 
+    
+    // パラメーター全体のカスタム シリアライザー関数。ユーザーが 1.x より前の動作を模倣できるようにします。
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //params で配列インデックスをフォーマットするための構成。 
+    indexes: false // 利用可能な 3 つのオプション: 
+    // (1) indexes: null (括弧がなくなる), 
+    // (2) (default) indexes: false (空の括弧につながります),
+    // (3) indexes: true (インデックス付きの括弧につながります).    
   },
 
   // `data` はリクエスト ボディとして送信されるデータです。

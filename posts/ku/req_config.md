@@ -52,10 +52,20 @@ next_link: "/ku/docs/res_schema"
     ID: 12345
   },
 
-  // ـەکان`params` کردنی serializing فەنکشنێکی بژاردەییە بەرپرسە لە
-  // (https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/ نموونە)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` ڕێکخستنێکی هەڵبژاردەیە کە ڕێگەت پێدەدات زنجیرەییکردنی `params` خۆت ڕێکبخەیت.
+  paramsSerializer: {
+
+    //فەنکشنی ئینکۆدەری تایبەت کە جووتە کلیل/بەهاکان بە شێوەیەکی دووبارەبووەوە دەنێرێت.
+    encode?: (param: string): string => { /* لێرەدا ئۆپەراسیۆنە تایبەتەکان ئەنجام بدە و ڕیزێکی گۆڕاو بگەڕێنەرەوە */ }, 
+    
+    // فەنکشنی زنجیرەیی تایبەت بۆ تەواوی پارامێتەرەکە. ڕێگە بە بەکارهێنەر دەدات ڕەفتاری پێش 1.x وەربگرێت.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //ڕێکخستن بۆ فۆرماتکردنی ئیندێکسی ڕیزبەندی لە پارامەکاندا.
+    indexes: false // سێ بژاردەی بەردەست: ١.
+    // (1) indexes: null (دەبێتە هۆی ئەوەی کە هیچ کەوانەیەک نەبێت), 
+    // (2) (default) indexes: false (دەبێتە هۆی کەوانە بەتاڵەکان),
+    // (3) indexes: true (دەچێتە سەر کەوانەکان کە ئیندێکسیان تێدایە).    
   },
 
   // بریتییە لەو داتاییە کە دەنێردرێت وەکو لاشەی داواکارییەکە `data`

@@ -49,10 +49,20 @@ next_link: '/uk/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` - це додаткова функція, яка відповідає за серіалізацію` params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` — це додаткова конфігурація, яка дозволяє налаштувати серіалізацію `params`.
+  paramsSerializer: {
+
+    //Функція спеціального кодувальника, яка надсилає пари ключ/значення ітеративним способом.
+    encode?: (param: string): string => { /* Виконуйте спеціальні операції тут і повертайте перетворений рядок */ }, 
+    
+    // Спеціальна функція серіалізатора для всього параметра. Дозволяє користувачеві імітувати поведінку до 1.x.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Конфігурація для форматування індексів масиву в параметрах.
+    indexes: false // Three available options: 
+    // (1) indexes: null (призводить до відсутності дужок), 
+    // (2) (default) indexes: false (призводить до порожніх дужок),
+    // (3) indexes: true (шкоду до порожніх дужок).    
   },
 
   // `data` - це дані, які надсилаються як тіло запиту
