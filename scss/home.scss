@@ -235,6 +235,7 @@ html[dir="rtl"] {
 }
 
 .splide {
+  direction: ltr;
   height: 9rem;
   padding: 0 45px;
   margin: 0 calc(-1 * var(--margin) / 2);

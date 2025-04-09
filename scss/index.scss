@@ -191,6 +191,7 @@ aside {
   }
 
   details.dropdown-language {
+    direction: ltr;
     width: calc(100% - 2rem);
     background: var(--gray-2);
     margin: 1rem;
@@ -302,6 +303,7 @@ aside {
   }
 
   .button-container {
+    direction: ltr;
     box-sizing: border-box;
     padding: 2rem;
     width: 100%;
