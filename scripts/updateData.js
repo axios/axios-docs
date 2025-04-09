@@ -356,6 +356,7 @@ const renderMarkdownSponsors = async (sponsors) => {
   }
 
   const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(({hide}) => !hide)
     .filter(fn)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
@@ -517,14 +518,15 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     tiers,
     scoreTierPriceFactor = 0.5,
     scoreTotalAmountFactor = 0.2,
-    creditDays = 0
+    creditDays = 0,
+    hide = {}
   } = await readJSON(sponsorsConfig) || {};
 
   const mergedSponsors = {};
 
   // merge Open Collective sponsors
   collectiveSponsors.forEach(sponsor => {
-    if (sponsor.role !== 'BACKER' && sponsor.role) {
+    if ((sponsor.role !== 'BACKER' && sponsor.role) || hide[sponsor.login?.toLowerCase()] || hide[sponsor.name?.toLowerCase()]) {
       return;
     }
 
@@ -572,6 +574,12 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     if (lastTransactionAmount) {
       sponsor.tier = findTier(lastTransactionAmount, sponsorTiers);
+
+      let partiallyPaid = findTier(lastTransactionAmount * 1.1, sponsorTiers);
+
+      if (sponsor.tier !== partiallyPaid) {
+        sponsor.tier = partiallyPaid;
+      }
     }
 
     const tierId = sponsor.tier ? sponsor.tier?.toLowerCase() : null;
@@ -581,7 +589,17 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       console.log(`Unknown tier [${sponsor.tier}]`);
     }
 
-    const {price, benefits, period = PERIOD} = tierData || {};
+    let {price, benefits, period = PERIOD, credit = 3} = tierData || {};
+
+    let shortageFactor = price && lastTransactionAmount < price ? lastTransactionAmount / price * 0.9 : 1;
+
+    period = period * shortageFactor;
+
+    sponsor.isNew = !!(sponsor.createdAt && days(sponsor.createdAt) < 7);
+
+    sponsor.credit ??= credit || 0;
+
+    period += sponsor.credit;
 
     if (sponsor.isActive == null) {
       sponsor.isActive = tierData && days(lastTransactionAt) <= period && sponsor.lastTransactionAmount >= price;
@@ -593,8 +611,8 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     const isCustomTier = !!(tierData && price !== originalTierPrice);
     sponsor.tierId = tierId;
-    sponsor.tier = sponsor.tier + (lastTransactionAmount > originalTierPrice ? '+' : '')
-    sponsor.tierPrice = price;
+    sponsor.tier = sponsor.tier ? sponsor.tier + (lastTransactionAmount > originalTierPrice ? '+' : '') : null;
+    sponsor.tierPrice = price || 0;
     sponsor.originalTierPrice = originalTierPrice;
     sponsor.isCustomTier = isCustomTier;
     sponsor.totalAmountDonated = sponsor.totalAmountDonated || lastTransactionAmount || 0;
@@ -677,10 +695,19 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       opacity: timeLeft == null || timeLeft > 0 ? 1 :(sponsor.timeLeft / (creditDays * DAY))
     }
 
+    const score = Math.round(
+      sponsor.totalAmountDonated * scoreTotalAmountFactor +
+      averageMonthlyContribution +
+      tierPrice * scoreTierPriceFactor
+    );
+
     console.log(
       `Add sponsor badge [${sponsor.displayName}]
-        - tier: ${tier ? tier + '(' + tierPrice + '$)' : '< none >'}
+        - score : ${score}
+        - tier: ${tier || '< null >'}
+        - tier price: ${tierPrice}
         - total amount donated: ${sponsor.totalAmountDonated}$
+        - averageMonthlyContribution: ${averageMonthlyContribution}
         - last donation date: ${sponsor.lastTransactionAt}
         - created: ${sponsor.createdAt}
         - target link: ${sponsor.targetLink}
@@ -693,7 +720,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     return {
       ...sponsor,
       averageMonthlyContribution,
-      score: Math.round(sponsor.totalAmountDonated * scoreTotalAmountFactor + averageMonthlyContribution + tierPrice * scoreTierPriceFactor)
+      score
     };
   })
     .sort((a, b) => b.score - a.score)

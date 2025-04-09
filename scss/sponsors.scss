@@ -317,6 +317,21 @@ li.sponsor-card {
   animation: tilt-move-shaking 0.8s infinite ease-in-out;
 }
 
+.sponsor_chevron_new{
+  width: 2.5rem;
+  height:2.5rem;
+  background-image: url(/assets/icons/new.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -1.5rem;
+  top: -1rem;
+  transform: rotateZ(-45deg);
+  z-index: 1;
+  /*  animation: tilt-shaking 0.5s infinite;*/
+  animation: tilt-move-shaking 0.8s infinite ease-in-out;
+}
+
 
 .become_sponsor{
   display: flex;
