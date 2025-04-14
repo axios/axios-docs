@@ -49,10 +49,20 @@ next_link: '/vi/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` là hàm tùy chọn để đảm nhiệm tuần tự hóa `params`.
-  // (vd https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` là một cấu hình tùy chọn cho phép bạn tùy chỉnh việc tuần tự hóa `params`.
+  paramsSerializer: {
+
+    //Chức năng mã hóa tùy chỉnh gửi các cặp khóa/giá trị theo kiểu lặp lại.
+    encode?: (param: string): string => { /* Thực hiện các thao tác tùy chỉnh ở đây và trả về chuỗi đã chuyển đổi */ }, 
+    
+    // Chức năng tuần tự hóa tùy chỉnh cho toàn bộ tham số. Cho phép người dùng bắt chước hành vi trước 1.x.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Cấu hình để định dạng chỉ mục mảng trong params.
+    indexes: false // Ba tùy chọn có sẵn:
+    // (1) indexes: null (dẫn đến không có dấu ngoặc), 
+    // (2) (default) indexes: false (dẫn đến dấu ngoặc trống),
+    // (3) indexes: true (dẫn đến dấu ngoặc có chỉ mục).    
   },
 
   // `data` là dữ liệu làm phần thân request để được gửi đi.
