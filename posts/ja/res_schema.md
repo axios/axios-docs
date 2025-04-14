@@ -1,9 +1,9 @@
 ---
 title: 'レスポンス スキーマ'
 prev_title: 'リクエスト設定'
-prev_link: '/docs/req_config'
+prev_link: '/ja/docs/req_config'
 next_title: 'デフォルト設定'
-next_link: '/docs/config_defaults'
+next_link: '/ja/docs/config_defaults'
 ---
 
 リクエストに対するレスポンスには、以下の情報が含まれます。
@@ -31,12 +31,12 @@ next_link: '/docs/config_defaults'
 
   // `request` は、このレスポンスを生成したリクエストです
   // これは、Node.js (リダイレクト内) の最後の ClientRequest インスタンスであり、
-  // ブラウザーの XMLHttpRequest インスタンスです。
+  // ブラウザの XMLHttpRequest インスタンスです。
   request: {}
 }
 ```
 
-`then` を使用すると、次のようなレスポンスが返されます。
+`then` を使用すると、次のようなレスポンスが返されます:
 
 ```js
 axios.get('/user/12345')
@@ -49,4 +49,4 @@ axios.get('/user/12345')
   });
 ```
 
-`catch` を使用する場合、または `then` の 2番目のパラメーターとして [拒否コールバック](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) を渡す場合、 [エラー処理](https://axios-http.com/docs/handling_errors) セクションで説明されているように、レスポンスは `error` オブジェクトを介して利用できます。
+`catch` を使用する場合、または `then` の 2 番目のパラメーターとして [拒否コールバック](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) を渡す場合、[エラー処理](https://axios-http.com/docs/handling_errors) セクションで説明されているように、レスポンスは `error` オブジェクトを介して利用できます。

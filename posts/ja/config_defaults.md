@@ -1,16 +1,16 @@
 ---
 title: 'デフォルト設定'
 prev_title: 'レスポンス スキーマ'
-prev_link: '/docs/res_schema'
+prev_link: '/ja/docs/res_schema'
 next_title: 'インターセプター'
-next_link: '/docs/interceptors'
+next_link: '/ja/docs/interceptors'
 ---
 
 ## デフォルト設定
 
 すべてのリクエストに適用されるデフォルト設定を指定できます。
 
-### グローバル Axios のデフォルト
+### Axios のグローバルデフォルト設定
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';
@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### 設定の優先順位
 
-設定は、優先順位をつけてマージされます。その順番は [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28) にあるライブラリのデフォルト、そしてインスタンスの `defaults` プロパティ、最後にリクエストの `config` 引数の順になります。後者が前者よりも優先されます。以下はその例です。
+設定は、優先順位をつけてマージされます。その順番は [lib/defaults/index.js](https://github.com/axios/axios/blob/649d739288c8e2c55829ac60e2345a0f3439c730/lib/defaults/index.js#L59) にあるライブラリのデフォルト、そしてインスタンスの `defaults` プロパティ、最後にリクエストの `config` 引数の順になります。後者が前者よりも優先されます。以下はその例です。
 
 ```js
 // ライブラリが提供するデフォルトの設定を使用してインスタンスを作成します。
@@ -40,7 +40,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 const instance = axios.create();
 
 // ライブラリのデフォルトのタイムアウトを上書きします。
-// これで、このインスタンスを使用するすべてのリクエストは、タイムアウトする前に 2.5秒待機します。
+// これで、このインスタンスを使用するすべてのリクエストは、タイムアウトする前に 2.5 秒待機します。
 instance.defaults.timeout = 2500;
 
 // 時間がかかることがわかっているため、このリクエストのタイムアウトをオーバーライドします。

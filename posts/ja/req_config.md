@@ -1,9 +1,9 @@
 ---
 title: 'リクエスト設定'
 prev_title: 'Axios インスタンス'
-prev_link: '/docs/instance'
+prev_link: '/ja/docs/instance'
 next_title: 'レスポンス スキーマ'
-next_link: '/docs/res_schema'
+next_link: '/ja/docs/res_schema'
 ---
 
 
@@ -24,7 +24,8 @@ next_link: '/docs/res_schema'
 
   // `transformRequest` は、サーバーに送信される前にリクエスト データを変更できるようにします。
   // これはリクエスト メソッドの 'PUT'、'POST'、PATCH'、'DELETE' に対してのみ適用されます。
-  // 配列の最後の関数は、文字列または Buffer、ArrayBuffer、FormData、Stream のインスタンスを返す必要があります。
+  // 配列の最後の関数は、文字列または Buffer、ArrayBuffer、
+  // FormData、Stream のインスタンスを返す必要があります。
   // ヘッダー オブジェクトを変更できます。
   transformRequest: [function (data, headers) {
     // データの変換処理を行います
@@ -32,7 +33,8 @@ next_link: '/docs/res_schema'
     return data;
   }],
 
-  // `transformResponse` を使用すると、レスポンス データを変更してから then/catch に渡すことができます。
+  // `transformResponse` を使用すると、レスポンス データを変更してから 
+  // then/catch に渡すことができます。
   transformResponse: [function (data) {
     // データの変換処理を行います
 
@@ -129,7 +131,8 @@ next_link: '/docs/res_schema'
 
   // `validateStatus` は、与えられた HTTP レスポンスのステータスコードに対して、Promise を解決するか拒否するかを定義します。
   // `validateStatus` が `true` を返す場合 (または `null` や `undefined` に設定されている場合) Promise は解決されます。
-  // それ以外の場合は Promise は拒否されます。
+  // それ以外の場合は Promise は
+  // 拒否されます。
   validateStatus: function (status) {
     return status >= 200 && status < 300; // デフォルト
   },
@@ -152,10 +155,12 @@ next_link: '/docs/res_schema'
 
   // `proxy` は、プロキシサーバーのホスト名、ポート、プロトコルを定義します。
   // また、従来の `http_proxy` と `https_proxy` 環境変数を使用して、プロキシを定義することもできます。
-  // プロキシの設定に環境変数を使用する場合、プロキシを設定しないドメインのカンマ区切りのリストとして
+  // プロキシの設定に環境変数を使用する場合、
+  // プロキシを設定しないドメインのカンマ区切りのリストとして
   // `no_proxy` 環境変数を定義することもできます。
   // 環境変数を無視してプロキシを無効にするには、 `false` を使用します。
-  // `auth` は、プロキシへの接続に HTTP 基本認証を使用することを示し、認証情報を提供します。
+  // `auth` は、プロキシへの接続に HTTP 基本認証を使用することを示し、
+  // 認証情報を提供します。
   // これにより、`Proxy-Authorization` ヘッダーが設定され、`headers` を使用して設定した既存の
   // `Proxy-Authorization` カスタムヘッダーが上書きされます。
   // プロキシサーバーが HTTPS を使用する場合は、プロトコルを `https` に設定する必要があります。 

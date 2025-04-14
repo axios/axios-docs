@@ -1,16 +1,17 @@
 ---
 title: 'エラー処理'
 prev_title: 'インターセプター'
-prev_link: '/docs/interceptors'
+prev_link: '/ja/docs/interceptors'
 next_title: 'キャンセル'
-next_link: '/docs/cancellation'
+next_link: '/ja/docs/cancellation'
 ---
 
 ```js
 axios.get('/user/12345')
   .catch(function (error) {
     if (error.response) {
-      // リクエストが行われ、サーバーは 2xx の範囲から外れるステータスコードで応答しました
+      // リクエストが行われ、サーバーは
+      // 2xx の範囲から外れるステータスコードで応答しました
       console.log(error.response.data);
       console.log(error.response.status);
       console.log(error.response.headers);
@@ -27,7 +28,7 @@ axios.get('/user/12345')
   });
 ```
 
-`ValidateStatus` 設定オプションを使用すると、エラーをスローする HTTP コードを定義できます。
+`validateStatus` 設定オプションを使用すると、エラーをスローする HTTP コードを定義できます。
 
 ```js
 axios.get('/user/12345', {
