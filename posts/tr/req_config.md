@@ -53,10 +53,18 @@ Bunlar, istek yapmak için mevcut konfigürasyon seçenekleridir. Yalnızca `url
     ID: 12345
   },
 
-  // `paramsSerializer`, `params`ın dizileştirilmesinden (serialize) sorumlu isteğe bağlı bir işlevdir
+  // `paramsSerializer`, `params`ın serileştirilmesi için bir alandır.
+  // serialize alanını kullanarak özel bir serileştirme işlevi kullanabilirsiniz.
+  // encode alanını kullanarak özel bir kodlama işlevi kullanabilirsiniz.
+  // Daha önce olduğu gibi `paramsSerializer`a bir işlev ayarlarsanız, axios'un varsayılan kodlama işlevi encode alanına atanacaktır.
   // (örneğin: https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  paramsSerializer: {
+    serialize: (params) => {
+      return Qs.stringify(params, {arrayFormat: 'brackets'})
+    },
+    encode: (str) => {
+      return encodeURIComponent(str)
+    }
   },
 
   // `data` istek gövdesi olarak gönderilecek veridir
