@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const Joi = require('joi');
 const Handlebars = require('handlebars');
 const axios = require('axios');
+const {merge} = require('lodash');
 
 const origin = 'https://axios-http.com/';
 //const origin = 'http://127.0.0.1:8080/';
@@ -115,6 +116,8 @@ const social = {
 const DAY = 24 * 3600;
 const MONTH = 30 * DAY;
 const PERIOD = 30;
+
+const days = (from, to = Date.now()) => (new Date(to) - new Date(from)) / DAY / 1000;
 
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
@@ -353,6 +356,7 @@ const renderMarkdownSponsors = async (sponsors) => {
   }
 
   const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(({hide}) => !hide)
     .filter(fn)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
@@ -360,7 +364,7 @@ const renderMarkdownSponsors = async (sponsors) => {
 
   rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
     return isActive && benefits.readme && tierId === 'platinum';
-  }), '💎 Platinum sponsors', 1, 300, 90,  true));
+  }), '💎 Platinum sponsors', 2, 300, 90,  true));
 
   rendered.push(await render(filterSponsors(({benefits, isActive, tierId}) => {
     return isActive && benefits.readme && tierId === 'gold';
@@ -434,13 +438,13 @@ const processGithub = async (sponsor, repo = 'axios-sponsor', file = 'sponsor.js
 
 
 const renderTooltip = async (sponsor) => {
-  let {icon, isActive, displayName, tier, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
+  let {icon, isActive, displayName, tier, tierId, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
 
   const iconSrc = icon && (await downloadImage(icon));
 
   const iconHTML = iconSrc ? `<img class="sponsor-icon" src="/${iconSrc}" alt="${html.escape(displayName)}"/>` : '';
 
-  const renderedTier = isActive && tier.toLowerCase() === 'backer' ? `${price || lastTransactionAmount || 0}$ a month` : tier;
+  const renderedTier = isActive && (tierId === 'backer' || sponsor.tierPrice < sponsor.originalTierPrice) ? `${price || lastTransactionAmount || 0}$ a month` : tier;
 
   let tooltip = `<h2 class="caption">${iconHTML}<span>${html.escape(displayName)} (${sponsor.totalAmountDonated || 0}$${' <sup class="tier">' + renderedTier + '</sup>'})</span></h2> `;
 
@@ -500,7 +504,7 @@ const findTier = (price, tiers) => {
   price && Object.entries(tiers).forEach(([tier, data]) => {
     if (data.price <= price && max < price) {
       max = data.price;
-      found = tier;
+      found = data.name || tier;
     }
   });
 
@@ -514,22 +518,37 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     tiers,
     scoreTierPriceFactor = 0.5,
     scoreTotalAmountFactor = 0.2,
-    creditDays = 0
+    creditDays = 0,
+    hide = {}
   } = await readJSON(sponsorsConfig) || {};
 
   const mergedSponsors = {};
 
   // merge Open Collective sponsors
   collectiveSponsors.forEach(sponsor => {
-    if (sponsor.role !== 'BACKER' && sponsor.role) {
+    if ((sponsor.role !== 'BACKER' && sponsor.role) || hide[sponsor.login?.toLowerCase()] || hide[sponsor.name?.toLowerCase()]) {
       return;
     }
 
-    const {isActive, totalAmountDonated, lastTransactionAmount} = sponsor;
+    // seems due to https://github.com/opencollective/opencollective-rest/pull/600
+    // the isActive property is not working properly anymore,
+    // so we have to emulate it by ourselves
+    let {tier, totalAmountDonated, lastTransactionAmount, lastTransactionAt} = sponsor;
 
-    sponsor.isActive = !!(isActive && lastTransactionAmount > 0 && totalAmountDonated);
+    const passed = days(lastTransactionAt);
+    const tierData = tier && tiers[tier.toLowerCase()];
+    const {period = 31} = tierData || {};
+    const isActiveSubscription = tierData && passed <= period;
 
-    mergedSponsors[sponsor.login] = {...sponsor};
+    if (tier) {
+      sponsor.isActive = !!(isActiveSubscription && lastTransactionAmount > 0 && totalAmountDonated);
+    } else {
+      sponsor.isActive = undefined;
+    }
+
+    if (!mergedSponsors[sponsor.login] || sponsor.isActive) {
+      mergedSponsors[sponsor.login] = {...sponsor};
+    }
   });
 
   // merge sponsors from sponsors.json
@@ -540,7 +559,6 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       login,
       ...collective,
       ...local,
-      localConfig: {...local},
       manualBilling: !!(local.lastTransactionAt && local.lastTransactionAmount || local.endDate)
     }
   });
@@ -549,39 +567,60 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
   // normalize sponsors config
   Object.entries(mergedSponsors).forEach(([login, sponsor]) => {
-    if (!sponsor.tier) {
-      sponsor.tier = 'backer';
+
+    let {lastTransactionAmount = 0, lastTransactionAt, manualBilling} = sponsor;
+
+    const sponsorTiers = merge({}, tiers, sponsor.tiers);
+
+    if (lastTransactionAmount) {
+      sponsor.tier = findTier(lastTransactionAmount, sponsorTiers);
+
+      let partiallyPaid = findTier(lastTransactionAmount * 1.1, sponsorTiers);
+
+      if (sponsor.tier !== partiallyPaid) {
+        sponsor.tier = partiallyPaid;
+      }
     }
 
-    let {isActive, tier, lastTransactionAmount = 0, lastTransactionAt, manualBilling, localConfig} = sponsor;
+    const tierId = sponsor.tier ? sponsor.tier?.toLowerCase() : null;
+    const tierData = tierId && sponsorTiers[tierId];
 
-    const tierLower = tier.toLowerCase();
-
-    const tierData = tiers[tierLower];
-
-    if (!tierData) {
-      console.log(`Unknown tier [${tier}]`);
+    if (tierId && !tierData) {
+      console.log(`Unknown tier [${sponsor.tier}]`);
     }
 
-    const {price, benefits, period = PERIOD} = tierData || {};
+    let {price, benefits, period = PERIOD, credit = 3} = tierData || {};
+
+    let shortageFactor = price && lastTransactionAmount < price ? lastTransactionAmount / price * 0.9 : 1;
+
+    period = period * shortageFactor;
+
+    sponsor.isNew = !!(sponsor.createdAt && days(sponsor.createdAt) < 7);
+
+    sponsor.credit ??= credit || 0;
+
+    period += sponsor.credit;
+
+    if (sponsor.isActive == null) {
+      sponsor.isActive = tierData && days(lastTransactionAt) <= period && sponsor.lastTransactionAmount >= price;
+    }
 
     console.log(sponsor.login);
 
-    const isBacker = tierLower === 'backer';
+    const originalTierPrice = tiers[tierId]?.price;
 
-    sponsor.tierId = tierLower;
-    sponsor.tierPrice = isBacker && isActive && lastTransactionAmount ? lastTransactionAmount : price;
+    const isCustomTier = !!(tierData && price !== originalTierPrice);
+    sponsor.tierId = tierId;
+    sponsor.tier = sponsor.tier ? sponsor.tier + (lastTransactionAmount > originalTierPrice ? '+' : '') : null;
+    sponsor.tierPrice = price || 0;
+    sponsor.originalTierPrice = originalTierPrice;
+    sponsor.isCustomTier = isCustomTier;
     sponsor.totalAmountDonated = sponsor.totalAmountDonated || lastTransactionAmount || 0;
 
-    sponsor.associatedTierId = tierLower;
 
 
-    let assoc;
-
-    if (localConfig?.isActive === false) {
-      sponsor.isActive = false;
-    } else if (tier && (manualBilling || tierLower === 'backer')) {
-      if(sponsor.endDate || lastTransactionAmount >= price) {
+    if (sponsor.tier && manualBilling) {
+      if (sponsor.endDate || lastTransactionAmount >= price) {
         const pricePerSec = price / (period * DAY);
         const timePaid = lastTransactionAmount / pricePerSec
         const endDate = sponsor.endDate = sponsor.endDate || +(new Date(lastTransactionAt)) + timePaid * 1000;
@@ -596,11 +635,6 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     if( Date.now() - new Date(sponsor.boostEnd) > 0) {
       sponsor.boost = sponsor.boost || 1;
-    }
-
-    if (isActive && isBacker && !localConfig?.tier && (assoc = findTier(lastTransactionAmount, tiers))) {
-      const tier = assoc.toLowerCase();
-      tier !== 'backer' && (sponsor.associatedTierId = tier);
     }
 
     sponsor.isActive = sponsor.isActive === true;
@@ -661,10 +695,19 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       opacity: timeLeft == null || timeLeft > 0 ? 1 :(sponsor.timeLeft / (creditDays * DAY))
     }
 
+    const score = Math.round(
+      sponsor.totalAmountDonated * scoreTotalAmountFactor +
+      averageMonthlyContribution +
+      tierPrice * scoreTierPriceFactor
+    );
+
     console.log(
       `Add sponsor badge [${sponsor.displayName}]
-        - tier: ${tier ? tier + '(' + tierPrice + '$)' : '< none >'}
+        - score : ${score}
+        - tier: ${tier || '< null >'}
+        - tier price: ${tierPrice}
         - total amount donated: ${sponsor.totalAmountDonated}$
+        - averageMonthlyContribution: ${averageMonthlyContribution}
         - last donation date: ${sponsor.lastTransactionAt}
         - created: ${sponsor.createdAt}
         - target link: ${sponsor.targetLink}
@@ -677,7 +720,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     return {
       ...sponsor,
       averageMonthlyContribution,
-      score: Math.round(sponsor.totalAmountDonated * scoreTotalAmountFactor + averageMonthlyContribution + tierPrice * scoreTierPriceFactor)
+      score
     };
   })
     .sort((a, b) => b.score - a.score)
