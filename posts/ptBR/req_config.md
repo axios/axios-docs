@@ -10,15 +10,15 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
 
 ```js
 {
-  // `url` é a url do servidor que será usada para a requisição
+  // `url` é a URL do servidor que será usada na requisição
   url: '/user',
 
-  // `method` é o método de requisição para ser usada em uma requisição
+  // `method` é o método a ser usado na requisição
   method: 'get', // padrão
 
-  // `baseURL` será pre-adicionada na url a menos que a `url` passada seja absoluta.
-  // Pode util definir uma `baseURL` para uma instância do axios para que possa passar URLs relativas
-  // para o método da instância.
+  // `baseURL` será adicionada antes da `url`, a menos que a `url` seja absoluta.
+  // Pode ser conveniente definir uma `baseURL` para uma instância do axios para que possa passar URLs relativas
+  // para os método dessa instância.
   baseURL: 'https://some-domain.com/api/',
 
   // `transformRequest` permite mudar os dados da requisição antes da mesma ser enviada para o servidor
@@ -124,27 +124,27 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `maxBodyLength` (Opção apenas para o Node) define o tamanho máximo permitido do conteúdo http em bytes
   maxBodyLength: 2000,
 
-  // `validateStatus` define se deve resolver ou rejeitar a promessa de um determinado
-  // código de status de resposta HTTP. Se `validateStatus` retornar `true` (ou for definido como `null`
+  // `validateStatus` define se deve resolver ou rejeitar a promessa de acordo com o
+  // código de status HTTP da resposta. Se `validateStatus` retornar `true` (ou for definido como `null`
   // ou `undefined`), a promessa será resolvida; caso contrário, a promessa será
   // rejeitada.
   validateStatus: function (status) {
     return status >= 200 && status < 300; // padrão
   },
 
-  // `maxRedirects` define um número máximo de redirecionamento para seguir em node.js
+  // `maxRedirects` define um número máximo de redirecionamento para seguir no node.js
   // Se definido como 0, nenhum redirecionamento será permitido
   maxRedirects: 5, // padrão
 
   // `socketPath` define um UNIX Socket para ser usado em node.js.
   // e.g. '/var/run/docker.sock' para enviar requisições para o docker daemon.
-  // Apenas `socketPath` ou `proxy` podem ser especificado.
+  // Apenas `socketPath` ou `proxy` podem ser especificados.
   // Caso ambos sejam especificados, o `socketPath` será utilizado.
   socketPath: null, // padrão
 
-  // `httpAgent` e `httpsAgent` define um agente personalizado para ser usando quando performando uma requisições http
-  // ou https, no node.js. Isso permite opções a serem adicionadas como
-  // `keepAlive` que não está habilidado por padrão.
+  // `httpAgent` e `httpsAgent` definem agentes personalizados a serem usados pelas requisições http
+  // e https, respectivamente, no node.js. Isso permite adicionar opções, como
+  // `keepAlive`, que não estão habilidadas por padrão.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
@@ -176,7 +176,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-  // `decompress` indicar se o corpo da resposta deve ou não ser descomprimido
+  // `decompress` indica se o corpo da resposta deve ou não ser descomprimido
   // automaticamente. Se definido como `true` irá remover também o cabeçalho `content-encoding`
   // de todos os objetos resposta
   // - Apenas no Node (XHR não pode desligar a descompressão)
