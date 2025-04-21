@@ -70,7 +70,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/config_defaults",
-      text: "Configurações Padrões",
+      text: "Configurações Padrão",
     },
     {
       type: "link",

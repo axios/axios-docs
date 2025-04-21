@@ -2,7 +2,7 @@
 title: "Esquema de resposta"
 prev_title: "Configurações de requisição"
 prev_link: "/ptBR/docs/req_config"
-next_title: "Configurações padrões"
+next_title: "Configurações Padrão"
 next_link: "/ptBR/docs/config_defaults"
 ---
 
