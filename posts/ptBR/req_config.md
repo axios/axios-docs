@@ -6,6 +6,7 @@ next_title: "Esquema de Resposta"
 next_link: "/ptBR/docs/res_schema"
 ---
 
+
 Estas são as configurações opcionais disponíveis para fazer uma requisição. Apenas a `url` é obrigatória. Requisições serão setadas como padrão para `GET` se nenhum `method` for especificado.
 
 ```js
@@ -21,6 +22,11 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // para os método dessa instância.
   baseURL: 'https://some-domain.com/api/',
 
+  // `allowAbsoluteUrls` define se URLs absolutas irão sobrescrever a `baseUrl` ou não.
+  // Se definido como true (padrão), valores absolutos na `url` irão sobrescrever `baseUrl`.
+  // Se definido como false, valores absolutos na `url` sempre serão adicionados à `baseUrl`.
+  allowAbsoluteUrls: true,
+
   // `transformRequest` permite mudar os dados da requisição antes da mesma ser enviada para o servidor
   // Isto é aplicado apenas para requisições com os métodos 'PUT', 'POST', 'PATCH' e 'DELETE'
   // A última função no array deve retornar uma string ou o Buffer da instância, ArrayBuffer,
@@ -28,20 +34,24 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // Você pode modificar o cabeçalho do objeto
   transformRequest: [function (data, headers) {
     // Faz o que quiser para transformar os dados
+
     return data;
   }],
 
-  // `transformResponse` permite mudar os dados da responsta antes de ser passado para o then/catch
+  // `transformResponse` permite alterar os dados da responsta antes
+  // de serem passados para o then/catch
   transformResponse: [function (data) {
-    // Faça o que quiser para transformar os dados
+    // Faz o que quiser para transformar os dados
+    
     return data;
   }],
 
   // `headers` são cabeçalhos customizáveis para serem enviados
   headers: {'X-Requested-With': 'XMLHttpRequest'},
 
-  // `params` são os parametros da URL para serem enviados junto com a requisição
-  // Deve sempre ser um objeto ou um objeto de URLSearchParams
+  // `params` são os parametros da URL a serem enviados junto com a requisição
+  // Deve ser um objeto ou um objeto URLSearchParams
+  // NOTE: parâmetros com valor null ou undefined não estarão presentes na URL.
   params: {
     ID: 12345
   },
@@ -160,7 +170,6 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `Proxy-Authorization` existente que você definiu usando `headres`.
   // Se o proxy do servidor utilizar HTTPS, então você deve definir o protocolo para `https`.
 
-
   proxy: {
     protocol: 'https',
     host: '127.0.0.1',
@@ -171,7 +180,10 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
     }
   },
 
-  // `cancelToken` especifica um token de cancelamento que pode ser utilizado para cancelar a requisição
+  // `signal` é uma instância de AbortController, pode ser utilizada para cancelar a requisição
+  signal: new AbortController().signal,
+
+  // (Obsoleto) `cancelToken` especifica um token de cancelamento que pode ser utilizado para cancelar a requisição
   // (veja a seção de Cancelamento abaixo para mais detalhes)
   cancelToken: new CancelToken(function (cancel) {
   }),
@@ -181,5 +193,6 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // de todos os objetos resposta
   // - Apenas no Node (XHR não pode desligar a descompressão)
   decompress: true // padrão
+
 }
 ```
