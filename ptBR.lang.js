@@ -13,15 +13,17 @@ module.exports = {
   t: {
     "Get Started": "Começando",
     "View on GitHub": "Veja no GitHub",
-    Languages: "Idiomas",
+    "Languages": "Idiomas",
     "Open Source": "Código aberto",
-    Contribute: "Contribua",
+    "Contribute": "Contribua",
     "Source on GitHub": "Código-fonte no GitHub",
     "Fork on GitHub": "Faça uma cópia no GitHub",
     "Fork the Website": "Faça uma cópia do Website",
     "Create an Issue": "Crie uma Issue",
-    Next: "Próxima",
-    Previous: "Anterior",
+    "Next": "Próxima",
+    "Previous": "Anterior",
+    "Sponsors": "Apoiadores",
+    "Become a sponsor": "Seja um apoiador",
   },
   sidebar: [
     {
