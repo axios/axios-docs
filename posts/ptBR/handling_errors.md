@@ -1,5 +1,5 @@
 ---
-title: 'Manipulando Erros'
+title: 'Lidando com Erros'
 prev_title: 'Interceptadores'
 prev_link: '/ptBR/docs/interceptors'
 next_title: 'Cancelamento'

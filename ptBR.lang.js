@@ -82,7 +82,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/handling_errors",
-      text: "Manipulando Erros",
+      text: "Lidando com Erros",
     },
     {
       type: "link",
