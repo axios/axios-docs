@@ -1,6 +1,6 @@
 ---
 title: 'Interceptadores'
-prev_title: 'Configurações padrões'
+prev_title: 'Configurações Padrão'
 prev_link: '/ptBR/docs/config_defaults'
 next_title: 'Manipulando Erros'
 next_link: '/ptBR/docs/handling_errors'
