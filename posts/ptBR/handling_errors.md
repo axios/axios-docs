@@ -28,7 +28,7 @@ axios.get('/user/12345')
   });
 ```
 
-Usando a configuração opcional `validadeStatus`, você pode definir o(s) código(s) HTTP que devem lançar um erro.
+Usando a configuração opcional `validateStatus`, você pode definir o(s) código(s) HTTP que devem lançar um erro.
 
 ```js
 axios.get('/user/12345', {
