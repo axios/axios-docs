@@ -2,7 +2,7 @@
 title: 'Cancelamento'
 prev_title: 'Lidando com Erros'
 prev_link: '/ptBR/docs/handling_errors'
-next_title: 'Corpo de codificação de URL'
+next_title: 'Codificação de URL'
 next_link: '/ptBR/docs/urlencoded'
 ---
 

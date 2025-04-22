@@ -1,7 +1,7 @@
 ---
 title: 'Notas'
 description: 'Mais algumas notas para encerrar'
-prev_title: 'Corpos de codificação de URL'
+prev_title: 'Codificação de URL'
 prev_link: '/ptBR/docs/urlencoded'
 ---
 

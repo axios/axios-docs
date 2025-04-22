@@ -1,5 +1,5 @@
 ---
-title: 'Corpo de codificação de URL'
+title: 'Codificação de URL'
 prev_title: 'Cancelamento'
 prev_link: '/ptBR/docs/cancellation'
 next_title: 'Notas'
