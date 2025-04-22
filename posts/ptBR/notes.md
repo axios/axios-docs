@@ -1,8 +1,8 @@
 ---
 title: 'Notas'
 description: 'Mais algumas notas para encerrar'
-prev_title: 'Codificação de URL'
-prev_link: '/ptBR/docs/urlencoded'
+prev_title: 'Multipart'
+prev_link: '/ptBR/docs/multipart'
 ---
 
 ## Semver

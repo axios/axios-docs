@@ -95,6 +95,11 @@ module.exports = {
       text: "🆕 Codificação de URL",
     },
     {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Multipart",
+    },
+    {
       type: "heading",
       text: "Outros",
     },

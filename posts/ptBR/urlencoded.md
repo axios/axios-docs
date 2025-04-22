@@ -2,8 +2,8 @@
 title: 'Codificação de URL'
 prev_title: 'Cancelamento'
 prev_link: '/ptBR/docs/cancellation'
-next_title: 'Notas'
-next_link: '/ptBR/docs/notes'
+next_title: 'Multipart'
+next_link: '/ptBR/docs/multipart'
 ---
 
 Por padrão o axios serializa os objetos do JavaScript para `JSON`. Para enviar os dados no formato `application/x-www-form-urlencoded`, você pode usar uma das seguintes opções.
