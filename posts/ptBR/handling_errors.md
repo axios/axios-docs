@@ -11,24 +11,24 @@ axios.get('/user/12345')
   .catch(function (error) {
     if (error.response) {
       // A requisição foi feita e o servidor respondeu com um código de status
-      // que sai do alcance de 2xx
-      console.error(error.response.data);
-      console.error(error.response.status);
-      console.error(error.response.headers);
+      // que cai fora do intervalo 200 a 299
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
     } else if (error.request) {
       // A requisição foi feita mas nenhuma resposta foi recebida
       // `error.request` é uma instância do XMLHttpRequest no navegador e uma instância de
       // http.ClientRequest no node.js
-      console.error(error.request);
+      console.log(error.request);
     } else {
-      // Alguma coisa acontenceu ao configurar a requisição que acionou este erro.
-      console.error('Error', error.message);
+      // Alguma coisa acontenceu ao configurar a requisição, gerando um erro.
+      console.log('Error', error.message);
     }
-    console.error(error.config);
+    console.log(error.config);
   });
 ```
 
-Usando a configuração opcional `validadeStatus`, você pode definir o(s) código(s) HTTP que devem lançar um erro
+Usando a configuração opcional `validadeStatus`, você pode definir o(s) código(s) HTTP que devem lançar um erro.
 
 ```js
 axios.get('/user/12345', {
@@ -43,6 +43,6 @@ Usando o `toJSON` você pode receber um objeto com mais informações sobre o er
 ```js
 axios.get('/user/12345')
   .catch(function (error) {
-    console.error(error.toJSON());
+    console.log(error.toJSON());
   });
 ```
