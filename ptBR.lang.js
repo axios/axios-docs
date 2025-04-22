@@ -92,7 +92,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "Codificação de URL",
+      text: "🆕 Codificação de URL",
     },
     {
       type: "heading",
