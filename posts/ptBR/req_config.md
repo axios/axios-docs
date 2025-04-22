@@ -183,7 +183,7 @@ Estas são as configurações opcionais disponíveis para fazer uma requisição
   // `signal` é uma instância de AbortController, pode ser utilizada para cancelar a requisição
   signal: new AbortController().signal,
 
-  // (Obsoleto) `cancelToken` especifica um token de cancelamento que pode ser utilizado para cancelar a requisição
+  // (Descontinuado) `cancelToken` especifica um token de cancelamento que pode ser utilizado para cancelar a requisição
   // (veja a seção de Cancelamento abaixo para mais detalhes)
   cancelToken: new CancelToken(function (cancel) {
   }),
