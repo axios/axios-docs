@@ -16,7 +16,9 @@ A resposta para uma requisição contêm as seguintes informações.
   // `status` é o código de status HTTP da resposta do servido
   status: 200,
 
-  // `statusText` is the HTTP status message from the server response
+  // `statusText` é a mensagem de status HTTP da resposta do servidor
+  // A partir do HTTP/2 o texto deve estar em branco ou não será suportado.
+  // (HTTP/2 RFC: https://www.rfc-editor.org/rfc/rfc7540#section-8.1.2.4)
   statusText: 'OK',
 
   // `headers` os cabeçalhos HTTP com os quais o servidor respondeu
