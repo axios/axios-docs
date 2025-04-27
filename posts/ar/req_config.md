@@ -149,7 +149,9 @@ These are the available config options for making requests. Only the `url` is re
 
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js
+  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because
+  // `http.globalAgent` has `keepAlive` enabled by default.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 

@@ -138,9 +138,10 @@ next_link: '/zh/docs/res_schema'
   // 若都指定，这使用 `socketPath` 。
   socketPath: null, // default
 
-  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
-  // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `httpAgent` 和 `httpsAgent` 分别定义了在 node.js 中执行 http 和 https 请求时使用的自定义代理。
+  // 这允许添加诸如 `keepAlive` 之类的选项，这些选项在 Node.js v19.0.0 之前默认未启用。
+  // 在 Node.js v19.0.0 之后，不再需要自定义代理来启用 `keepAlive`，
+  // 因为 `http.globalAgent` 已经默认启用了 `keepAlive`。
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
