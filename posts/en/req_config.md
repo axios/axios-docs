@@ -22,6 +22,11 @@ These are the available config options for making requests. Only the `url` is re
   // to methods of that instance.
   baseURL: 'https://some-domain.com/api',
 
+  // `allowAbsoluteUrls` determines whether or not absolute URLs will override a configured `baseUrl`.
+  // When set to true (default), absolute values for `url` will override `baseUrl`.
+  // When set to false, absolute values for `url` will always be prepended by `baseUrl`.
+  allowAbsoluteUrls: true,
+
   // `transformRequest` allows changes to the request data before it is sent to the server
   // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'
   // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
@@ -159,6 +164,7 @@ These are the available config options for making requests. Only the `url` is re
   // for your proxy configuration, you can also define a `no_proxy` environment
   // variable as a comma-separated list of domains that should not be proxied.
   // Use `false` to disable proxies, ignoring environment variables.
+  // Disable if supplying a custom httpAgent/httpsAgent to manage proxying requests.
   // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
   // supplies credentials.
   // This will set an `Proxy-Authorization` header, overwriting any existing
@@ -174,7 +180,10 @@ These are the available config options for making requests. Only the `url` is re
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
+  // `signal` and instance of AbortController can be used to cancel the request
+  signal: new AbortController().signal,
+
+  // (Deprecatred) `cancelToken` specifies a cancel token that can also be used to cancel the request
   // (see Cancellation section below for details)
   cancelToken: new CancelToken(function (cancel) {
   }),
