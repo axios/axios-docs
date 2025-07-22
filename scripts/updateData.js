@@ -633,9 +633,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       }
     }
 
-    if( Date.now() - new Date(sponsor.boostEnd) > 0) {
-      sponsor.boost = sponsor.boost || 1;
-    }
+    sponsor.boost = new Date(sponsor.boostEnd) - Date.now() > 0 ? 1 : 0;
 
     sponsor.isActive = sponsor.isActive === true;
 

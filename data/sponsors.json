@@ -86,9 +86,10 @@
       "displayName": "Route4Me",
       "alt": "Route Planner and Route Optimizer",
       "description": "Best Route Planning And Route Optimization Software",
-      "isActive": false,
-      "totalAmountDonated": 300,
+      "isActive": true,
+      "totalAmountDonated": 600,
       "createdAt": "2024-07-12 00:00",
+      "boostEnd": "2025-07-31",
       "icon": "./assets/sponsors/route4me_icon.png",
       "links": {
         "Explore": "https://route4me.com/platform/route-optimization-software",
