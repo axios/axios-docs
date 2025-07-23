@@ -83,18 +83,23 @@
       "image": "/assets/sponsors/route4me.png",
       "image_dark": "/assets/sponsors/route4me_white.png",
       "website": "https://route4me.com/",
+      "github": "https://github.com/route4me",
       "displayName": "Route4Me",
       "alt": "Route Planner and Route Optimizer",
       "description": "Best Route Planning And Route Optimization Software",
       "isActive": true,
-      "totalAmountDonated": 600,
       "createdAt": "2024-07-12 00:00",
-      "boostEnd": "2025-07-31",
+      "boostEnd": "2025-08-22",
       "icon": "./assets/sponsors/route4me_icon.png",
       "links": {
         "Explore": "https://route4me.com/platform/route-optimization-software",
         "Free Trial": "https://route4me.com/platform/marketplace/pricing",
         "Contact": "https://route4me.com/contact"
+      },
+      "tiers": {
+        "gold": {
+          "price": 99
+        }
       }
     },
     "slotozilla-deutschland" : {
