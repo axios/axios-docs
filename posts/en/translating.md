@@ -44,4 +44,4 @@ const langs = [
 
 Now, you can begin translating the files. Copy the folder `posts/en` into a new folder `posts/{language-shortcut}` and translate all the files (don't translate the filenames, of course).
 
-If you hit any problems, feel free to [create and issue](https://github.com/axios/axios-docs/issues/new/choose).
+If you hit any problems, feel free to [create an issue](https://github.com/axios/axios-docs/issues/new/choose).
