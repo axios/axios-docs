@@ -21,7 +21,7 @@ body.dark {
 /*  background-color: var(--carousel-bg);*/
   border-radius: 5px;
   padding: 0 55px;
-  margin: 0 -55px;
+  margin: 0 calc(-1 * var(--margin) / 2);
 
   .splide__arrows {
     visibility: hidden;
@@ -314,6 +314,21 @@ li.sponsor-card {
   transform: rotateZ(-45deg);
   z-index: 1;
 /*  animation: tilt-shaking 0.5s infinite;*/
+  animation: tilt-move-shaking 0.8s infinite ease-in-out;
+}
+
+.sponsor_chevron_new{
+  width: 2.5rem;
+  height:2.5rem;
+  background-image: url(/assets/icons/new.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -1.5rem;
+  top: -1rem;
+  transform: rotateZ(-45deg);
+  z-index: 1;
+  /*  animation: tilt-shaking 0.5s infinite;*/
   animation: tilt-move-shaking 0.8s infinite ease-in-out;
 }
 
