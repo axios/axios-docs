@@ -51,10 +51,20 @@ Estas son las opciones de configuración disponibles para hacer peticiones. Solo
     ID: 12345
   },
 
-  // `paramsSerializer` es una funcion opcional a cargo de serializar `params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` es una configuración opcional que le permite personalizar la serialización de `params`.
+  paramsSerializer: {
+
+    //Función de codificador personalizada que envía pares clave/valor de forma iterativa.
+    encode?: (param: string): string => { /* Realice operaciones personalizadas aquí y devuelva una cadena transformada */ }, 
+    
+    // Función de serializador personalizado para todo el parámetro. Permite al usuario imitar el comportamiento anterior a 1.x.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Configuración para formatear índices de matriz en los parámetros.
+    indexes: false // Tres opciones disponibles: 
+    // (1) indexes: null (no conduce a corchetes), 
+    // (2) (default) indexes: false (conduce a corchetes vacíos),
+    // (3) indexes: true (conduce a corchetes con índices).    
   },
 
   // `data` es el data a ser enviado como el cuerpo de la petición

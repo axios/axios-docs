@@ -6,7 +6,7 @@ next_link: '/docs/example'
 ---
 
 # What is Axios?
-Axios is a *[promise-based](https://javascript.info/promise-basics)* HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is *[isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
+Axios is a *[promise-based](https://javascript.info/promise-basics)* HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is *[isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= it can run in the browser and node.js with the same codebase). On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
 
 # Features
 
@@ -36,26 +36,24 @@ Using npm:
 ```bash
 $ npm install axios
 ```
-<button onclick="copyToClipboard('npm install axios')">Copy</button>
 
 Using bower:
 
 ```bash
 $ bower install axios
 ```
-<button onclick="copyToClipboard('bower install axios')">Copy</button>
+
 Using yarn:
 
 ```bash
 $ yarn add axios
 ```
-<button onclick="copyToClipboard('yarn add axios')">Copy</button>
+
 Using jsDelivr CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
-<button onclick="copyToClipboard('<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>')">Copy</button>
 
 Using unpkg CDN:
 
