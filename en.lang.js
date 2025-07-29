@@ -14,6 +14,10 @@ module.exports = {
     subhead: `Axios is a simple promise based HTTP client for the browser and node.js.
               Axios provides a simple to use library in a small package with a very
               extensible interface.`,
+    sponsors: `<p>Thank you for considering supporting our project.</p>
+               <p>You will be automatically added to this list within 24 hours if the tier you select provides this benefit.</p>
+               <div class="social"><a class="link" href="/docs/sponsor">Read more...</a></div>
+              `
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
@@ -36,7 +40,8 @@ module.exports = {
     "Axios Project Copy Right Footer": undefined,
     "License Label Footer": undefined,
     "Sponsors": undefined,
-    "Become a sponsor": undefined
+    "Become a sponsor": undefined,
+    "Gold Sponsors": undefined
   },
   sidebar: [
     {
@@ -124,6 +129,11 @@ module.exports = {
     {
       type: "heading",
       text: "Contributors",
+    },
+    {
+      type: "link",
+      href: "/docs/sponsor",
+      text: "Sponsoring Axios",
     },
     {
       type: "link",
