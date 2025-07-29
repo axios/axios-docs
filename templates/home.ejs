@@ -103,11 +103,12 @@
               <% if (count) { %>
                 <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
                   <% if(sponsor.isActive && !sponsor.hide && sponsor.benefits.showAtSponsorList ){ %>
-                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.associatedTierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                    <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.tierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>"  data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
                       <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
                         <% if(sponsor.image){ %>
                           <div>
-                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
+                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } else if (sponsor.isNew) { %>
+                            <div class="chevron"><span class="sponsor_chevron_new"></span></div><% } %>
                             <img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/>
                           </div><% } %>
                         <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
@@ -235,7 +236,7 @@
       document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           splide.Components.AutoScroll.play();
-        }, 3000);
+        }, 5000);
       });
 
       splide.mount(window.splide.Extensions);
