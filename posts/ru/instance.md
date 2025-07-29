@@ -33,3 +33,30 @@ const instance = axios.create({
 ##### axios#put(url[, data[, config]])
 ##### axios#patch(url[, data[, config]])
 ##### axios#getUri([config])
+
+### Вызов экземпляра напрямую с объектом конфигурации
+
+Помимо удобных методов, таких как `instance.get()` или `instance.post()`, вы можете вызывать экземпляр Axios напрямую, передавая объект конфигурации. Это работает так же, как и `axios(config)`, и особенно полезно, если нужно повторно отправить запрос с исходной конфигурацией.
+
+```js
+const instance = axios.create({ baseURL: '/api' });
+
+// Работает как axios(config)
+instance({
+  url: '/users',
+  method: 'get'
+});
+```
+
+Такой подход позволяет реализовать чистую логику повторных попыток, например, при обработке ошибок аутентификации:
+
+```js
+instance.interceptors.response.use(undefined, async (error) => {
+  if (error.response?.status === 401) {
+    await refreshToken();
+    return instance(error.config); // Повторить исходный запрос
+  }
+
+  throw error;
+});
+```
