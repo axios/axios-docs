@@ -39,6 +39,12 @@ Usando yarn:
 $ yarn add axios
 ```
 
+Usando pnpm:
+
+```bash
+$ pnpm add axios
+```
+
 Usando CDN jsDelivr:
 
 ```html
