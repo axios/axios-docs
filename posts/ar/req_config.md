@@ -51,10 +51,20 @@ These are the available config options for making requests. Only the `url` is re
     ID: 12345
   },
 
-  // `paramsSerializer` is an optional function in charge of serializing `params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` is an optional config that allows you to customize serializing `params`. 
+  paramsSerializer: {
+
+    //Custom encoder function which sends key/value pairs in an iterative fashion.
+    encode?: (param: string): string => { /* Do custom operations here and return transformed string */ }, 
+    
+    // Custom serializer function for the entire parameter. Allows user to mimic pre 1.x behaviour.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Configuration for formatting array indexes in the params. 
+    indexes: false // Three available options: 
+    // (1) indexes: null (leads to no brackets), 
+    // (2) (default) indexes: false (leads to empty brackets),
+    // (3) indexes: true (leads to brackets with indexes).    
   },
 
   // `data` is the data to be sent as the request body
@@ -149,7 +159,9 @@ These are the available config options for making requests. Only the `url` is re
 
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js
+  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because
+  // `http.globalAgent` has `keepAlive` enabled by default.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
