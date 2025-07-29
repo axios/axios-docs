@@ -6,7 +6,7 @@ next_title: 'Notas'
 next_link: '/es/docs/notes'
 ---
 
-Por defecto, axios serializa objetos JavaScript a `JSON`. Para enviar data en un formato distinto a `application/x-www-form-urlencoded`, puedes usar una de las siguientes opciones.
+Por defecto, axios serializa objetos JavaScript a `JSON`. En cambio, para enviar data en formato `application/x-www-form-urlencoded`, puedes usar una de las siguientes opciones.
 
 ### Navegador
 
