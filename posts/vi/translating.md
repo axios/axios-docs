@@ -25,7 +25,7 @@ Sau khi bạn đã làm xong việc cấu hình và phiên dịch các từ ng�
 const {mã-ngôn-ngữ}Config = require('./{mã-ngôn-ngữ}.config.js');
 ```
 
-Đương nhiên là nhớ thay `{mã-ngôn-ngữ}` bằng đúng mã [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1), thay luôn cho cả tên biến nữa).
+Đương nhiên là nhớ thay `{mã-ngôn-ngữ}` bằng đúng mã [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1), thay luôn cho cả tên biến nữa).
 
 Giờ bạn kiếm hằng `langs`. Nếu hằng này nằm ở bên trên phát biểu `require` kia của bạn, thì di chuyển phát biểu `require` đấy lên bên trên nó. Rồi thêm đối tượng như sau vào danh sách trong hằng `langs`:
 
