@@ -12,9 +12,7 @@ Requisições podem ser feitas passando as configuraçãos relevantes para o `ax
 ##### axios(config)
 
 ```js
-import axios from 'axios';
-
-// Envia uma requisição post
+// Envia uma requisição POST
 axios({
   method: "post",
   url: "/user/12345",
@@ -31,9 +29,10 @@ axios({
   method: "get",
   url: "http://bit.ly/2mTM3nY",
   responseType: "stream",
-}).then(function (response) {
-  response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
-});
+})
+  .then(function (response) {
+    response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
+  });
 ```
 
 ##### axios(url[, config])
@@ -43,7 +42,7 @@ axios({
 axios("/user/12345");
 ```
 
-### Apelidos para requisições
+### Pseudônimos para requisições
 
 Por conveniência, foram fornecidos pseudônimos para todos os métodos de solicitação suportados.
 
@@ -59,5 +58,4 @@ Por conveniência, foram fornecidos pseudônimos para todos os métodos de solic
 ##### axios.putForm(url[, data[, config]])
 ##### axios.patchForm(url[, data[, config]])
 
-###### INFO
-Ao usar os pseudônimo dos métodos, as propriedades `url`,` method` e `data` não precisam ser especificadas na configuração.
+> NOTA: Ao usar os pseudônimos dos métodos, as propriedades `url`,` method` e `data` não precisam ser especificadas na configuração.

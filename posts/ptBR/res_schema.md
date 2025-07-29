@@ -2,7 +2,7 @@
 title: "Esquema de resposta"
 prev_title: "Configurações de requisição"
 prev_link: "/ptBR/docs/req_config"
-next_title: "Configurações padrões"
+next_title: "Configurações Padrão"
 next_link: "/ptBR/docs/config_defaults"
 ---
 
@@ -13,10 +13,12 @@ A resposta para uma requisição contém as seguintes informações:
   // `data` é a resposta que foi fornecida pelo servidor
   data: {},
 
-  // `status` é o código de status HTTP da resposta do servido
+  // `status` é o código de status HTTP da resposta do servidor
   status: 200,
 
-  // `statusText` is the HTTP status message from the server response
+  // `statusText` é a mensagem de status HTTP da resposta do servidor
+  // A partir do HTTP/2 o texto deve estar em branco ou não será suportado.
+  // (HTTP/2 RFC: https://www.rfc-editor.org/rfc/rfc7540#section-8.1.2.4)
   statusText: 'OK',
 
   // `headers` os cabeçalhos HTTP com os quais o servidor respondeu
@@ -27,8 +29,8 @@ A resposta para uma requisição contém as seguintes informações:
   // `config` é a configuração que foi fornecida ao `axios` para a requisição
   config: {},
 
-  // `request` é a requisição que gerou esta resposta
-  // É a última instância da requisição do cliente em node.js (em redirecionamentos)
+  // `request` é a requisição que gerou a resposta
+  // É a última instância da ClientRequest no node.js (em redirecionamentos)
   // e uma instância XMLHttpRequest no navegador
   request: {}
 }
@@ -37,13 +39,14 @@ A resposta para uma requisição contém as seguintes informações:
 Ao usar o `then`, você receberá a resposta da seguinte forma:
 
 ```js
-axios.get("/user/12345").then(function (response) {
-  console.log(response.data);
-  console.log(response.status);
-  console.log(response.statusText);
-  console.log(response.headers);
-  console.log(response.config);
-});
+axios.get("/user/12345")
+  .then(function (response) {
+    console.log(response.data);
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  });
 ```
 
-Ao usar `catch`, ou passar uma [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) como segundo parâmetro do `then`, a resposta estará disponível através do objeto `error` coomo explicado na seção de [manipulação de erros](/ptBR/docs/handling_errors).
+Ao usar `catch`, ou passar uma [`rejection callback`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) como segundo parâmetro do `then`, a resposta estará disponível através do objeto `error` como explicado na seção de [manipulação de erros](/ptBR/docs/handling_errors).
