@@ -55,6 +55,9 @@ Por conveniência, foram fornecidos pseudônimos para todos os métodos de solic
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### INFO
 Ao usar os pseudônimo dos métodos, as propriedades `url`,` method` e `data` não precisam ser especificadas na configuração.
