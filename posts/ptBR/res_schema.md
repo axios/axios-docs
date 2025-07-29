@@ -6,7 +6,7 @@ next_title: "Configurações Padrão"
 next_link: "/ptBR/docs/config_defaults"
 ---
 
-A resposta para uma requisição contêm as seguintes informações.
+A resposta para uma requisição contém as seguintes informações:
 
 ```js
 {

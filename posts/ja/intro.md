@@ -1,5 +1,5 @@
 ---
-title: 'Axiom 入門'
+title: 'Axios 入門'
 description: 'ブラウザと Node.js のための Promise ベースの HTTP クライアント'
 next_title: '最小構成の使用例'
 next_link: '/docs/example'
@@ -39,6 +39,12 @@ yarn を利用する場合:
 
 ```bash
 $ yarn add axios
+```
+
+pnpm を利用する場合:
+
+```bash
+$ pnpm add axios
 ```
 
 jsDelivr CDN を利用する場合:
