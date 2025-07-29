@@ -33,3 +33,30 @@ Los métodos disponibles de la instancia están listados a continuación. La con
 ##### axios#put(url[, data[, config]])
 ##### axios#patch(url[, data[, config]])
 ##### axios#getUri([config])
+
+### Llamar a la instancia directamente con un objeto de configuración
+
+Además de los métodos como `instance.get()` o `instance.post()`, también puedes llamar a una instancia de Axios directamente pasando un objeto de configuración. Esto funciona igual que `axios(config)` y es útil, por ejemplo, para reenviar una solicitud con la configuración original.
+
+```js
+const instance = axios.create({ baseURL: '/api' });
+
+// Funciona igual que axios(config)
+instance({
+  url: '/users',
+  method: 'get'
+});
+```
+
+Este enfoque permite implementar una lógica de reintento limpia, por ejemplo, al manejar errores de autenticación:
+
+```js
+instance.interceptors.response.use(undefined, async (error) => {
+  if (error.response?.status === 401) {
+    await refreshToken();
+    return instance(error.config); // Reenviar la solicitud original
+  }
+
+  throw error;
+});
+```

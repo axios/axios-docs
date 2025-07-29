@@ -22,6 +22,11 @@ These are the available config options for making requests. Only the `url` is re
   // to methods of that instance.
   baseURL: 'https://some-domain.com/api',
 
+  // `allowAbsoluteUrls` determines whether or not absolute URLs will override a configured `baseUrl`.
+  // When set to true (default), absolute values for `url` will override `baseUrl`.
+  // When set to false, absolute values for `url` will always be prepended by `baseUrl`.
+  allowAbsoluteUrls: true,
+
   // `transformRequest` allows changes to the request data before it is sent to the server
   // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'
   // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
@@ -164,7 +169,9 @@ These are the available config options for making requests. Only the `url` is re
 
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js
+  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because
+  // `http.globalAgent` has `keepAlive` enabled by default.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
@@ -174,6 +181,7 @@ These are the available config options for making requests. Only the `url` is re
   // for your proxy configuration, you can also define a `no_proxy` environment
   // variable as a comma-separated list of domains that should not be proxied.
   // Use `false` to disable proxies, ignoring environment variables.
+  // Disable if supplying a custom httpAgent/httpsAgent to manage proxying requests.
   // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
   // supplies credentials.
   // This will set an `Proxy-Authorization` header, overwriting any existing
@@ -189,7 +197,10 @@ These are the available config options for making requests. Only the `url` is re
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
+  // `signal` and instance of AbortController can be used to cancel the request
+  signal: new AbortController().signal,
+
+  // (Deprecated) `cancelToken` specifies a cancel token that can also be used to cancel the request
   // (see Cancellation section below for details)
   cancelToken: new CancelToken(function (cancel) {
   }),
@@ -218,11 +229,11 @@ These are the available config options for making requests. Only the `url` is re
     // `false` - throw SyntaxError if JSON parsing failed (Note: responseType must be set to 'json')
     silentJSONParsing: true, // default value for the current Axios version
 
-      // try to parse the response string as JSON even if `responseType` is not 'json'
-      forcedJSONParsing: true,
+    // try to parse the response string as JSON even if `responseType` is not 'json'
+    forcedJSONParsing: true,
 
-      // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts
-      clarifyTimeoutError: false,
+    // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts
+    clarifyTimeoutError: false,
   },
 
   env: {
@@ -242,6 +253,5 @@ These are the available config options for making requests. Only the `url` is re
     100 * 1024, // 100KB/s upload limit,
     100 * 1024  // 100KB/s download limit
   ]
-
 }
 ```
