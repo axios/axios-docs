@@ -27,7 +27,7 @@ The same result can be achieved using the internal Axios serializer and correspo
 axios.postForm('https://httpbin.org/post', {
   my_field: 'my value',
   my_buffer: new Blob([1,2,3]),
-  my_file:  fileInput.files // FileList will be unwrapped as sepate fields
+  my_file:  fileInput.files // FileList will be unwrapped as separate fields
 });
 ```
 
