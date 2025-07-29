@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "./home_variables.scss";
 
 body {
   margin: 0;
@@ -57,19 +57,22 @@ a.button {
 }
 
 main {
-  margin-left: calc(var(--margin) / 2);
+  margin: 0 calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 section#hero {
-  height: 100vh;
+/*  height: calc(100vh - 200px);*/
   width: 100%;
-
+  flex: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-flow: row nowrap;
+  margin-top: 10rem;
 
   div.content {
     width: 100%;
@@ -84,7 +87,7 @@ section#hero {
     p {
       font-size: 2.4rem;
       font-weight: var(--fw-light);
-      margin-bottom: 4.8rem;
+      margin-bottom: 3.8rem;
     }
 
     .buttons {
@@ -161,6 +164,11 @@ footer {
     gap: 1rem;
     margin-bottom: 1.5rem;
   }
+  .light-hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
 }
 
 // @keyframes appear {
@@ -197,4 +205,80 @@ html[dir="rtl"] {
       }
     }
   }
+}
+
+.sponsors_container{
+  margin: 8px 0 10px 0;
+}
+
+.link-sponsors {
+  color: var(--col-fg);
+}
+
+/*
+.become_sponsor{
+  > a {
+    justify-content: center;
+    box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+  }
+}
+*/
+
+.tippy-box {
+  background-color: var(--primary-color);
+
+  .tippy-arrow{
+    color: var(--primary-color);
+  }
+}
+
+.splide {
+  height: 9rem;
+  padding: 0 45px;
+  margin: 0 calc(-1 * var(--margin) / 2);
+}
+
+li.sponsor-card {
+  width: calc(12%);
+
+  &[data-tier=silver] {
+    width: calc(17%);
+  }
+
+  &[data-tier=gold] {
+    width: calc(22%);
+  }
+
+  &[data-tier=platinum] {
+    width: calc(30%);
+  }
+}
+
+@media (max-width: 1400px) {
+  li.sponsor-card {
+    width: calc(20%);
+
+    &[data-tier=silver] {
+      width: calc(25%);
+    }
+
+    &[data-tier=gold] {
+      width: calc(30%);
+    }
+
+    &[data-tier=platinum] {
+      width: calc(35%);
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  li.sponsor-card img + .caption {
+    display: none;
+  }
+
+
 }

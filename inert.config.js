@@ -14,6 +14,8 @@ const {
   halt,
 } = inert;
 
+const fs = require("fs");
+
 const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
@@ -30,6 +32,10 @@ const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
 const jaConfig = require("./ja.lang.js");
 const zhTWConfig = require("./zhTW.lang.js");
+
+const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
+  sponsors: []
+};
 
 // List of languages
 const langs = [
@@ -147,6 +153,7 @@ module.exports = {
     title: "Axios Docs",
     // List of languages
     langs: langs,
+    ...data
   },
   build: {
     /**
@@ -279,7 +286,7 @@ module.exports = {
            *
            * `flat` is a little faster, so If you can, you should use it.
            */
-          traverseLevel: "flat", // There will be no subfolders, at least in this template
+          traverseLevel: "recursive", // There will be no subfolders, at least in this template
           /**
            * A list of methods.
            *
@@ -328,7 +335,7 @@ module.exports = {
       },
       ...langs.map(
         (lang) => ({
-          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
+          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
           build: {
             traverseLevel: "recursive",
             filePipeline: [

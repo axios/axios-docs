@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= data.attributes.title %> | <%= locale.title || config.custom.title %></title>
     <link rel="stylesheet" href="/style/index.css" />
+    <link rel="stylesheet" href="/style/post.css" />
+    <link rel="stylesheet" href="/style/sponsors.css" />
     <style>
       * {
         <%= locale.fontSans ? 'font-family: ' + locale.fontSans + ';' : '' %>
@@ -24,16 +26,49 @@
     />
 
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
     <script>
       let isDarkThemeActive = false;
+      const THEME_TIMEOUT = 24 * 3600; // 24 hours
       const userDefaultTheme = localStorage.getItem("@axios-docs:theme");
-      if (userDefaultTheme && userDefaultTheme == "true") {
+      const userTS = +localStorage.getItem("@axios-docs:ts");
+      const darkQuery = "(prefers-color-scheme: dark)";
+      const darkMQL = window.matchMedia ? window.matchMedia(darkQuery) : {};
+
+      if (
+         ((!userTS || (Date.now() - userTS) / 1000 > THEME_TIMEOUT) && darkMQL.media === darkQuery) ||
+         (userDefaultTheme && userDefaultTheme === "true")
+      ) {
         document.body.classList.add("dark");
         isDarkThemeActive = true;
       }
+
+      localStorage.setItem("@axios-docs:ts", Date.now());
+
+      const updateImagesTheme = (isDark) => {
+        const attrName = 'data-dark';
+        const pics = document.querySelectorAll('img');
+
+        pics.forEach(image => {
+          const darkSource = image.getAttribute(attrName);
+          if (darkSource && image.src) {
+            if (isDark) {
+              image.setAttribute('data-light', image.getAttribute('src'));
+              image.src = darkSource;
+            } else {
+              image.src = image.getAttribute('data-light');
+            }
+          }
+        });
+      }
+
     </script>
     <header>
       <div></div>
@@ -85,12 +120,14 @@
       <div class="aside-container">
         <% locale.sidebar.forEach(side => { %>
           <% if (side.type === 'link') { %>
-            <a href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
+            <a class="<%= side.href && new URL(side.href, 'https://localhost').pathname.endsWith('/' + file.withoutExtension) ? 'selected' : '' %>" href="<%= side.href.startsWith('/') ? (locale.prefix + side.href.slice(1)) : side.href %>"><%= side.text %></a>
           <% } else { %>
             <h3 class="group-name"><%= side.text %></h3>
           <% } %>
         <% }) %>
       </div>
+      <section id="sponsors" aria-label="Axios sponsors">
+      </section>
       <div class="button-container">
         <button class="theme">
           <div class="light">
@@ -144,20 +181,75 @@
         <h1 class="title"><%= data.attributes.title %></h1>
         <p class="description"><%= data.attributes.description %></p>
         <%- data.body %>
+        <div class="sponsors_container">
+          <a class="link-sponsors" href="https://opencollective.com/axios/contribute"><h4><%= locale.t['Gold Sponsors'] || 'Gold Sponsors' %></h4></a>
+          <span class="btn-container">
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+              <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                        stroke="#000000"
+                        stroke-opacity="30%"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12.0122 5.57169L10.9252 4.48469C8.77734 2.33681 5.29493 2.33681 3.14705 4.48469C0.999162 6.63258 0.999162 10.115 3.14705 12.2629L11.9859 21.1017L11.9877 21.0999L12.014 21.1262L20.8528 12.2874C23.0007 10.1395 23.0007 6.65711 20.8528 4.50923C18.705 2.36134 15.2226 2.36134 13.0747 4.50923L12.0122 5.57169ZM11.9877 18.2715L16.9239 13.3352L18.3747 11.9342L18.3762 11.9356L19.4386 10.8732C20.8055 9.50635 20.8055 7.29028 19.4386 5.92344C18.0718 4.55661 15.8557 4.55661 14.4889 5.92344L12.0133 8.39904L12.006 8.3918L12.005 8.39287L9.51101 5.89891C8.14417 4.53207 5.92809 4.53207 4.56126 5.89891C3.19442 7.26574 3.19442 9.48182 4.56126 10.8487L7.10068 13.3881L7.10248 13.3863L11.9877 18.2715Z"
+                        fill="white"
+                />
+              </svg>
+              <span>Become a sponsor</span>
+            </a>
+          </span>
+          <section class="splide" aria-label="Axios sponsors" oncontextmenu="return false;">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <% const count = config.custom.sponsors.filter(({isActive, benefits, hide}) => isActive && !hide && benefits.showAtPages).length %>
+
+                <% if (count) { %>
+                  <% config.custom.sponsors && config.custom.sponsors.forEach(sponsor => { %>
+                    <% if(sponsor.isActive && !sponsor.hide && sponsor.benefits.showAtPages ){ %>
+                      <li class="splide__slide sponsor-card <%= sponsor.visual.className || "" %> opacity_<%= Math.round(4 * sponsor.visual.opacity) * 25 %>" data-tier="<%=sponsor.tierId%>" data-is-wide="<%= !!sponsor.isWideImage %>" data-has-logo="<%= !!sponsor.image %>" data-is-active="<%= sponsor.isActive ? "yes" : "no" %>" data-image-type="<%= sponsor.imageType || '' %>" <% if(sponsor.tooltip){ %>data-tippy-content="<%= sponsor.tooltip %>"<% } %>>
+                        <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
+                          <% if(sponsor.image){ %><div>
+                            <% if (sponsor.tierId=== 'platinum' && sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
+                           <img src="<%= sponsor.image %>" <% if(sponsor.image_dark){ %>data-dark="<%= sponsor.image_dark %>" <% } %> alt="<%= sponsor.alt %>"/>
+                          </div><% } %>
+                          <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
+                        </a>
+                      </li>
+                    <% } %>
+                  <% }) %>
+                <% } else { %>
+                  <li class="splide__slide">
+                    <a class="become_sponsor tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+                      <div><span class="plus">+</span><span>Your Logo here</span></div>
+                    </a>
+                  </li>
+                <% } %>
+              </ul>
+            </div>
+          </section>
+        </div>
         <div class="links">
           <% if (data.attributes.prev_link) { %>
           <a href="<%= data.attributes.prev_link %>" class="next-link">
             <span>« <%= locale.t['Previous'] || 'Previous' %></span>
             <span class="l"> <%= data.attributes.prev_title %> </span>
           </a>
-          <% } else { %>
-          <span></span>
-          <% } %> <% if (data.attributes.next_link) { %>
-          <a href="<%= data.attributes.next_link %>" class="next-link">
-            <span><%= locale.t['Next'] || 'Next' %> »</span>
-            <span class="l"> <%= data.attributes.next_title %> </span>
-          </a>
           <% } %>
+          <span>
+
+          </span>
+            <% if (data.attributes.next_link) { %>
+              <a href="<%= data.attributes.next_link %>" class="next-link">
+                <span><%= locale.t['Next'] || 'Next' %> »</span>
+                <span class="l"> <%= data.attributes.next_title %> </span>
+              </a>
+            <% } %>
         </div>
       </div>
       <div class="col-right"></div>
@@ -171,9 +263,12 @@
       document.querySelector("button.theme").addEventListener("click", () => {
         isDarkThemeActive = !isDarkThemeActive;
         localStorage.setItem("@axios-docs:theme", isDarkThemeActive);
+        localStorage.setItem("@axios-docs:ts", Date.now());
 
         document.body.classList.toggle("dark");
         document.querySelector("button.theme").classList.toggle("dark");
+
+        updateImagesTheme(isDarkThemeActive);
       });
 
       // switch `dir` of those RTL oriented elements that start with an
@@ -189,9 +284,85 @@
       window.onload = () => {
         if (isDarkThemeActive) {
           document.querySelector("button.theme").classList.toggle("dark");
+          updateImagesTheme(true);
         }
         document.documentElement.style.setProperty('--transition-delay', '300ms');
       };
+
+      const sponsorsCount = <%= count %>;
+
+      const splide = new Splide('.splide', {
+        //type: 'slide',
+        type: '<%= count > 4 ? 'loop' : 'slide' %>',
+        drag: 'free',
+        focus: 'left',
+        perPage: <%= Math.max(3, Math.min(count, 7)) %>,
+        snap: true,
+        pagination: false,
+        autoWidth: true,
+        autoScroll: {
+          speed: 0.7,
+          autoStart: false
+        }
+      });
+
+      splide.mount(window.splide.Extensions);
+
+      let timer;
+
+      const stop = () => {
+        if( timer ) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      tippy('.sponsor-card, .tip', {
+        trigger: 'mouseenter focus focusin oncontextmenu',
+        delay: [500, 500],
+        animation: 'fade',
+        allowHTML: true,
+        hideOnClick: true,
+        interactive: true,
+        maxWidth: '470px',
+        appendTo: () => document.body,
+        onShow(instance) {
+          if (instance.props.content.trim() === '') {
+            return false;
+          }
+
+          const tier = instance.reference.getAttribute('data-tier');
+
+          tier && instance.popper.setAttribute('data-tier', tier);
+
+          splide.Components.AutoScroll.pause();
+        },
+
+        onHide() {
+          stop();
+
+          timer = setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 5000);
+        }
+      });
+
+      const $splide = document.querySelector('.splide');
+
+      const onScroll = (e) => {
+        const {bottom} = $splide.getBoundingClientRect();
+
+        if (bottom < window.innerHeight) {
+          window.removeEventListener('scroll', onScroll);
+
+          setTimeout(() => {
+            splide.Components.AutoScroll.play();
+          }, 5000);
+        }
+      }
+
+      window.addEventListener('scroll', onScroll);
+
     </script>
   </body>
 </html>

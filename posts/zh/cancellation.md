@@ -2,7 +2,7 @@
 title: '取消请求'
 prev_title: '错误处理'
 prev_link: '/zh/docs/handling_errors'
-next_title: 'URL-Encoding Bodies'
+next_title: '请求体编码'
 next_link: '/zh/docs/urlencoded'
 ---
 
