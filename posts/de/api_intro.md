@@ -55,6 +55,9 @@ Für Komfort wurden Parallelbezeichnungen für jede gängige HTTP-Methode hinzug
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### INFO
 Wenn die oben genannten 8 Methoden verwendet werden, können die Felder `url`, `method` und `data` im Parameter `config` ausgelassen werden.
