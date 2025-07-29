@@ -31,7 +31,8 @@ axios.postForm('https://httpbin.org/post', {
 });
 ```
 
-HTML form can be passed directly as a request payload
+HTML form can be passed directly as a request payload. 
+
 
 #### Node.js
 
