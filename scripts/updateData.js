@@ -119,6 +119,23 @@ const PERIOD = 30;
 
 const days = (from, to = Date.now()) => (new Date(to) - new Date(from)) / DAY / 1000;
 
+const months = (startDate, endDate = new Date()) => {
+  if (startDate > endDate) {
+    [startDate, endDate] = [endDate, startDate];
+  }
+
+  const startYear = startDate.getFullYear();
+  const startMonth = startDate.getMonth();
+
+  const endYear = endDate.getFullYear();
+  const endMonth = endDate.getMonth();
+
+  let months = (endYear - startYear) * 12;
+  months += endMonth - startMonth;
+
+  return months;
+}
+
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
 
@@ -438,13 +455,13 @@ const processGithub = async (sponsor, repo = 'axios-sponsor', file = 'sponsor.js
 
 
 const renderTooltip = async (sponsor) => {
-  let {icon, isActive, displayName, tier, tierId, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
+  let {icon, isActive, displayName, tier, tierId, lastTransactionAmount, tierPrice, description, website, benefits, video, autoUTMLinks, links} = sponsor;
 
   const iconSrc = icon && (await downloadImage(icon));
 
   const iconHTML = iconSrc ? `<img class="sponsor-icon" src="/${iconSrc}" alt="${html.escape(displayName)}"/>` : '';
 
-  const renderedTier = isActive && (tierId === 'backer' || sponsor.tierPrice < sponsor.originalTierPrice) ? `${price || lastTransactionAmount || 0}$ a month` : tier;
+  const renderedTier = isActive && (tierId === 'backer' || sponsor.tierPrice < sponsor.originalTierPrice) ? `${tierPrice || lastTransactionAmount || 0}$ a month` : tier;
 
   let tooltip = `<h2 class="caption">${iconHTML}<span>${html.escape(displayName)} (${sponsor.totalAmountDonated || 0}$${' <sup class="tier">' + renderedTier + '</sup>'})</span></h2> `;
 
@@ -572,6 +589,13 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     const sponsorTiers = merge({}, tiers, sponsor.tiers);
 
+    if (sponsor.totalAmountDonated == null && sponsor.isActive) {
+      const passedMonths = sponsor.createdAt ? months(new Date(sponsor.createdAt)) : null;
+      const tierPrice = sponsor.tier && sponsorTiers[sponsor.tier]?.price;
+
+      sponsor.totalAmountDonated = passedMonths != null && tierPrice ? passedMonths * tierPrice : 0;
+    }
+
     if (lastTransactionAmount) {
       sponsor.tier = findTier(lastTransactionAmount, sponsorTiers);
 
@@ -633,9 +657,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       }
     }
 
-    if( Date.now() - new Date(sponsor.boostEnd) > 0) {
-      sponsor.boost = sponsor.boost || 1;
-    }
+    sponsor.boost = new Date(sponsor.boostEnd) - Date.now() > 0 ? 1 : 0;
 
     sponsor.isActive = sponsor.isActive === true;
 

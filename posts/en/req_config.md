@@ -183,7 +183,7 @@ These are the available config options for making requests. Only the `url` is re
   // `signal` and instance of AbortController can be used to cancel the request
   signal: new AbortController().signal,
 
-  // (Deprecatred) `cancelToken` specifies a cancel token that can also be used to cancel the request
+  // (Deprecated) `cancelToken` specifies a cancel token that can also be used to cancel the request
   // (see Cancellation section below for details)
   cancelToken: new CancelToken(function (cancel) {
   }),
@@ -194,5 +194,45 @@ These are the available config options for making requests. Only the `url` is re
   // - Node only (XHR cannot turn off decompression)
   decompress: true // default
 
+
+  // `insecureHTTPParser` boolean.
+  // Indicates where to use an insecure HTTP parser that accepts invalid HTTP headers.
+  // This may allow interoperability with non-conformant HTTP implementations.
+  // Using the insecure parser should be avoided.
+  // see options https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_request_url_options_callback
+  // see also https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/#strict-http-header-parsing-none
+  insecureHTTPParser: undefined, // default
+
+  // transitional options for backward compatibility that may be removed in the newer versions
+  transitional: {
+    // silent JSON parsing mode
+    // `true`  - ignore JSON parsing errors and set response.data to null if parsing failed (old behaviour)
+    // `false` - throw SyntaxError if JSON parsing failed (Note: responseType must be set to 'json')
+    silentJSONParsing: true, // default value for the current Axios version
+
+    // try to parse the response string as JSON even if `responseType` is not 'json'
+    forcedJSONParsing: true,
+
+    // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts
+    clarifyTimeoutError: false,
+  },
+
+  env: {
+    // The FormData class to be used to automatically serialize the payload into a FormData object
+    FormData: window?.FormData || global?.FormData
+  },
+
+  formSerializer: {
+      visitor: (value, key, path, helpers) => {}; // custom visitor function to serialize form values
+      dots: boolean; // use dots instead of brackets format
+      metaTokens: boolean; // keep special endings like {} in parameter key
+      indexes: boolean; // array indexes format null - no brackets, false - empty brackets, true - brackets with indexes
+  },
+
+  // http adapter only (node.js)
+  maxRate: [
+    100 * 1024, // 100KB/s upload limit,
+    100 * 1024  // 100KB/s download limit
+  ]
 }
 ```
