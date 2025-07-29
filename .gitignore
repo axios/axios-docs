@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 public/
 temp/
+.idea
 assets/sponsors/opencollective
 *.css
 *.css.map
