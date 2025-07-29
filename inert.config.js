@@ -328,7 +328,7 @@ module.exports = {
       },
       ...langs.map(
         (lang) => ({
-          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
+          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
           build: {
             traverseLevel: "recursive",
             filePipeline: [
