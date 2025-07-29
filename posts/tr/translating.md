@@ -25,7 +25,7 @@ Dilinizi yapılandırmayı ve yapılandırma dosyasındaki cümleleri ve bağlan
 const {dil-kısayolu}Config = require('./{language-shortcut}.config.js');
 ```
 
-Elbette, `{dil-kısayolu}`nu doğru [ISO 369-1](https://en.wikipedia.org/wiki/ISO_639-1) koduyla (değişken adında da!) değiştirmeyi unutmayın.
+Elbette, `{dil-kısayolu}`nu doğru [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) koduyla (değişken adında da!) değiştirmeyi unutmayın.
 
 Şimdi, `langs` sabitini (constant) arayın. Bu sabit (constant), `require` ifadenizin üzerinde bulunuyorsa, `require` ifadenizi onun üzerine taşıyın. `langs` listesine aşağıdaki nesneyi ekleyin:
 
