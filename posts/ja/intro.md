@@ -41,6 +41,12 @@ yarn を利用する場合:
 $ yarn add axios
 ```
 
+pnpm を利用する場合:
+
+```bash
+$ pnpm add axios
+```
+
 jsDelivr CDN を利用する場合:
 
 ```html
