@@ -36,26 +36,24 @@ Using npm:
 ```bash
 $ npm install axios
 ```
-<button onclick="copyToClipboard('npm install axios')">Copy</button>
 
 Using bower:
 
 ```bash
 $ bower install axios
 ```
-<button onclick="copyToClipboard('bower install axios')">Copy</button>
+
 Using yarn:
 
 ```bash
 $ yarn add axios
 ```
-<button onclick="copyToClipboard('yarn add axios')">Copy</button>
+
 Using jsDelivr CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
-<button onclick="copyToClipboard('<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>')">Copy</button>
 
 Using unpkg CDN:
 
