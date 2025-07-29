@@ -57,7 +57,7 @@ a.button {
 }
 
 main {
-  margin-left: calc(var(--margin) / 2);
+  margin: 0 calc(var(--margin) / 2);
   width: calc(100vw - var(--margin));
   min-height: 100vh;
   display: flex;
@@ -72,6 +72,7 @@ section#hero {
   align-items: center;
   justify-content: space-between;
   flex-flow: row nowrap;
+  margin-top: 10rem;
 
   div.content {
     width: 100%;
@@ -163,6 +164,11 @@ footer {
     gap: 1rem;
     margin-bottom: 1.5rem;
   }
+  .light-hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
 }
 
 // @keyframes appear {
@@ -232,7 +238,7 @@ html[dir="rtl"] {
 .splide {
   height: 9rem;
   padding: 0 45px;
-  margin: 0 -55px;
+  margin: 0 calc(-1 * var(--margin) / 2);
 }
 
 li.sponsor-card {
