@@ -52,11 +52,23 @@ Voici les différentes options de configuration que vous pouvez utiliser pour fa
     ID: 12345
   },
 
-  // `paramsSerializer` est une fonction optionnelle qui permet de définir
-  // comment `params` doit être sérialisé (avec https://www.npmjs.com/package/qs
-  // ou http://api.jquery.com/jquery.param/ par exemple).
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` est une configuration facultative qui vous permet de 
+  // personnaliser la sérialisation des `params`. 
+  paramsSerializer: {
+
+    //Fonction d'encodeur personnalisée qui envoie des paires clé/valeur de manière itérative.
+    encode?: (param: string): string => 
+    { /* Effectuez des opérations personnalisées ici et renvoyez la chaîne transformée */ }, 
+    
+    // Fonction de sérialiseur personnalisé pour l'ensemble du paramètre.
+    // Permet à l'utilisateur d'imiter le comportement d'avant 1.x.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Configuration pour le formatage des index de tableau dans les paramètres.
+    indexes: false // Trois options disponibles: 
+    // (1) indexes: null (ne mène à aucune parenthèse), 
+    // (2) (default) indexes: false (mène à des parenthèses vides),
+    // (3) indexes: true (mène à des parenthèses avec des index).    
   },
 
   // `data` correspond aux données qui constitueront le corps de la requête.
