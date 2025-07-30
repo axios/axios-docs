@@ -2,7 +2,7 @@
 title: 'Traduzindo a documentação'
 ---
 
-Para tornar os Axios acessíveis ao maior número de pessoas possível, é extremamente importante que estes documentos possam ser lidos em todos idiomas. Nós apreciamos qualquer pessoa que queria ajudar na tradução dos documentos. Este guia fornece instruções de como adicionar uma nova tradução nesta documentação.
+Para tornar Axios acessível ao maior número de pessoas possível, é extremamente importante que estes documentos possam ser lidos em todos idiomas. Nós apreciamos qualquer pessoa que queira ajudar na tradução dos documentos. Este guia fornece instruções de como adicionar uma nova tradução nesta documentação.
 
 ## Estrutura
 
@@ -15,7 +15,7 @@ Toda tradução é composta por um arquivo de configuração, `{language-shortcu
  - Substitua `display` com o nome do seu idioma, no formato do seu idioma. Por exemplo, se você estiver traduzindo alemão, coloque “Deutsch” ao invés de “German”.
  - Substitua o prefixo com `/{language-shortcut}/`.
  - Traduza os valores dos campos `p` e `t`.
- - Traduza todas as propriedades `text` na sidebar. **Nota:** Desde a última versão deste documento, links na sidebar não precisam ser 
+ - Traduza todas as propriedades `text` na sidebar. **Nota:** Desde a última versão deste documento, links na sidebar não precisam mais ser atualizados.
 
 ### Registrando a configuração
 
@@ -25,15 +25,15 @@ Uma vez que tiver terminado a configuração do seu idioma e a tradução das fr
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-E claro, lembre-se de substituir `{language-shortcut}` com o valor código correto do [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) (no nome da variável também).
+E claro, lembre-se de substituir `{language-shortcut}` com o valor código correto do [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) (no nome da variável também!).
 
-Agora procure pela constante `langs`. Se a constante estiver localizada antes do seu `require`, mova o seu `require` acima dele. Na lista de `langs`, adicione o seguinte objeto:
+Agora procure pela constante `langs`. Se a constante estiver localizada acima da sua declaração `require`, mova a sua declaração `require` para antes dela. Na lista `langs`, adicione o seguinte objeto:
 
 ```js
 const langs = [
   ...
   {
-    name: 'Algum nome úncio que identifique o seu idioma, como por exemplo `English` ou `Brazilian Portuguese`',
+    name: 'Algum nome único que identifique o seu idioma, como por exemplo "English" ou "Brazilian Portuguese"',
     prefix: "O mesmo prefixo do seu arquivo de configuração",
     config: {language-shortcut}Config // O objeto de configuração que você importou anteriormente
   }
@@ -41,6 +41,6 @@ const langs = [
 ];
 ```
 
-Agora você pode começa a traduzir os arquivos, copie a pasta `posts/en` em uma nova pasta `posts/{language-shortcut}` e traduza todos os arquivos. (não traduza o nome dos arquivos, é claro).
+Agora você pode começa a traduzir os arquivos. Copie a pasta `posts/en` em uma nova pasta `posts/{language-shortcut}` e traduza todos os arquivos (não traduza o nome dos arquivos, é claro).
 
-Caso você tenha algum problema durante o percurso de tradução, sinta-se livre em [criar uma issue](https://github.com/axios/axios-docs/issues/new/choose).
+Se você encontrar algum problema, sinta-se livre para [criar uma issue](https://github.com/axios/axios-docs/issues/new/choose).
