@@ -1,9 +1,9 @@
 ---
 title: 'Config Defaults'
 prev_title: 'Схема ответа'
-prev_link: '/docs/res_schema'
+prev_link: '/ru/docs/res_schema'
 next_title: 'Перехват запросов'
-next_link: '/docs/interceptors'
+next_link: '/ru/docs/interceptors'
 ---
 
 ## Config Defaults

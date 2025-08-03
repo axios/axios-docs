@@ -2,7 +2,7 @@
 title: 'Başlangıç'
 description: 'Tarayıcı ve node.js için Promise tabanlı HTTP istemcisi'
 next_title: 'Basit Örnek'
-next_link: '/docs/example'
+next_link: '/tr/docs/example'
 ---
 
 # Axios nedir?

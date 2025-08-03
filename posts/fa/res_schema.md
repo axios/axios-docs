@@ -1,9 +1,9 @@
 ---
 title: 'الگوی پاسخ ها'
 prev_title: 'پیکربندی درخواست ها'
-prev_link: '/docs/req_config'
+prev_link: '/fa/docs/req_config'
 next_title: 'تنظیمات پیش فرض'
-next_link: '/docs/config_defaults'
+next_link: '/fa/docs/config_defaults'
 ---
 
 اطلاعات پاسخ برای یک درخواست شامل اطلاعات زیر است:

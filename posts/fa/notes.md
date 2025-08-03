@@ -2,7 +2,7 @@
 title: 'نکات'
 description: 'چند نکته ای دیگر برای جمع بندی'
 prev_title: 'بدنه های رمزگذاری آدرس (URL-Encoding)'
-prev_link: '/docs/urlencoded'
+prev_link: '/fa/docs/urlencoded'
 ---
 
 ## ورژن دهی

@@ -1,9 +1,9 @@
 ---
 title: 'پیکربندی درخواست ها'
 prev_title: 'نمونه سازی از Axios'
-prev_link: '/docs/instance'
+prev_link: '/fa/docs/instance'
 next_title: 'الگوی پاسخ ها'
-next_link: '/docs/res_schema'
+next_link: '/fa/docs/res_schema'
 ---
 
 

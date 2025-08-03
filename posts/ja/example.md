@@ -2,9 +2,9 @@
 title: '最小構成の使用例'
 description: 'Axios の簡単な使用例'
 prev_title: 'Axios 入門'
-prev_link: '/docs/intro'
+prev_link: '/ja/docs/intro'
 next_title: 'POST リクエスト'
-next_link: '/docs/post_example'
+next_link: '/ja/docs/post_example'
 ---
 
 ## 注: CommonJS の使用法

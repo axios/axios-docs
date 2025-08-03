@@ -1,9 +1,9 @@
 ---
 title: 'Перехват запросов'
 prev_title: 'Конфигурация по умолчанию'
-prev_link: '/docs/config_defaults'
+prev_link: '/ru/docs/config_defaults'
 next_title: 'Обработка ошибок'
-next_link: '/docs/handling_errors'
+next_link: '/ru/docs/handling_errors'
 ---
 
 Вы можете перехватывать запросы или ответы до того, как они будут `then` или `catch`.

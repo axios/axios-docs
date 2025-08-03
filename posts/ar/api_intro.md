@@ -2,9 +2,9 @@
 title: 'أكسيوس إي بي أي'
 description: 'المرجع لأكسيوس إي بي أي'
 prev_title: 'طلبات بوست'
-prev_link: 'ar/docs/post_example'
+prev_link: '/ar/docs/post_example'
 next_title: 'نموذج الأكسيوس'
-next_link: 'ar/docs/instance'
+next_link: '/ar/docs/instance'
 ---
 
 يمكن للطلبات أن تمرر التي لها صلة بالإعدادات`axios`.

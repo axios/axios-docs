@@ -1,9 +1,9 @@
 ---
 title: 'بدنه های رمزگذاری آدرس (URL-Encoding)'
 prev_title: 'لغو درخواست'
-prev_link: '/docs/cancellation'
+prev_link: '/fa/docs/cancellation'
 next_title: 'نکات'
-next_link: '/docs/notes'
+next_link: '/fa/docs/notes'
 ---
 
 به صورت پیش فرض ، axios اشیاء JavaScript را به `JSON` تبدیل می کند. برای ارسال داده در قالب `application/x-www-form-urlencoded` ، می توانید از یکی از گزینه های زیر استفاده کنید.

@@ -1,9 +1,9 @@
 ---
 title: 'URL-Encoding Bodies'
 prev_title: 'Cancellation'
-prev_link: '/docs/cancellation'
+prev_link: '/ar/docs/cancellation'
 next_title: 'Notes'
-next_link: '/docs/notes'
+next_link: '/ar/docs/notes'
 ---
 
 By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following options.

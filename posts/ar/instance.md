@@ -1,9 +1,9 @@
 ---
 title: 'The Axios Instance'
 prev_title: 'Axios API'
-prev_link: '/docs/api_intro'
+prev_link: '/ar/docs/api_intro'
 next_title: 'Request Config'
-next_link: '/docs/req_config'
+next_link: '/ar/docs/req_config'
 ---
 
 ### Creating an instance
