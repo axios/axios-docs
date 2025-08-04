@@ -1,9 +1,9 @@
 ---
 title: 'URL-кодирующие параметры'
 prev_title: 'Отмена запросов'
-prev_link: '/docs/cancellation'
+prev_link: '/ru/docs/cancellation'
 next_title: 'Примечания'
-next_link: '/docs/notes'
+next_link: '/ru/docs/notes'
 ---
 
 По умолчанию `axios` сериализует объекты JavaScript в `JSON`. Чтобы отправить данные в формате `application/x-www-form-urlencoded`, вы можете использовать один из следующих вариантов.

@@ -2,9 +2,9 @@
 title: 'POST リクエスト'
 description: 'Axios で POST リクエストを実行する方法'
 prev_title: '最小構成の使用例'
-prev_link: '/docs/example'
+prev_link: '/ja/docs/example'
 next_title: 'Axios API'
-next_link: '/docs/api_intro'
+next_link: '/ja/docs/api_intro'
 ---
 
 `POST` リクエストの実行

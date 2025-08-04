@@ -1,9 +1,9 @@
 ---
 title: 'エラー処理'
 prev_title: 'インターセプター'
-prev_link: '/docs/interceptors'
+prev_link: '/ja/docs/interceptors'
 next_title: 'キャンセル'
-next_link: '/docs/cancellation'
+next_link: '/ja/docs/cancellation'
 ---
 
 ```js

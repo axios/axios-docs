@@ -1,9 +1,9 @@
 ---
 title: 'Request Config'
 prev_title: 'The Axios Instance'
-prev_link: '/docs/instance'
+prev_link: '/ar/docs/instance'
 next_title: 'Response Schema'
-next_link: '/docs/res_schema'
+next_link: '/ar/docs/res_schema'
 ---
 
 

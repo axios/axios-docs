@@ -1,9 +1,9 @@
 ---
 title: 'URL-Encoding Gövdeleri'
 prev_title: 'İptal etme'
-prev_link: '/docs/cancellation'
+prev_link: '/tr/docs/cancellation'
 next_title: 'Notlar'
-next_link: '/docs/notes'
+next_link: '/tr/docs/notes'
 ---
 
 Axios, varsayılan olarak JavaScript objelerini `JSON`a dizileştirir (serialize eder). Bunun yerine `application/x-www-form-urlencoded` formatı ile veri göndermek için, aşağıdaki seçeneklerden birini kullanabilirsiniz.

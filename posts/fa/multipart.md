@@ -1,9 +1,9 @@
 ---
 title: 'بدنه‌های چندبخشی'
 prev_title: 'بدنه‌های URL-Encoding'
-prev_link: '/docs/urlencoded'
+prev_link: '/fa/docs/urlencoded'
 next_title: 'یادداشت‌ها'
-next_link: '/docs/notes'
+next_link: '/fa/docs/notes'
 ---
 
 ## ارسال داده به صورت `multipart/form-data`

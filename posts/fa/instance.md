@@ -1,9 +1,9 @@
 ---
 title: 'نمونه سازی از Axios'
 prev_title: 'APIهای پروژه Axios'
-prev_link: '/docs/api_intro'
+prev_link: '/fa/docs/api_intro'
 next_title: 'پیکربندی درخواست ها'
-next_link: '/docs/req_config'
+next_link: '/fa/docs/req_config'
 ---
 
 ### ایجاد یک نمونه

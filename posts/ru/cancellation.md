@@ -1,9 +1,9 @@
 ---
 title: 'Отмена запросов'
 prev_title: 'Обработка ошибок'
-prev_link: '/docs/handling_errors'
+prev_link: '/ru/docs/handling_errors'
 next_title: 'URL-кодирующие параметры'
-next_link: '/docs/urlencoded'
+next_link: '/ru/docs/urlencoded'
 ---
 
 ## AbortController

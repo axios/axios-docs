@@ -2,9 +2,9 @@
 title: 'POST Requests'
 description: 'How to perform POST requests with Axios'
 prev_title: 'Minimal Example'
-prev_link: '/docs/example'
+prev_link: '/ar/docs/example'
 next_title: 'Axios API'
-next_link: '/docs/api_intro'
+next_link: '/ar/docs/api_intro'
 ---
 
 Performing a `POST` request

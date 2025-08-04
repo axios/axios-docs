@@ -1,9 +1,9 @@
 ---
 title: 'Экземпляр Axios'
 prev_title: 'Axios API'
-prev_link: '/docs/api_intro'
+prev_link: '/ru/docs/api_intro'
 next_title: 'Конфигурация запроса'
-next_link: '/docs/req_config'
+next_link: '/ru/docs/req_config'
 ---
 
 ### Creating an instance

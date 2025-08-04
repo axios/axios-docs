@@ -1,9 +1,9 @@
 ---
 title: 'رهگیرها'
 prev_title: 'تنظیمات پیش فرض'
-prev_link: '/docs/config_defaults'
+prev_link: '/fa/docs/config_defaults'
 next_title: 'مدیریت خطاها'
-next_link: '/docs/handling_errors'
+next_link: '/fa/docs/handling_errors'
 ---
 
 درخواست ها یا پاسخ ها را می توانید قبل از اینکه توسط "then" یا "catch" رسیدگی شود ، رهگیری کنید. 

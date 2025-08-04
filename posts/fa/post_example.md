@@ -2,9 +2,9 @@
 title: 'درخواست های از نوع POST'
 description: 'نحوه انجام درخواست های POST با Axios'
 prev_title: 'مثالی کوچک'
-prev_link: '/docs/example'
+prev_link: '/fa/docs/example'
 next_title: 'APIهای پروژه Axios'
-next_link: '/docs/api_intro'
+next_link: '/fa/docs/api_intro'
 ---
 
 نحوه ایجاد کردن درخواست `POST`

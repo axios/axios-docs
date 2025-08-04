@@ -2,9 +2,9 @@
 title: 'Basit Örnek'
 description: "Axios'u kullanımı için küçük bir örnek"
 prev_title: 'Intro'
-prev_link: '/docs/intro'
+prev_link: '/tr/docs/intro'
 next_title: 'POST İstekleri'
-next_link: '/docs/post_example'
+next_link: '/tr/docs/post_example'
 ---
 
 ## not: CommonJS kullanımı

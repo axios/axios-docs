@@ -1,9 +1,9 @@
 ---
 title: 'Axios Objesi'
 prev_title: "Axios API'si"
-prev_link: '/docs/api_intro'
+prev_link: '/tr/docs/api_intro'
 next_title: 'İstek Konfigürasyonu'
-next_link: '/docs/req_config'
+next_link: '/tr/docs/req_config'
 ---
 
 ### Bir obje oluşturma

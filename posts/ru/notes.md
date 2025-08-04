@@ -2,7 +2,7 @@
 title: 'Примечания'
 description: 'Еще пара примечаний в завершение'
 prev_title: 'URL-Encoding Bodies'
-prev_link: '/docs/urlencoded'
+prev_link: '/ru/docs/urlencoded'
 ---
 
 ## Semver

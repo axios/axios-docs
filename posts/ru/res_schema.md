@@ -1,9 +1,9 @@
 ---
 title: 'Схема ответа'
 prev_title: 'Конфигурация запроса'
-prev_link: '/docs/req_config'
+prev_link: '/ru/docs/req_config'
 next_title: 'Конфигурация по умолчанию'
-next_link: '/docs/config_defaults'
+next_link: '/ru/docs/config_defaults'
 ---
 
 The response for a request contains the following information.

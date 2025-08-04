@@ -1,9 +1,9 @@
 ---
 title: 'İstek Konfigürasyonu'
 prev_title: 'Axios Objesi'
-prev_link: '/docs/instance'
+prev_link: '/tr/docs/instance'
 next_title: 'Yanıt Şeması'
-next_link: '/docs/res_schema'
+next_link: '/tr/docs/res_schema'
 ---
 
 

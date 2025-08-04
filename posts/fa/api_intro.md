@@ -2,9 +2,9 @@
 title: 'APIهای پروژه Axios'
 description: 'مرجع APIهای پروژه Axios'
 prev_title: 'درخواست های ارسال'
-prev_link: '/docs/post_example'
+prev_link: '/fa/docs/post_example'
 next_title: 'نمونه سازی از Axios'
-next_link: '/docs/instance'
+next_link: '/fa/docs/instance'
 ---
 
 با ایجاد پیکربندی مناسب و ارسال به `axios` می توان انواع درخواست ها را انجام داد. 
