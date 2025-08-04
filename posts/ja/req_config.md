@@ -1,9 +1,9 @@
 ---
 title: 'リクエスト設定'
 prev_title: 'Axios インスタンス'
-prev_link: '/docs/instance'
+prev_link: '/ja/docs/instance'
 next_title: 'レスポンス スキーマ'
-next_link: '/docs/res_schema'
+next_link: '/ja/docs/res_schema'
 ---
 
 

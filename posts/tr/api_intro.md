@@ -2,9 +2,9 @@
 title: "Axios API'si"
 description: 'Axios API Referansı'
 prev_title: 'POST İstekleri'
-prev_link: '/docs/post_example'
+prev_link: '/tr/docs/post_example'
 next_title: 'Axios Objesi'
-next_link: '/docs/instance'
+next_link: '/tr/docs/instance'
 ---
 
 

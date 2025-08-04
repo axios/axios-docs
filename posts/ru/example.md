@@ -2,9 +2,9 @@
 title: 'Minimal Example'
 description: 'Небольшой пример использования axios'
 prev_title: 'Введение'
-prev_link: '/docs/intro'
+prev_link: '/ru/docs/intro'
 next_title: 'POST запросы'
-next_link: '/docs/post_example'
+next_link: '/ru/docs/post_example'
 ---
 
 ## note: использование CommonJS 

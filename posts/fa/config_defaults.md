@@ -1,9 +1,9 @@
 ---
 title: 'تنظیمات پیش فرض'
 prev_title: 'الگوی پاسخ ها'
-prev_link: '/docs/res_schema'
+prev_link: '/fa/docs/res_schema'
 next_title: 'رهگیرها'
-next_link: '/docs/interceptors'
+next_link: '/fa/docs/interceptors'
 ---
 
 ## تنظیمات پیش فرض

@@ -1,9 +1,9 @@
 ---
 title: 'مدیریت خطاها'
 prev_title: 'رهگیرها'
-prev_link: '/docs/interceptors'
+prev_link: '/fa/docs/interceptors'
 next_title: 'لغو درخواست ها'
-next_link: '/docs/cancellation'
+next_link: '/fa/docs/cancellation'
 ---
 
 ```js

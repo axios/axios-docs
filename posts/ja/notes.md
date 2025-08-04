@@ -2,7 +2,7 @@
 title: '特記事項'
 description: '最後にもういくつかの注意点をあげておきます'
 prev_title: 'URL-エンコードボディ'
-prev_link: '/docs/urlencoded'
+prev_link: '/ja/docs/urlencoded'
 ---
 
 ## Semver

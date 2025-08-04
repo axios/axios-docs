@@ -1,9 +1,9 @@
 ---
 title: 'Interceptors'
 prev_title: 'Config Defaults'
-prev_link: '/docs/config_defaults'
+prev_link: '/ar/docs/config_defaults'
 next_title: 'Handling Errors'
-next_link: '/docs/handling_errors'
+next_link: '/ar/docs/handling_errors'
 ---
 
 You can intercept requests or responses before they are handled by `then` or `catch`.

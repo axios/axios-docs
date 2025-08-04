@@ -2,9 +2,9 @@
 title: 'Minimal Example'
 description: 'A little example of using axios'
 prev_title: 'Introduction'
-prev_link: '/docs/intro'
+prev_link: '/ar/docs/intro'
 next_title: 'POST Requests'
-next_link: '/docs/post_example'
+next_link: '/ar/docs/post_example'
 ---
 
 ## note: CommonJS usage

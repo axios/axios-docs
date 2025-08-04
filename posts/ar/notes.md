@@ -2,7 +2,7 @@
 title: 'Notes'
 description: 'A couple more notes to round it off'
 prev_title: 'URL-Encoding Bodies'
-prev_link: '/docs/urlencoded'
+prev_link: '/ar/docs/urlencoded'
 ---
 
 ## Semver

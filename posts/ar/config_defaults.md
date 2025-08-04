@@ -1,9 +1,9 @@
 ---
 title: 'Config Defaults'
 prev_title: 'Response Schema'
-prev_link: '/docs/res_schema'
+prev_link: '/ar/docs/res_schema'
 next_title: 'Interceptors'
-next_link: '/docs/interceptors'
+next_link: '/ar/docs/interceptors'
 ---
 
 ## Config Defaults

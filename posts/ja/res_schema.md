@@ -1,9 +1,9 @@
 ---
 title: 'レスポンス スキーマ'
 prev_title: 'リクエスト設定'
-prev_link: '/docs/req_config'
+prev_link: '/ja/docs/req_config'
 next_title: 'デフォルト設定'
-next_link: '/docs/config_defaults'
+next_link: '/ja/docs/config_defaults'
 ---
 
 リクエストに対するレスポンスには、以下の情報が含まれます。

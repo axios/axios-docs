@@ -1,9 +1,9 @@
 ---
 title: 'Hataları Ele Alma'
 prev_title: 'Yol kesiciler'
-prev_link: '/docs/interceptors'
+prev_link: '/tr/docs/interceptors'
 next_title: 'İptal etme'
-next_link: '/docs/cancellation'
+next_link: '/tr/docs/cancellation'
 ---
 
 ```js

@@ -1,9 +1,9 @@
 ---
 title: 'Handling Errors'
 prev_title: 'Interceptors'
-prev_link: '/docs/interceptors'
+prev_link: '/ar/docs/interceptors'
 next_title: 'Cancellation'
-next_link: '/docs/cancellation'
+next_link: '/ar/docs/cancellation'
 ---
 
 ```js

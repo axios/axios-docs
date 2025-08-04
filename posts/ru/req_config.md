@@ -1,9 +1,9 @@
 ---
 title: 'Конфигурация запроса'
 prev_title: 'Экземпляр Axios'
-prev_link: '/docs/instance'
+prev_link: '/ru/docs/instance'
 next_title: 'Схема ответа'
-next_link: '/docs/res_schema'
+next_link: '/ru/docs/res_schema'
 ---
 
 
