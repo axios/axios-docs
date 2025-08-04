@@ -1,9 +1,9 @@
 ---
 title: 'Yol Kesiciler'
 prev_title: 'Konfigürasyon Varsayılanları'
-prev_link: '/docs/config_defaults'
+prev_link: '/tr/docs/config_defaults'
 next_title: 'Hataları Ele Alma'
-next_link: '/docs/handling_errors'
+next_link: '/tr/docs/handling_errors'
 ---
 
 İstekleri veya yanıtları "then" veya "catch" tarafından işlenmeden önce ele alabilirsiniz.

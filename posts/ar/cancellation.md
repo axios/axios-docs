@@ -1,9 +1,9 @@
 ---
 title: 'Cancellation'
 prev_title: 'Handling Errors'
-prev_link: '/docs/handling_errors'
+prev_link: '/ar/docs/handling_errors'
 next_title: 'URL-Encoding Bodies'
-next_link: '/docs/urlencoded'
+next_link: '/ar/docs/urlencoded'
 ---
 
 ## AbortController

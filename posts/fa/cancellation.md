@@ -1,9 +1,9 @@
 ---
 title: 'لغو درخواست'
 prev_title: 'مدیریت خطاها'
-prev_link: '/docs/handling_errors'
+prev_link: '/fa/docs/handling_errors'
 next_title: 'بدنه های رمزگذاری آدرس (URL-Encoding)'
-next_link: '/docs/urlencoded'
+next_link: '/fa/docs/urlencoded'
 ---
 
 با یک *توکن لغو* (cancel token) می توانید درخواستی را لغو کنید. 

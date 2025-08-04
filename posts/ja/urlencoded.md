@@ -1,9 +1,9 @@
 ---
 title: 'URL-エンコードボディ'
 prev_title: 'キャンセル'
-prev_link: '/docs/cancellation'
+prev_link: '/ja/docs/cancellation'
 next_title: '特記事項'
-next_link: '/docs/notes'
+next_link: '/ja/docs/notes'
 ---
 
 デフォルトでは、Axios は JavaScript オブジェクトを `JSON` にシリアライズします。代わりに `application/x-www-form-urlencoded` 形式でデータを送信するには、次のいずれかのオプションを使用します。

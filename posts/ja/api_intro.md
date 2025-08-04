@@ -2,9 +2,9 @@
 title: 'Axios API'
 description: 'Axios API リファレンス'
 prev_title: 'POST リクエスト'
-prev_link: '/docs/post_example'
+prev_link: '/ja/docs/post_example'
 next_title: 'Axios インスタンス'
-next_link: '/docs/instance'
+next_link: '/ja/docs/instance'
 ---
 
 関連する設定を `axios` に渡すことでリクエストを行うことができます。

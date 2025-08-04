@@ -1,9 +1,9 @@
 ---
 title: 'Konfigürasyon Varsayılanları'
 prev_title: 'Yanıt Şeması'
-prev_link: '/docs/res_schema'
+prev_link: '/tr/docs/res_schema'
 next_title: 'Yol kesiciler'
-next_link: '/docs/interceptors'
+next_link: '/tr/docs/interceptors'
 ---
 
 ## Konfigürasyon Varsayılanları

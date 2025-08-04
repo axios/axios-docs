@@ -2,7 +2,7 @@
 title: 'Axios 入門'
 description: 'ブラウザと Node.js のための Promise ベースの HTTP クライアント'
 next_title: '最小構成の使用例'
-next_link: '/docs/example'
+next_link: '/ja/docs/example'
 ---
 
 # Axios とは?

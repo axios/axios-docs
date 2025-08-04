@@ -1,9 +1,9 @@
 ---
 title: 'デフォルト設定'
 prev_title: 'レスポンス スキーマ'
-prev_link: '/docs/res_schema'
+prev_link: '/ja/docs/res_schema'
 next_title: 'インターセプター'
-next_link: '/docs/interceptors'
+next_link: '/ja/docs/interceptors'
 ---
 
 ## デフォルト設定

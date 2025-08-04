@@ -2,7 +2,7 @@
 title: 'شروع به کار'
 description: 'سرویس گیرنده HTTP مبتنی بر پرامیس (Promise) برای مرورگر و node.js'
 next_title: 'مثالی کوچک'
-next_link: '/docs/example'
+next_link: '/fa/docs/example'
 ---
 
 # Axios چیست؟

@@ -2,7 +2,7 @@
 title: 'Notlar'
 description: 'Tamamlamak için birkaç not daha'
 prev_title: 'URL-Encoding Gövdeleri'
-prev_link: '/docs/urlencoded'
+prev_link: '/tr/docs/urlencoded'
 ---
 
 ## Semver
