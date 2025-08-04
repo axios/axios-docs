@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### 配置的优先级
 
-配置将会按优先级进行合并。它的顺序是：在[lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28)中找到的库默认值，然后是实例的 `defaults` 属性，最后是请求的 `config` 参数。后面的优先级要高于前面的。下面有一个例子。
+配置将会按优先级进行合并。它的顺序是：在[lib/defaults.js](https://github.com/axios/axios/blob/main/lib/defaults.js#L28)中找到的库默认值，然后是实例的 `defaults` 属性，最后是请求的 `config` 参数。后面的优先级要高于前面的。下面有一个例子。
 
 ```js
 // 使用库提供的默认配置创建实例

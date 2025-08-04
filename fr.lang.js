@@ -118,17 +118,17 @@ module.exports = {
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      href: "https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md",
       text: "Code de conduite",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      href: "https://github.com/axios/axios/blob/main/COLLABORATOR_GUIDE.md",
       text: "Guide du collaborateur",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      href: "https://github.com/axios/axios/blob/main/CONTRIBUTING.md",
       text: "Contribuer à Axios"
     },
     {

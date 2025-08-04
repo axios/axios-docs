@@ -25,11 +25,11 @@ axios.get('/user?ID=12345');
 
 ## リソース
 
-* [変更履歴](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [アップグレード ガイド](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [エコシステム](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [コントリビューター ガイド](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [行動規範](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [変更履歴](https://github.com/axios/axios/blob/main/CHANGELOG.md)
+* [アップグレード ガイド](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
+* [エコシステム](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
+* [コントリビューター ガイド](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
+* [行動規範](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
 
 ## クレジット
 
@@ -37,4 +37,4 @@ Axios は、[Angular](https://angularjs.org/) で提供される [$http サー�
 
 ## ライセンス
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/main/LICENSE)

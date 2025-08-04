@@ -108,17 +108,17 @@
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      href: "https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md",
       text: "Code of Conduct",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      href: "https://github.com/axios/axios/blob/main/COLLABORATOR_GUIDE.md",
       text: "Пособие для соавторов",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      href: "https://github.com/axios/axios/blob/main/CONTRIBUTING.md",
       text: "Вклад в Axios"
     },
     {

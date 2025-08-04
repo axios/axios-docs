@@ -23,11 +23,11 @@ axios.get('/user?ID=12345');
 
 ## Ресурсы
 
-* [Список изменений](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [Руководство по обновлению](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [Экосистема](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [Пособие для соавторов](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [Список изменений](https://github.com/axios/axios/blob/main/CHANGELOG.md)
+* [Руководство по обновлению](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
+* [Экосистема](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
+* [Пособие для соавторов](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -35,4 +35,4 @@ axios вдохновлен [$http service](https://docs.angularjs.org/api/ng/ser
 
 ## Лицензия
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/main/LICENSE)

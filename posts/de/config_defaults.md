@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Konfigurationsreihenfolge
 
-Konfigurationswerte werden mit folgender Reihenfolge zusammengefügt: Zuerst die Standardwerte des Moduls ([`lib/defaults.js`](https://github.com/axios/axios/blob/master/lib/defaults.js#L28)), dann die der Instanz und am Ende die der Anfrage. Jedes Element in der Reihenfolge überschreibt seinen Vorgänger. Hier sehen Sie ein Beispiel:
+Konfigurationswerte werden mit folgender Reihenfolge zusammengefügt: Zuerst die Standardwerte des Moduls ([`lib/defaults.js`](https://github.com/axios/axios/blob/main/lib/defaults.js#L28)), dann die der Instanz und am Ende die der Anfrage. Jedes Element in der Reihenfolge überschreibt seinen Vorgänger. Hier sehen Sie ein Beispiel:
 
 ```js
 // Eine Instanz mit den Standartwerten des moduls

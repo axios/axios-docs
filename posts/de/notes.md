@@ -22,11 +22,11 @@ axios.get('/user?ID=12345');
 
 ## Ressourcen
 
-* [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [Ecosystem](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [Changelog](https://github.com/axios/axios/blob/main/CHANGELOG.md)
+* [Upgrade Guide](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
+* [Ecosystem](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
+* [Contributing Guide](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -34,4 +34,4 @@ Axios wurde stark vom [`$http` Service](https://docs.angularjs.org/api/ng/servic
 
 ## License
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/main/LICENSE)
