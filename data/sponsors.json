@@ -8,7 +8,7 @@
     "incognito": true
   },
   "tiers": {
-    "backer" : {
+    "backer": {
       "name": "Backer",
       "price": 20,
       "benefits": {
@@ -23,7 +23,7 @@
         "showAtSponsorList": true
       }
     },
-    "silver" : {
+    "silver": {
       "name": "Silver",
       "price": 99,
       "benefits": {
@@ -32,7 +32,7 @@
         "showAtPages": false
       }
     },
-    "gold" : {
+    "gold": {
       "name": "Gold",
       "price": 299,
       "benefits": {
@@ -46,7 +46,7 @@
         "maxReadmeDescLength": 100
       }
     },
-    "platinum" : {
+    "platinum": {
       "name": "Platinum",
       "price": 599,
       "benefits": {
@@ -102,7 +102,7 @@
         }
       }
     },
-    "slotozilla-deutschland" : {
+    "slotozilla-deutschland": {
       "autoUTMLinks": false
     },
     "stytch": {
@@ -136,9 +136,6 @@
         }
       }
     },
-    "socialmedialounge": {
-      "targetLink": "https://www.reddit.com/r/SocialMediaLounge/comments/1lml1m5/whats_the_best_site_to_buy_tiktok_followers_safely/",
-    },
     "principal": {
       "tier": "gold",
       "image": "/assets/sponsors/principal.svg",
@@ -148,7 +145,7 @@
         }
       }
     },
-    "buy-instagram-followers-buzzoid":  {
+    "buy-instagram-followers-buzzoid": {
       "website": "https://buzzoid.com/buy-instagram-followers/"
     },
     "stephan9": {
@@ -156,6 +153,9 @@
     },
     "soleks": {
       "showCaption": false
+    },
+    "socialmedialounge": {
+      "targetLink": "https://www.reddit.com/r/SocialMediaLounge/comments/1lml1m5/whats_the_best_site_to_buy_tiktok_followers_safely/"
     }
   }
 }
