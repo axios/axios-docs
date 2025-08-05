@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Konfigürasyon öncelik sırası
 
-Konfigürasyon öncelik sırasına göre birleştirilecektir. Sıra, [lib/defaults.js](https://github.com/axios/axios/blob/main/lib/defaults.js#L28) içinde bulunan kütüphane varsayılanlarıdır, ardından objenin `defaults` özelliğidir ve son olarak istek için `config` argümanı. İkincisi, birincisine göre öncelikli olacaktır. İşte bir örnek:
+Konfigürasyon öncelik sırasına göre birleştirilecektir. Sıra, [lib/defaults.js](https://github.com/axios/axios/blob/v1.x/lib/defaults.js#L28) içinde bulunan kütüphane varsayılanlarıdır, ardından objenin `defaults` özelliğidir ve son olarak istek için `config` argümanı. İkincisi, birincisine göre öncelikli olacaktır. İşte bir örnek:
 
 ```js
 // Kütüphane tarafından sağlanan yapılandırma varsayılanlarını kullanarak bir örnek oluşturun

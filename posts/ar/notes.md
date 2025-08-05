@@ -23,11 +23,11 @@ axios.get('/user?ID=12345');
 
 ## Resources
 
-* [Changelog](https://github.com/axios/axios/blob/main/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
-* [Ecosystem](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
+* [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -35,4 +35,4 @@ axios is heavily inspired by the [$http service](https://docs.angularjs.org/api/
 
 ## License
 
-[MIT](https://github.com/axios/axios/blob/main/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

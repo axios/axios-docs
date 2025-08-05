@@ -116,17 +116,17 @@
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md",
+      href: "https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md",
       text: "행동 지침",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/main/COLLABORATOR_GUIDE.md",
+      href: "https://github.com/axios/axios/blob/v1.x/COLLABORATOR_GUIDE.md",
       text: "공동작업자 가이드",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/main/CONTRIBUTING.md",
+      href: "https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md",
       text: "Axios 기여하기"
     },
     {

@@ -123,17 +123,17 @@ module.exports = {
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md",
+        href: "https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md",
         text: "行為準則",
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/main/COLLABORATOR_GUIDE.md",
+        href: "https://github.com/axios/axios/blob/v1.x/COLLABORATOR_GUIDE.md",
         text: "協作指南",
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/main/CONTRIBUTING.md",
+        href: "https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md",
         text: "貢獻 Axios"
       },
       {

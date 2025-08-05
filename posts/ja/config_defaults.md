@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### 設定の優先順位
 
-設定は、優先順位をつけてマージされます。その順番は [lib/defaults.js](https://github.com/axios/axios/blob/main/lib/defaults.js#L28) にあるライブラリのデフォルト、そしてインスタンスの `defaults` プロパティ、最後にリクエストの `config` 引数の順になります。後者が前者よりも優先されます。以下はその例です。
+設定は、優先順位をつけてマージされます。その順番は [lib/defaults.js](https://github.com/axios/axios/blob/v1.x/lib/defaults.js#L28) にあるライブラリのデフォルト、そしてインスタンスの `defaults` プロパティ、最後にリクエストの `config` 引数の順になります。後者が前者よりも優先されます。以下はその例です。
 
 ```js
 // ライブラリが提供するデフォルトの設定を使用してインスタンスを作成します。

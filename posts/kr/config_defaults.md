@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Config 우선 순위
 
-Config는 우선 순위에 따라 병합됩니다. [lib/defaults.js](https://github.com/axios/axios/blob/main/lib/defaults.js#L28) 라이브러리에서의 기본값, 인스턴스의 `defaults` 속성, 요청의 `config` 인자를 순서대로 찾습니다. 후자가 전자보다 우선순위가 높습니다. 다음은 예제입니다.
+Config는 우선 순위에 따라 병합됩니다. [lib/defaults.js](https://github.com/axios/axios/blob/v1.x/lib/defaults.js#L28) 라이브러리에서의 기본값, 인스턴스의 `defaults` 속성, 요청의 `config` 인자를 순서대로 찾습니다. 후자가 전자보다 우선순위가 높습니다. 다음은 예제입니다.
 
 ```js
 // 라이브러리에서 제공하는 config 기본값을 사용하여 인스턴스 만들기

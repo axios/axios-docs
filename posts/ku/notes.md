@@ -25,11 +25,11 @@ axios.get('/user?ID=12345');
 
 ## سەرچاوەکان
 
-* تۆماری گۆڕانکارییەکان - [Changelog](https://github.com/axios/axios/blob/main/CHANGELOG.md)
-* ڕێبەریی بەرزکردنەوە - [Upgrade Guide](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
-* ژینگە سیستەم - [Ecosystem](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
-* ڕێبەریی بەژداریکردن - [Contributing Guide](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
-* کۆدی ڕەفتارکردن - [Code of Conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
+* تۆماری گۆڕانکارییەکان - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* ڕێبەریی بەرزکردنەوە - [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* ژینگە سیستەم - [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* ڕێبەریی بەژداریکردن - [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* کۆدی ڕەفتارکردن - [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## تیتراژ
 
@@ -37,4 +37,4 @@ axios.get('/user?ID=12345');
 
 ## مۆڵەتنامە
 
-مۆڵەتی [MIT](https://github.com/axios/axios/blob/main/LICENSE)
+مۆڵەتی [MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

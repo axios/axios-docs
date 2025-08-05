@@ -23,11 +23,11 @@ axios.get('/user?ID=12345');
 
 ## Tài nguyên
 
-* [Changelog](https://github.com/axios/axios/blob/main/CHANGELOG.md)
-* [Hướng dẫn nâng cấp](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
-* [Hệ sinh thái](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
-* [Hướng dẫn đóng góp](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
-* [Quy tắc ứng xử](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
+* [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [Hướng dẫn nâng cấp](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [Hệ sinh thái](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [Hướng dẫn đóng góp](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [Quy tắc ứng xử](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -35,4 +35,4 @@ axios lấy cảm hứng sâu sắc từ dịch vụ [$http](https://docs.angula
 
 ## Giấy phép
 
-[MIT](https://github.com/axios/axios/blob/main/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)
