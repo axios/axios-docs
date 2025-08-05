@@ -6,11 +6,11 @@ next_link: '/ku/docs/example'
 ---
 
 # ئەکسیۆس چییە؟
-ئەکسیۆس ڕاژەخوازێکی HTTPـیە *[لەسەر Promise بنچینەکراوە](https://javascript.info/promise-basics)* بۆ [`نۆد`](https://nodejs.org) و وێبگەڕ. *[هاوچەشنە](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (واتا دەتوانێ بە هەمان کۆد لەسەر وێبگەڕ و نۆدیش کاربکات). لەسەر ڕاژە moduleـی ڕەسەنی نۆد `http` بەکاردەهێنێت، لەکاتێکدا لەسەر ڕاژەخواز (وێبگەڕ) XMLHttpRequests بەکاردەهێنێت.
+ئەکسیۆس ڕاژەخوازێکی HTTPـیە *[لەسەر Promise بنچینەکراوە](https://javascript.info/promise-basics)* بۆ [`نۆد`](https://nodejs.org) و وێبگەڕ. *[هاوچەشنە](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (واتا دەتوانێ بە هەمان کۆد لەسەر وێبگەڕ و نۆدیش کاربکات). لەسەر ڕاژە moduleـی ڕەسەنی نۆد `http` بەکاردەهێنێت، لەکاتێکدا لەسەر ڕاژەخواز (وێبگەڕ) XMLHttpRequest بەکاردەهێنێت.
 
 # تایبەتمەندییەکان
 
-- دروستکردنی [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) لەسەر وێبگەڕ
+- دروستکردنی [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) لەسەر وێبگەڕ
 - دروستکردنی داواکاری [http](http://nodejs.org/api/http.html) لە نۆد
 - پشتگیری کردنی ناوبەستی  [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - ناوەندگیرکردن لە داواکاری و وەڵامەکان
