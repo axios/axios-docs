@@ -23,11 +23,11 @@ axios.get('/user?ID=12345');
 
 ## Kaynaklar
 
-* [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [Ecosystem](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Teşekkürler
 
@@ -35,4 +35,4 @@ axios, [Angular](https://angularjs.org/)'ın içerisinde bulunan [$http hizmetin
 
 ## Lisans
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)
