@@ -6,11 +6,11 @@ next_link: '/kr/docs/example'
 ---
 
 # Axios란?
-Axios는 node.js와 브라우저를 위한 *[Promise 기반](https://javascript.info/promise-basics)* HTTP 클라이언트 입니다. 그것은 *[동형](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* 입니다(동일한 코드베이스로 브라우저와 node.js에서 실행할 수 있습니다). 서버 사이드에서는 네이티브 node.js의 `http` 모듈을 사용하고, 클라이언트(브라우저)에서는 XMLHttpRequests를 사용합니다.
+Axios는 node.js와 브라우저를 위한 *[Promise 기반](https://javascript.info/promise-basics)* HTTP 클라이언트 입니다. 그것은 *[동형](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* 입니다(동일한 코드베이스로 브라우저와 node.js에서 실행할 수 있습니다). 서버 사이드에서는 네이티브 node.js의 `http` 모듈을 사용하고, 클라이언트(브라우저)에서는 XMLHttpRequest를 사용합니다.
 
 # 특징
 
-- 브라우저를 위해 [XMLHttpRequests](https://developer.mozilla.org/ko/docs/Web/API/XMLHttpRequest) 생성
+- 브라우저를 위해 [XMLHttpRequest](https://developer.mozilla.org/ko/docs/Web/API/XMLHttpRequest) 생성
 - node.js를 위해 [http](http://nodejs.org/api/http.html) 요청 생성
 - [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise) API를 지원
 - 요청 및 응답 인터셉트

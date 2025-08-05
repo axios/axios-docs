@@ -6,11 +6,11 @@ next_link: '/zhTW/docs/example'
 ---
 
 # Axios 是什麼？
-Axios 是基於 *[Promise](https://javascript.info/promise-basics)* 的 HTTP 客戶端函式庫，可應用於 [`node.js`](https://nodejs.org) 及瀏覽器。它是 *[同構](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* 的 (同一份程式碼可以在瀏覽器和 node.js 中運行)在伺服器端將會使用 node.js 的原生 `http` 模組，而瀏覽器端則會使用 XMLHttpRequests。
+Axios 是基於 *[Promise](https://javascript.info/promise-basics)* 的 HTTP 客戶端函式庫，可應用於 [`node.js`](https://nodejs.org) 及瀏覽器。它是 *[同構](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* 的 (同一份程式碼可以在瀏覽器和 node.js 中運行)在伺服器端將會使用 node.js 的原生 `http` 模組，而瀏覽器端則會使用 XMLHttpRequest。
 
 # 特色
 
-- 從瀏覽器建立 [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+- 從瀏覽器建立 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 - 從 node.js 建立 [http](http://nodejs.org/api/http.html) 請求
 - 支援 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
 - 支援請求和回應的攔截

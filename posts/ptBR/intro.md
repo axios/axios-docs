@@ -6,11 +6,11 @@ next_link: '/ptBR/docs/example'
 ---
 
 # O que é o Axios?
-Axios é um cliente HTTP *[baseado em promessas](https://javascript.info/promise-basics)* para o [`node.js`](https://nodejs.org) e para o navegador. É *[isomórfico](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*  (= pode rodar no navegador e no node.js com a mesma base de código). No lado do servidor usa o código nativo do node.js - o módulo `http`, enquanto no lado do cliente (navegador) usa XMLHttpRequests.
+Axios é um cliente HTTP *[baseado em promessas](https://javascript.info/promise-basics)* para o [`node.js`](https://nodejs.org) e para o navegador. É *[isomórfico](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*  (= pode rodar no navegador e no node.js com a mesma base de código). No lado do servidor usa o código nativo do node.js - o módulo `http`, enquanto no lado do cliente (navegador) usa XMLHttpRequest.
 
 # Recursos
 
-- Faz [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) do navegador
+- Faz [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) do navegador
 - Faz requisições [http](http://nodejs.org/api/http.html) do node.js
 - Suporta a API de [Promessas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 
 - Intercepta requisições e respostas

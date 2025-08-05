@@ -7,12 +7,12 @@ next_link: '/ja/docs/example'
 
 # Axios とは?
 
-Axios は、[`Node.js`](https://nodejs.org/)とブラウザのための *[Promise ベース](https://javascript.info/promise-basics)* の HTTP クライアントです。 これは *[Isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*（= 同じコードベースでブラウザと Node.js の両方で実行できる）と呼ばれます。 サーバー側ではネイティブ の Node.js `http` モジュールを使用し、クライアント (ブラウザ) では XMLHttpRequests を使用します。
+Axios は、[`Node.js`](https://nodejs.org/)とブラウザのための *[Promise ベース](https://javascript.info/promise-basics)* の HTTP クライアントです。 これは *[Isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*（= 同じコードベースでブラウザと Node.js の両方で実行できる）と呼ばれます。 サーバー側ではネイティブ の Node.js `http` モジュールを使用し、クライアント (ブラウザ) では XMLHttpRequest を使用します。
 
 
 # 特徴
 
-- ブラウザから [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) を作成する
+- ブラウザから [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) を作成する
 - Node.js から [http](http://nodejs.org/api/http.html) リクエストを作成する
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API をサポート
 - インターセプトの要求と応答
