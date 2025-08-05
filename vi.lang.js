@@ -115,17 +115,17 @@
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+        href: "https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md",
         text: "Quy tắc ứng xử",
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+        href: "https://github.com/axios/axios/blob/v1.x/COLLABORATOR_GUIDE.md",
         text: "Hướng dẫn người đóng góp",
       },
       {
         type: "link",
-        href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+        href: "https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md",
         text: "Đóng góp cho Axios"
       },
       {

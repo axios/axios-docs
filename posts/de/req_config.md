@@ -77,7 +77,7 @@ Dies sind die verfügbaren Konfigurationsoptionen für HTTP-Anfragen. Nur das Fe
   // ausgeführt werden sollen
   withCredentials: false, // Standardwert
 
-  // `adapter` erlaubt ein einfacheres Testen, siehe https://github.com/axios/axios/blob/master/lib/adapters/README.md
+  // `adapter` erlaubt ein einfacheres Testen, siehe https://github.com/axios/axios/blob/v1.x/lib/adapters/README.md
   adapter: function (config) {
     /* ... */
   },

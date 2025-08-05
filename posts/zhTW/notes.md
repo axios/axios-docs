@@ -21,15 +21,15 @@ axios.get('/user?ID=12345');
 
 ## 其他資源
 
-* [變更日誌](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [升級指南](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [生態系](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [貢獻指南](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [行為準則](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [變更日誌](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [升級指南](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [生態系](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [貢獻指南](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [行為準則](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Credits
 axios 深受 [Angular](https://angularjs.org/) 所提供的 [$http](https://docs.angularjs.org/api/ng/service/$http) 函式庫啟發。axios 的目標是提供一個可獨立於 Angular 使用的類 `$http` 函式庫。
 
 ## 開放原始碼授權
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

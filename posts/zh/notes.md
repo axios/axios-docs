@@ -22,11 +22,11 @@ axios.get('/user?ID=12345');
 
 ## 资源
 
-* [变更日志](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [升级指南](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [生态系统](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [贡献指南](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [行为准则](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [变更日志](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [升级指南](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [生态系统](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [贡献指南](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [行为准则](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -35,4 +35,4 @@ axios 深受[Angular](https://angularjs.org/)提供的[$http service](https://do
 
 ## 许可证
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)
