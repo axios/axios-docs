@@ -541,6 +541,38 @@ body {
     padding: 0 1.4rem;
     position: relative;
     word-wrap: normal;
+    
+    .copy-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      z-index: 10;
+      color: #333;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 1);
+        border-color: #bbb;
+      }
+      
+      &.copied {
+        background: #4caf50;
+        color: white;
+        border-color: #4caf50;
+      }
+    }
+    
+    &:hover .copy-button {
+      opacity: 1;
+    }
   }
 
   &.dark {
@@ -679,5 +711,22 @@ body {
     right: 0;
     text-align: right;
     top: 0;
+  }
+  
+  &.dark main pre .copy-button {
+    background: rgba(35, 38, 53, 0.9);
+    border-color: #555;
+    color: #cecece;
+    
+    &:hover {
+      background: rgba(35, 38, 53, 1);
+      border-color: #777;
+    }
+    
+    &.copied {
+      background: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
   }
 }
