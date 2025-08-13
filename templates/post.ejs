@@ -363,6 +363,88 @@
 
       window.addEventListener('scroll', onScroll);
 
+      // Code block copy functionality
+      function initCodeCopyButtons() {
+        // Get all pre tags
+        const preElements = document.querySelectorAll('main pre');
+        
+        preElements.forEach(pre => {
+          // Skip if copy button already exists
+          if (pre.querySelector('.copy-button')) return;
+          
+          // Create copy button
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.textContent = 'Copy';
+          copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+          
+          // Add copy functionality
+          copyButton.addEventListener('click', async () => {
+            try {
+              // Get text from code element inside pre tag
+              const codeElement = pre.querySelector('code');
+              let textToCopy = codeElement ? codeElement.textContent : pre.textContent;
+              
+              // Remove command line prompts ($ )
+              textToCopy = textToCopy.replace(/^\$ /gm, '');
+              
+              // Copy to clipboard
+              await navigator.clipboard.writeText(textToCopy);
+              
+              // Temporarily change button display
+              const originalText = copyButton.textContent;
+              copyButton.textContent = 'Copied!';
+              copyButton.classList.add('copied');
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                copyButton.textContent = originalText;
+                copyButton.classList.remove('copied');
+              }, 2000);
+              
+            } catch (err) {
+              console.error('Failed to copy text: ', err);
+              
+              // Fallback for older browsers
+              const textArea = document.createElement('textarea');
+              const codeElement = pre.querySelector('code');
+              let textToCopy = codeElement ? codeElement.textContent : pre.textContent;
+              
+              // Remove command line prompts ($ )
+              textToCopy = textToCopy.replace(/^\$ /gm, '');
+              
+              textArea.value = textToCopy;
+              document.body.appendChild(textArea);
+              textArea.select();
+              
+              try {
+                document.execCommand('copy');
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+                
+                setTimeout(() => {
+                  copyButton.textContent = 'Copy';
+                  copyButton.classList.remove('copied');
+                }, 2000);
+              } catch (fallbackErr) {
+                console.error('Fallback copy failed: ', fallbackErr);
+                copyButton.textContent = 'Failed';
+                setTimeout(() => {
+                  copyButton.textContent = 'Copy';
+                }, 2000);
+              }
+              
+              document.body.removeChild(textArea);
+            }
+          });
+          
+          // Add copy button to pre tag
+          pre.appendChild(copyButton);
+        });
+      }
+
+      // Initialize copy buttons after DOM is loaded
+      document.addEventListener('DOMContentLoaded', initCodeCopyButtons);
     </script>
   </body>
 </html>

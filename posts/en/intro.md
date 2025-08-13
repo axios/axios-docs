@@ -66,22 +66,9 @@ Using unpkg CDN:
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ```
-<button onclick="copyToClipboard('<script src="https://unpkg.com/axios/dist/axios.min.js"></script>')">Copy</button>
 Prebuilt CommonJS modules for direct importing with require (if your module bundler failed to resolve them automatically)
 
 ```js
 const axios = require('axios/dist/browser/axios.cjs'); // browser
 const axios = require('axios/dist/node/axios.cjs'); // node
 ```
-<button onclick="copyToClipboard('const axios = require('axios/dist/browser/axios.cjs');    
-const axios = require(\'axios/dist/node/axios.cjs\'); // node')">Copy</button>
-
-<script>
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Copied to clipboard!');
-  }).catch(err => {
-    console.error('Failed to copy: ', err);
-  });
-}
-</script>
