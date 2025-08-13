@@ -223,7 +223,9 @@ const processAvatars = async (sponsorsData, avatarsPath = './assets/sponsors/ope
 
       const ext = mime.extension(headers.getContentType()) || '';
 
-      const localAvatarPath = path.join(avatarsPath, `${login || displayName}${ext ? '.' + ext : ''}`);
+      const sha = crypto.createHash('sha1')
+
+      const localAvatarPath = path.join(avatarsPath, `${sha.update(login || displayName).digest('hex')}${ext ? '.' + ext : ''}`);
 
       const sharpImage = await sharp(data)
         .trim({
