@@ -58,6 +58,4 @@ axios('/user/12345');
 ##### axios.putForm(url[, data[, config]])
 ##### axios.patchForm(url[, data[, config]])
 
-###### 注
-
-エイリアス メソッドを使用する場合、`url`、`method`、および `data` プロパティを設定で指定する必要はありません。
+> 注: エイリアス メソッドを使用する場合、`url`、`method`、および `data` プロパティを config で指定する必要はありません。
