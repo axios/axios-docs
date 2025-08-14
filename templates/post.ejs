@@ -182,9 +182,9 @@
         <p class="description"><%= data.attributes.description %></p>
         <%- data.body %>
         <div class="sponsors_container">
-          <a class="link-sponsors" href="https://opencollective.com/axios/contribute"><h4><%= locale.t['Gold Sponsors'] || 'Gold Sponsors' %></h4></a>
+          <a class="link-sponsors" href="https://opencollective.com/axios/contribute" target="_blank"><h4><%= locale.t['Gold Sponsors'] || 'Gold Sponsors' %></h4></a>
           <span class="btn-container">
-            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" target="_blank" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
               <svg
                       width="24"
                       height="24"
@@ -225,7 +225,7 @@
                   <% }) %>
                 <% } else { %>
                   <li class="splide__slide">
-                    <a class="become_sponsor tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+                    <a class="become_sponsor tip" href="https://opencollective.com/axios/contribute" target="_blank" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
                       <div><span class="plus">+</span><span>Your Logo here</span></div>
                     </a>
                   </li>
@@ -362,6 +362,21 @@
       }
 
       window.addEventListener('scroll', onScroll);
+
+      // Set external links to open in new tabs
+      document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('a[href]');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          // Check if it's an external link (starts with http/https and not current domain)
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname)) {
+            // Add target="_blank" only if not already set
+            if (!link.getAttribute('target')) {
+              link.setAttribute('target', '_blank');
+            }
+          }
+        });
+      });
 
       // Code block copy functionality
       function initCodeCopyButtons() {

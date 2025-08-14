@@ -498,7 +498,7 @@ const renderTooltip = async (sponsor) => {
         href: entry
       } : entry || {};
 
-      return `<a href="${makeUTMURL(href, !autoUTMLinks)}">${html.escape(text)}</a>`;
+      return `<a href="${makeUTMURL(href, !autoUTMLinks)}" target="_blank">${html.escape(text)}</a>`;
     }).join('');
 
     tooltip += `<div class="links">${rendered}</div>`
@@ -509,7 +509,7 @@ const renderTooltip = async (sponsor) => {
 
     if(!link) return;
 
-    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}" alt="sponsor icon"/></a>`;
+    return `<a href="${makeUTMURL(link, !autoUTMLinks)}" target="_blank"><img class="icon" src="/assets/icons/social/${icon}" alt="sponsor icon"/></a>`;
   }).filter(Boolean).join('');
 
   tooltip += `<div class="social">${icons}</div>`
