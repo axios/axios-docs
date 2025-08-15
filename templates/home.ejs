@@ -74,7 +74,7 @@
         <div>
         <a class="link-sponsors" href="/docs/sponsor"><h2><%= locale.t['Sponsors'] || 'Sponsors' %></h2></a>
         <span class="btn-container">
-            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" target="_blank" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
               <svg
                       width="24"
                       height="24"
@@ -118,7 +118,7 @@
                 <% }) %>
               <% } else { %>
                 <li class="splide__slide sponsor-card become_sponsor" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
-                  <div><a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
+                  <div><a class="button" href="https://opencollective.com/axios/contribute" target="_blank"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
                 </li>
               <% } %>
             </ul>
