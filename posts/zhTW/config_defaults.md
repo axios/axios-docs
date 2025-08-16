@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### 配置先後順序
 
-配置將會以設置的先後順序來進行合併，最先的是函式庫預設值，可以在 [lib/defaults/index.js](https://github.com/axios/axios/blob/649d739288c8e2c55829ac60e2345a0f3439c730/lib/defaults/index.js#L59) 中找到，接著是實體的 `defaults` 屬性，最後是請求的 `config` 配置，後者將會覆蓋前者，如下例：
+配置將會以設置的先後順序來進行合併，最先的是函式庫預設值，可以在 [lib/defaults/index.js](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js) 中找到，接著是實體的 `defaults` 屬性，最後是請求的 `config` 配置，後者將會覆蓋前者，如下例：
 
 ```js
 // 建立一個實體並套用預設配置

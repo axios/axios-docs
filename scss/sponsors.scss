@@ -5,7 +5,7 @@
   --btn-bg2: #210891;
   --btn-bg2-hover: #5518b7;
   --btn-text-color: white;
-  --carousel-bg: trasparent;
+  --carousel-bg: transparent;
 }
 
 body.dark {
@@ -134,8 +134,6 @@ li.sponsor-card {
     font-size: 0.75rem;
   }
 
-  .description{
-  }
 
   &[data-tier='silver'] {
     .description {
@@ -266,15 +264,8 @@ li.sponsor-card {
       opacity: 1;
     }
   }
-
-  &:active {
-
-  }
 }
 
-.sponsor_chevron_crown{
-  background-image: url(/asserts/crown.svg);
-}
 
 .sponsors_container {
   margin-top: 3rem;
