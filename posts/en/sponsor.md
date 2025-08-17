@@ -5,14 +5,14 @@ title: 'Sponsoring Axios'
 Thank you for considering supporting our project. Your donation will be used to maintain and develop Axios.
 
 As a benefit to our major sponsors, we provide the opportunity to add your logo and brief
-information to our website and/or Readme.md depending on the tier of support you choose.
+information to our website and/or [Readme.md](https://github.com/axios/axios) depending on the tier of support you choose.
 This process is fully automated if you donate through [OpenCollective.com](https://opencollective.com/axios/contribute),
 so your logo will be added within 24 hours.
 
 Your logo can be placed:
 - in the carousel on the main page
 - in carousels on each page of the documentation
-- at the top of Readme.md in our repo
+- at the top of [Readme.md](https://github.com/axios/axios) in our repo
 
 Place in the carousel depends on:
 - newness of the sponsor (new sponsors temporarily receive higher places)
@@ -32,7 +32,7 @@ See tiers list on [Open Collective](https://opencollective.com/axios/contribute)
 | Main page                                   | small logo | medium logo | large logo  | extra large logo |
 | Docs pages                                  |            |             | medium logo |    large logo    |
 | [Readme.md](https://github.com/axios/axios) |            |             | small logo  |   medium logo    |
-| Data merging from sponsor's Github repo     |            |      +      |      +      |        +         |
+| Data merging from sponsor's GitHub repo     |            |      +      |      +      |        +         |
 | Links block in tooltip*                     |            |             |      +      |        +         |
 | Embedded Youtube video in tooltip*          |            |             |      +      |        +         |
 | Max description length in Readme.md (chars) |            |             |     100     |       150        |
