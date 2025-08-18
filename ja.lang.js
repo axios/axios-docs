@@ -120,6 +120,11 @@ module.exports = {
     },
     {
       type: "link",
+      href: "/docs/sponsor",
+      text: "Axiosのスポンサーシップ",
+    },
+    {
+      type: "link",
       href: "https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md",
       text: "行動規範",
     },
