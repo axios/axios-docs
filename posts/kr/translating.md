@@ -28,7 +28,7 @@ title: '문서 번역'
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-물론 `{language-shortuct}`을 정확한 [ISO 639-1](https://ko.wikipedia.org/wiki/ISO_639-1) 코드로 대체하는 것을 잊지마세요.
+물론 `{language-shortcut}`을 정확한 [ISO 639-1](https://ko.wikipedia.org/wiki/ISO_639-1) 코드로 대체하는 것을 잊지마세요.
 
 이제 `langs` 상수를 찾으세요. `require` 문 앞에 상수가 있을 경우, `require`를 상수 선언 앞으로 이동하세요. `langs` 목록에 다음 객체를 추가해야 합니다:
 
