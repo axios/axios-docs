@@ -25,7 +25,7 @@ Axios をできるだけ多くの人が利用できるようにするには、�
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-もちろん、`{language-shortuct}` を正しい [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) コードに置き換えることを忘れないでください (変数名にも書いてあります!)。
+もちろん、`{language-shortcut}` を正しい [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) コードに置き換えることを忘れないでください (変数名にも書いてあります!)。
 
 ここで、定数 `langs` を探します。この定数が `require` 文の上にある場合は、 `require` 文をその上に移動してください。`langs` のリストに、次のオブジェクトを追加してください。
 
