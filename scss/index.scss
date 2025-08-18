@@ -206,6 +206,7 @@ aside {
       align-items: center;
       justify-content: space-between;
       flex-flow: row wrap;
+      cursor: pointer;
 
       div {
         display: flex;
@@ -213,7 +214,6 @@ aside {
         justify-content: flex-start;
         flex-flow: row wrap;
         color: var(--primary-color);
-        cursor: pointer;
 
         svg {
           margin-right: 1rem;
@@ -515,7 +515,7 @@ html[dir="rtl"] {
 
 /* PRISM */
 // TODO add some style to blockquote elements
-// it's currently syled only with margins which
+// it's currently styled only with margins which
 // makes it as if it's mistakenly pushed away
 body {
   main code {
