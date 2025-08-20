@@ -1,9 +1,9 @@
 ---
 title: 'リクエスト設定'
 prev_title: 'Axios インスタンス'
-prev_link: '/docs/instance'
+prev_link: '/ja/docs/instance'
 next_title: 'レスポンス スキーマ'
-next_link: '/docs/res_schema'
+next_link: '/ja/docs/res_schema'
 ---
 
 
@@ -15,12 +15,17 @@ next_link: '/docs/res_schema'
   url: '/user',
 
   // `method` はリクエストを行う際に使用されるリクエストメソッドです。
-  method: 'get', // default
+  method: 'get', // デフォルト
 
   // `url` が絶対パス指定でない限り、`baseURL` が `url` の前に付加されます。
   // Axios のインスタンスに `baseURL` を設定すると、そのインスタンスのメソッドに相対パスで
   // URLを渡すことができ、便利です。
   baseURL: 'https://some-domain.com/api',
+
+  // `allowAbsoluteUrls` は、絶対 URL が設定された `baseUrl` を上書きするかどうかを決定します。
+  // true（デフォルト）の場合、`url` に絶対 URL が指定されると `baseUrl` を上書きします。
+  // false に設定すると、`url` が絶対 URL であっても、常に `baseUrl` が前に付加されます。
+  allowAbsoluteUrls: true,
 
   // `transformRequest` は、サーバーに送信される前にリクエスト データを変更できるようにします。
   // これはリクエスト メソッドの 'PUT'、'POST'、PATCH'、'DELETE' に対してのみ適用されます。
@@ -49,10 +54,19 @@ next_link: '/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer` は、 `params` のシリアライズを担当するオプションの関数です。
-  // (たとえば、https://www.npmjs.com/package/qs、http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` は、`params` のシリアル化をカスタマイズできるオプションの設定です。
+  paramsSerializer: {
+    //キーと値のペアを反復的に送信するカスタム エンコーダー関数。
+    encode?: (param: string): string => { /* ここでカスタム操作を実行し、変換された文字列を返します */ }, 
+    
+    // パラメーター全体のカスタム シリアライザー関数。ユーザーが 1.x より前の動作を模倣できるようにします。
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //params で配列インデックスをフォーマットするための構成。 
+    indexes: false // 利用可能な 3 つのオプション: 
+    // (1) indexes: null (括弧がなくなる), 
+    // (2) (default) indexes: false (空の括弧につながります),
+    // (3) indexes: true (インデックス付きの括弧につながります).    
   },
 
   // `data` はリクエスト ボディとして送信されるデータです。
@@ -136,13 +150,30 @@ next_link: '/docs/res_schema'
 
   // `maxRedirects` は Node.js でリダイレクトをたどる最大数を定義します。
   // 0 に設定すると、リダイレクトは実行されません。
-  maxRedirects: 5, // デフォルト
+  maxRedirects: 21, // デフォルト
+
+  // `beforeRedirect` は、リダイレクト前に呼び出される関数を定義します。
+  // これを使用して、リダイレクト時にリクエストオプションを調整したり、
+  // 最新のレスポンスヘッダーを確認したり、
+  // エラーを投げることでリクエストをキャンセルすることができます。
+  // maxRedirects が 0 に設定されている場合、`beforeRedirect` は使用されません。
+  beforeRedirect: (options, { headers }) => {
+   if (options.hostname === "example.com") {
+     options.auth = "user:password";
+   }
+  },
 
   // `socketPath` は、Node.js で使用する UNIX ソケットを定義します。
   // 例えば '/var/run/docker.sock' を使用して、Docker デーモンにリクエストを送信します。
   // 指定できるのは `socketPath` または `proxy` のいずれかのみです。
   // 両方を指定すると、`socketPath` が使用されます。
   socketPath: null, // デフォルト
+
+  // `transport` は、リクエストを送信する際に使用されるトランスポート方法を決定します。
+  // 値が定義されていれば、それが使用されます。
+  // そうでない場合、`maxRedirects` が 0 のときは、`protocol` に指定されたプロトコルに応じてデフォルトの `http` または `https` ライブラリが使用されます。
+  // それ以外の場合は、同じくプロトコルに応じてリダイレクト処理が可能な `httpFollow` または `httpsFollow` ライブラリが使用されます。
+  transport: undefined, // デフォルト
 
   // `httpAgent` と `httpsAgent` は、それぞれ Node.js で http と https のリクエストを
   // 実行するときに使用するカスタムエージェントを定義します。
@@ -169,6 +200,9 @@ next_link: '/docs/res_schema'
     }
   },
 
+  // `signal` は AbortController のインスタンスで、リクエストをキャンセルするために使用できます
+  signal: new AbortController().signal,
+
   // `cancelToken` には、リクエストをキャンセルするために使用するキャンセル トークンを指定します
   // (詳細は後述のキャンセルのセクションを参照してください)。
   cancelToken: new CancelToken(function (cancel) {
@@ -180,5 +214,46 @@ next_link: '/docs/res_schema'
   // - ノードのみ (XHR は解凍をオフにできません)
   decompress: true // デフォルト
 
+  // `insecureHTTPParser` ブール値。
+  // 無効な HTTP ヘッダーを受け入れる、安全でない HTTP パーサーを使用するかどうかを示します。
+  // これにより、HTTP 仕様に準拠していない実装との相互運用が可能になる場合があります。
+  // ただし、安全でないパーサーの使用は避けるべきです。
+  // オプションについては以下を参照:
+  // https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_request_url_options_callback
+  // こちらも参照:
+  // https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/#strict-http-header-parsing-none
+  insecureHTTPParser: undefined, // デフォルト
+
+  // 後方互換のための一時的オプション。新しいバージョンでは削除される可能性があります。
+  transitional: {
+    // サイレント JSON パースモード
+    // `true`  - JSON パースエラーを無視し、失敗した場合は response.data を null に設定（旧動作）
+    // `false` - JSON パースに失敗した場合は SyntaxError をスロー（注意: responseType を 'json' に設定する必要があります）
+    silentJSONParsing: true, // 現在の Axios バージョンのデフォルト値
+
+    // `responseType` が 'json' でなくても、レスポンス文字列を JSON として解析しようとする
+    forcedJSONParsing: true,
+
+    // リクエストタイムアウト時に一般的な ECONNABORTED ではなく ETIMEDOUT エラーをスローする
+    clarifyTimeoutError: false,
+  },
+
+  env: {
+    // ペイロードを自動的に FormData オブジェクトへシリアライズする際に使用する FormData クラス
+    FormData: window?.FormData || global?.FormData
+  },
+
+  formSerializer: {
+    visitor: (value, key, path, helpers) => {}; // フォーム値をシリアライズするためのカスタム visitor 関数
+    dots: boolean; // ブラケット形式ではなくドット形式を使用する
+    metaTokens: boolean; // パラメータキー内の {} のような特殊な末尾を保持する
+    indexes: boolean; // 配列インデックスの形式 null  - ブラケットなし, false - 空のブラケット, true  - インデックス付きブラケット
+  },
+
+  // http adapter 専用 (node.js)
+  maxRate: [
+    100 * 1024, // アップロード制限 100KB/s,
+    100 * 1024  // ダウンロード制限 100KB/s
+  ]
 }
 ```

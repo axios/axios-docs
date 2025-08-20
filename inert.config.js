@@ -31,6 +31,7 @@ const viConfig = require("./vi.lang.js");
 const faConfig = require("./fa.lang.js");
 const ruConfig = require("./ru.lang.js");
 const jaConfig = require("./ja.lang.js");
+const zhTWConfig = require("./zhTW.lang.js");
 
 const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
   sponsors: []
@@ -128,6 +129,12 @@ const langs = [
     name: "日本語",
     prefix: "/ja/",
     config: jaConfig
+  },
+  {
+    dir: "ltr",
+    name: "繁體中文",
+    prefix: "/zhTW/",
+    config: zhTWConfig
   }
 ];
 

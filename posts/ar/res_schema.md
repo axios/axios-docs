@@ -1,9 +1,9 @@
 ---
 title: 'Response Schema'
 prev_title: 'Request Config'
-prev_link: '/docs/req_config'
+prev_link: '/ar/docs/req_config'
 next_title: 'Config Defaults'
-next_link: '/docs/config_defaults'
+next_link: '/ar/docs/config_defaults'
 ---
 
 The response for a request contains the following information.

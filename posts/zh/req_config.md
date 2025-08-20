@@ -47,10 +47,20 @@ next_link: '/zh/docs/res_schema'
     ID: 12345
   },
 
-  // `paramsSerializer`是可选方法，主要用于序列化`params`
-  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // `paramsSerializer` 是一个可选配置，允许您自定义序列化 `params`。
+  paramsSerializer: {
+
+    //自定义编码器函数，以迭代方式发送键/值对。
+    encode?: (param: string): string => { /* 在这里进行自定义操作并返回转换后的字符串 */ }, 
+    
+    // 整个参数的自定义序列化器函数。允许用户模仿 1.x 之前的行为。
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //用于格式化参数中数组索引的配置。
+    indexes: false // 三个可用选项：
+    // (1) indexes: null (导致没有括号), 
+    // (2) (default) indexes: false (导致空括号),
+    // (3) indexes: true (引导空字符串).    
   },
 
   // `data` 是作为请求体被发送的数据
@@ -138,9 +148,10 @@ next_link: '/zh/docs/res_schema'
   // 若都指定，这使用 `socketPath` 。
   socketPath: null, // default
 
-  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
-  // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `httpAgent` 和 `httpsAgent` 分别定义了在 node.js 中执行 http 和 https 请求时使用的自定义代理。
+  // 这允许添加诸如 `keepAlive` 之类的选项，这些选项在 Node.js v19.0.0 之前默认未启用。
+  // 在 Node.js v19.0.0 之后，不再需要自定义代理来启用 `keepAlive`，
+  // 因为 `http.globalAgent` 已经默认启用了 `keepAlive`。
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 

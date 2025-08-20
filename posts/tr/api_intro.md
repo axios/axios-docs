@@ -2,9 +2,9 @@
 title: "Axios API'si"
 description: 'Axios API Referansı'
 prev_title: 'POST İstekleri'
-prev_link: '/docs/post_example'
+prev_link: '/tr/docs/post_example'
 next_title: 'Axios Objesi'
-next_link: '/docs/instance'
+next_link: '/tr/docs/instance'
 ---
 
 
@@ -55,6 +55,9 @@ Kolaylık için tüm HTTP istek metotlarının adlarına sahip metotlar mevcuttu
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### NOT
 Kolaylık sağlayan metotları kullanırken `url`, `method`, ve `data` özelliklerinin konfigürasyonda belirtilmesine gerek yoktur.

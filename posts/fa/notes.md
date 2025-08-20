@@ -2,7 +2,7 @@
 title: 'نکات'
 description: 'چند نکته ای دیگر برای جمع بندی'
 prev_title: 'بدنه های رمزگذاری آدرس (URL-Encoding)'
-prev_link: '/docs/urlencoded'
+prev_link: '/fa/docs/urlencoded'
 ---
 
 ## ورژن دهی
@@ -23,11 +23,11 @@ axios.get('/user?ID=12345');
 
 ## منابع
 
-* [تغییرات](https://github.com/axios/axios/blob/master/CHANGELOG.md)
-* [راهنمای ارتقاء](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
-* [زیست بوم](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
-* [راهنمای مشارکت برنامه نویسان](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
-* [قوانین رفتاری](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
+* [تغییرات](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [راهنمای ارتقاء](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [زیست بوم](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [راهنمای مشارکت برنامه نویسان](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [قوانین رفتاری](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
 ## Credits
 
@@ -35,4 +35,4 @@ axios بشدت از [سرویس $http](https://docs.angularjs.org/api/ng/service
 
 ## مجوز استفاده
 
-[MIT](https://github.com/axios/axios/blob/master/LICENSE)
+[MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

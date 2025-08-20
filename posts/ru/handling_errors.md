@@ -1,9 +1,9 @@
 ---
 title: 'Обработка ошибок'
 prev_title: 'Перехват запросов'
-prev_link: '/docs/interceptors'
+prev_link: '/ru/docs/interceptors'
 next_title: 'Отмена запроса'
-next_link: '/docs/cancellation'
+next_link: '/ru/docs/cancellation'
 ---
 
 ```js

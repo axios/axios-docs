@@ -8,7 +8,7 @@
     {{#if this}}
       {{#if displayName}}
         {{#if image}}
-        <a href="{{targetLink}}" style="padding: 10px; display: inline-block">
+        <a href="{{targetLink}}" style="padding: 10px; display: inline-block" target="_blank">
             {{#if image_dark}}
               <picture>
               <source width="{{readmeImageWidth}}px" height="{{readmeImageHeight}}px" media="(prefers-color-scheme: dark)" srcset="{{image_dark}}">
@@ -23,13 +23,13 @@
         {{/if}}
         {{#if description}}<p align="center" title="{{description}}">{{#short benefits.maxReadmeDescLength}}{{description}}{{/short}}</p>{{else}}{{#if showCaptions}}<p align="center">{{displayName}}</p>{{/if}}{{/if}}
         {{#if links}}<p align="center">
-          {{#each links}}<a href="{{this}}"><b>{{#short 40}}{{@key}}{{/short}}</b></a>{{#sep}} | {{/sep}}{{/each}}
+          {{#each links}}<a href="{{this}}" target="_blank"><b>{{#short 40}}{{@key}}{{/short}}</b></a>{{#sep}} | {{/sep}}{{/each}}
         </p>{{/if}}
       {{else}}
         - {{displayName}}
       {{/if}}
     {{else}}
-      <a href="https://opencollective.com/axios/contribute">💜 Become a sponsor</a>
+      <a href="https://opencollective.com/axios/contribute" target="_blank" >💜 Become a sponsor</a>
     {{/if}}
   {{/table}}
 {{/if}}

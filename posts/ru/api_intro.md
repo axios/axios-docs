@@ -2,9 +2,9 @@
 title: 'Axios API'
 description: 'Справочник по Axios API'
 prev_title: 'POST запросы'
-prev_link: '/docs/post_example'
+prev_link: '/ru/docs/post_example'
 next_title: 'Экземпляр Axios'
-next_link: '/docs/instance'
+next_link: '/ru/docs/instance'
 ---
 
 Запросы могут быть сделаны путем передачи соответствующей конфигурации в `axios`
@@ -54,6 +54,9 @@ axios('/user/12345');
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### Примечание
 При использовании сокращений `url`, `method` и `data` свойства не нужно указывать в config.

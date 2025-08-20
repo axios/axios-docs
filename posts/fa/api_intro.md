@@ -2,9 +2,9 @@
 title: 'APIهای پروژه Axios'
 description: 'مرجع APIهای پروژه Axios'
 prev_title: 'درخواست های ارسال'
-prev_link: '/docs/post_example'
+prev_link: '/fa/docs/post_example'
 next_title: 'نمونه سازی از Axios'
-next_link: '/docs/instance'
+next_link: '/fa/docs/instance'
 ---
 
 با ایجاد پیکربندی مناسب و ارسال به `axios` می توان انواع درخواست ها را انجام داد. 
@@ -54,6 +54,9 @@ axios('/user/12345');
 ##### axios.post(url[, data[, config]])
 ##### axios.put(url[, data[, config]])
 ##### axios.patch(url[, data[, config]])
+##### axios.postForm(url[, data[, config]])
+##### axios.putForm(url[, data[, config]])
+##### axios.patchForm(url[, data[, config]])
 
 ###### نکته
 هنگام استفاده از توابع گفته شده، نیازی به نوشتن خود کلمات "url" ، "method" و "data"  در پیکربندی نیست. 

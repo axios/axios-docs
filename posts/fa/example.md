@@ -2,9 +2,9 @@
 title: 'یک مثال کوچک'
 description: 'یک مثال کوچک در استفاده از axios'
 prev_title: 'مقدمه'
-prev_link: '/docs/intro'
+prev_link: '/fa/docs/intro'
 next_title: 'درخواست های ارسال از نوع POST'
-next_link: '/docs/post_example'
+next_link: '/fa/docs/post_example'
 ---
 
 ## نکته: استفاده از کد معمول

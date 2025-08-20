@@ -1,9 +1,9 @@
 ---
 title: 'تنظیمات پیش فرض'
 prev_title: 'الگوی پاسخ ها'
-prev_link: '/docs/res_schema'
+prev_link: '/fa/docs/res_schema'
 next_title: 'رهگیرها'
-next_link: '/docs/interceptors'
+next_link: '/fa/docs/interceptors'
 ---
 
 ## تنظیمات پیش فرض
@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### پیکربندی ترتیب اولویت ها 
 
-پیکربندی با ترتیب اولویت ها ادغام می شود. این ترتیب ها از این کتابخانه آورده شده اند: [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), در مثال زیر سپس ویژگی "defaults" از نمونه، و در آخر پارامتر ورودی "config" مقدار دهی شده اند. پارامتر دومی اولویت بیشتری دارد.
+پیکربندی با ترتیب اولویت ها ادغام می شود. این ترتیب ها از این کتابخانه آورده شده اند: [lib/defaults/index.js](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js), در مثال زیر سپس ویژگی "defaults" از نمونه، و در آخر پارامتر ورودی "config" مقدار دهی شده اند. پارامتر دومی اولویت بیشتری دارد.
 
 ```js
 // با استفاده از تنظیمات پیش فرض پیکربندی ارائه شده توسط کتابخانه ، یک نمونه ایجاد کنید 

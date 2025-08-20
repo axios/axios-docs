@@ -13,15 +13,17 @@ module.exports = {
   t: {
     "Get Started": "Começando",
     "View on GitHub": "Veja no GitHub",
-    Languages: "Idiomas",
+    "Languages": "Idiomas",
     "Open Source": "Código aberto",
-    Contribute: "Contribua",
+    "Contribute": "Contribua",
     "Source on GitHub": "Código-fonte no GitHub",
-    "Fork on GitHub": "Faça uma copia no GitHub",
-    "Fork the Website": "Faça uma copia do Website",
+    "Fork on GitHub": "Faça uma cópia no GitHub",
+    "Fork the Website": "Faça uma cópia do Website",
     "Create an Issue": "Crie uma Issue",
-    Next: "Próxima",
-    Previous: "Anterior",
+    "Next": "Próxima",
+    "Previous": "Anterior",
+    "Sponsors": "Apoiadores",
+    "Become a sponsor": "Seja um apoiador",
   },
   sidebar: [
     {
@@ -70,7 +72,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/config_defaults",
-      text: "Configurações Padrões",
+      text: "Configurações Padrão",
     },
     {
       type: "link",
@@ -80,7 +82,7 @@ module.exports = {
     {
       type: "link",
       href: "/docs/handling_errors",
-      text: "Manipulando Erros",
+      text: "Lidando com Erros",
     },
     {
       type: "link",
@@ -90,7 +92,12 @@ module.exports = {
     {
       type: "link",
       href: "/docs/urlencoded",
-      text: "Corpo de codificação de URL",
+      text: "🆕 Codificação de URL",
+    },
+    {
+      type: "link",
+      href: "/docs/multipart",
+      text: "🆕 Multipart",
     },
     {
       type: "heading",
@@ -107,17 +114,17 @@ module.exports = {
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md",
+      href: "https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md",
       text: "Código de conduta",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/COLLABORATOR_GUIDE.md",
+      href: "https://github.com/axios/axios/blob/v1.x/COLLABORATOR_GUIDE.md",
       text: "Guia dos Contribuidores",
     },
     {
       type: "link",
-      href: "https://github.com/axios/axios/blob/master/CONTRIBUTING.md",
+      href: "https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md",
       text: "Contribuindo para o Axios",
     },
     {

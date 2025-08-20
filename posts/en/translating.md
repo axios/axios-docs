@@ -26,7 +26,7 @@ Once you've finished configuring your language and translating the phrases and l
 const {language-shortcut}Config = require('./{language-shortcut}.config.js');
 ```
 
-Of course, remember to replace `{language-shortuct}` with the correct [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (in the variable name, too!).
+Of course, remember to replace `{language-shortcut}` with the correct [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (in the variable name, too!).
 
 Now, look for the `langs` constant. If this constant is located above your `require` statement, move your `require` statement above it. To the `langs` list, add the following object:
 
@@ -44,4 +44,4 @@ const langs = [
 
 Now, you can begin translating the files. Copy the folder `posts/en` into a new folder `posts/{language-shortcut}` and translate all the files (don't translate the filenames, of course).
 
-If you hit any problems, feel free to [create and issue](https://github.com/axios/axios-docs/issues/new/choose).
+If you hit any problems, feel free to [create an issue](https://github.com/axios/axios-docs/issues/new/choose).

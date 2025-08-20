@@ -119,6 +119,23 @@ const PERIOD = 30;
 
 const days = (from, to = Date.now()) => (new Date(to) - new Date(from)) / DAY / 1000;
 
+const months = (startDate, endDate = new Date()) => {
+  if (startDate > endDate) {
+    [startDate, endDate] = [endDate, startDate];
+  }
+
+  const startYear = startDate.getFullYear();
+  const startMonth = startDate.getMonth();
+
+  const endYear = endDate.getFullYear();
+  const endMonth = endDate.getMonth();
+
+  let months = (endYear - startYear) * 12;
+  months += endMonth - startMonth;
+
+  return months;
+}
+
 const readJSON = async (fileName) => JSON.parse(String(await fs.readFile(fileName)));
 const writeJSON = async (fileName, data) => await fs.writeFile(fileName, JSON.stringify(data, null, 2));
 
@@ -126,6 +143,7 @@ const ensurePath = async (path) => {
   try {
     await fs.mkdir(path, { recursive: true });
   } catch (e){
+    throw new e(`Failed to create Directory: ${err.message}`);
 
   }
 }
@@ -205,7 +223,9 @@ const processAvatars = async (sponsorsData, avatarsPath = './assets/sponsors/ope
 
       const ext = mime.extension(headers.getContentType()) || '';
 
-      const localAvatarPath = path.join(avatarsPath, `${login || displayName}${ext ? '.' + ext : ''}`);
+      const sha = crypto.createHash('sha1')
+
+      const localAvatarPath = path.join(avatarsPath, `${sha.update(login || displayName).digest('hex')}${ext ? '.' + ext : ''}`);
 
       const sharpImage = await sharp(data)
         .trim({
@@ -356,6 +376,7 @@ const renderMarkdownSponsors = async (sponsors) => {
   }
 
   const filterSponsors = (fn) => Object.values(sponsors)
+    .filter(({hide}) => !hide)
     .filter(fn)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
@@ -437,13 +458,13 @@ const processGithub = async (sponsor, repo = 'axios-sponsor', file = 'sponsor.js
 
 
 const renderTooltip = async (sponsor) => {
-  let {icon, isActive, displayName, tier, tierId, lastTransactionAmount, price, description, website, benefits, video, autoUTMLinks, links} = sponsor;
+  let {icon, isActive, displayName, tier, tierId, lastTransactionAmount, tierPrice, description, website, benefits, video, autoUTMLinks, links} = sponsor;
 
   const iconSrc = icon && (await downloadImage(icon));
 
   const iconHTML = iconSrc ? `<img class="sponsor-icon" src="/${iconSrc}" alt="${html.escape(displayName)}"/>` : '';
 
-  const renderedTier = isActive && (tierId === 'backer' || sponsor.tierPrice < sponsor.originalTierPrice) ? `${price || lastTransactionAmount || 0}$ a month` : tier;
+  const renderedTier = isActive && (tierId === 'backer' || sponsor.tierPrice < sponsor.originalTierPrice) ? `${tierPrice || lastTransactionAmount || 0}$ a month` : tier;
 
   let tooltip = `<h2 class="caption">${iconHTML}<span>${html.escape(displayName)} (${sponsor.totalAmountDonated || 0}$${' <sup class="tier">' + renderedTier + '</sup>'})</span></h2> `;
 
@@ -477,7 +498,7 @@ const renderTooltip = async (sponsor) => {
         href: entry
       } : entry || {};
 
-      return `<a href="${makeUTMURL(href, !autoUTMLinks)}">${html.escape(text)}</a>`;
+      return `<a href="${makeUTMURL(href, !autoUTMLinks)}" target="_blank">${html.escape(text)}</a>`;
     }).join('');
 
     tooltip += `<div class="links">${rendered}</div>`
@@ -488,7 +509,7 @@ const renderTooltip = async (sponsor) => {
 
     if(!link) return;
 
-    return `<a href="${makeUTMURL(link, !autoUTMLinks)}"><img class="icon" src="/assets/icons/social/${icon}" alt="sponsor icon"/></a>`;
+    return `<a href="${makeUTMURL(link, !autoUTMLinks)}" target="_blank"><img class="icon" src="/assets/icons/social/${icon}" alt="sponsor icon"/></a>`;
   }).filter(Boolean).join('');
 
   tooltip += `<div class="social">${icons}</div>`
@@ -517,14 +538,15 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     tiers,
     scoreTierPriceFactor = 0.5,
     scoreTotalAmountFactor = 0.2,
-    creditDays = 0
+    creditDays = 0,
+    hide = {}
   } = await readJSON(sponsorsConfig) || {};
 
   const mergedSponsors = {};
 
   // merge Open Collective sponsors
   collectiveSponsors.forEach(sponsor => {
-    if (sponsor.role !== 'BACKER' && sponsor.role) {
+    if ((sponsor.role !== 'BACKER' && sponsor.role) || hide[sponsor.login?.toLowerCase()] || hide[sponsor.name?.toLowerCase()]) {
       return;
     }
 
@@ -570,8 +592,21 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     const sponsorTiers = merge({}, tiers, sponsor.tiers);
 
+    if (sponsor.totalAmountDonated == null && sponsor.isActive) {
+      const passedMonths = sponsor.createdAt ? months(new Date(sponsor.createdAt)) : null;
+      const tierPrice = sponsor.tier && sponsorTiers[sponsor.tier]?.price;
+
+      sponsor.totalAmountDonated = passedMonths != null && tierPrice ? passedMonths * tierPrice : 0;
+    }
+
     if (lastTransactionAmount) {
       sponsor.tier = findTier(lastTransactionAmount, sponsorTiers);
+
+      let partiallyPaid = findTier(lastTransactionAmount * 1.1, sponsorTiers);
+
+      if (sponsor.tier !== partiallyPaid) {
+        sponsor.tier = partiallyPaid;
+      }
     }
 
     const tierId = sponsor.tier ? sponsor.tier?.toLowerCase() : null;
@@ -581,7 +616,17 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       console.log(`Unknown tier [${sponsor.tier}]`);
     }
 
-    const {price, benefits, period = PERIOD} = tierData || {};
+    let {price, benefits, period = PERIOD, credit = 3} = tierData || {};
+
+    let shortageFactor = price && lastTransactionAmount < price ? lastTransactionAmount / price * 0.9 : 1;
+
+    period = period * shortageFactor;
+
+    sponsor.isNew = !!(sponsor.createdAt && days(sponsor.createdAt) < 7);
+
+    sponsor.credit ??= credit || 0;
+
+    period += sponsor.credit;
 
     if (sponsor.isActive == null) {
       sponsor.isActive = tierData && days(lastTransactionAt) <= period && sponsor.lastTransactionAmount >= price;
@@ -593,8 +638,8 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
 
     const isCustomTier = !!(tierData && price !== originalTierPrice);
     sponsor.tierId = tierId;
-    sponsor.tier = sponsor.tier + (lastTransactionAmount > originalTierPrice ? '+' : '')
-    sponsor.tierPrice = price;
+    sponsor.tier = sponsor.tier ? sponsor.tier + (lastTransactionAmount > originalTierPrice ? '+' : '') : null;
+    sponsor.tierPrice = price || 0;
     sponsor.originalTierPrice = originalTierPrice;
     sponsor.isCustomTier = isCustomTier;
     sponsor.totalAmountDonated = sponsor.totalAmountDonated || lastTransactionAmount || 0;
@@ -615,9 +660,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       }
     }
 
-    if( Date.now() - new Date(sponsor.boostEnd) > 0) {
-      sponsor.boost = sponsor.boost || 1;
-    }
+    sponsor.boost = new Date(sponsor.boostEnd) - Date.now() > 0 ? 1 : 0;
 
     sponsor.isActive = sponsor.isActive === true;
 
@@ -677,10 +720,19 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
       opacity: timeLeft == null || timeLeft > 0 ? 1 :(sponsor.timeLeft / (creditDays * DAY))
     }
 
+    const score = Math.round(
+      sponsor.totalAmountDonated * scoreTotalAmountFactor +
+      averageMonthlyContribution +
+      tierPrice * scoreTierPriceFactor
+    );
+
     console.log(
       `Add sponsor badge [${sponsor.displayName}]
-        - tier: ${tier ? tier + '(' + tierPrice + '$)' : '< none >'}
+        - score : ${score}
+        - tier: ${tier || '< null >'}
+        - tier price: ${tierPrice}
         - total amount donated: ${sponsor.totalAmountDonated}$
+        - averageMonthlyContribution: ${averageMonthlyContribution}
         - last donation date: ${sponsor.lastTransactionAt}
         - created: ${sponsor.createdAt}
         - target link: ${sponsor.targetLink}
@@ -693,7 +745,7 @@ const processSponsors = async (collectiveSponsors, sponsorsConfig = './data/spon
     return {
       ...sponsor,
       averageMonthlyContribution,
-      score: Math.round(sponsor.totalAmountDonated * scoreTotalAmountFactor + averageMonthlyContribution + tierPrice * scoreTierPriceFactor)
+      score
     };
   })
     .sort((a, b) => b.score - a.score)

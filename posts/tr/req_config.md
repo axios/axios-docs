@@ -1,9 +1,9 @@
 ---
 title: 'İstek Konfigürasyonu'
 prev_title: 'Axios Objesi'
-prev_link: '/docs/instance'
+prev_link: '/tr/docs/instance'
 next_title: 'Yanıt Şeması'
-next_link: '/docs/res_schema'
+next_link: '/tr/docs/res_schema'
 ---
 
 
@@ -53,10 +53,20 @@ Bunlar, istek yapmak için mevcut konfigürasyon seçenekleridir. Yalnızca `url
     ID: 12345
   },
 
-  // `paramsSerializer`, `params`ın dizileştirilmesinden (serialize) sorumlu isteğe bağlı bir işlevdir
-  // (örneğin: https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // 'paramsSerializer', 'params' serileştirmesini özelleştirmenize olanak tanıyan isteğe bağlı bir yapılandırmadır.
+  paramsSerializer: {
+
+    //Anahtar/değer çiftlerini yinelemeli bir şekilde gönderen özel kodlayıcı işlevi.
+    encode?: (param: string): string => { /* Burada özel işlemler yapın ve dönüştürülmüş dizeyi döndürün */ }, 
+    
+    // Parametrenin tamamı için özel serileştirici işlevi. Kullanıcının 1.x öncesi davranışı taklit etmesine olanak tanır.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
+    
+    //Paramlardaki dizi dizinlerini biçimlendirmek için yapılandırma.
+    indexes: false // Mevcut üç seçenek:
+    // (1) indexes: null (parantezlerin olmamasına yol açar), 
+    // (2) (default) indexes: false (boş parantezlere yol açar),
+    // (3) indexes: true (indeksli parantezlere yol açar).    
   },
 
   // `data` istek gövdesi olarak gönderilecek veridir

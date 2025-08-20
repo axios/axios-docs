@@ -1,9 +1,9 @@
 ---
 title: 'Yanıt Şeması'
 prev_title: 'İstek Konfigürasyonu'
-prev_link: '/docs/req_config'
+prev_link: '/tr/docs/req_config'
 next_title: 'Konfigürasyon Varsayılanları'
-next_link: '/docs/config_defaults'
+next_link: '/tr/docs/config_defaults'
 ---
 
 Bir isteğin yanıtı aşağıdaki bilgileri içerir.

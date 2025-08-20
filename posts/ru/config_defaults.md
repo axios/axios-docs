@@ -1,9 +1,9 @@
 ---
 title: 'Config Defaults'
 prev_title: 'Схема ответа'
-prev_link: '/docs/res_schema'
+prev_link: '/ru/docs/res_schema'
 next_title: 'Перехват запросов'
-next_link: '/docs/interceptors'
+next_link: '/ru/docs/interceptors'
 ---
 
 ## Config Defaults
@@ -32,7 +32,7 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Порядок приоритета конфигурации
 
-Конфигурация будет объединена в порядке приоритета. Порядок: значения по умолчанию для библиотеки, найденные в [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), затем свойства `defaults` для экземпляра и, наконец, аргумент `config` для запроса. Последнее будет иметь приоритет над первым. Вот пример.
+Конфигурация будет объединена в порядке приоритета. Порядок: значения по умолчанию для библиотеки, найденные в [lib/defaults/index.js](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js), затем свойства `defaults` для экземпляра и, наконец, аргумент `config` для запроса. Последнее будет иметь приоритет над первым. Вот пример.
 
 ```js
 // Создайте экземпляр, используя настройки по умолчанию, предоставленные библиотекой.

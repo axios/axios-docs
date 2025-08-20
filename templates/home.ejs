@@ -60,7 +60,7 @@
             <a href="<%= locale.prefix %>docs/intro" class="button primary">
               <%= locale.t['Get Started'] || 'Get Started' %>
             </a>
-            <a href="https://github.com/axios/axios" class="button">
+            <a href="https://github.com/axios/axios" class="button" target="_blank">
               <%= locale.t['View on GitHub'] || 'View on GitHub' %>
             </a>
           </div>
@@ -74,7 +74,7 @@
         <div>
         <a class="link-sponsors" href="/docs/sponsor"><h2><%= locale.t['Sponsors'] || 'Sponsors' %></h2></a>
         <span class="btn-container">
-            <a class="btn tip" href="https://opencollective.com/axios/contribute" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
+            <a class="btn tip" href="https://opencollective.com/axios/contribute" target="_blank" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
               <svg
                       width="24"
                       height="24"
@@ -107,7 +107,8 @@
                       <a href="<%= sponsor.targetLink || '#' %>" target="_blank" >
                         <% if(sponsor.image){ %>
                           <div>
-                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } %>
+                            <% if(sponsor.benefits.crown) { %><div class="chevron"><span class="sponsor_chevron_crown"></span></div><% } else if (sponsor.isNew) { %>
+                            <div class="chevron"><span class="sponsor_chevron_new"></span></div><% } %>
                             <img src="<%= sponsor.image %>" alt="<%= sponsor.alt %>"/>
                           </div><% } %>
                         <% if(sponsor.showCaption !== false){ %><span class="caption"><%= sponsor.displayName %></span><% } %>
@@ -117,7 +118,7 @@
                 <% }) %>
               <% } else { %>
                 <li class="splide__slide sponsor-card become_sponsor" <% if(locale.p['sponsors']){%>data-tippy-content="<%= locale.p['sponsors'] %>"<% } %>>
-                  <div><a class="button" href="https://opencollective.com/axios/contribute"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
+                  <div><a class="button" href="https://opencollective.com/axios/contribute" target="_blank"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a></div>
                 </li>
               <% } %>
             </ul>
@@ -134,24 +135,24 @@
         </tr>
         <tr>
           <td><%- config.custom.langs[0] ? `<a href="${config.custom.langs[0].prefix}">${config.custom.langs[0].config.display}</a>` : undefined %></td>
-          <td><a href="https://github.com/axios/axios"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a></td>
-          <td><a href="https://github.com/axios/axios"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a></td>
+          <td><a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a></td>
+          <td><a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a></td>
         </tr>
         <tr>
           <td><%- config.custom.langs[1] ? `<a href="${config.custom.langs[1].prefix}">${config.custom.langs[1].config.display}</a>` : undefined%></td>
-          <td><a href="https://github.com/axios/axios/issues"><%= locale.t['Issues'] || 'Issues' %></a></td>
+          <td><a href="https://github.com/axios/axios/issues" target="_blank"><%= locale.t['Issues'] || 'Issues' %></a></td>
           <td>
-            <a href="https://github.com/axios/axios-docs"><%= locale.t['Fork the Website'] || 'Fork the Website' %></a>
+            <a href="https://github.com/axios/axios-docs" target="_blank"><%= locale.t['Fork the Website'] || 'Fork the Website' %></a>
           </td>
         </tr>
         <tr>
           <td><%- config.custom.langs[2] ? `<a href="${config.custom.langs[2].prefix}">${config.custom.langs[2].config.display}</a>` : undefined%></td>
           <td>
-            <a href="https://github.com/axios/axios/pulls"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
+            <a href="https://github.com/axios/axios/pulls" target="_blank"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
           </td>
           <td>
-            <a href="https://github.com/axios/axios/issues/new/choose"
-              ><%= locale.t['Create an Issue'] || 'Create an Issue' %></a
+            <a href="https://github.com/axios/axios/issues/new/choose" target="_blank"
+              ><%= locale.t['Create an Issue'] || 'Create an Issue' %></a
             >
           </td>
         </tr>
@@ -159,13 +160,13 @@
           <td><%- config.custom.langs[3] ? `<a href="${config.custom.langs[3].prefix}">${config.custom.langs[3].config.display}</a>` : undefined%></td>
           <td>
             <a
-              href="https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md"
-              ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
+              href="https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md" target="_blank"
+              ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
             >
           </td>
           <td>
-            <a href="https://opencollective.com/axios/contribute"
-            ><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a
+            <a href="https://opencollective.com/axios/contribute" target="_blank"
+            ><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a
             >
           </td>
         </tr>
@@ -184,8 +185,8 @@
         <span class="copyright-notice">
           <%= locale.t['Website Copy Right Footer'] || 'This Website: Copyright © 2020-present John Jakob "Jake" Sarjeant. Used by permission.' %>
         </span>
-        <a href="https://github.com/axios/axios-docs">
-          <%= locale.t['View On Github'] || 'View this site on GitHub' %>
+        <a href="https://github.com/axios/axios-docs" target="_blank">
+          <%= locale.t['View On Github'] || 'View this site on GitHub' %>
         </a>
       </div>
       <div class="row">
@@ -194,7 +195,7 @@
         </span>
         <span>
           <%= locale.t['License Label Footer'] || 'Licensed under the' %>
-            <b><a href="https://opensource.org/licenses/MIT">MIT License</a></b>
+            <b><a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></b>
         </span>
       </div>
     </footer>
@@ -235,7 +236,7 @@
       document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           splide.Components.AutoScroll.play();
-        }, 3000);
+        }, 5000);
       });
 
       splide.mount(window.splide.Extensions);

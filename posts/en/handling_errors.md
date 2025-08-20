@@ -6,6 +6,13 @@ next_title: 'Cancellation'
 next_link: '/docs/cancellation'
 ---
 
+The general structure of axios errors is as follows:  
+- **message** - A quick summary of the error message and the status it failed with.  
+- **name** - This defines where the error originated from. For axios, it will always be an 'AxiosError'.  
+- **stack** - Provides the stack trace of the error.  
+- **config** - An axios config object with specific instance configurations defined by the user from when the request was made.  
+- **code** - Represents an axios identified error. The table below lists out specific definitions for internal axios error.  
+- **status** - HTTP response status code. See [here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) for common HTTP response status code meanings.    
 ```js
 axios.get('/user/12345')
   .catch(function (error) {

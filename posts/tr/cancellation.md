@@ -1,9 +1,9 @@
 ---
 title: 'İptal Etme'
 prev_title: 'Hataları Ele Alma'
-prev_link: '/docs/handling_errors'
+prev_link: '/tr/docs/handling_errors'
 next_title: 'URL-Encoding Gövdeleri'
-next_link: '/docs/urlencoded'
+next_link: '/tr/docs/urlencoded'
 ---
 
 Bir isteği *cancel token* kullanarak iptal edebilirsiniz.

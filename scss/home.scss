@@ -14,14 +14,14 @@ body {
 header {
   position: fixed;
   padding-top: 2rem;
-  left: calc(var(--margin) / 2);
-  width: calc(100vw - var(--margin));
+  width: calc(100vw);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #ffffffd0;
   backdrop-filter: blur(2px);
   z-index: 1;
+  padding: 0px calc(var(--margin) / 2);
 
   a.button {
     margin-right: 0 !important;
@@ -72,6 +72,7 @@ section#hero {
   align-items: center;
   justify-content: space-between;
   flex-flow: row nowrap;
+  margin-top: 10rem;
 
   div.content {
     width: 100%;
@@ -151,6 +152,9 @@ footer {
     td,
     th {
       text-align: left;
+    }
+    a:hover {
+      color: #1a88ff;
     }
   }
 
