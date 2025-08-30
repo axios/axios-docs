@@ -14,6 +14,10 @@ module.exports = {
     subhead: `Axios は、ブラウザと Node.js のための、シンプルなプロミスベースの HTTP クライアントです。
               Axios は、非常に拡張性の高いインターフェイスを持つ小さなパッケージで、
               シンプルに使えるライブラリを提供します。`,
+    sponsors: `<p>私たちのプロジェクトへのご支援をご検討いただきありがとうございます。</p>
+               <p>選択したティアにこの特典が含まれている場合、24時間以内に自動的にこのリストに追加されます。</p>
+               <div class="social"><a class="link" href="/ja/docs/sponsor">続きを読む...</a></div>
+              `
   },
   // `t` stands fot `translation`. This will contain translations of single words or phrases
   t: {
@@ -34,7 +38,10 @@ module.exports = {
     "Website Copy Right Footer": 'Web サイトの著作権フッター',
     "View On Github": 'GitHub で表示',
     "Axios Project Copy Right Footer": 'Axios プロジェクトの著作権フッター',
-    "License Label Footer": 'ライセンスラベル フッター'
+    "License Label Footer": 'ライセンスラベル フッター',
+    "Sponsors": "スポンサー",
+    "Become a sponsor": "スポンサーになる",
+    "Gold Sponsors": "ゴールドスポンサー"
   },
   sidebar: [
     {
