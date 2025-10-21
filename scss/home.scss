@@ -239,49 +239,32 @@ html[dir="rtl"] {
 }
 
 .splide {
-  height: 9rem;
-  padding: 0 45px;
+  height: 8rem;
+  padding: 0 55px;
   margin: 0 calc(-1 * var(--margin) / 2);
 }
 
 li.sponsor-card {
-  width: calc(12%);
+  width: max(10%, 170px);
 
   &[data-tier=silver] {
-    width: calc(17%);
+    width: max(15%, 200px);
   }
 
   &[data-tier=gold] {
-    width: calc(22%);
+    width: max(20%, 230px);
   }
 
   &[data-tier=platinum] {
-    width: calc(30%);
+    width: max(25%, 260px);
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 320px) {
+
   li.sponsor-card {
-    width: calc(20%);
-
-    &[data-tier=silver] {
-      width: calc(25%);
-    }
-
-    &[data-tier=gold] {
-      width: calc(30%);
-    }
-
-    &[data-tier=platinum] {
-      width: calc(35%);
+    a:has(img) .caption {
+      display: none;
     }
   }
-}
-
-@media (max-width: 1000px) {
-  li.sponsor-card img + .caption {
-    display: none;
-  }
-
-
 }
