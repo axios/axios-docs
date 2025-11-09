@@ -27,7 +27,7 @@ module.exports = {
     "Contribute": 'योगदान करें',
     "Source on GitHub": 'GitHub पर स्रोत',
     "Issues": 'समस्याऐं',
-    "Pull Requests": 'undefined',
+    "Pull Requests": 'Pull Requests',
     "Code of Conduct": 'Code of Conduct',
     "Fork on GitHub": "GitHub में फोर्क करें",
     "Fork the Website": "Website फोर्क करें",
