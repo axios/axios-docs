@@ -1,10 +1,10 @@
 ---
-शीर्षक: 'एक्सियोस एपीआई'
-विवरण: 'एक्सियोस एपीआई संदर्भ'
-पिछला_शीर्षक: 'पोस्ट अनुरोध'
-पिछला_लिंक: '/docs/post_example'
-अगला_शीर्षक: 'एक्सियोस इंस्टेंस'
-अगला_लिंक: '/docs/instance'
+title: 'Axios API'
+description: 'Axios API संदर्भ'
+prev_title: 'पोस्ट अनुरोध'
+prev_link: '/docs/post_example'
+next_title: 'एक्सियोस इंस्टेंस'
+next_link: '/docs/instance'
 ---
 
 संबंधित कॉन्फ़िगरेशन को `axios` में पास करके अनुरोध किए जा सकते हैं।
