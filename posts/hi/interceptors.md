@@ -1,5 +1,5 @@
 ---
-शीर्षक: 'इंटरसेप्टर'
+title: 'इंटरसेप्टर'
 prev_title: 'कॉन्फ़िगरेशन डिफ़ॉल्ट'
 prev_link: '/docs/config_defaults'
 next_title: 'त्रुटियों का प्रबंधन'

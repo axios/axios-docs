@@ -1,6 +1,6 @@
 ---
-title: 'Axios API'
-description: 'Axios API संदर्भ'
+title: 'एक्सियोस एपीआई'
+description: 'एक्सियोस एपीआई संदर्भ'
 prev_title: 'पोस्ट अनुरोध'
 prev_link: '/docs/post_example'
 next_title: 'एक्सियोस इंस्टेंस'

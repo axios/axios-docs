@@ -1,10 +1,10 @@
 ---
-शीर्षक: 'POST अनुरोध'
-विवरण: 'Axios के साथ POST अनुरोध कैसे करें'
-पिछला_शीर्षक: 'न्यूनतम उदाहरण'
-पिछला_लिंक: '/docs/example'
-अगला_शीर्षक: 'Axios API'
-अगला_लिंक: '/docs/api_intro'
+title: 'POST अनुरोध'
+description: 'Axios के साथ POST अनुरोध कैसे करें'
+prev_title: 'न्यूनतम उदाहरण'
+prev_link: '/docs/example'
+next_link: '/docs/api_intro'
+next_title: 'Axios API'
 ---
 
 ## `POST` अनुरोध निष्पादित करना

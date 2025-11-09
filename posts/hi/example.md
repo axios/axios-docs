@@ -1,6 +1,6 @@
 ---
-शीर्षक: 'न्यूनतम उदाहरण'
-विवरण: 'axios के उपयोग का एक छोटा सा उदाहरण'
+title: 'न्यूनतम उदाहरण'
+description: 'axios के उपयोग का एक छोटा सा उदाहरण'
 prev_title: 'परिचय'
 prev_link: '/docs/intro'
 next_title: 'POST अनुरोध'
