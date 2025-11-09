@@ -1,5 +1,5 @@
 ---
-शीर्षक: 'रद्दीकरण'
+title: 'रद्दीकरण'
 prev_title: 'त्रुटियों का प्रबंधन'
 prev_link: '/docs/handling_errors'
 next_title: 'URL-एन्कोडिंग निकाय'
