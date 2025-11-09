@@ -1,55 +1,55 @@
 ---
-title: 'Interceptors'
-prev_title: 'Config Defaults'
+शीर्षक: 'इंटरसेप्टर'
+prev_title: 'कॉन्फ़िगरेशन डिफ़ॉल्ट'
 prev_link: '/docs/config_defaults'
-next_title: 'Handling Errors'
+next_title: 'त्रुटियों का प्रबंधन'
 next_link: '/docs/handling_errors'
 ---
 
-You can intercept requests or responses **before** they are handled by `then` or `catch`.
+आप अनुरोधों या प्रतिक्रियाओं को `then` या `catch` द्वारा प्रबंधित किए जाने से **पहले** इंटरसेप्ट कर सकते हैं।
 
-The `use` function adds a handler to the list of handlers to be run when the Promise is fulfilled or rejected. The handler is defined by the fulfilled and rejected functions.
+`use` फ़ंक्शन, प्रॉमिस के पूरा होने या अस्वीकार होने पर चलाए जाने वाले हैंडलर्स की सूची में एक हैंडलर जोड़ता है। हैंडलर को पूरे और अस्वीकृत फ़ंक्शन द्वारा परिभाषित किया जाता है।
 
-There is an optional `options` object that can be passed in as the third parameter. `synchronous` if the synchronous option is true. The handler is defined as asynchronous if the synchronous option is false. If the synchronous option is not provided, the handler is defined as asynchronous. `runWhen` will control when the provided interceptor will run. Provide a function that will return true or false on whether it should run, defaults to always true.
+एक वैकल्पिक `options` ऑब्जेक्ट है जिसे तीसरे पैरामीटर के रूप में पास किया जा सकता है। यदि सिंक्रोनस विकल्प सत्य है, तो `synchronous`। यदि सिंक्रोनस विकल्प असत्य है, तो हैंडलर को एसिंक्रोनस के रूप में परिभाषित किया जाता है। यदि सिंक्रोनस विकल्प प्रदान नहीं किया गया है, तो हैंडलर को एसिंक्रोनस के रूप में परिभाषित किया जाता है। `runWhen` यह नियंत्रित करेगा कि प्रदान किया गया इंटरसेप्टर कब चलेगा। एक ऐसा फ़ंक्शन प्रदान करें जो यह तय करेगा कि उसे चलना चाहिए या नहीं, यह true या false लौटाएगा, डिफ़ॉल्ट रूप से हमेशा true होता है।
 
 ```js
-// Add a request interceptor
+// एक अनुरोध इंटरसेप्टर जोड़ें
 axios.interceptors.request.use(function (config) {
-    // Do something before request is sent
-    return config;
-  }, function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  },
-  { synchronous: true, runWhen: () => /* This function returns true */}
+// अनुरोध भेजे जाने से पहले कुछ करें
+return config;
+}, function (error) {
+// अनुरोध त्रुटि के साथ कुछ करें
+return Promise.reject(error);
+},
+{ synchronous: true, runWhen: () => /* यह फ़ंक्शन true लौटाता है */}
 );
 
-// Add a response interceptor
+/ एक प्रतिक्रिया इंटरसेप्टर जोड़ें
 axios.interceptors.response.use(function onFulfilled(response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
-    return response;
-  }, function onRejected(error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
-    return Promise.reject(error);
-  });
+/ 2xx की सीमा के भीतर आने वाला कोई भी स्थिति कोड इस फ़ंक्शन को ट्रिगर करता है
+/ प्रतिक्रिया डेटा के साथ कुछ करें
+return response;
+}, function onRejected(error) {
+/ 2xx की सीमा से बाहर आने वाला कोई भी स्थिति कोड इस फ़ंक्शन को ट्रिगर करता है
+/ प्रतिक्रिया त्रुटि के साथ कुछ करें
+return Promise.reject(error);
+});
 ```
 
-In normal circumstances the `onFulfilled` response interceptor is only called for responses in the 2xx range, and `onRejected` is called otherwise.
-However, this behavior depends on [validateStatus](/docs/req_config).
-For instance, if `validateStatus` is setup to always return `true`, then `onFulfilled` will be called for *all* responses.
+सामान्य परिस्थितियों में, `onFulfilled` प्रतिक्रिया इंटरसेप्टर केवल 2xx रेंज में प्रतिक्रियाओं के लिए ही कॉल किया जाता है, अन्यथा `onRejected` को कॉल किया जाता है।
+हालाँकि, यह व्यवहार [validateStatus](/docs/req_config) पर निर्भर करता है।
+उदाहरण के लिए, यदि `validateStatus` को हमेशा `true` लौटाने के लिए सेट किया गया है, तो `onFulfilled` को *सभी* प्रतिक्रियाओं के लिए कॉल किया जाएगा।
 
-If you need to remove an interceptor later you can.
+यदि आपको बाद में किसी इंटरसेप्टर को हटाने की आवश्यकता हो, तो आप ऐसा कर सकते हैं।
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-You can add interceptors to a custom instance of axios.
+आप axios के कस्टम इंस्टेंस में इंटरसेप्टर जोड़ सकते हैं।
 
 ```js
 const instance = axios.create();
-instance.interceptors.request.use(function () {/*...*/});
+instance.interceptors.request.use(फ़ंक्शन () {/*...*/});
 ```

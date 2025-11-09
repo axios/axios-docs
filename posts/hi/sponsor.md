@@ -1,90 +1,89 @@
 ---
-title: 'Sponsoring Axios'
+शीर्षक: 'एक्सियोस को प्रायोजित करना'
 ---
 
-Thank you for considering supporting our project. Your donation will be used to maintain and develop Axios.
+हमारे प्रोजेक्ट का समर्थन करने के लिए धन्यवाद। आपके दान का उपयोग एक्सियोस के रखरखाव और विकास के लिए किया जाएगा।
 
-As a benefit to our major sponsors, we provide the opportunity to add your logo and brief
-information to our website and/or [Readme.md](https://github.com/axios/axios) depending on the tier of support you choose.
-This process is fully automated if you donate through [OpenCollective.com](https://opencollective.com/axios/contribute),
-so your logo will be added within 24 hours.
+हमारे प्रमुख प्रायोजकों के लाभ के लिए, हम आपको अपना लोगो और संक्षिप्त
+जानकारी हमारी वेबसाइट और/या [Readme.md](https://github.com/axios/axios) पर जोड़ने का अवसर प्रदान करते हैं, जो आपके द्वारा चुने गए समर्थन स्तर पर निर्भर करता है।
+यदि आप [OpenCollective.com](https://opencollective.com/axios/contribute) के माध्यम से दान करते हैं, तो यह प्रक्रिया पूरी तरह से स्वचालित है,
+इसलिए आपका लोगो 24 घंटों के भीतर जोड़ दिया जाएगा।
 
-Your logo can be placed:
-- in the carousel on the main page
-- in carousels on each page of the documentation
-- at the top of [Readme.md](https://github.com/axios/axios) in our repo
+आपका लोगो निम्न स्थानों पर रखा जा सकता है:
+- मुख्य पृष्ठ पर कैरोसेल में
+- दस्तावेज़ के प्रत्येक पृष्ठ पर कैरोसेल में
+- हमारी रेपो में [Readme.md](https://github.com/axios/axios) के शीर्ष पर
 
-Place in the carousel depends on:
-- newness of the sponsor (new sponsors temporarily receive higher places)
-- selected support tier
-- total amount of money donated
-- consistency of donations
+कैरोसेल में स्थान इस पर निर्भर करता है:
+- प्रायोजक की नवीनता (नए प्रायोजकों को अस्थायी रूप से उच्च स्थान प्राप्त होते हैं)
+- चयनित समर्थन स्तर
+- दान की कुल राशि
+- दान की एकरूपता
 
-If you donate through [GitHub](https://github.com/sponsors/axios), you will need to contact us later if you want your logo to be promoted according
-to our support tiers.
+यदि आप [GitHub](https://github.com/sponsors/axios) के माध्यम से दान करते हैं, तो आपको बाद में हमसे संपर्क करना होगा यदि आप चाहते हैं कि आपका लोगो
+हमारे समर्थन स्तरों के अनुसार प्रचारित हो।
 
-### Tiers
+## स्तर
 
-See tiers list on [Open Collective](https://opencollective.com/axios/contribute)
+[Open Collective](https://opencollective.com/axios/contribute) पर स्तरों की सूची देखें
 
-|                                             |   Bronze   |   Silver    |    Gold     |     Platinum     |
-|---------------------------------------------|:----------:|:-----------:|:-----------:|:----------------:|
-| Main page                                   | small logo | medium logo | large logo  | extra large logo |
-| Docs pages                                  |            |             | medium logo |    large logo    |
-| [Readme.md](https://github.com/axios/axios) |            |             | small logo  |   medium logo    |
-| Data merging from sponsor's GitHub repo     |            |      +      |      +      |        +         |
-| Links block in tooltip*                     |            |             |      +      |        +         |
-| Embedded Youtube video in tooltip*          |            |             |      +      |        +         |
-| Max description length in Readme.md (chars) |            |             |     100     |       150        |
+| | कांस्य | रजत | स्वर्ण | प्लेटिनम |
+|---------------------------------------------|:-----------:|:------:|:------:|:----------------:|
+| मुख्य पृष्ठ | छोटा लोगो | मध्यम लोगो | बड़ा लोगो | अतिरिक्त बड़ा लोगो |
+| दस्तावेज़ पृष्ठ | | | मध्यम लोगो | बड़ा लोगो |
+| [Readme.md](https://github.com/axios/axios) | | | छोटा लोगो | मध्यम लोगो |
+| प्रायोजक के GitHub रेपो से डेटा मर्ज किया जा रहा है | | + | + | + |
+| टूलटिप* में लिंक ब्लॉक | | | + | + |
+| टूलटिप* में एम्बेड किया गया YouTube वीडियो | | | + | + |
+| Readme.md में अधिकतम विवरण लंबाई (अक्षर) | | | 100 | 150 |
 
-> Note:
-> The extra links block and video can only be set via `sponsors.json`
+> नोट:
+> अतिरिक्त लिंक ब्लॉक और वीडियो केवल `sponsors.json` के माध्यम से सेट किए जा सकते हैं।
 
-### Backer tier
+### समर्थक स्तर
 
-You can create a custom tier, in which case you will get the benefits of the highest existing tier whose price
-is covered by your donation. The extra donation amount above the existing tier will be taken into account
-when sorting sponsors in a carousel.
+आप एक कस्टम स्तर बना सकते हैं, इस स्थिति में आपको मौजूदा उच्चतम स्तर का लाभ मिलेगा जिसकी कीमत
+आपके दान से पूरी हो जाएगी। मौजूदा स्तर से ऊपर की अतिरिक्त दान राशि को कैरोसेल में प्रायोजकों को छांटते समय ध्यान में रखा जाएगा।
 
-### Sponsor logo
+### प्रायोजक लोगो
 
-Your logo will be downloaded to our server, optimized, trimmed empty borders and resized with preservation of proportions.
-If the width of the logo is significantly greater than its height, then the text caption will be hidden,
-and the logo will take up all the available space. The maximum logo height is the same for all tiers.
+आपका लोगो हमारे सर्वर पर डाउनलोड किया जाएगा, अनुकूलित किया जाएगा, खाली बॉर्डर काटे जाएँगे और अनुपात को बनाए रखते हुए उसका आकार बदला जाएगा।
+यदि लोगो की चौड़ाई उसकी ऊँचाई से काफ़ी ज़्यादा है, तो टेक्स्ट कैप्शन छिपा दिया जाएगा,
+और लोगो उपलब्ध सभी जगह घेर लेगा। सभी स्तरों के लिए लोगो की अधिकतम ऊँचाई समान है।
 
-### Description
+### विवरण
 
-If the description is not provided, we will try to parse it from the sponsor's site meta tags.
+यदि विवरण प्रदान नहीं किया गया है, तो हम इसे प्रायोजक की साइट मेटा टैग से पार्स करने का प्रयास करेंगे।
 
 ### GitHub
 
-If you have set up your GitHub profile in your Open Collective profile,
-you can create a special repository called `axios-sponsor` with `sponsor.json` in its root to manage your sponsor profile data.
+अगर आपने अपनी ओपन कलेक्टिव प्रोफ़ाइल में अपनी GitHub प्रोफ़ाइल सेट अप की है, तो
+आप अपने प्रायोजक प्रोफ़ाइल डेटा को प्रबंधित करने के लिए `axios-sponsor` नामक एक विशेष रिपॉजिटरी बना सकते हैं, जिसके रूट में `sponsor.json` होगा।
 
-The data from this file will be merged with your Open Collective profile which allows you to provide some extra info for advertising.
+इस फ़ाइल का डेटा आपकी ओपन कलेक्टिव प्रोफ़ाइल में मर्ज कर दिया जाएगा, जिससे आप विज्ञापन के लिए कुछ अतिरिक्त जानकारी प्रदान कर सकेंगे।
 
-`sponsor.json` has the following structure (each field is optional):
+`sponsor.json` की संरचना इस प्रकार है (प्रत्येक फ़ील्ड वैकल्पिक है):
 
 ```json
-    {
-      "displayName": "Umbrella Corporation",
-      "targetLink": "https://umbrellacorp.com/",
-      "alt": "Umbrella Corporation",
-      "image": "https://fake.com/logo.png",
-      "image_dark": "https://fake.com/logo_dark.png",
-      "description": "The Umbrella Corporation is a pharmaceutical company",  
-      "website": "https://google.com/",
-      "github": "https://github.com/fakeGitHib",
-      "icon": "https://fake.com/icon.png",
-      "video": "https://www.youtube.com/embed/isosE4Bowh0",
-      "twitter": "https://x.com/profile",
-      "showCaption": true,
-      "crown": false,
-      "hide": false,
-      "links": {
-        "link1": "https://google.com/",
-        "link2": "https://google.com/"
-      }
-    }
+{
+"displayName": "अम्ब्रेला कॉर्पोरेशन",
+"targetLink": "https://umbrellacorp.com/",
+"alt": "अम्ब्रेला कॉर्पोरेशन",
+"image": "https://fake.com/logo.png",
+"image_dark": "https://fake.com/logo_dark.png",
+"description": "अम्ब्रेला कॉर्पोरेशन एक दवा कंपनी है",
+"website": "https://google.com/",
+"github": "https://github.com/fakeGitHib",
+"icon": "https://fake.com/icon.png",
+"video": "https://www.youtube.com/embed/isosE4Bowh0",
+"twitter": "https://x.com/profile",
+"showCaption": true,
+"क्राउन": गलत,
+"छिपाएँ": गलत,
+"लिंक": {
+"लिंक1": "https://google.com/",
+"लिंक2": "https://google.com/"
+}
+}
 ```
-Every 24 hour our backend will pull this data when update sponsors list on the website.
+वेबसाइट पर प्रायोजकों की सूची अपडेट करते समय हमारा बैकएंड हर 24 घंटे में यह डेटा खींचेगा।

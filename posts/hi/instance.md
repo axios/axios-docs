@@ -1,28 +1,28 @@
 ---
-title: 'The Axios Instance'
+title: 'Axios इंस्टेंस'
 prev_title: 'Axios API'
 prev_link: '/docs/api_intro'
-next_title: 'Request Config'
+next_title: 'रिक्वेस्ट कॉन्फ़िगरेशन'
 next_link: '/docs/req_config'
 ---
 
-### Creating an instance
+### इंस्टेंस बनाना
 
-You can create a new instance of axios with a custom config.
+आप कस्टम कॉन्फ़िगरेशन के साथ axios का एक नया इंस्टेंस बना सकते हैं।
 
 ##### axios.create([config])
 
 ```js
 const instance = axios.create({
-  baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
+baseURL: 'https://some-domain.com/api/',
+timeout: 1000,
+headers: {'X-Custom-Header': 'foobar'}
 });
 ```
 
-### Instance methods
+### इंस्टेंस विधियाँ
 
-The available instance methods are listed below. The specified config will be merged with the instance config.
+उपलब्ध इंस्टेंस विधियाँ नीचे सूचीबद्ध हैं। निर्दिष्ट कॉन्फ़िगरेशन को इंस्टेंस कॉन्फ़िगरेशन के साथ मर्ज कर दिया जाएगा।
 
 ##### axios#request(config)
 ##### axios#get(url[, config])
@@ -34,29 +34,29 @@ The available instance methods are listed below. The specified config will be me
 ##### axios#patch(url[, data[, config]])
 ##### axios#getUri([config])
 
-### Calling the instance with a config object
+### कॉन्फ़िगरेशन ऑब्जेक्ट के साथ इंस्टेंस को कॉल करना
 
-In addition to using convenience methods like `instance.get()` or `instance.post()`, you can also call an Axios instance directly with a config object. This is functionally equivalent to `axios(config)`, and is particularly useful when retrying a request using the original configuration.
+`instance.get()` या `instance.post()` जैसी सुविधाजनक विधियों का उपयोग करने के अलावा, आप कॉन्फ़िगरेशन ऑब्जेक्ट के साथ सीधे Axios इंस्टेंस को भी कॉल कर सकते हैं। यह कार्यात्मक रूप से `axios(config)` के समतुल्य है, और मूल कॉन्फ़िगरेशन का उपयोग करके किसी अनुरोध का पुनः प्रयास करते समय विशेष रूप से उपयोगी है।
 
 ```js
 const instance = axios.create({ baseURL: '/api' });
 
-// Works just like axios(config)
+// axios(config) की तरह ही कार्य करता है
 instance({
-  url: '/users',
-  method: 'get'
+url: '/users',
+method: 'get'
 });
 ```
 
-This approach enables clean retry logic when handling authentication errors:
+यह दृष्टिकोण प्रमाणीकरण त्रुटियों को संभालते समय स्वच्छ पुनः प्रयास तर्क को सक्षम करता है:
 
 ```js
 instance.interceptors.response.use(undefined, async (error) => {
-  if (error.response?.status === 401) {
-    await refreshToken();
-    return instance(error.config); // Retry original request
-  }
+if (error.response?.status === 401) {
+await refreshToken();
+return instance(error.config); // मूल अनुरोध का पुनः प्रयास करें
+}
 
-  throw error;
+throw error;
 });
 ```

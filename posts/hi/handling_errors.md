@@ -1,55 +1,55 @@
 ---
-title: 'Handling Errors'
-prev_title: 'Interceptors'
-prev_link: '/docs/interceptors'
-next_title: 'Cancellation'
-next_link: '/docs/cancellation'
+शीर्षक: 'त्रुटियों का प्रबंधन'
+पिछला_शीर्षक: 'इंटरसेप्टर'
+पिछला_लिंक: '/docs/interceptors'
+अगला_शीर्षक: 'रद्दीकरण'
+अगला_लिंक: '/docs/रद्दीकरण'
 ---
 
-The general structure of axios errors is as follows:  
-- **message** - A quick summary of the error message and the status it failed with.  
-- **name** - This defines where the error originated from. For axios, it will always be an 'AxiosError'.  
-- **stack** - Provides the stack trace of the error.  
-- **config** - An axios config object with specific instance configurations defined by the user from when the request was made.  
-- **code** - Represents an axios identified error. The table below lists out specific definitions for internal axios error.  
-- **status** - HTTP response status code. See [here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) for common HTTP response status code meanings.    
+एक्सियोस त्रुटियों की सामान्य संरचना इस प्रकार है:
+- **संदेश** - त्रुटि संदेश और उसकी विफलता की स्थिति का एक संक्षिप्त सारांश।
+- **नाम** - यह परिभाषित करता है कि त्रुटि कहाँ से उत्पन्न हुई। एक्सियोस के लिए, यह हमेशा एक 'एक्सियोस त्रुटि' होगी।
+- **स्टैक** - त्रुटि का स्टैक ट्रेस प्रदान करता है।
+- **कॉन्फ़िगरेशन** - एक एक्सियोस कॉन्फ़िगरेशन ऑब्जेक्ट जिसमें अनुरोध किए जाने के समय से उपयोगकर्ता द्वारा परिभाषित विशिष्ट इंस्टेंस कॉन्फ़िगरेशन होते हैं।
+- **कोड** - एक्सियोस द्वारा पहचानी गई त्रुटि को दर्शाता है। नीचे दी गई तालिका आंतरिक एक्सियोस त्रुटि की विशिष्ट परिभाषाओं को सूचीबद्ध करती है।
+- **स्थिति** - HTTP प्रतिक्रिया स्थिति कोड। सामान्य HTTP प्रतिक्रिया स्थिति कोड अर्थों के लिए [यहाँ](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) देखें।
 ```js
 axios.get('/user/12345')
-  .catch(function (error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
-      console.log(error.request);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      console.log('Error', error.message);
-    }
-    console.log(error.config);
-  });
+.catch(function (error) {
+अगर (error.response) {
+// अनुरोध किया गया और सर्वर ने एक स्थिति कोड के साथ प्रतिक्रिया दी
+/जो 2xx की सीमा से बाहर है
+console.log(error.response.data);
+console.log(error.response.status);
+console.log(error.response.headers);
+} वरना अगर (error.request) {
+// अनुरोध किया गया लेकिन कोई प्रतिक्रिया नहीं मिली
+/`error.request` ब्राउज़र में XMLHttpRequest का एक उदाहरण है और
+/ node.js में http.ClientRequest का एक उदाहरण है
+console.log(error.request);
+} वरना {
+// अनुरोध सेट करते समय कुछ ऐसा हुआ जिससे एक त्रुटि उत्पन्न हुई
+console.log('Error', error.message);
+}
+console.log(error.config);
+});
 ```
 
-Using the `validateStatus` config option, you can define HTTP code(s) that should throw an error.
+`validateStatus` कॉन्फ़िगरेशन विकल्प का उपयोग करके, आप HTTP कोड निर्धारित कर सकते हैं जो त्रुटि उत्पन्न करेगा।
 
 ```js
 axios.get('/user/12345', {
-  validateStatus: function (status) {
-    return status < 500; // Resolve only if the status code is less than 500
-  }
+validateStatus: function (status) {
+return status < 500; // केवल तभी हल करें जब स्थिति कोड 500 से कम हो
+}
 })
 ```
 
-Using `toJSON` you get an object with more information about the HTTP error.
+`toJSON` का उपयोग करके, आपको HTTP त्रुटि के बारे में अधिक जानकारी वाला एक ऑब्जेक्ट मिलता है।
 
 ```js
 axios.get('/user/12345')
-  .catch(function (error) {
-    console.log(error.toJSON());
-  });
+.catch(function (error) {
+console.log(error.toJSON());
+});
 ```

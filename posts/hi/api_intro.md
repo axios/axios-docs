@@ -1,50 +1,50 @@
 ---
-title: 'Axios API'
-description: 'The Axios API Reference'
-prev_title: 'POST Requests'
-prev_link: '/docs/post_example'
-next_title: 'The Axios Instance'
-next_link: '/docs/instance'
+शीर्षक: 'एक्सियोस एपीआई'
+विवरण: 'एक्सियोस एपीआई संदर्भ'
+पिछला_शीर्षक: 'पोस्ट अनुरोध'
+पिछला_लिंक: '/docs/post_example'
+अगला_शीर्षक: 'एक्सियोस इंस्टेंस'
+अगला_लिंक: '/docs/instance'
 ---
 
-Requests can be made by passing the relevant config to `axios`.
+संबंधित कॉन्फ़िगरेशन को `axios` में पास करके अनुरोध किए जा सकते हैं।
 
 ##### axios(config)
 
 ```js
-// Send a POST request
+// एक पोस्ट अनुरोध भेजें
 axios({
-  method: 'post',
-  url: '/user/12345',
-  data: {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  }
+method: 'post',
+url: '/user/12345',
+data: {
+firstName: 'Fred',
+lastName: 'Flintstone'
+}
 });
 ```
 
 ```js
-// GET request for remote image in node.js
+// node.js में दूरस्थ छवि के लिए GET अनुरोध
 axios({
-  method: 'get',
-  url: 'http://bit.ly/2mTM3nY',
-  responseType: 'stream'
+method: 'get',
+url: 'http://bit.ly/2mTM3nY',
+responseType: 'stream'
 })
-  .then(function (response) {
-    response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-  });
+.then(function (response) {
+response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+});
 ```
 
-##### axios(url[, config])
+#### axios(url[, config])
 
 ```js
-// Send a GET request (default method)
+// एक GET अनुरोध भेजें (डिफ़ॉल्ट विधि)
 axios('/user/12345');
 ```
 
-### Request method aliases
+### अनुरोध विधि उपनाम
 
-For convenience aliases have been provided for all supported request methods.
+सुविधा के लिए सभी समर्थित अनुरोध विधियों के लिए उपनाम प्रदान किए गए हैं।
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -56,6 +56,4 @@ For convenience aliases have been provided for all supported request methods.
 ##### axios.patch(url[, data[, config]])
 ##### axios.postForm(url[, data[, config]])
 ##### axios.putForm(url[, data[, config]])
-##### axios.patchForm(url[, data[, config]])
-
-> NOTE: When using the alias methods `url`, `method`, and `data` properties don't need to be specified in config.
+##### axios.patchForm(url[, data[, config]]) उपनाम विधियों `url`, `method`, और `data` का उपयोग करते समय गुणों को कॉन्फ़िगरेशन में निर्दिष्ट करने की आवश्यकता नहीं होती है।

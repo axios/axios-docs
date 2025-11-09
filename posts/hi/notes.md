@@ -1,38 +1,39 @@
 ---
-title: 'Notes'
-description: 'A couple more notes to round it off'
-prev_title: 'URL-Encoding Bodies'
+title: 'नोट्स'
+description: 'इसे पूर्ण करने के लिए कुछ और नोट्स'
+prev_title: 'URL-एन्कोडिंग बॉडीज़'
 prev_link: '/docs/urlencoded'
 ---
 
 ## Semver
 
-Until axios reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+जब तक axios `1.0` रिलीज़ तक नहीं पहुँच जाता, तब तक ब्रेकिंग परिवर्तन एक नए माइनर संस्करण के साथ जारी किए जाएँगे। उदाहरण के लिए, `0.5.1` और `0.5.4` में एक ही API होगा, लेकिन `0.6.0` में ब्रेकिंग परिवर्तन होंगे।
 
 ## Promises
 
-axios depends on a native ES6 Promise implementation to be [supported](http://caniuse.com/promises).
-If your environment doesn't support ES6 Promises, you can [polyfill](https://github.com/jakearchibald/es6-promise).
+axios [समर्थित](http://caniuse.com/promises) होने के लिए एक मूल ES6 प्रॉमिस कार्यान्वयन पर निर्भर करता है।
 
-## TypeScript
-axios includes [TypeScript](http://typescriptlang.org) definitions.
-```typescript
-import axios from 'axios';
+यदि आपका परिवेश ES6 प्रॉमिस का समर्थन नहीं करता है, तो आप [पॉलीफ़िल](https://github.com/jakearchibald/es6-promise) कर सकते हैं।
+
+## टाइपस्क्रिप्ट
+axios में [टाइपस्क्रिप्ट](http://typescriptlang.org) परिभाषाएँ शामिल हैं।
+```टाइपस्क्रिप्ट
+'axios' से axios आयात करें;
 axios.get('/user?ID=12345');
 ```
 
-## Resources
+## संसाधन
 
-* [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
-* [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
+* [चेंजलॉग](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [अपग्रेड गाइड](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [इकोसिस्टम](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [योगदान गाइड](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [आचार संहिता](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
-## Credits
+## श्रेय
 
-axios is heavily inspired by the [$http service](https://docs.angularjs.org/api/ng/service/$http) provided in [Angular](https://angularjs.org/). Ultimately axios is an effort to provide a standalone `$http`-like service for use outside of Angular.
+axios [$http [Angular](https://angularjs.org/) में प्रदान की गई सेवा](https://docs.angularjs.org/api/ng/service/$http)। अंततः, Axios, Angular के बाहर उपयोग के लिए एक स्टैंडअलोन `$http` जैसी सेवा प्रदान करने का एक प्रयास है।
 
-## License
+## लाइसेंस
 
 [MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

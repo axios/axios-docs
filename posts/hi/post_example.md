@@ -1,88 +1,88 @@
 ---
-title: 'POST Requests'
-description: 'How to perform POST requests with Axios'
-prev_title: 'Minimal Example'
-prev_link: '/docs/example'
-next_title: 'Axios API'
-next_link: '/docs/api_intro'
+शीर्षक: 'POST अनुरोध'
+विवरण: 'Axios के साथ POST अनुरोध कैसे करें'
+पिछला_शीर्षक: 'न्यूनतम उदाहरण'
+पिछला_लिंक: '/docs/example'
+अगला_शीर्षक: 'Axios API'
+अगला_लिंक: '/docs/api_intro'
 ---
 
-## Performing a `POST` request
+## `POST` अनुरोध निष्पादित करना
 
 ### JSON
 
 ```js
 axios.post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+पहला नाम: 'Fred',
+अंतिम नाम: 'Flintstone'
+})
+.then(function (response) {
+console.log(response);
+})
+.catch(function (error) {
+console.log(error);
+});
 ```
 
-Performing multiple concurrent requests
+एक साथ कई अनुरोध निष्पादित करना
 
 ```js
-function getUserAccount() {
-  return axios.get('/user/12345');
+फ़ंक्शन getUserAccount() {
+return axios.get('/user/12345');
 }
 
-function getUserPermissions() {
-  return axios.get('/user/12345/permissions');
+फ़ंक्शन getUserPermissions() {
+return axios.get('/user/12345/permissions');
 }
 
 const [acct, perm] = await Promise.all([getUserAccount(), getUserPermissions()]);
 
-// OR
+/ या
 
 Promise.all([getUserAccount(), getUserPermissions()])
-  .then(function ([acct, perm]) {
-    // ...
-  });
+.then(फ़ंक्शन ([acct, perm]) {
+/ ...
+});
 ```
 
-Post an HTML form as JSON
+एक HTML फ़ॉर्म को JSON के रूप में पोस्ट करें
 
 ```js
 const {data} = await axios.post('/user', document.querySelector('#my-form'), {
-  headers: {
-    'Content-Type': 'application/json'
-  }
+हेडर: {
+'Content-Type': 'application/json'
+}
 })
 ```
 
-### Forms
+### फ़ॉर्म
 
-- Multipart (`multipart/form-data`)
+- मल्टीपार्ट (`multipart/form-data`)
 
 ```js
 const {data} = await axios.post('https://httpbin.org/post', {
-    firstName: 'Fred',
-    lastName: 'Flintstone',
-    orders: [1, 2, 3],
-    photo: document.querySelector('#fileInput').files
-  }, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  }
+firstName: 'Fred',
+lastName: 'Flintstone',
+orders: [1, 2, 3],
+photo: document.querySelector('#fileInput').files
+}, {
+हेडर: {
+'Content-Type': 'multipart/form-data'
+}
+}
 )
 ```
 
-- URL encoded form (`application/x-www-form-urlencoded`)
+- URL एनकोडेड फ़ॉर्म (`application/x-www-form-urlencoded`)
 
 ```js
 const {data} = await axios.post('https://httpbin.org/post', {
-    firstName: 'Fred',
-    lastName: 'Flintstone',
-    orders: [1, 2, 3]
-  }, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+firstName: 'Fred',
+lastName: 'Flintstone',
+orders: [1, 2, 3]
+}, {
+headers: {
+'Content-Type': 'application/x-www-form-urlencoded'
+}
 })
 ```

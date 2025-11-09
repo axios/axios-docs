@@ -1,16 +1,16 @@
 ---
-title: 'URL-Encoding Bodies'
-prev_title: 'Cancellation'
+title: 'URL-एन्कोडिंग बॉडीज़'
+prev_title: 'रद्दीकरण'
 prev_link: '/docs/cancellation'
-next_title: 'Multipart Bodies'
+next_title: 'मल्टीपार्ट बॉडीज़'
 next_link: '/docs/multipart'
 ---
 
-By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following approaches.
+डिफ़ॉल्ट रूप से, axios JavaScript ऑब्जेक्ट्स को `JSON` में क्रमबद्ध करता है। इसके बजाय, `application/x-www-form-urlencoded` फ़ॉर्मैट में डेटा भेजने के लिए, आप निम्न में से किसी एक तरीके का उपयोग कर सकते हैं।
 
-### Browser
+### ब्राउज़र
 
-In a browser, you can use the [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API as follows:
+ब्राउज़र में, आप [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API का उपयोग इस प्रकार कर सकते हैं:
 
 ```js
 const params = new URLSearchParams();
@@ -19,41 +19,41 @@ params.append('param2', 'value2');
 axios.post('/foo', params);
 ```
 
-> Note that `URLSearchParams` is not supported by all browsers (see [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), but there is a [polyfill](https://github.com/WebReflection/url-search-params) available (make sure to polyfill the global environment).
+> ध्यान दें कि `URLSearchParams` सभी ब्राउज़रों द्वारा समर्थित नहीं है (देखें [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), लेकिन एक [polyfill](https://github.com/WebReflection/url-search-params) उपलब्ध है (ध्यान रखें कि वैश्विक परिवेश को पॉलीफ़िल करें)।
 
-Alternatively, you can encode data using the [`qs`](https://github.com/ljharb/qs) library:
+वैकल्पिक रूप से, आप [`qs`](https://github.com/ljharb/qs) लाइब्रेरी का उपयोग करके डेटा को एनकोड कर सकते हैं:
 
 ```js
 const qs = require('qs');
 axios.post('/foo', qs.stringify({ 'bar': 123 }));
 ```
 
-Or in another way (ES6),
+या दूसरे तरीके से (ES6),
 
 ```js
-import qs from 'qs';
+'qs' से qs आयात करें;
 const data = { 'bar': 123 };
 const options = {
-  method: 'POST',
-  headers: { 'content-type': 'application/x-www-form-urlencoded' },
-  data: qs.stringify(data),
-  url,
+method: 'POST',
+headers: { 'content-type': 'application/x-www-form-urlencoded' },
+data: qs.stringify(data),
+url,
 };
 axios(options);
 ```
 
 ### Node.js
 
-#### Query string
+#### क्वेरी स्ट्रिंग
 
-In node.js, you can use the [`querystring`](https://nodejs.org/api/querystring.html) module as follows:
+node.js में, आप [`querystring`](https://nodejs.org/api/querystring.html) मॉड्यूल का उपयोग इस प्रकार कर सकते हैं:
 
 ```js
 const querystring = require('querystring');
 axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
-or ['URLSearchParams'](https://nodejs.org/api/url.html#url_class_urlsearchparams) from ['url module'](https://nodejs.org/api/url.html) as follows:
+या ['URLSearchParams'](https://nodejs.org/api/url.html#url_class_urlsearchparams) ['url module'](https://nodejs.org/api/url.html) से इस प्रकार:
 
 ```js
 const url = require('url');
@@ -61,59 +61,59 @@ const params = new url.URLSearchParams({ foo: 'bar' });
 axios.post('http://something.com/', params.toString());
 ```
 
-You can also use the [`qs`](https://github.com/ljharb/qs) library.
+आप [`qs`](https://github.com/ljharb/qs) लाइब्रेरी का भी उपयोग कर सकते हैं।
 
-> Note: The `qs` library is preferable if you need to stringify nested objects, as the `querystring` method has known issues with that use case (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+> नोट: यदि आपको नेस्टेड ऑब्जेक्ट्स को स्ट्रिंग करना है, तो `qs` लाइब्रेरी बेहतर है, क्योंकि `querystring` विधि में इस उपयोग के मामले में ज्ञात समस्याएँ हैं (https://github.com/nodejs/node-v0.x-archive/issues/1665)।
 
-### 🆕 Automatic serialization
+### 🆕 स्वचालित क्रमांकन
 
-Axios will automatically serialize the data object to urlencoded format if the `content-type` header is set to `application/x-www-form-urlencoded`.
+यदि `content-type` हेडर `application/x-www-form-urlencoded` पर सेट है, तो Axios डेटा ऑब्जेक्ट को urlencoded फ़ॉर्मेट में स्वचालित रूप से क्रमांकित कर देगा।
 
-This works both in the browser and in `node.js`:
+यह ब्राउज़र और `node.js` दोनों में काम करता है:
 
 ```js
 const data = {
-  x: 1,
-  arr: [1, 2, 3],
-  arr2: [1, [2], 3],
-  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
+x: 1,
+arr: [1, 2, 3],
+arr2: [1, [2], 3],
+users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
 };
 
 await axios.post('https://postman-echo.com/post', data,
-  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+{headers: {'content-type': 'application/x-www-form-urlencoded'}}
 );
 ```
 
-The server will handle it as 
+सर्वर इसे इस प्रकार संभालेगा
 
 ```js
-  {
-    x: '1',
-    'arr[]': [ '1', '2', '3' ],
-    'arr2[0]': '1',
-    'arr2[1][0]': '2',
-    'arr2[2]': '3',
-    'arr3[]': [ '1', '2', '3' ],
-    'users[0][name]': 'Peter',
-    'users[0][surname]': 'griffin',
-    'users[1][name]': 'Thomas',
-    'users[1][surname]': 'Anderson'
-  }
+{
+x: '1',
+'arr[]': [ '1', '2', '3' ],
+'arr2[0]': '1',
+'arr2[1][0]': '2',
+'arr2[2]': '3',
+'arr3[]': [ '1', '2', '3' ],
+'users[0][name]': 'पीटर',
+'users[0][surname]': 'ग्रिफिन',
+'users[1][name]': 'थॉमस',
+'users[1][surname]': 'एंडरसन'
+}
 ````
 
-If your server framework's request body parser (like `body-parser` of `express.js`) supports nested objects decoding, 
-you will automatically receive the same server object that you submitted.
+यदि आपके सर्वर फ्रेमवर्क का अनुरोध बॉडी पार्सर (जैसे `express.js` का `body-parser`) नेस्टेड ऑब्जेक्ट डिकोडिंग का समर्थन करता है,
+तो आपको स्वचालित रूप से प्राप्त होगा वही सर्वर ऑब्जेक्ट जो आपने सबमिट किया था।
 
-Echo server example (`express.js`) :
+इको सर्वर उदाहरण (`express.js`):
 
 ```js
-  var app = express();
-  
-  app.use(bodyParser.urlencoded({ extended: true })); // support url-encoded bodies
-  
-  app.post('/', function (req, res, next) {
-     res.send(JSON.stringify(req.body));
-  });
+var app = express();
 
-  server = app.listen(3000);
+app.use(bodyParser.urlencoded({ extended: true })); // url-एन्कोडेड बॉडीज़ का समर्थन करता है
+
+app.post('/', function (req, res, next) {
+res.send(JSON.stringify(req.body));
+});
+
+server = app.listen(3000);
 ```

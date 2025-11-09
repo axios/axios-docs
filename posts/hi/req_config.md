@@ -1,257 +1,120 @@
 ---
-title: 'Request Config'
-prev_title: 'The Axios Instance'
+title: 'अनुरोध कॉन्फ़िगरेशन'
+prev_title: 'Axios इंस्टेंस'
 prev_link: '/docs/instance'
-next_title: 'Response Schema'
+next_title: 'प्रतिक्रिया स्कीमा'
 next_link: '/docs/res_schema'
 ---
 
-
-These are the available config options for making requests. Only the `url` is required. Requests will default to `GET` if `method` is not specified.
+अनुरोध करने के लिए ये उपलब्ध कॉन्फ़िगरेशन विकल्प हैं। केवल `url` आवश्यक है। यदि `method` निर्दिष्ट नहीं है, तो अनुरोध डिफ़ॉल्ट रूप से `GET` पर सेट हो जाएँगे।
 
 ```js
 {
-  // `url` is the server URL that will be used for the request
-  url: '/user',
+// `url` वह सर्वर URL है जिसका उपयोग अनुरोध के लिए किया जाएगा
+url: '/user',
 
-  // `method` is the request method to be used when making the request
-  method: 'get', // default
+// `method` वह अनुरोध विधि है जिसका उपयोग अनुरोध करते समय किया जाएगा
+method: 'get', // डिफ़ॉल्ट
 
-  // `baseURL` will be prepended to `url` unless `url` is absolute.
-  // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
-  // to methods of that instance.
-  baseURL: 'https://some-domain.com/api',
+// `url` के आगे `baseURL` जोड़ा जाएगा, जब तक कि `url` निरपेक्ष न हो।
+// axios के किसी इंस्टेंस के लिए `baseURL` सेट करना सुविधाजनक हो सकता है ताकि उस इंस्टेंस के मेथड्स को सापेक्ष URL
+/ पास किए जा सकें।
+baseURL: 'https://some-domain.com/api'
 
-  // `allowAbsoluteUrls` determines whether or not absolute URLs will override a configured `baseUrl`.
-  // When set to true (default), absolute values for `url` will override `baseUrl`.
-  // When set to false, absolute values for `url` will always be prepended by `baseUrl`.
-  allowAbsoluteUrls: true,
+// `allowAbsoluteUrls` यह निर्धारित करता है कि निरपेक्ष URL कॉन्फ़िगर किए गए `baseUrl` को ओवरराइड करेंगे या नहीं।
+// जब true (डिफ़ॉल्ट) पर सेट किया जाता है, तो `url` के निरपेक्ष मान `baseUrl` को ओवरराइड कर देंगे।
+// जब false पर सेट किया जाता है, तो `url` के निरपेक्ष मान हमेशा `baseUrl` से पहले जोड़े जाएँगे।
+allowAbsoluteUrls: true
 
-  // `transformRequest` allows changes to the request data before it is sent to the server
-  // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'
-  // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
-  // FormData or Stream
-  // You may modify the headers object.
-  transformRequest: [function (data, headers) {
-    // Do whatever you want to transform the data
+// `transformRequest` सर्वर पर भेजे जाने से पहले अनुरोध डेटा में बदलाव की अनुमति देता है।
+// यह केवल अनुरोध विधियों 'PUT', 'POST', 'PATCH' और 'DELETE' के लिए लागू है।
+// सरणी में अंतिम फ़ंक्शन को एक स्ट्रिंग या Buffer, ArrayBuffer का एक उदाहरण लौटाना होगा।
+// FormData या Stream
+// आप हेडर ऑब्जेक्ट को संशोधित कर सकते हैं।
+transformRequest: [function (data, headers) {
+// डेटा को रूपांतरित करने के लिए आप जो चाहें करें।
 
-    return data;
-  }],
+return data;
+}],
 
-  // `transformResponse` allows changes to the response data to be made before
-  // it is passed to then/catch
-  transformResponse: [function (data) {
-    // Do whatever you want to transform the data
+// `transformResponse` प्रतिक्रिया डेटा में बदलाव करने की अनुमति देता है
+// इसे then/catch में पास किया जाता है
+transformResponse: [function (data) {
+// डेटा को रूपांतरित करने के लिए आप जो चाहें करें
 
-    return data;
-  }],
+return data;
+}],
 
-  // `headers` are custom headers to be sent
-  headers: {'X-Requested-With': 'XMLHttpRequest'},
+// `headers` भेजे जाने वाले कस्टम हेडर हैं
+headers: {'X-Requested-With': 'XMLHttpRequest'},
 
-  // `params` are the URL parameters to be sent with the request
-  // Must be a plain object or a URLSearchParams object
-  // NOTE: params that are null or undefined are not rendered in the URL.
-  params: {
-    ID: 12345
-  },
+// `params` अनुरोध के साथ भेजे जाने वाले URL पैरामीटर हैं
+// एक साधारण ऑब्जेक्ट या URLSearchParams ऑब्जेक्ट होना चाहिए
+// नोट: जो पैरामीटर शून्य या अपरिभाषित हैं, उन्हें URL में रेंडर नहीं किया जाता है।
+पैरामीटर: {
+आईडी: 12345
+},
 
-  // `paramsSerializer` is an optional config in charge of serializing `params`
-  paramsSerializer: {
-    encode?: (param: string): string => { /* Do custom ops here and return transformed string */ }, // custom encoder function; sends Key/Values in an iterative fashion
-    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), // mimic pre 1.x behavior and send entire params object to a custom serializer func. Allows consumer to control how params are serialized.
-    indexes: false // array indexes format (null - no brackets, false (default) - empty brackets, true - brackets with indexes)
-  },
+// `paramsSerializer` एक वैकल्पिक कॉन्फ़िगरेशन है जो `params` को क्रमबद्ध करने के लिए ज़िम्मेदार है।
+पैरामीटर: {
+encode?: (param: string): string => { /* यहाँ कस्टम ऑप्स करें और रूपांतरित स्ट्रिंग लौटाएँ */ }, // कस्टम एनकोडर फ़ंक्शन; कुंजी/मानों को पुनरावृत्तीय रूप में भेजता है।
+serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), // 1.x से पहले के व्यवहार की नकल करता है और संपूर्ण पैरामीटर ऑब्जेक्ट को एक कस्टम सीरियलाइज़र फ़ंक्शन पर भेजता है। उपभोक्ता को यह नियंत्रित करने की अनुमति देता है कि पैरामीटर कैसे क्रमबद्ध किए जाएँ।
+अनुक्रमणिकाएँ: असत्य // सरणी अनुक्रमणिका प्रारूप (शून्य - कोई कोष्ठक नहीं, असत्य (डिफ़ॉल्ट) - रिक्त कोष्ठक, सत्य - अनुक्रमणिकाओं वाले कोष्ठक)
+},
 
-  // `data` is the data to be sent as the request body
-  // Only applicable for request methods 'PUT', 'POST', 'DELETE', and 'PATCH'
-  // When no `transformRequest` is set, must be of one of the following types:
-  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
-  // - Browser only: FormData, File, Blob
-  // - Node only: Stream, Buffer
-  data: {
-    firstName: 'Fred'
-  },
-  
-  // syntax alternative to send data into the body
-  // method post
-  // only the value is sent, not the key
-  data: 'Country=Brasil&City=Belo Horizonte',
+// `data` वह डेटा है जिसे अनुरोध बॉडी के रूप में भेजा जाना है
+// केवल अनुरोध विधियों 'PUT', 'POST', 'DELETE', और 'PATCH' के लिए लागू
+// जब कोई `transformRequest` सेट नहीं है, तो निम्न में से किसी एक प्रकार का होना चाहिए:
+// - स्ट्रिंग, सादा ऑब्जेक्ट, ArrayBuffer, ArrayBufferView, URLSearchParams
+// - केवल ब्राउज़र: FormData, फ़ाइल, Blob
+// - केवल नोड: स्ट्रीम, बफ़र
+डेटा: {
+firstName: 'Fred'
+},
 
-  // `timeout` specifies the number of milliseconds before the request times out.
-  // If the request takes longer than `timeout`, the request will be aborted.
-  timeout: 1000, // default is `0` (no timeout)
+// बॉडी में डेटा भेजने के लिए सिंटैक्स विकल्प
+// विधि post
+// केवल मान भेजा जाता है, कुंजी नहीं
+डेटा: 'Country=Brasil&City=Belo Horizonte',
 
-  // `withCredentials` indicates whether or not cross-site Access-Control requests
-  // should be made using credentials
-  withCredentials: false, // default
+// `timeout`, मिलीसेकंड की संख्या निर्दिष्ट करता है अनुरोध का समय समाप्त हो गया है।
+// यदि अनुरोध `timeout` से अधिक समय लेता है, तो अनुरोध निरस्त कर दिया जाएगा।
+timeout: 1000, // डिफ़ॉल्ट `0` है (कोई समय समाप्ति नहीं)
 
-  // `adapter` allows custom handling of requests which makes testing easier.
-  // Return a promise and supply a valid response (see lib/adapters/README.md).
-  adapter: function (config) {
-    /* ... */
-  },
+// `withCredentials` इंगित करता है कि क्रॉस-साइट एक्सेस-कंट्रोल अनुरोध
+// क्रेडेंशियल्स का उपयोग करके किए जाने चाहिए या नहीं
+withCredentials: गलत, // डिफ़ॉल्ट
 
-  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
-  // This will set an `Authorization` header, overwriting any existing
-  // `Authorization` custom headers you have set using `headers`.
-  // Please note that only HTTP Basic auth is configurable through this parameter.
-  // For Bearer tokens and such, use `Authorization` custom headers instead.
-  auth: {
-    username: 'janedoe',
-    password: 's00pers3cret'
-  },
+// `adapter` अनुरोधों को कस्टम हैंडलिंग की अनुमति देता है जिससे परीक्षण आसान हो जाता है।
+// एक वादा लौटाएँ और एक मान्य प्रतिक्रिया प्रदान करें (lib/adapters/README.md देखें)।
+adapter: फ़ंक्शन (config) {
+/* ... */
+},
 
-  // `responseType` indicates the type of data that the server will respond with
-  // options are: 'arraybuffer', 'document', 'json', 'text', 'stream'
-  //   browser only: 'blob'
-  responseType: 'json', // default
+// `auth` इंगित करता है कि HTTP Basic auth का उपयोग किया जाना चाहिए, और क्रेडेंशियल प्रदान करता है।
+// यह एक `Authorization` हेडर सेट करेगा, जो आपके द्वारा `headers` का उपयोग करके सेट किए गए किसी भी मौजूदा
+// `Authorization` कस्टम हेडर को अधिलेखित कर देगा।
+// कृपया ध्यान दें कि इस पैरामीटर के माध्यम से केवल HTTP Basic auth को कॉन्फ़िगर किया जा सकता है।
 
-  // `responseEncoding` indicates encoding to use for decoding responses (Node.js only)
-  // Note: Ignored for `responseType` of 'stream' or client-side requests
-  responseEncoding: 'utf8', // default
+// Bearer टोकन आदि के लिए, `Authorization` कस्टम हेडर का उपयोग करें।
+auth: {
+उपयोगकर्ता नाम: 'janedoe',
+पासवर्ड: 's00pers3cret'
+},
 
-  // `xsrfCookieName` is the name of the cookie to use as a value for xsrf token
-  xsrfCookieName: 'XSRF-TOKEN', // default
+// `responseType` उस डेटा के प्रकार को इंगित करता है जिसके साथ सर्वर प्रतिक्रिया देगा
+// विकल्प हैं: 'arraybuffer', 'document', 'json', 'text', 'stream'
+// केवल ब्राउज़र: 'blob'
+responseType: 'json', // डिफ़ॉल्ट
 
-  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
-  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+// `responseEncoding` प्रतिक्रियाओं को डिकोड करने के लिए उपयोग की जाने वाली एन्कोडिंग को इंगित करता है (केवल Node.js)
+// नोट: 'stream' या क्लाइंट-साइड अनुरोधों के `responseType` के लिए अनदेखा किया गया
+responseEncoding: 'utf8', // डिफ़ॉल्ट
 
-  // `onUploadProgress` allows handling of progress events for uploads
-  // browser only
-  onUploadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
-  },
+// `xsrfCookieName`, xsrf टोकन के मान के रूप में उपयोग की जाने वाली कुकी का नाम है
+xsrfCookieName: 'XSRF-TOKEN', // डिफ़ॉल्ट
 
-  // `onDownloadProgress` allows handling of progress events for downloads
-  // browser only
-  onDownloadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
-  },
+// `xsrfHeaderName`, http का नाम है xsrf टोकन मान वाला हेडर
+xsrfHeaderName: 'X-XSRF-TOKEN', // डिफ़ॉल्ट
 
-  // `maxContentLength` defines the max size of the http response content in bytes allowed in node.js
-  maxContentLength: 2000,
-
-  // `maxBodyLength` (Node only option) defines the max size of the http request content in bytes allowed
-  maxBodyLength: 2000,
-
-  // `validateStatus` defines whether to resolve or reject the promise for a given
-  // HTTP response status code. If `validateStatus` returns `true` (or is set to `null`
-  // or `undefined`), the promise will be resolved; otherwise, the promise will be
-  // rejected.
-  validateStatus: function (status) {
-    return status >= 200 && status < 300; // default
-  },
-
-  // `maxRedirects` defines the maximum number of redirects to follow in node.js.
-  // If set to 0, no redirects will be followed.
-  maxRedirects: 21, // default
-
-  // `beforeRedirect` defines a function that will be called before redirect.
-  // Use this to adjust the request options upon redirecting,
-  // to inspect the latest response headers,
-  // or to cancel the request by throwing an error
-  // If maxRedirects is set to 0, `beforeRedirect` is not used.
-  beforeRedirect: (options, { headers }) => {
-   if (options.hostname === "example.com") {
-     options.auth = "user:password";
-   }
-  },
-
-  // `socketPath` defines a UNIX Socket to be used in node.js.
-  // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
-  // Only either `socketPath` or `proxy` can be specified.
-  // If both are specified, `socketPath` is used.
-  socketPath: null, // default
-
-  // `transport` determines the transport method that will be used to make the request. If defined, it will be used. Otherwise, if `maxRedirects` is 0, the default `http` or `https` library will be used, depending on the protocol specified in `protocol`. Otherwise, the `httpFollow` or `httpsFollow` library will be used, again depending on the protocol, which can handle redirects.
-  transport: undefined, // default
-
-  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
-  // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js
-  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because
-  // `http.globalAgent` has `keepAlive` enabled by default.
-  httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true }),
-
-  // `proxy` defines the hostname, port, and protocol of the proxy server.
-  // You can also define your proxy using the conventional `http_proxy` and
-  // `https_proxy` environment variables. If you are using environment variables
-  // for your proxy configuration, you can also define a `no_proxy` environment
-  // variable as a comma-separated list of domains that should not be proxied.
-  // Use `false` to disable proxies, ignoring environment variables.
-  // Disable if supplying a custom httpAgent/httpsAgent to manage proxying requests.
-  // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
-  // supplies credentials.
-  // This will set an `Proxy-Authorization` header, overwriting any existing
-  // `Proxy-Authorization` custom headers you have set using `headers`.
-  // If the proxy server uses HTTPS, then you must set the protocol to `https`. 
-  proxy: {
-    protocol: 'https',
-    host: '127.0.0.1',
-    port: 9000,
-    auth: {
-      username: 'mikeymike',
-      password: 'rapunz3l'
-    }
-  },
-
-  // `signal` and instance of AbortController can be used to cancel the request
-  signal: new AbortController().signal,
-
-  // (Deprecated) `cancelToken` specifies a cancel token that can also be used to cancel the request
-  // (see Cancellation section below for details)
-  cancelToken: new CancelToken(function (cancel) {
-  }),
-
-  // an alternative way to cancel Axios requests using AbortController
-  signal: new AbortController().signal,
-
-  // `decompress` indicates whether or not the response body should be decompressed 
-  // automatically. If set to `true` will also remove the 'content-encoding' header 
-  // from the responses objects of all decompressed responses
-  // - Node only (XHR cannot turn off decompression)
-  decompress: true // default
-
-  // `insecureHTTPParser` boolean.
-  // Indicates where to use an insecure HTTP parser that accepts invalid HTTP headers.
-  // This may allow interoperability with non-conformant HTTP implementations.
-  // Using the insecure parser should be avoided.
-  // see options https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_request_url_options_callback
-  // see also https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/#strict-http-header-parsing-none
-  insecureHTTPParser: undefined // default
-
-  // transitional options for backward compatibility that may be removed in the newer versions
-  transitional: {
-    // silent JSON parsing mode
-    // `true`  - ignore JSON parsing errors and set response.data to null if parsing failed (old behaviour)
-    // `false` - throw SyntaxError if JSON parsing failed (Note: responseType must be set to 'json')
-    silentJSONParsing: true, // default value for the current Axios version
-
-    // try to parse the response string as JSON even if `responseType` is not 'json'
-    forcedJSONParsing: true,
-
-    // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts
-    clarifyTimeoutError: false,
-  },
-
-  env: {
-    // The FormData class to be used to automatically serialize the payload into a FormData object
-    FormData: window?.FormData || global?.FormData
-  },
-
-  formSerializer: {
-    visitor: (value, key, path, helpers) => {}; // custom visitor function to serialize form values
-    dots: boolean; // use dots instead of brackets format
-    metaTokens: boolean; // keep special endings like {} in parameter key
-    indexes: boolean; // array indexes format null - no brackets, false - empty brackets, true - brackets with indexes
-  },
-
-  // http adapter only (node.js)
-  maxRate: [
-    100 * 1024, // 100KB/s upload limit,
-    100 * 1024  // 100KB/s download limit
-  ]
-}
-```
+// `onUploadProgress` अपलोड के लिए प्रगति ईवेंट को संभालने की अनुमति देता है

@@ -1,64 +1,64 @@
 ---
-title: 'Multipart Bodies'
-prev_title: 'URL-Encoding Bodies'
-prev_link: '/docs/urlencoded'
-next_title: 'Notes'
-next_link: '/docs/notes'
+शीर्षक: 'मल्टीपार्ट बॉडीज़'
+पिछला_शीर्षक: 'यूआरएल-एन्कोडिंग बॉडीज़'
+पिछला_लिंक: '/docs/urlencoded'
+अगला_शीर्षक: 'नोट्स'
+अगला_लिंक: '/docs/notes'
 ---
 
-## Posting data as `multipart/form-data`
+## डेटा को `मल्टीपार्ट/फ़ॉर्म-डेटा` के रूप में पोस्ट करना
 
-### Using FormData API
+### फ़ॉर्मडेटा एपीआई का उपयोग करना
 
-#### Browser
+#### ब्राउज़र
 
-```js 
+```js
 const form = new FormData();
 form.append('my_field', 'my value');
 form.append('my_buffer', new Blob([1,2,3]));
 form.append('my_file', fileInput.files[0]);
 
-axios.post('https://example.com', form)
+axios.post('https://example.com', फ़ॉर्म)
 ```
 
-The same result can be achieved using the internal Axios serializer and corresponding shorthand method:
+आंतरिक Axios सीरियलाइज़र और संबंधित शॉर्टहैंड विधि का उपयोग करके भी यही परिणाम प्राप्त किया जा सकता है:
 
 ```js
 axios.postForm('https://httpbin.org/post', {
-  my_field: 'my value',
-  my_buffer: new Blob([1,2,3]),
-  my_file:  fileInput.files // FileList will be unwrapped as separate fields
+my_field: 'my value',
+my_buffer: new Blob([1,2,3]),
+my_file: fileInput.files // FileList को अलग-अलग फ़ील्ड के रूप में अनरैप किया जाएगा
 });
 ```
 
-HTML form can be passed directly as a request payload. 
+HTML फ़ॉर्म को सीधे अनुरोध पेलोड के रूप में पास किया जा सकता है।
 
 #### Node.js
 
-```js 
-import axios from 'axios';
+```js
+'axios' से axios आयात करें;
 
 const form = new FormData();
 form.append('my_field', 'my value');
 form.append('my_buffer', new Blob(['some content']));
 
-axios.post('https://example.com', form)
+axios.post('https://example.com', फ़ॉर्म)
 ```
 
-Since node.js does not currently support creating a `Blob` from a file, you can use a third-party package for this purpose.
+चूँकि node.js वर्तमान में किसी फ़ाइल से `Blob` बनाने का समर्थन नहीं करता है, आप इस उद्देश्य के लिए किसी तृतीय-पक्ष पैकेज का उपयोग कर सकते हैं।
 
 ```js
-import {fileFromPath} from 'formdata-node/file-from-path'
+'formdata-node/file-from-path' से {fileFromPath} आयात करें
 
 form.append('my_field', 'my value');
 form.append('my_file', await fileFromPath('/foo/bar.jpg'));
 
-axios.post('https://example.com', form)
+axios.post('https://example.com', फ़ॉर्म)
 ```
 
-For Axios older than `v1.3.0` you must import `form-data` package.
+`v1.3.0` से पुराने Axios के लिए, आपको `form-data` पैकेज आयात करना होगा।
 
-```js 
+```js
 const FormData = require('form-data');
 
 const form = new FormData();
@@ -69,65 +69,65 @@ form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
 axios.post('https://example.com', form)
 ```
 
-### 🆕 Automatic serialization
+### 🆕 स्वचालित क्रमांकन
 
-Starting from `v0.27.0`, Axios supports automatic object serialization to a FormData
-object if the request Content-Type header is set to `multipart/form-data`.
+`v0.27.0` से शुरू होकर, Axios, FormData
+ऑब्जेक्ट में स्वचालित ऑब्जेक्ट क्रमांकन का समर्थन करता है, यदि अनुरोध Content-Type हेडर `multipart/form-data` पर सेट है।
 
-The following request will submit the data in a FormData format (Browser & Node.js):
+निम्नलिखित अनुरोध डेटा को FormData प्रारूप (ब्राउज़र और Node.js) में सबमिट करेगा:
 
 ```js
-import axios from 'axios';
+'axios' से axios आयात करें;
 
 axios.post('https://httpbin.org/post', {
-  user: {
-    name: 'Dmitriy'
-  },
-  file: fs.createReadStream('/foo/bar.jpg')
+उपयोगकर्ता: {
+नाम: 'दिमित्री'
+},
+फ़ाइल: fs.createReadStream('/foo/bar.jpg')
 }, {
-  headers: {
-    'Content-Type': 'multipart/form-data'
-  }
+शीर्षलेख: {
+'सामग्री-प्रकार': 'मल्टीपार्ट/फ़ॉर्म-डेटा'
+}
 }).then(({data})=> console.log(data));
 ```
 
-Axios FormData serializer supports some special endings to perform the following operations:
+Axios FormData serializer निम्नलिखित ऑपरेशन करने के लिए कुछ विशेष अंत का समर्थन करता है:
 
-- `{}` - serialize the value with JSON.stringify
-- `[]` - unwrap the array-like object as separate fields with the same key 
+- `{}` - JSON.stringify के साथ मान को क्रमबद्ध करें
+- `[]` - सरणी-जैसे ऑब्जेक्ट को समान कुंजी वाले अलग-अलग फ़ील्ड के रूप में अनरैप करें
 
-> NOTE: 
-> unwrap/expand operation will be used by default on arrays and FileList objects
+> नोट:
+> अनरैप/विस्तार ऑपरेशन डिफ़ॉल्ट रूप से सरणी और FileList ऑब्जेक्ट पर उपयोग किया जाएगा
 
-FormData serializer supports additional options via `config.formSerializer: object` property to handle rare cases:
+FormData serializer दुर्लभ मामलों को संभालने के लिए `config.formSerializer: object` प्रॉपर्टी के माध्यम से अतिरिक्त विकल्पों का समर्थन करता है:
 
-- `visitor: Function` - user-defined visitor function that will be called recursively to serialize the data object
-to a `FormData` object by following custom rules.
+- `visitor: Function` - उपयोगकर्ता-निर्धारित विज़िटर फ़ंक्शन जिसे कस्टम नियमों का पालन करके डेटा ऑब्जेक्ट को क्रमबद्ध करने के लिए पुनरावर्ती रूप से कॉल किया जाएगा
+एक `FormData` ऑब्जेक्ट में।
 
-- `dots: boolean = false` - use dot notation instead of brackets to serialize arrays and objects;
+- `dots: boolean = false` - सरणी और ऑब्जेक्ट को क्रमबद्ध करने के लिए कोष्ठक के बजाय बिंदु संकेतन का उपयोग करें;
 
-- `metaTokens: boolean = true` - add the special ending (e.g `user{}: '{"name": "John"}'`) in the FormData key. 
-The back-end body-parser could potentially use this meta-information to automatically parse the value as JSON.
+- `metaTokens: boolean = true` - FormData कुंजी में विशेष अंत (जैसे `user{}: '{"name": "John"}'`) जोड़ें।
+बैक-एंड बॉडी-पार्सर संभवतः इस मेटा-सूचना का उपयोग JSON के रूप में मान को स्वचालित रूप से पार्स करने के लिए कर सकता है।
 
-- `indexes: null|false|true = false` - controls how indexes will be added to unwrapped keys of `flat` array-like objects
+- `indexes: null|false|true = false` - नियंत्रित करता है कि `flat` सरणी-जैसे ऑब्जेक्ट्स की अनरैप्ड कुंजियों में इंडेक्स कैसे जोड़े जाएँगे।
 
-    - `null` - don't add brackets (`arr: 1`, `arr: 2`, `arr: 3`) 
-    - `false`(default) - add empty brackets (`arr[]: 1`, `arr[]: 2`, `arr[]: 3`)
-    - `true` - add brackets with indexes  (`arr[0]: 1`, `arr[1]: 2`, `arr[2]: 3`)
-    
-Let's say we have an object like this one:
+- `null` - कोष्ठक न जोड़ें (`arr: 1`, `arr: 2`, `arr: 3`)
+- `false`(डिफ़ॉल्ट) - रिक्त कोष्ठक जोड़ें (`arr[]: 1`, `arr[]: 2`, `arr[]: 3`)
+- `true` - इंडेक्स के साथ कोष्ठक जोड़ें (`arr[0]: 1`, `arr[1]: 2`, `arr[2]: 3`)
+
+मान लीजिए हमारे पास इस तरह का एक ऑब्जेक्ट है:
 
 ```js
 const obj = {
-  x: 1,
-  arr: [1, 2, 3],
-  arr2: [1, [2], 3],
-  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
-  'obj2{}': [{x:1}]
+x: 1,
+arr: [1, 2, 3],
+arr2: [1, [2], 3],
+उपयोगकर्ता: [{नाम: 'पीटर', उपनाम: 'ग्रिफिन'}, {नाम: 'थॉमस', उपनाम: 'एंडरसन'}],
+'obj2{}': [{x:1}]
 };
 ```
 
-The following steps will be executed by the Axios serializer internally:
+निम्नलिखित चरण Axios सीरियलाइज़र द्वारा आंतरिक रूप से निष्पादित किए जाएँगे:
 
 ```js
 const formData= new FormData();
@@ -138,33 +138,33 @@ formData.append('arr[]', '3');
 formData.append('arr2[0]', '1');
 formData.append('arr2[1][0]', '2');
 formData.append('arr2[2]', '3');
-formData.append('users[0][name]', 'Peter');
-formData.append('users[0][surname]', 'Griffin');
-formData.append('users[1][name]', 'Thomas');
-formData.append('users[1][surname]', 'Anderson');
+formData.append('users[0][name]', 'पीटर');
+formData.append('users[0][surname]', 'ग्रिफिन');
+formData.append('users[1][name]', 'थॉमस');
+formData.append('users[1][surname]', 'एंडरसन');
 formData.append('obj2{}', '[{"x":1}]');
 ```
 
 ```js
-import axios from 'axios';
+'axios' से axios आयात करें;
 
 axios.post('https://httpbin.org/post', {
-  'myObj{}': {x: 1, s: "foo"},
-  'files[]': document.querySelector('#fileInput').files 
+'myObj{}': {x: 1, s: "foo"},
+'files[]': document.querySelector('#fileInput').files
 }, {
-  headers: {
-    'Content-Type': 'multipart/form-data'
-  }
+headers: {
+'Content-Type': 'multipart/form-data'
+}
 }).then(({data})=> console.log(data));
 ```
 
-Axios supports the following shortcut methods: `postForm`, `putForm`, `patchForm`
-which are just the corresponding http methods with the content-type header preset to `multipart/form-data`.
+Axios निम्नलिखित शॉर्टकट विधियों का समर्थन करता है: `postForm`, `putForm`, `patchForm`
+जो कि संबंधित http विधियाँ हैं जिनका content-type हेडर `multipart/form-data` पर प्रीसेट है।
 
-`FileList` object can be passed directly:
+`FileList` ऑब्जेक्ट को सीधे पास किया जा सकता है:
 
 ```js
 await axios.postForm('https://httpbin.org/post', document.querySelector('#fileInput').files)
 ```
 
-All files will be sent with the same field names: `files[]`;
+सभी फ़ाइलें समान फ़ील्ड नामों के साथ भेजी जाएँगी: `files[]`;

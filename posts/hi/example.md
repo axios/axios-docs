@@ -1,68 +1,67 @@
 ---
-title: 'Minimal Example'
-description: 'A little example of using axios'
-prev_title: 'Introduction'
+शीर्षक: 'न्यूनतम उदाहरण'
+विवरण: 'axios के उपयोग का एक छोटा सा उदाहरण'
+prev_title: 'परिचय'
 prev_link: '/docs/intro'
-next_title: 'POST Requests'
+next_title: 'POST अनुरोध'
 next_link: '/docs/post_example'
 ---
 
-## note: CommonJS usage
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+## नोट: CommonJS उपयोग
+`require()` के साथ CommonJS आयातों का उपयोग करते समय TypeScript टाइपिंग (intellisense / स्वतः पूर्ण के लिए) प्राप्त करने के लिए, निम्नलिखित विधि का उपयोग करें:
 
 ```js
 const axios = require('axios').default;
 
-// axios.<method> will now provide autocomplete and parameter typings
+// axios.<method> अब स्वतः पूर्ण और पैरामीटर टाइपिंग प्रदान करेगा
 ```
 
-# Example
+# उदाहरण
 
-Performing a `GET` request
+`GET` अनुरोध निष्पादित करना
 
 ```js
 const axios = require('axios');
 
-// Make a request for a user with a given ID
+// किसी दिए गए आईडी वाले उपयोगकर्ता के लिए अनुरोध करें
 axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
+.then(function (response) {
+// सफलता को संभालें
+console.log(response);
+})
+.catch(function (error) {
+// त्रुटि को संभालें
+console.log(error);
+})
+.finally(function () {
+// हमेशा निष्पादित
+});
 
-// Optionally the request above could also be done as
+// वैकल्पिक रूप से, उपरोक्त अनुरोध इस प्रकार भी किया जा सकता है
 axios.get('/user', {
-    params: {
-      ID: 12345
-    }
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });  
+पैरामीटर: {
+ID: 12345
+}
+})
+.then(function (response) {
+console.log(response);
+})
+.catch(function (error) {
+console.log(error);
+})
+.finally(function () {
+// हमेशा निष्पादित
+});
 
-// Want to use async/await? Add the `async` keyword to your outer function/method.
-async function getUser() {
-  try {
-    const response = await axios.get('/user?ID=12345');
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
+// async/await का उपयोग करना चाहते हैं? अपने बाहरी फ़ंक्शन/विधि में `async` कीवर्ड जोड़ें।
+async फ़ंक्शन getUser() {
+try {
+const response = await axios.get('/user?ID=12345');
+console.log(response);
+} catch (error) {
+console.error(error);
+}
 }
 ```
 
-> **NOTE:** `async/await` is part of ECMAScript 2017 and is not supported in Internet
-> Explorer and older browsers, so use with caution.
+> **नोट:** `async/await` ECMAScript 2017 का हिस्सा है और इंटरनेट एक्सप्लोरर और पुराने ब्राउज़र में समर्थित नहीं है, इसलिए सावधानी से उपयोग करें।
