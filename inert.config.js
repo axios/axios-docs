@@ -16,6 +16,7 @@ const {
 
 const fs = require("fs");
 
+const hiConfig = require("./hi.lang.js");
 const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
@@ -87,6 +88,12 @@ const langs = [
     name: "Français",
     prefix: "/fr/",
     config: frConfig,
+  },
+  {
+    dir: "ltr",
+    name: "हिंदी",
+    prefix: '/hi/',
+    config: hiConfig
   },
   {
     dir: "ltr",
