@@ -145,17 +145,10 @@ footer {
   font-weight: 300;
   font-size: 13.5px;
 
-  table {
-    width: 100%;
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 40px;
-
-    td,
-    th {
-      text-align: left;
-    }
-    a:hover {
-      color: #1a88ff;
-    }
   }
 
   .row {
