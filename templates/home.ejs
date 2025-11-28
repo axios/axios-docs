@@ -129,31 +129,56 @@
     <footer>
       <table>
         <tr>
-          <th><%= locale.t['Languages'] || 'Languages' %></th>
-          <th><%= locale.t['Open Source'] || 'Open Source' %></th>
-          <th><%= locale.t['Contribute'] || 'Contribute' %></th>
+          <th><%= locale.t['Languages'] || 'Languages' %></th>
+          <th><%= locale.t['Open Source'] || 'Open Source' %></th>
+          <th><%= locale.t['Contribute'] || 'Contribute' %></th>
         </tr>
         <tr>
-          <td class="languages-column">
-            <div class="languages-grid">
-              <% config.custom.langs.forEach(lang => { %>
-                <a href="<%= lang.prefix %>"><%= lang.config.display %></a>
-              <% }) %>
-            </div>
-          </td>
-          <td class="links-column">
-            <a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a>
-            <a href="https://github.com/axios/axios/issues" target="_blank"><%= locale.t['Issues'] || 'Issues' %></a>
-            <a href="https://github.com/axios/axios/pulls" target="_blank"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
-            <a href="https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md" target="_blank"><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a>
-          </td>
-          <td class="links-column">
-            <a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a>
+          <td><%- config.custom.langs[0] ? `<a href="${config.custom.langs[0].prefix}">${config.custom.langs[0].config.display}</a>` : undefined %></td>
+          <td><a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Source on GitHub'] || 'Source on GitHub' %></a></td>
+          <td><a href="https://github.com/axios/axios" target="_blank"><%= locale.t['Fork on GitHub'] || 'Fork on GitHub' %></a></td>
+        </tr>
+        <tr>
+          <td><%- config.custom.langs[1] ? `<a href="${config.custom.langs[1].prefix}">${config.custom.langs[1].config.display}</a>` : undefined%></td>
+          <td><a href="https://github.com/axios/axios/issues" target="_blank"><%= locale.t['Issues'] || 'Issues' %></a></td>
+          <td>
             <a href="https://github.com/axios/axios-docs" target="_blank"><%= locale.t['Fork the Website'] || 'Fork the Website' %></a>
-            <a href="https://github.com/axios/axios/issues/new/choose" target="_blank"><%= locale.t['Create an Issue'] || 'Create an Issue' %></a>
-            <a href="https://opencollective.com/axios/contribute" target="_blank"><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a>
           </td>
         </tr>
+        <tr>
+          <td><%- config.custom.langs[2] ? `<a href="${config.custom.langs[2].prefix}">${config.custom.langs[2].config.display}</a>` : undefined%></td>
+          <td>
+            <a href="https://github.com/axios/axios/pulls" target="_blank"><%= locale.t['Pull Requests'] || 'Pull Requests' %></a>
+          </td>
+          <td>
+            <a href="https://github.com/axios/axios/issues/new/choose" target="_blank"
+              ><%= locale.t['Create an Issue'] || 'Create an Issue' %></a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><%- config.custom.langs[3] ? `<a href="${config.custom.langs[3].prefix}">${config.custom.langs[3].config.display}</a>` : undefined%></td>
+          <td>
+            <a
+              href="https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md" target="_blank"
+              ><%= locale.t['Code of Conduct'] || 'Code of Conduct' %></a
+            >
+          </td>
+          <td>
+            <a href="https://opencollective.com/axios/contribute" target="_blank"
+            ><%= locale.t['Become a sponsor'] || 'Become a sponsor' %></a
+            >
+          </td>
+        </tr>
+        <% config.custom.langs.slice(4).forEach(lang => { %>
+          <tr>
+            <td>
+              <a href="<%= lang.prefix %>"><%= lang.config.display %></a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% }) %>
       </table>
       <hr class="light-hr">
       <div class="row">
