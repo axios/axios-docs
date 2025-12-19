@@ -5,7 +5,7 @@
 module.exports = {
   // Language display name. MUST BE THE SAME AS IN [inert.config.js].custom.langs
   display: "Italiano",
-  prefix: "/",
+  prefix: "/it/",
   dir: "ltr",
   lang: "it",
   // `p` stands for `paragraph`. This will contain translations of full text blocks
