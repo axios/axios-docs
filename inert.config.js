@@ -16,6 +16,8 @@ const {
 
 const fs = require("fs");
 
+const itConfig = require("./it.lang.js");
+const hiConfig = require("./hi.lang.js");
 const arConfig = require("./ar.lang.js");
 const enConfig = require("./en.lang.js");
 const deConfig = require("./de.lang.js");
@@ -23,7 +25,7 @@ const zhConfig = require("./zh.lang.js");
 const ukConfig = require("./uk.lang.js");
 const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
-const esConfig = require('./es.lang.js');
+const esConfig = require("./es.lang.js");
 const frConfig = require("./fr.lang.js");
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
@@ -33,9 +35,11 @@ const ruConfig = require("./ru.lang.js");
 const jaConfig = require("./ja.lang.js");
 const zhTWConfig = require("./zhTW.lang.js");
 
-const data = fs.existsSync('./temp/data.json') ? require('./temp/data.json') : {
-  sponsors: []
-};
+const data = fs.existsSync("./temp/data.json")
+  ? require("./temp/data.json")
+  : {
+      sponsors: [],
+    };
 
 // List of languages
 const langs = [
@@ -90,6 +94,12 @@ const langs = [
   },
   {
     dir: "ltr",
+    name: "हिंदी",
+    prefix: '/hi/',
+    config: hiConfig
+  },
+  {
+    dir: "ltr",
     name: "Türkçe",
     prefix: "/tr/",
     config: trConfig,
@@ -116,8 +126,9 @@ const langs = [
     dir: "ltr",
     name: "Русский",
     prefix: "/ru/",
-    config: ruConfig
-  },{
+    config: ruConfig,
+  },
+  {
     dir: "rtl",
     name: "Arabic",
     prefix: "/ar/",
@@ -128,14 +139,21 @@ const langs = [
     dir: "ltr",
     name: "日本語",
     prefix: "/ja/",
-    config: jaConfig
+    config: jaConfig,
   },
   {
     dir: "ltr",
     name: "繁體中文",
     prefix: "/zhTW/",
-    config: zhTWConfig
-  }
+    config: zhTWConfig,
+  },
+  {
+    dir: "ltr",
+    name: "Italiano",
+    prefix: "/",
+    postsDir: "/it/",
+    config: itConfig,
+  },
 ];
 
 /**
@@ -153,7 +171,7 @@ module.exports = {
     title: "Axios Docs",
     // List of languages
     langs: langs,
-    ...data
+    ...data,
   },
   build: {
     /**
@@ -257,9 +275,10 @@ module.exports = {
       ...langs
         .map((lang) => [
           singleHTMLBuild(lang.config),
-          writeFile(lang.prefix === '/'
-            ? ':output:/index.html'
-            : `:${lang.prefix.slice(1, -1)}Output:/index.html`
+          writeFile(
+            lang.prefix === "/"
+              ? ":output:/index.html"
+              : `:${lang.prefix.slice(1, -1)}Output:/index.html`
           ),
         ])
         .flat(),
@@ -333,19 +352,22 @@ module.exports = {
           ],
         },
       },
-      ...langs.map(
-        (lang) => ({
-          folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
-          build: {
-            traverseLevel: "recursive",
-            filePipeline: [
-              markdown(),
-              htmlBuild("post", lang.config),
-              write(lang.prefix === '/' ? 'postOutput' : `${lang.prefix.slice(1, -1)}Posts`, ".html"),
-            ],
-          },
-        })
-      ),
+      ...langs.map((lang) => ({
+        folder: `posts/${lang.postsDir || lang.prefix.slice(1, -1)}`,
+        build: {
+          traverseLevel: "recursive",
+          filePipeline: [
+            markdown(),
+            htmlBuild("post", lang.config),
+            write(
+              lang.prefix === "/"
+                ? "postOutput"
+                : `${lang.prefix.slice(1, -1)}Posts`,
+              ".html"
+            ),
+          ],
+        },
+      })),
     ],
   },
 };

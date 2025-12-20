@@ -17,11 +17,8 @@ body.dark {
 }
 
 .splide {
-  height: 7rem;
-/*  background-color: var(--carousel-bg);*/
+  height: 7.3rem;
   border-radius: 5px;
-  padding: 0 55px;
-  margin: 0 calc(-1 * var(--margin) / 2);
 
   .splide__arrows {
     visibility: hidden;
@@ -29,6 +26,30 @@ body.dark {
 
   .splide__track {
     height: 100%;
+  }
+
+  .splide__track::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--col-bg));
+    z-index: 1;
+  }
+
+  .splide__track::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to left, transparent, var(--col-bg));
   }
 
   &:hover .splide__arrows {
@@ -40,7 +61,7 @@ li.sponsor-card {
 
   width: calc(15%);
 
-  padding: 1.2rem 0;
+  padding: 1.5rem 0 1.5rem 1.5rem;
 
   .chevron{
     flex-grow: 0;
