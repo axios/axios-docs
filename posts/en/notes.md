@@ -5,10 +5,6 @@ prev_title: 'URL-Encoding Bodies'
 prev_link: '/docs/urlencoded'
 ---
 
-## Semver
-
-Until axios reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
-
 ## Promises
 
 axios depends on a native ES6 Promise implementation to be [supported](http://caniuse.com/promises).
