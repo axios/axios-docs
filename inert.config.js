@@ -151,7 +151,6 @@ const langs = [
     dir: "ltr",
     name: "Italiano",
     prefix: "/it/",
-    postsDir: "it",
     config: itConfig,
   },
 ];
