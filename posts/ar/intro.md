@@ -1,57 +1,62 @@
 ---
-title: 'Getting Started'
-description: 'Promise based HTTP client for the browser and node.js'
-next_title: 'Minimal Example'
+title: 'البدء'
+description: 'عميل HTTP مبني على الوعود للمتصفح و node.js'
+next_title: 'مثال بسيط'
 next_link: '/ar/docs/example'
 ---
 
-# What is Axios?
-Axios is a *[promise-based](https://javascript.info/promise-basics)* HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is *[isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application)* (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequest.
+# ما هو Axios؟
+Axios هو عميل HTTP يعتمد على *[الوعود ](https://javascript.info/promise-basics)* [`Nodejs`](https://nodejs.org)لكل من  المتصفح  و
+.
+  
+وهو *[متجانس (Isomorphic)](https://www.lullabot.com/articles/what-is-an-isomorphic-application)*، أي يمكن تشغيله في المتصفح وNode.js باستخدام نفس قاعدة الشيفرة.
 
-# Features
+على جهة الخادم يستخدم وحدة `http` الأصلية في Node.js، بينما على جهة العميل (المتصفح) يستخدم `XMLHttpRequest`.
 
-- Make [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) from the browser
-- Make [http](http://nodejs.org/api/http.html) requests from node.js
-- Supports the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
-- Intercept request and response
-- Transform request and response data
-- Cancel requests
-- Automatic transforms for JSON data
-- Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+# الميزات
 
-# Installing
+- إجراء [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) من المتصفح
+- إجراء طلبات [http](http://nodejs.org/api/http.html) من node.js
+- يدعم [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
+- اعتراض الطلب والاستجابة
+- تحويل بيانات الطلب والاستجابة
+- إلغاء الطلبات
+- تحويلات تلقائية لبيانات JSON
+- دعم جانب العميل لحماية من [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
-Using npm:
+# التثبيت
+
+استخدام npm:
 
 ```bash
 $ npm install axios
 ```
 
-Using bower:
+استخدام bower:
 
 ```bash
 $ bower install axios
 ```
 
-Using yarn:
+استخدام yarn:
 
 ```bash
 $ yarn add axios
 ```
 
-Using pnpm:
+استخدام pnpm:
 
 ```bash
 $ pnpm add axios
 ```
 
-Using jsDelivr CDN:
+استخدام jsDelivr CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
 
-Using unpkg CDN:
+استخدام unpkg CDN:
 
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
