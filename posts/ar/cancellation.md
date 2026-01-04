@@ -1,14 +1,14 @@
 ---
-title: 'Cancellation'
-prev_title: 'Handling Errors'
+title: 'الإلغاء'
+prev_title: 'معالجة الأخطاء'
 prev_link: '/ar/docs/handling_errors'
-next_title: 'URL-Encoding Bodies'
+next_title: 'أجسام URL-Encoded'
 next_link: '/ar/docs/urlencoded'
 ---
 
 ## AbortController
 
-Starting from `v0.22.0` Axios supports [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel requests in fetch API way:
+بدءًا من `v0.22.0` يدعم Axios [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) لإلغاء الطلبات بطريقة fetch API:
 
 ```js
 const controller = new AbortController();
@@ -18,19 +18,19 @@ axios.get('/foo/bar', {
 }).then(function(response) {
    //...
 });
-// cancel the request
+// إلغاء الطلب
 controller.abort()
 ```
 
-## CancelToken `deprecated`
+## CancelToken `مهمل`
 
-You can also cancel a request using a *CancelToken*. 
+يمكنك أيضًا إلغاء طلب باستخدام *CancelToken*.
 
-> The axios cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+> API رمز الإلغاء في axios مبني على [اقتراح الوعود القابلة للإلغاء المسحوب](https://github.com/tc39/proposal-cancelable-promises).
 
-> This API is deprecated since `v0.22.0` and shouldn't be used in new projects
+> هذا API مهمل منذ `v0.22.0` ولا يجب استخدامه في المشاريع الجديدة
 
-You can create a cancel token using the `CancelToken.source` factory as shown below:
+يمكنك إنشاء رمز إلغاء باستخدام مصنع `CancelToken.source` كما هو موضح أدناه:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -40,9 +40,9 @@ axios.get('/user/12345', {
   cancelToken: source.token
 }).catch(function (thrown) {
   if (axios.isCancel(thrown)) {
-    console.log('Request canceled', thrown.message);
+    console.log('تم إلغاء الطلب', thrown.message);
   } else {
-    // handle error
+    // معالجة الخطأ
   }
 });
 
@@ -52,11 +52,11 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
-source.cancel('Operation canceled by the user.');
+// إلغاء الطلب (معامل الرسالة اختياري)
+source.cancel('تم إلغاء العملية من قبل المستخدم.');
 ```
 
-You can also create a cancel token by passing an executor function to the `CancelToken` constructor:
+يمكنك أيضًا إنشاء رمز إلغاء بتمرير دالة تنفيذ إلى مُنشئ `CancelToken`:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -64,18 +64,18 @@ let cancel;
 
 axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
-    // An executor function receives a cancel function as a parameter
+    // تتلقى دالة التنفيذ دالة إلغاء كمعامل
     cancel = c;
   })
 });
 
-// cancel the request
+// إلغاء الطلب
 cancel();
 ```
 
-> Note: you can cancel several requests with the same cancel token / signal.
+> ملاحظة: يمكنك إلغاء عدة طلبات بنفس رمز الإلغاء / الإشارة.
 
-During the transition period, you can use both cancellation APIs, even for the same request:
+خلال فترة الانتقال، يمكنك استخدام كلا API الإلغاء، حتى لنفس الطلب:
 
 ```js
 const controller = new AbortController();
@@ -88,9 +88,9 @@ axios.get('/user/12345', {
   signal: controller.signal
 }).catch(function (thrown) {
   if (axios.isCancel(thrown)) {
-    console.log('Request canceled', thrown.message);
+    console.log('تم إلغاء الطلب', thrown.message);
   } else {
-    // handle error
+    // معالجة الخطأ
   }
 });
 
@@ -100,8 +100,8 @@ axios.post('/user/12345', {
   cancelToken: source.token
 })
 
-// cancel the request (the message parameter is optional)
-source.cancel('Operation canceled by the user.');
-// OR
-controller.abort(); // the message parameter is not supported
+// إلغاء الطلب (معامل الرسالة اختياري)
+source.cancel('تم إلغاء العملية من قبل المستخدم.');
+// أو
+controller.abort(); // معامل الرسالة غير مدعوم
 ```
