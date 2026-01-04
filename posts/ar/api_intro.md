@@ -42,9 +42,9 @@ axios({
 axios('/user/12345');
 ```
 
-### Request method aliases
+### أسماء مستعارة لطرق الطلب
 
-.قدمت كافة الفونكشن المدهومة لملائمة الاسماء المستعارة
+قدمت كافة الوظائف المدعومة لتسهيل الأسماء المستعارة.
 
 ##### axios.request(config)
 ##### axios.get(url[, config])
@@ -59,5 +59,5 @@ axios('/user/12345');
 ##### axios.patchForm(url[, data[, config]])
 
 ###### ملاحظة
-When using the alias methods `url`, `method`, and `data` properties don't need to be specified in config.
+عند استخدام طرق الأسماء المستعارة، لا حاجة لتحديد خصائص `url` و `method` و `data` في التكوين.
 .`data`و `url`, `method` ليس هنالك حاجة لتوصيف الاسماء المستعارة للفونكشنز عند استخدام
