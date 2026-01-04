@@ -1,13 +1,13 @@
 ---
-title: 'POST Requests'
-description: 'How to perform POST requests with Axios'
-prev_title: 'Minimal Example'
+title: 'طلبات POST'
+description: 'كيفية إجراء طلبات POST باستخدام Axios'
+prev_title: 'مثال بسيط'
 prev_link: '/ar/docs/example'
 next_title: 'Axios API'
 next_link: '/ar/docs/api_intro'
 ---
 
-Performing a `POST` request
+إجراء طلب `POST`
 
 ```js
 axios.post('/user', {
@@ -22,7 +22,7 @@ axios.post('/user', {
   });
 ```
 
-Performing multiple concurrent requests
+إجراء طلبات متعددة متزامنة
 
 ```js
 function getUserAccount() {
