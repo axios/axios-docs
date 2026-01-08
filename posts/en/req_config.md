@@ -97,6 +97,19 @@ These are the available config options for making requests. Only the `url` is re
   // `Authorization` custom headers you have set using `headers`.
   // Please note that only HTTP Basic auth is configurable through this parameter.
   // For Bearer tokens and such, use `Authorization` custom headers instead.
+  
+  // When using axios instances with pre-configured `auth`, you can override
+  // or bypass the instance's basic auth configuration in individual requests:
+  //
+  // 1. Override with different credentials:
+  //    instance.get('/path', { auth: { username: 'other', password: 'pass' } })
+  //
+  // 2. Bypass basic auth and use a custom Authorization header:
+  //    instance.get('/path', { auth: null, headers: { Authorization: 'Bearer token' } })
+  //
+  // Note: If you don't set `auth: null`, the instance's pre-configured basic auth
+  // will take precedence over any `Authorization` header you set in the request config.
+
   auth: {
     username: 'janedoe',
     password: 's00pers3cret'
