@@ -1,14 +1,14 @@
 ---
-title: 'The Axios Instance'
+title: 'نموذج Axios'
 prev_title: 'Axios API'
 prev_link: '/ar/docs/api_intro'
-next_title: 'Request Config'
+next_title: 'تكوين الطلب'
 next_link: '/ar/docs/req_config'
 ---
 
-### Creating an instance
+### إنشاء نموذج
 
-You can create a new instance of axios with a custom config.
+يمكنك إنشاء نموذج جديد من axios بتكوين مخصص.
 
 ##### axios.create([config])
 
@@ -20,9 +20,9 @@ const instance = axios.create({
 });
 ```
 
-### Instance methods
+### طرق النموذج
 
-The available instance methods are listed below. The specified config will be merged with the instance config.
+الطرق المتاحة للنموذج مدرجة أدناه. سيتم دمج التكوين المحدد مع تكوين النموذج.
 
 ##### axios#request(config)
 ##### axios#get(url[, config])
@@ -34,27 +34,27 @@ The available instance methods are listed below. The specified config will be me
 ##### axios#patch(url[, data[, config]])
 ##### axios#getUri([config])
 
-### Calling the instance with a config object
+### استدعاء النموذج بكائن التكوين
 
-In addition to using convenience methods like `instance.get()` or `instance.post()`, you can also call an Axios instance directly with a config object. This is functionally equivalent to `axios(config)`, and is particularly useful when retrying a request using the original configuration.
+بالإضافة إلى استخدام طرق الراحة مثل `instance.get()` أو `instance.post()`، يمكنك أيضًا استدعاء نموذج Axios مباشرة بكائن التكوين. هذا يعادل وظيفيًا `axios(config)`، وهو مفيد بشكل خاص عند إعادة محاولة طلب باستخدام التكوين الأصلي.
 
 ```js
 const instance = axios.create({ baseURL: '/api' });
 
-// Works just like axios(config)
+// يعمل مثل axios(config)
 instance({
   url: '/users',
   method: 'get'
 });
 ```
 
-This approach enables clean retry logic when handling authentication errors:
+هذا النهج يمكن منطق إعادة المحاولة النظيف عند التعامل مع أخطاء المصادقة:
 
 ```js
 instance.interceptors.response.use(undefined, async (error) => {
   if (error.response?.status === 401) {
     await refreshToken();
-    return instance(error.config); // Retry original request
+    return instance(error.config); // إعادة محاولة الطلب الأصلي
   }
 
   throw error;

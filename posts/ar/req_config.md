@@ -1,181 +1,179 @@
 ---
-title: 'Request Config'
-prev_title: 'The Axios Instance'
+title: 'تكوين الطلب'
+prev_title: 'نموذج Axios'
 prev_link: '/ar/docs/instance'
-next_title: 'Response Schema'
+next_title: 'مخطط الاستجابة'
 next_link: '/ar/docs/res_schema'
 ---
 
 
-These are the available config options for making requests. Only the `url` is required. Requests will default to `GET` if `method` is not specified.
+هذه هي خيارات التكوين المتاحة لإجراء الطلبات. فقط `url` مطلوب. ستكون الطلبات افتراضيًا `GET` إذا لم يتم تحديد `method`.
 
 ```js
 {
-  // `url` is the server URL that will be used for the request
+  // `url` هو عنوان URL للخادم الذي سيتم استخدامه للطلب
   url: '/user',
 
-  // `method` is the request method to be used when making the request
-  method: 'get', // default
+  // `method` هو طريقة الطلب التي سيتم استخدامها عند إجراء الطلب
+  method: 'get', // افتراضي
 
-  // `baseURL` will be prepended to `url` unless `url` is absolute.
-  // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
-  // to methods of that instance.
+  // `baseURL` سيتم إضافته إلى `url` إلا إذا كان `url` مطلقًا.
+  // يمكن أن يكون مناسبًا تعيين `baseURL` لنموذج من axios لتمرير عناوين URL نسبية
+  // إلى طرق ذلك النموذج.
   baseURL: 'https://some-domain.com/api',
 
-  // `transformRequest` allows changes to the request data before it is sent to the server
-  // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'
-  // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
-  // FormData or Stream
-  // You may modify the headers object.
+  // `transformRequest` يسمح بتغييرات على بيانات الطلب قبل إرسالها إلى الخادم
+  // هذا قابل للتطبيق فقط لطرق الطلب 'PUT' و 'POST' و 'PATCH' و 'DELETE'
+  // يجب أن ترجع الدالة الأخيرة في المصفوفة سلسلة أو مثيل Buffer أو ArrayBuffer أو
+  // FormData أو Stream
+  // يمكنك تعديل كائن الرؤوس.
   transformRequest: [function (data, headers) {
-    // Do whatever you want to transform the data
+    // افعل ما تريد لتحويل البيانات
 
     return data;
   }],
 
-  // `transformResponse` allows changes to the response data to be made before
-  // it is passed to then/catch
+  // `transformResponse` يسمح بتغييرات على بيانات الاستجابة قبل
+  // تمريرها إلى then/catch
   transformResponse: [function (data) {
-    // Do whatever you want to transform the data
+    // افعل ما تريد لتحويل البيانات
 
     return data;
   }],
 
-  // `headers` are custom headers to be sent
+  // `headers` هي الرؤوس المخصصة التي سيتم إرسالها
   headers: {'X-Requested-With': 'XMLHttpRequest'},
 
-  // `params` are the URL parameters to be sent with the request
-  // Must be a plain object or a URLSearchParams object
-  // NOTE: params that are null or undefined are not rendered in the URL.
+  // `params` هي معاملات URL التي سيتم إرسالها مع الطلب
+  // يجب أن تكون كائنًا عاديًا أو كائن URLSearchParams
+  // ملاحظة: المعاملات التي هي null أو undefined لا يتم عرضها في URL.
   params: {
     ID: 12345
   },
 
-  // `paramsSerializer` is an optional config that allows you to customize serializing `params`. 
+  // `paramsSerializer` هو تكوين اختياري يسمح لك بتخصيص تسلسل `params`.
   paramsSerializer: {
 
-    //Custom encoder function which sends key/value pairs in an iterative fashion.
-    encode?: (param: string): string => { /* Do custom operations here and return transformed string */ }, 
-    
-    // Custom serializer function for the entire parameter. Allows user to mimic pre 1.x behaviour.
-    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ), 
-    
-    //Configuration for formatting array indexes in the params. 
-    indexes: false // Three available options: 
-    // (1) indexes: null (leads to no brackets), 
-    // (2) (default) indexes: false (leads to empty brackets),
-    // (3) indexes: true (leads to brackets with indexes).    
+    //دالة ترميز مخصصة ترسل أزواج المفتاح/القيمة بطريقة تكرارية.
+    encode?: (param: string): string => { /* قم بعمليات مخصصة هنا وأعد السلسلة المحولة */ },
+
+    // دالة تسلسل مخصصة للمعامل بأكمله. يسمح للمستخدم بتقليد سلوك ما قبل 1.x.
+    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ),
+
+    //تكوين لتنسيق فهارس المصفوفة في المعاملات.
+    indexes: false // ثلاث خيارات متاحة:
+    // (1) indexes: null (يؤدي إلى عدم وجود أقواس)،
+    // (2) (افتراضي) indexes: false (يؤدي إلى أقواس فارغة)،
+    // (3) indexes: true (يؤدي إلى أقواس مع فهارس).
   },
 
-  // `data` is the data to be sent as the request body
-  // Only applicable for request methods 'PUT', 'POST', 'DELETE', and 'PATCH'
-  // When no `transformRequest` is set, must be of one of the following types:
-  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
-  // - Browser only: FormData, File, Blob
-  // - Node only: Stream, Buffer
+  // `data` هي البيانات التي سيتم إرسالها كجسم الطلب
+  // قابل للتطبيق فقط لطرق الطلب 'PUT' و 'POST' و 'DELETE' و 'PATCH'
+  // عندما لا يتم تعيين `transformRequest`، يجب أن تكون من أحد الأنواع التالية:
+  // - سلسلة، كائن عادي، ArrayBuffer، ArrayBufferView، URLSearchParams
+  // - المتصفح فقط: FormData، File، Blob
+  // - Node فقط: Stream، Buffer
   data: {
     firstName: 'Fred'
   },
-  
-  // syntax alternative to send data into the body
-  // method post
-  // only the value is sent, not the key
+
+  // بديل بناء جملة لإرسال البيانات إلى الجسم
+  // طريقة post
+  // يتم إرسال القيمة فقط، وليس المفتاح
   data: 'Country=Brasil&City=Belo Horizonte',
 
-  // `timeout` specifies the number of milliseconds before the request times out.
-  // If the request takes longer than `timeout`, the request will be aborted.
-  timeout: 1000, // default is `0` (no timeout)
+  // `timeout` يحدد عدد المللي ثانية قبل انتهاء مهلة الطلب.
+  // إذا استغرق الطلب وقتًا أطول من `timeout`، سيتم إلغاء الطلب.
+  timeout: 1000, // الافتراضي هو `0` (لا مهلة)
 
-  // `withCredentials` indicates whether or not cross-site Access-Control requests
-  // should be made using credentials
-  withCredentials: false, // default
+  // `withCredentials` يشير إلى ما إذا كان يجب إجراء طلبات Access-Control عبر المواقع
+  // باستخدام بيانات الاعتماد
+  withCredentials: false, // افتراضي
 
-  // `adapter` allows custom handling of requests which makes testing easier.
-  // Return a promise and supply a valid response (see lib/adapters/README.md).
+  // `adapter` يسمح بالتعامل المخصص مع الطلبات مما يجعل الاختبار أسهل.
+  // أعد وعدًا وأمد باستجابة صالحة (انظر lib/adapters/README.md).
   adapter: function (config) {
     /* ... */
   },
 
-  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
-  // This will set an `Authorization` header, overwriting any existing
-  // `Authorization` custom headers you have set using `headers`.
-  // Please note that only HTTP Basic auth is configurable through this parameter.
-  // For Bearer tokens and such, use `Authorization` custom headers instead.
+  // `auth` يشير إلى أن يجب استخدام مصادقة HTTP Basic، ويوفر بيانات الاعتماد.
+  // سيتم تعيين رأس `Authorization`، مما يتجاوز أي رؤوس مخصصة موجودة
+  // `Authorization` التي قمت بتعيينها باستخدام `headers`.
+  // يرجى ملاحظة أن مصادقة HTTP Basic فقط قابلة للتكوين من خلال هذا المعامل.
+  // لرموز Bearer وما شابه، استخدم رؤوس `Authorization` المخصصة بدلاً من ذلك.
   auth: {
     username: 'janedoe',
     password: 's00pers3cret'
   },
 
-  // `responseType` indicates the type of data that the server will respond with
-  // options are: 'arraybuffer', 'document', 'json', 'text', 'stream'
-  //   browser only: 'blob'
-  responseType: 'json', // default
+  // `responseType` يشير إلى نوع البيانات التي سيرد بها الخادم
+  // الخيارات هي: 'arraybuffer'، 'document'، 'json'، 'text'، 'stream'
+  // المتصفح فقط: 'blob'
+  responseType: 'json', // افتراضي
 
-  // `responseEncoding` indicates encoding to use for decoding responses (Node.js only)
-  // Note: Ignored for `responseType` of 'stream' or client-side requests
-  responseEncoding: 'utf8', // default
+  // `responseEncoding` يشير إلى الترميز المستخدم لفك تشفير الاستجابات (Node.js فقط)
+  // ملاحظة: يتم تجاهله لـ `responseType` من 'stream' أو طلبات جانب العميل
+  responseEncoding: 'utf8', // افتراضي
 
-  // `xsrfCookieName` is the name of the cookie to use as a value for xsrf token
-  xsrfCookieName: 'XSRF-TOKEN', // default
+  // `xsrfCookieName` هو اسم ملف تعريف الارتباط المستخدم كقيمة لرمز xsrf
+  xsrfCookieName: 'XSRF-TOKEN', // افتراضي
 
-  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
-  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+  // `xsrfHeaderName` هو اسم رأس http الذي يحمل قيمة رمز xsrf
+  xsrfHeaderName: 'X-XSRF-TOKEN', // افتراضي
 
-  // `onUploadProgress` allows handling of progress events for uploads
-  // browser only
+  // `onUploadProgress` يسمح بالتعامل مع أحداث التقدم للتحميلات
+  // المتصفح فقط
   onUploadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
+    // افعل ما تريد مع حدث التقدم الأصلي
   },
 
-  // `onDownloadProgress` allows handling of progress events for downloads
-  // browser only
+  // `onDownloadProgress` يسمح بالتعامل مع أحداث التقدم للتنزيلات
+  // المتصفح فقط
   onDownloadProgress: function (progressEvent) {
-    // Do whatever you want with the native progress event
+    // افعل ما تريد مع حدث التقدم الأصلي
   },
 
-  // `maxContentLength` defines the max size of the http response content in bytes allowed in node.js
+  // `maxContentLength` يحدد الحد الأقصى لحجم محتوى استجابة http بالبايتات المسموح به في node.js
   maxContentLength: 2000,
 
-  // `maxBodyLength` (Node only option) defines the max size of the http request content in bytes allowed
+  // `maxBodyLength` (خيار Node فقط) يحدد الحد الأقصى لحجم محتوى طلب http بالبايتات المسموح به
   maxBodyLength: 2000,
 
-  // `validateStatus` defines whether to resolve or reject the promise for a given
-  // HTTP response status code. If `validateStatus` returns `true` (or is set to `null`
-  // or `undefined`), the promise will be resolved; otherwise, the promise will be
-  // rejected.
+  // `validateStatus` يحدد ما إذا كان يجب حل أو رفض الوعد لرمز حالة استجابة HTTP معين.
+  // إذا أعاد `validateStatus` `true` (أو تم تعيينه إلى `null`
+  // أو `undefined`)، سيتم حل الوعد؛ وإلا، سيتم رفض الوعد.
   validateStatus: function (status) {
-    return status >= 200 && status < 300; // default
+    return status >= 200 && status < 300; // افتراضي
   },
 
-  // `maxRedirects` defines the maximum number of redirects to follow in node.js.
-  // If set to 0, no redirects will be followed.
-  maxRedirects: 5, // default
+  // `maxRedirects` يحدد الحد الأقصى لعدد عمليات إعادة التوجيه التي يجب اتباعها في node.js.
+  // إذا تم تعيينه إلى 0، لن يتم اتباع أي عمليات إعادة توجيه.
+  maxRedirects: 5, // افتراضي
 
-  // `socketPath` defines a UNIX Socket to be used in node.js.
-  // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
-  // Only either `socketPath` or `proxy` can be specified.
-  // If both are specified, `socketPath` is used.
-  socketPath: null, // default
+  // `socketPath` يحدد مقبس UNIX ليتم استخدامه في node.js.
+  // على سبيل المثال '/var/run/docker.sock' لإرسال الطلبات إلى daemon docker.
+  // يمكن تحديد إما `socketPath` أو `proxy` فقط.
+  // إذا تم تحديد كليهما، يتم استخدام `socketPath`.
+  socketPath: null, // افتراضي
 
-  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
-  // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js
-  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because
-  // `http.globalAgent` has `keepAlive` enabled by default.
+  // `httpAgent` و `httpsAgent` يحددان وكيلًا مخصصًا ليتم استخدامه عند إجراء طلبات http
+  // و https على التوالي، في node.js. هذا يسمح بإضافة خيارات مثل
+  // `keepAlive` التي لا يتم تمكينها افتراضيًا قبل Node.js v19.0.0. بعد Node.js
+  // v19.0.0، لم تعد بحاجة إلى تخصيص الوكيل لتمكين `keepAlive` لأن
+  // `http.globalAgent` لديه `keepAlive` ممكّن افتراضيًا.
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
-  // `proxy` defines the hostname, port, and protocol of the proxy server.
-  // You can also define your proxy using the conventional `http_proxy` and
-  // `https_proxy` environment variables. If you are using environment variables
-  // for your proxy configuration, you can also define a `no_proxy` environment
-  // variable as a comma-separated list of domains that should not be proxied.
-  // Use `false` to disable proxies, ignoring environment variables.
-  // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
-  // supplies credentials.
-  // This will set an `Proxy-Authorization` header, overwriting any existing
-  // `Proxy-Authorization` custom headers you have set using `headers`.
-  // If the proxy server uses HTTPS, then you must set the protocol to `https`. 
+  // `proxy` يحدد اسم المضيف، المنفذ، وبروتوكول خادم الوكيل.
+  // يمكنك أيضًا تعريف وكيلك باستخدام متغيرات البيئة التقليدية `http_proxy` و
+  // `https_proxy`. إذا كنت تستخدم متغيرات البيئة
+  // لتكوين الوكيل الخاص بك، يمكنك أيضًا تعريف متغير بيئة `no_proxy` كقائمة مفصولة بفواصل من النطاقات التي يجب عدم وكالتها.
+  // استخدم `false` لتعطيل الوكلاء، متجاهلاً متغيرات البيئة.
+  // `auth` يشير إلى أن يجب استخدام مصادقة HTTP Basic للاتصال بالوكيل، و
+  // يوفر بيانات الاعتماد.
+  // سيتم تعيين رأس `Proxy-Authorization`، مما يتجاوز أي رؤوس مخصصة موجودة
+  // `Proxy-Authorization` التي قمت بتعيينها باستخدام `headers`.
+  // إذا كان خادم الوكيل يستخدم HTTPS، فيجب عليك تعيين البروتوكول إلى `https`.
   proxy: {
     protocol: 'https',
     host: '127.0.0.1',
@@ -186,16 +184,16 @@ These are the available config options for making requests. Only the `url` is re
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
-  // (see Cancellation section below for details)
+  // `cancelToken` يحدد رمز إلغاء يمكن استخدامه لإلغاء الطلب
+  // (انظر قسم الإلغاء أدناه للتفاصيل)
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-  // `decompress` indicates whether or not the response body should be decompressed 
-  // automatically. If set to `true` will also remove the 'content-encoding' header 
-  // from the responses objects of all decompressed responses
-  // - Node only (XHR cannot turn off decompression)
-  decompress: true // default
+  // `decompress` يشير إلى ما إذا كان يجب فك ضغط جسم الاستجابة
+  // تلقائيًا. إذا تم تعيينه إلى `true` سيتم أيضًا إزالة رأس 'content-encoding'
+  // من كائنات الاستجابات لجميع الاستجابات المفككة ضغطها
+  // - Node فقط (XHR لا يمكنه إيقاف فك الضغط)
+  decompress: true // افتراضي
 
 }
 ```
