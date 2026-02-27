@@ -27,6 +27,7 @@ const ptBRConfig = require("./ptBR.lang.js");
 const kuConfig = require("./ku.lang.js");
 const esConfig = require("./es.lang.js");
 const frConfig = require("./fr.lang.js");
+const guConfig = require('./gu.lang.js')
 const trConfig = require("./tr.lang.js");
 const krConfig = require("./kr.lang.js");
 const viConfig = require("./vi.lang.js");
@@ -94,9 +95,15 @@ const langs = [
   },
   {
     dir: "ltr",
+<<<<<<< add-gujarati-translation
+    name: "Gujrati",
+    prefix: "/gu/",
+    config: guConfig
+=======
     name: "हिंदी",
     prefix: '/hi/',
     config: hiConfig
+>>>>>>> master
   },
   {
     dir: "ltr",
@@ -126,9 +133,14 @@ const langs = [
     dir: "ltr",
     name: "Русский",
     prefix: "/ru/",
+<<<<<<< add-gujarati-translation
+    config: ruConfig
+  }, {
+=======
     config: ruConfig,
   },
   {
+>>>>>>> master
     dir: "rtl",
     name: "Arabic",
     prefix: "/ar/",
@@ -228,10 +240,10 @@ module.exports = {
           lang.prefix === "/"
             ? acc
             : {
-                ...acc,
-                [lang.prefix.slice(1, -1) +
+              ...acc,
+              [lang.prefix.slice(1, -1) +
                 "Output"]: `:output:/${lang.prefix.slice(1, -1)}`,
-              },
+            },
         {}
       ),
       /**
@@ -243,12 +255,12 @@ module.exports = {
           lang.prefix === "/"
             ? acc
             : {
-                ...acc,
-                [lang.prefix.slice(1, -1) + "Posts"]: `:${lang.prefix.slice(
-                  1,
-                  -1
-                )}Output:/docs`,
-              },
+              ...acc,
+              [lang.prefix.slice(1, -1) + "Posts"]: `:${lang.prefix.slice(
+                1,
+                -1
+              )}Output:/docs`,
+            },
         {}
       ),
     },
