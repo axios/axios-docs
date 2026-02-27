@@ -1,38 +1,38 @@
 ---
-title: 'Notes'
-description: 'A couple more notes to round it off'
-prev_title: 'URL-Encoding Bodies'
+title: 'ملاحظات'
+description: 'بعض الملاحظات الإضافية لإكمالها'
+prev_title: 'أجسام URL-Encoded'
 prev_link: '/ar/docs/urlencoded'
 ---
 
 ## Semver
 
-Until axios reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+حتى يصل axios إلى إصدار `1.0`، سيتم إصدار التغييرات المكسورة مع إصدار ثانوي جديد. على سبيل المثال `0.5.1` و `0.5.4` سيكون لهما نفس API، لكن `0.6.0` سيكون له تغييرات مكسورة.
 
-## Promises
+## الوعود
 
-axios depends on a native ES6 Promise implementation to be [supported](http://caniuse.com/promises).
-If your environment doesn't support ES6 Promises, you can [polyfill](https://github.com/jakearchibald/es6-promise).
+يعتمد axios على تنفيذ ES6 Promise أصلي ليكون [مدعومًا](http://caniuse.com/promises).
+إذا كان بيئتك لا تدعم ES6 Promises، يمكنك [polyfill](https://github.com/jakearchibald/es6-promise).
 
 ## TypeScript
-axios includes [TypeScript](http://typescriptlang.org) definitions.
+يشمل axios تعريفات [TypeScript](http://typescriptlang.org).
 ```typescript
 import axios from 'axios';
 axios.get('/user?ID=12345');
 ```
 
-## Resources
+## الموارد
 
-* [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-* [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
-* [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
-* [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
-* [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
+* [سجل التغييرات](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+* [دليل الترقية](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [النظام البيئي](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
+* [دليل المساهمة](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
+* [مدونة قواعد السلوك](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
 
-## Credits
+## الإسناد
 
-axios is heavily inspired by the [$http service](https://docs.angularjs.org/api/ng/service/$http) provided in [Angular](https://angularjs.org/). Ultimately axios is an effort to provide a standalone `$http`-like service for use outside of Angular.
+يستوحى axios بشكل كبير من خدمة [$http](https://docs.angularjs.org/api/ng/service/$http) المقدمة في [Angular](https://angularjs.org/). في النهاية axios هو جهد لتوفير خدمة مستقلة تشبه `$http` للاستخدام خارج Angular.
 
-## License
+## الترخيص
 
 [MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)

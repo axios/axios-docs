@@ -1,0 +1,54 @@
+# ============================================
+# Docker Ignore File
+# ============================================
+# Prevents unnecessary files from being sent
+# to the Docker daemon during build
+# ============================================
+
+# Git
+.git
+.gitignore
+.github
+
+# Node modules (will be installed fresh in container)
+node_modules
+
+# Build output (will be built in container)
+public
+temp
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation and meta files
+*.md
+!README.md
+LICENSE
+
+# Docker files (not needed in build context)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test files
+*.test.js
+*.spec.js
+__tests__
+coverage
+
+# Local config
+.env
+.env.*
+!.env.example

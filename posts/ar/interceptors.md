@@ -1,43 +1,43 @@
 ---
-title: 'Interceptors'
-prev_title: 'Config Defaults'
+title: 'المتدخلات'
+prev_title: 'الإعدادات الافتراضية'
 prev_link: '/ar/docs/config_defaults'
-next_title: 'Handling Errors'
+next_title: 'معالجة الأخطاء'
 next_link: '/ar/docs/handling_errors'
 ---
 
-You can intercept requests or responses before they are handled by `then` or `catch`.
+يمكنك اعتراض الطلبات أو الاستجابات قبل أن يتم التعامل معها بواسطة `then` أو `catch`.
 
 ```js
-// Add a request interceptor
+// إضافة متدخل طلب
 axios.interceptors.request.use(function (config) {
-    // Do something before request is sent
+    // افعل شيئًا قبل إرسال الطلب
     return config;
   }, function (error) {
-    // Do something with request error
+    // افعل شيئًا مع خطأ الطلب
     return Promise.reject(error);
   });
 
-// Add a response interceptor
+// إضافة متدخل استجابة
 axios.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
+    // أي رمز حالة يقع ضمن نطاق 2xx يسبب تشغيل هذه الدالة
+    // افعل شيئًا مع بيانات الاستجابة
     return response;
   }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    // أي رموز حالة تقع خارج نطاق 2xx تسبب تشغيل هذه الدالة
+    // افعل شيئًا مع خطأ الاستجابة
     return Promise.reject(error);
   });
 ```
 
-If you need to remove an interceptor later you can.
+إذا كنت بحاجة إلى إزالة متدخل لاحقًا يمكنك ذلك.
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-You can add interceptors to a custom instance of axios.
+يمكنك إضافة متدخلات إلى نموذج مخصص من axios.
 
 ```js
 const instance = axios.create();
