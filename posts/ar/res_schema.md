@@ -1,42 +1,42 @@
 ---
-title: 'Response Schema'
-prev_title: 'Request Config'
+title: 'مخطط الاستجابة'
+prev_title: 'تكوين الطلب'
 prev_link: '/ar/docs/req_config'
-next_title: 'Config Defaults'
+next_title: 'الإعدادات الافتراضية'
 next_link: '/ar/docs/config_defaults'
 ---
 
-The response for a request contains the following information.
+الاستجابة لطلب تحتوي على المعلومات التالية.
 
 ```js
 {
-  // `data` is the response that was provided by the server
+  // `data` هي الاستجابة التي قدمها الخادم
   data: {},
 
-  // `status` is the HTTP status code from the server response
+  // `status` هو رمز حالة HTTP من استجابة الخادم
   status: 200,
 
-  // `statusText` is the HTTP status message from the server response
-  // As of HTTP/2 status text is blank or unsupported.
+  // `statusText` هو رسالة حالة HTTP من استجابة الخادم
+  // اعتبارًا من HTTP/2، نص الحالة فارغ أو غير مدعوم.
   // (HTTP/2 RFC: https://www.rfc-editor.org/rfc/rfc7540#section-8.1.2.4)
   statusText: 'OK',
 
-  // `headers` the HTTP headers that the server responded with
-  // All header names are lower cased and can be accessed using the bracket notation.
-  // Example: `response.headers['content-type']`
+  // `headers` هي رؤوس HTTP التي رد بها الخادم
+  // جميع أسماء الرؤوس تكون بأحرف صغيرة ويمكن الوصول إليها باستخدام تدوين الأقواس.
+  // مثال: `response.headers['content-type']`
   headers: {},
 
-  // `config` is the config that was provided to `axios` for the request
+  // `config` هو التكوين الذي تم تقديمه إلى `axios` للطلب
   config: {},
 
-  // `request` is the request that generated this response
-  // It is the last ClientRequest instance in node.js (in redirects)
-  // and an XMLHttpRequest instance in the browser
+  // `request` هو الطلب الذي أنتج هذه الاستجابة
+  // هو آخر مثيل ClientRequest في node.js (في عمليات إعادة التوجيه)
+  // ومثيل XMLHttpRequest في المتصفح
   request: {}
 }
 ```
 
-When using `then`, you will receive the response as follows:
+عند استخدام `then`، ستتلقى الاستجابة كالتالي:
 
 ```js
 axios.get('/user/12345')
@@ -49,4 +49,4 @@ axios.get('/user/12345')
   });
 ```
 
-When using `catch`, or passing a [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) as second parameter of `then`, the response will be available through the `error` object as explained in the [Handling Errors](/docs/handling_errors) section.
+عند استخدام `catch`، أو تمرير [callback رفض](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) كمعامل ثاني لـ `then`، ستكون الاستجابة متاحة من خلال كائن `error` كما هو موضح في قسم [معالجة الأخطاء](/docs/handling_errors).

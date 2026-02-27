@@ -1,14 +1,14 @@
 ---
-title: 'Minimal Example'
-description: 'A little example of using axios'
-prev_title: 'Introduction'
+title: 'مثال بسيط'
+description: 'مثال صغير على استخدام axios'
+prev_title: 'المقدمة'
 prev_link: '/ar/docs/intro'
-next_title: 'POST Requests'
+next_title: 'طلبات POST'
 next_link: '/ar/docs/post_example'
 ---
 
-## note: CommonJS usage
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+## ملاحظة: استخدام CommonJS
+للحصول على كتابات TypeScript (للإكمال التلقائي / التلميح) أثناء استخدام استيرادات CommonJS مع `require()` استخدم النهج التالي:
 
 ```js
 const axios = require('axios').default;
@@ -16,28 +16,28 @@ const axios = require('axios').default;
 // axios.<method> will now provide autocomplete and parameter typings
 ```
 
-# Example
+# مثال
 
-Performing a `GET` request
+إجراء طلب `GET`
 
 ```js
 const axios = require('axios');
 
-// Make a request for a user with a given ID
+// إجراء طلب لمستخدم بمعرف معين
 axios.get('/user?ID=12345')
   .then(function (response) {
-    // handle success
+    // معالجة النجاح
     console.log(response);
   })
   .catch(function (error) {
-    // handle error
+    // معالجة الخطأ
     console.log(error);
   })
   .then(function () {
-    // always executed
+    // يتم تنفيذه دائمًا
   });
 
-// Optionally the request above could also be done as
+// بدلاً من ذلك، يمكن أن يكون الطلب أعلاه كالتالي
 axios.get('/user', {
     params: {
       ID: 12345
@@ -50,10 +50,10 @@ axios.get('/user', {
     console.log(error);
   })
   .then(function () {
-    // always executed
+    // يتم تنفيذه دائمًا
   });  
 
-// Want to use async/await? Add the `async` keyword to your outer function/method.
+// تريد استخدام async/await؟ أضف كلمة `async` إلى الدالة الخارجية/الطريقة.
 async function getUser() {
   try {
     const response = await axios.get('/user?ID=12345');
@@ -64,5 +64,5 @@ async function getUser() {
 }
 ```
 
-> **NOTE:** `async/await` is part of ECMAScript 2017 and is not supported in Internet
-> Explorer and older browsers, so use with caution.
+> **ملاحظة:** `async/await` جزء من ECMAScript 2017 ولا يتم دعمه في Internet
+> Explorer والمتصفحات القديمة، لذا استخدم بحذر.

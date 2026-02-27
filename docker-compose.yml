@@ -1,0 +1,59 @@
+# ============================================
+# Docker Compose Configuration
+# ============================================
+# Usage:
+#   Development: docker compose up dev
+#   Production:  docker compose up prod
+#   Build only:  docker compose build
+# ============================================
+
+services:
+  # Production service with nginx
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: axios-docs-prod
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8080/",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # Development service with hot reload capability
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: axios-docs-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount source files for development
+      - .:/app
+      # Prevent overwriting container's node_modules
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: >
+      sh -c "npm run build && npm run server"

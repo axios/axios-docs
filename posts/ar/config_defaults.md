@@ -1,16 +1,16 @@
 ---
-title: 'Config Defaults'
-prev_title: 'Response Schema'
+title: 'الإعدادات الافتراضية'
+prev_title: 'مخطط الاستجابة'
 prev_link: '/ar/docs/res_schema'
-next_title: 'Interceptors'
+next_title: 'المتدخلات'
 next_link: '/ar/docs/interceptors'
 ---
 
-## Config Defaults
+## الإعدادات الافتراضية
 
-You can specify config defaults that will be applied to every request.
+يمكنك تحديد الإعدادات الافتراضية التي سيتم تطبيقها على كل طلب.
 
-### Global axios defaults
+### الإعدادات الافتراضية العامة لـ axios
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';
@@ -18,32 +18,32 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-### Custom instance defaults
+### الإعدادات الافتراضية للنموذج المخصص
 
 ```js
-// Set config defaults when creating the instance
+// تعيين الإعدادات الافتراضية عند إنشاء النموذج
 const instance = axios.create({
   baseURL: 'https://api.example.com'
 });
 
-// Alter defaults after instance has been created
+// تعديل الافتراضيات بعد إنشاء النموذج
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
-### Config order of precedence
+### ترتيب أولوية التكوين
 
-Config will be merged with an order of precedence. The order is library defaults found in [lib/defaults/index.js](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js), then `defaults` property of the instance, and finally `config` argument for the request. The latter will take precedence over the former. Here's an example.
+سيتم دمج التكوين بترتيب أولوية. الترتيب هو الافتراضيات المكتبة الموجودة في [lib/defaults/index.js](https://github.com/axios/axios/blob/v1.x/lib/defaults/index.js)، ثم خاصية `defaults` للنموذج، وأخيرًا حجة `config` للطلب. الأخير له الأولوية على الأول. إليك مثال.
 
 ```js
-// Create an instance using the config defaults provided by the library
-// At this point the timeout config value is `0` as is the default for the library
+// إنشاء نموذج باستخدام الإعدادات الافتراضية المقدمة من المكتبة
+// في هذه النقطة قيمة تكوين المهلة هي `0` كما هو افتراضي للمكتبة
 const instance = axios.create();
 
-// Override timeout default for the library
-// Now all requests using this instance will wait 2.5 seconds before timing out
+// تجاوز المهلة الافتراضية للمكتبة
+// الآن جميع الطلبات باستخدام هذا النموذج ستنتظر 2.5 ثانية قبل انتهاء المهلة
 instance.defaults.timeout = 2500;
 
-// Override timeout for this request as it's known to take a long time
+// تجاوز المهلة لهذا الطلب لأنه معروف أنه يستغرق وقتًا طويلًا
 instance.get('/longRequest', {
   timeout: 5000
 });
