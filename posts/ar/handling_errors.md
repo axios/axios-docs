@@ -1,8 +1,8 @@
 ---
-title: 'Handling Errors'
-prev_title: 'Interceptors'
+title: 'معالجة الأخطاء'
+prev_title: 'المتدخلات'
 prev_link: '/ar/docs/interceptors'
-next_title: 'Cancellation'
+next_title: 'الإلغاء'
 next_link: '/ar/docs/cancellation'
 ---
 
@@ -10,35 +10,35 @@ next_link: '/ar/docs/cancellation'
 axios.get('/user/12345')
   .catch(function (error) {
     if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
+      // تم إجراء الطلب واستجاب الخادم برمز حالة
+      // يقع خارج نطاق 2xx
       console.log(error.response.data);
       console.log(error.response.status);
       console.log(error.response.headers);
     } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
+      // تم إجراء الطلب لكن لم يتم تلقي أي استجابة
+      // `error.request` هو مثيل XMLHttpRequest في المتصفح ومثيل
+      // http.ClientRequest في node.js
       console.log(error.request);
     } else {
-      // Something happened in setting up the request that triggered an Error
-      console.log('Error', error.message);
+      // حدث شيء في إعداد الطلب أثار خطأ
+      console.log('خطأ', error.message);
     }
     console.log(error.config);
   });
 ```
 
-Using the `validateStatus` config option, you can define HTTP code(s) that should throw an error.
+باستخدام خيار التكوين `validateStatus`، يمكنك تحديد رموز HTTP التي يجب أن تثير خطأ.
 
 ```js
 axios.get('/user/12345', {
   validateStatus: function (status) {
-    return status < 500; // Resolve only if the status code is less than 500
+    return status < 500; // حل فقط إذا كان رمز الحالة أقل من 500
   }
 })
 ```
 
-Using `toJSON` you get an object with more information about the HTTP error.
+باستخدام `toJSON` تحصل على كائن يحتوي على مزيد من المعلومات حول خطأ HTTP.
 
 ```js
 axios.get('/user/12345')
