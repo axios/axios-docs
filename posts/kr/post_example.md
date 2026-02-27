@@ -22,7 +22,7 @@ axios.post('/user', {
   });
 ```
 
-여러 동시 `POST` 요청 생성
+동시에 여러개의 `POST` 요청 생성
 
 ```js
 function getUserAccount() {
