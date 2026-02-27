@@ -123,6 +123,11 @@ module.exports = {
     },
     {
       type: "link",
+      href: "https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md",
+      text: "Ecosystem",
+    },
+    {
+      type: "link",
       href: "/docs/notes",
       text: "Notes",
     },
