@@ -104,7 +104,6 @@ next_link: '/zh/docs/res_schema'
 
   // `responseEncoding` 表示用于解码响应的编码 (Node.js 专属)
   // 注意：忽略 `responseType` 的值为 'stream'，或者是客户端请求
-  // Note: Ignored for `responseType` of 'stream' or client-side requests
   responseEncoding: 'utf8', // 默认值
 
   // `xsrfCookieName` 是 xsrf token 的值，被用作 cookie 的名称
@@ -171,14 +170,13 @@ next_link: '/zh/docs/res_schema'
     }
   },
 
-  // see https://axios-http.com/zh/docs/cancellation
+  // 参见 https://axios-http.com/zh/docs/cancellation
   cancelToken: new CancelToken(function (cancel) {
   }),
 
-  // `decompress` indicates whether or not the response body should be decompressed 
-  // automatically. If set to `true` will also remove the 'content-encoding' header 
-  // from the responses objects of all decompressed responses
-  // - Node only (XHR cannot turn off decompression)
+  //`decompress` 定义了是否应自动解压缩响应体。
+  // 如果设置为 `true`，还会从所有已解压缩响应的响应对象中移除 `content-encoding` 标头。
+  // - 仅限 Node，(XHR 无法关闭解压缩)
   decompress: true // 默认值
 
 }
