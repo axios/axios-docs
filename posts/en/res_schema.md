@@ -50,3 +50,5 @@ axios.get('/user/12345')
 ```
 
 When using `catch`, or passing a [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) as second parameter of `then`, the response will be available through the `error` object as explained in the [Handling Errors](/docs/handling_errors) section.
+
+When an error response is received from the server, `error.response` follows this same schema. In particular, `error.response.data` contains the actual error body returned by the server.
