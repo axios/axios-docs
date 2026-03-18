@@ -34,7 +34,7 @@ axios.get('/foo/bar', {
 controller.abort()
 ```
 
-Example with a timeout using latest [`AbortSignal.timeout()`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) API [nodejs 17.3+]:
+Example with a timeout using latest [`AbortSignal.timeout()`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) API (Node.js 17.3+ and all modern browsers):
 ```js
 axios.get('/foo/bar', {
    signal: AbortSignal.timeout(5000) //Aborts request after 5 seconds
