@@ -24,7 +24,7 @@ axios.get('/user?ID=12345');
 ## الموارد
 
 * [سجل التغييرات](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-* [دليل الترقية](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [دليل الترحيل](https://github.com/axios/axios/blob/v1.x/MIGRATION_GUIDE.md)
 * [النظام البيئي](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
 * [دليل المساهمة](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
 * [مدونة قواعد السلوك](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)

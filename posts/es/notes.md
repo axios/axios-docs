@@ -26,7 +26,7 @@ axios.get("/user?ID=12345");
 ## Recursos
 
 - [Cambios](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-- [Guía de Actualización](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+- [Guía de Migración](https://github.com/axios/axios/blob/v1.x/MIGRATION_GUIDE.md)
 - [Ecosistema](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
 - [Guía de Contribución](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
 - [Códido de Conducta](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)

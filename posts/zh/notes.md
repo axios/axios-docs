@@ -23,7 +23,7 @@ axios.get('/user?ID=12345');
 ## 资源
 
 * [变更日志](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-* [升级指南](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* [迁移指南](https://github.com/axios/axios/blob/v1.x/MIGRATION_GUIDE.md)
 * [生态系统](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
 * [贡献指南](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
 * [行为准则](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)

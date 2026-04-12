@@ -26,7 +26,7 @@ axios.get('/user?ID=12345');
 ## سەرچاوەکان
 
 * تۆماری گۆڕانکارییەکان - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-* ڕێبەریی بەرزکردنەوە - [Upgrade Guide](https://github.com/axios/axios/blob/v1.x/UPGRADE_GUIDE.md)
+* ڕێنمایی گواستنەوە - [Migration Guide](https://github.com/axios/axios/blob/v1.x/MIGRATION_GUIDE.md)
 * ژینگە سیستەم - [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
 * ڕێبەریی بەژداریکردن - [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
 * کۆدی ڕەفتارکردن - [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
