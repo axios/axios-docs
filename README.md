@@ -1,3 +1,6 @@
+> [!IMPORTANT] 
+> This repo will be deprecated and archived, as we will keep the docs in the main repo going forward.
+
 # Axios Website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/09768f21-08e2-487b-8c7a-7fb084bbf99d/deploy-status)](https://app.netlify.com/sites/axios-docs/deploys)
